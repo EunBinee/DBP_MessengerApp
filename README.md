@@ -1,2 +1,2 @@
 # DBP_MessengerApp
-DBP_Project
+DBP_Project .
