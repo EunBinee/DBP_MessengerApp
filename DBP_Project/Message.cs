@@ -12,14 +12,38 @@ namespace DBP_Project
 {
     public partial class Message : UserControl
     {
-        public Message()
+        public Message(string str)
         {
             InitializeComponent();
+            this.msgBox.Text = str;
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Message_Load(object sender, EventArgs e)
+        {
+            int size = (msgBox.Text.Length / 35) - 1;
+            this.Size = new Size(this.Size.Width, (96 + 17 * size));   
+        }
+
+        public void SetDefault()
+        {
+            this.senderImg.Visible = true;
+            this.senderName.Visible = true;
+            backPanel.Location = new Point(90, 36);
+            sendTimeLabel.Location = new Point(270, 20);
+        }
+        public void SetMyMsg()
+        {
+            this.senderImg.Visible = false;
+            this.senderName.Visible = false;
+            backPanel.Location = new Point(110, 36);
+            sendTimeLabel.Location = new Point(290, 20);
+            msgBox.BackColor = SystemColors.Info;
+            backPanel.BackColor = SystemColors.Info;
         }
     }
 }

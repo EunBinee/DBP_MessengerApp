@@ -28,73 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.sendTimeLabel = new System.Windows.Forms.Label();
+            this.msgBox = new System.Windows.Forms.RichTextBox();
+            this.backPanel = new System.Windows.Forms.Panel();
+            this.senderName = new System.Windows.Forms.Label();
+            this.senderImg = new System.Windows.Forms.PictureBox();
+            this.backPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.senderImg)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // sendTimeLabel
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(74, 64);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.sendTimeLabel.AutoSize = true;
+            this.sendTimeLabel.Location = new System.Drawing.Point(270, 20);
+            this.sendTimeLabel.Name = "sendTimeLabel";
+            this.sendTimeLabel.Size = new System.Drawing.Size(61, 12);
+            this.sendTimeLabel.TabIndex = 3;
+            this.sendTimeLabel.Text = "오전 12:00";
+            this.sendTimeLabel.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label1
+            // msgBox
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 13F);
-            this.label1.Location = new System.Drawing.Point(97, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.msgBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.msgBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.msgBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.msgBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.msgBox.DetectUrls = false;
+            this.msgBox.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.msgBox.HideSelection = false;
+            this.msgBox.Location = new System.Drawing.Point(3, 3);
+            this.msgBox.Name = "msgBox";
+            this.msgBox.ReadOnly = true;
+            this.msgBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.msgBox.Size = new System.Drawing.Size(239, 33);
+            this.msgBox.TabIndex = 2;
+            this.msgBox.Text = "안녕하세요";
             // 
-            // label2
+            // backPanel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(262, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 12);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "오전 12:00";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.backPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.backPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.backPanel.Controls.Add(this.msgBox);
+            this.backPanel.Location = new System.Drawing.Point(85, 36);
+            this.backPanel.Name = "backPanel";
+            this.backPanel.Size = new System.Drawing.Size(245, 38);
+            this.backPanel.TabIndex = 4;
             // 
-            // richTextBox1
+            // senderName
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.richTextBox1.Location = new System.Drawing.Point(97, 38);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(226, 36);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.senderName.AutoSize = true;
+            this.senderName.Font = new System.Drawing.Font("굴림", 13F);
+            this.senderName.Location = new System.Drawing.Point(87, 15);
+            this.senderName.Name = "senderName";
+            this.senderName.Size = new System.Drawing.Size(54, 18);
+            this.senderName.TabIndex = 1;
+            this.senderName.Text = "label1";
+            // 
+            // senderImg
+            // 
+            this.senderImg.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.senderImg.Location = new System.Drawing.Point(10, 10);
+            this.senderImg.Margin = new System.Windows.Forms.Padding(10);
+            this.senderImg.Name = "senderImg";
+            this.senderImg.Size = new System.Drawing.Size(64, 64);
+            this.senderImg.TabIndex = 0;
+            this.senderImg.TabStop = false;
             // 
             // Message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.backPanel);
+            this.Controls.Add(this.sendTimeLabel);
+            this.Controls.Add(this.senderName);
+            this.Controls.Add(this.senderImg);
             this.Name = "Message";
-            this.Size = new System.Drawing.Size(378, 94);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Size = new System.Drawing.Size(360, 98);
+            this.Load += new System.EventHandler(this.Message_Load);
+            this.backPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.senderImg)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label sendTimeLabel;
+        private System.Windows.Forms.RichTextBox msgBox;
+        private System.Windows.Forms.Panel backPanel;
+        private System.Windows.Forms.Label senderName;
+        private System.Windows.Forms.PictureBox senderImg;
     }
 }

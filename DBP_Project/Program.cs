@@ -16,7 +16,8 @@ namespace DBP_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Client.GetInstance().StartListen();
+            Application.Run(new Chat());
         }
     }
 }
