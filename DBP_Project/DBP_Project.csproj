@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Message.cs">
       <SubType>UserControl</SubType>
+      <Generator>Message</Generator>
     </Compile>
     <Compile Include="Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
