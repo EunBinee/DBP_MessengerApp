@@ -17,6 +17,7 @@ namespace DBP_Project
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Client.GetInstance().StartListen();
+            Query.GetInstance().RunQuery("SELECT NOW()");
             Application.Run(new Chat());
         }
     }

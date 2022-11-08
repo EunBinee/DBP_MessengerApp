@@ -17,14 +17,14 @@ namespace DBP_Project
     {
         Socket conn_socket;
         int myPeer = 0;
-        private static Client ClientManager = new Client();
+        private static Client instance = new Client();
         private Client()
         {
             StartConnect();
         }
         public static Client GetInstance()
         {
-            return ClientManager;
+            return instance;
         }
 
         private void StartConnect()
