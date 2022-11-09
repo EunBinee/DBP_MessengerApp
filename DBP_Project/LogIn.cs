@@ -16,5 +16,17 @@ namespace DBP_Project
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+            //모달: 위에 창을 새로 띄웠다면, 아래화면을 건드릴수없음
+            SignUp signUpForm = new SignUp();
+            signUpForm.ShowDialog();//모달 하는 방법
+        }
     }
 }

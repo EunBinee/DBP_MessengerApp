@@ -28,34 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.pictureBox_Photo = new System.Windows.Forms.PictureBox();
+            this.button_photo_Button = new System.Windows.Forms.Button();
+            this.textBox_Name = new System.Windows.Forms.TextBox();
+            this.textBox_NickName = new System.Windows.Forms.TextBox();
+            this.textBox_Number = new System.Windows.Forms.TextBox();
+            this.textBox_Password = new System.Windows.Forms.TextBox();
+            this.textBox_Password_re = new System.Windows.Forms.TextBox();
+            this.textBox_address1 = new System.Windows.Forms.TextBox();
+            this.textBox_address2 = new System.Windows.Forms.TextBox();
+            this.textBox_address3 = new System.Windows.Forms.TextBox();
+            this.button_addressButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox_Department = new System.Windows.Forms.ComboBox();
+            this.comboBox_team = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.SignUp_Button = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -80,99 +81,102 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "회원가입";
             // 
-            // pictureBox
+            // pictureBox_Photo
             // 
-            this.pictureBox.Location = new System.Drawing.Point(129, 113);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox.TabIndex = 1;
-            this.pictureBox.TabStop = false;
+            this.pictureBox_Photo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Photo.Image")));
+            this.pictureBox_Photo.Location = new System.Drawing.Point(129, 113);
+            this.pictureBox_Photo.Name = "pictureBox_Photo";
+            this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Photo.TabIndex = 1;
+            this.pictureBox_Photo.TabStop = false;
             // 
-            // button1
+            // button_photo_Button
             // 
-            this.button1.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button1.Location = new System.Drawing.Point(285, 224);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(60, 39);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "등록";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_photo_Button.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_photo_Button.Location = new System.Drawing.Point(285, 224);
+            this.button_photo_Button.Name = "button_photo_Button";
+            this.button_photo_Button.Size = new System.Drawing.Size(60, 39);
+            this.button_photo_Button.TabIndex = 2;
+            this.button_photo_Button.Text = "등록";
+            this.button_photo_Button.UseVisualStyleBackColor = true;
+            this.button_photo_Button.Click += new System.EventHandler(this.button_photo_Button_Click);
             // 
-            // textBox1
+            // textBox_Name
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(129, 303);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(216, 25);
-            this.textBox1.TabIndex = 3;
+            this.textBox_Name.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Name.Location = new System.Drawing.Point(129, 303);
+            this.textBox_Name.Name = "textBox_Name";
+            this.textBox_Name.Size = new System.Drawing.Size(216, 25);
+            this.textBox_Name.TabIndex = 3;
             // 
-            // textBox2
+            // textBox_NickName
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox2.Location = new System.Drawing.Point(129, 354);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(216, 25);
-            this.textBox2.TabIndex = 4;
+            this.textBox_NickName.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_NickName.Location = new System.Drawing.Point(129, 354);
+            this.textBox_NickName.Name = "textBox_NickName";
+            this.textBox_NickName.Size = new System.Drawing.Size(216, 25);
+            this.textBox_NickName.TabIndex = 4;
             // 
-            // textBox3
+            // textBox_Number
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox3.Location = new System.Drawing.Point(131, 514);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(216, 25);
-            this.textBox3.TabIndex = 5;
+            this.textBox_Number.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Number.Location = new System.Drawing.Point(131, 514);
+            this.textBox_Number.Name = "textBox_Number";
+            this.textBox_Number.Size = new System.Drawing.Size(216, 25);
+            this.textBox_Number.TabIndex = 5;
             // 
-            // textBox4
+            // textBox_Password
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox4.Location = new System.Drawing.Point(131, 582);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(216, 25);
-            this.textBox4.TabIndex = 6;
+            this.textBox_Password.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Password.Location = new System.Drawing.Point(131, 582);
+            this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.Size = new System.Drawing.Size(216, 25);
+            this.textBox_Password.TabIndex = 6;
             // 
-            // textBox5
+            // textBox_Password_re
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox5.Location = new System.Drawing.Point(131, 631);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(216, 25);
-            this.textBox5.TabIndex = 7;
+            this.textBox_Password_re.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Password_re.Location = new System.Drawing.Point(131, 631);
+            this.textBox_Password_re.Name = "textBox_Password_re";
+            this.textBox_Password_re.Size = new System.Drawing.Size(216, 25);
+            this.textBox_Password_re.TabIndex = 7;
             // 
-            // textBox6
+            // textBox_address1
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox6.Location = new System.Drawing.Point(131, 708);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(125, 25);
-            this.textBox6.TabIndex = 8;
+            this.textBox_address1.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_address1.Location = new System.Drawing.Point(131, 708);
+            this.textBox_address1.Name = "textBox_address1";
+            this.textBox_address1.Size = new System.Drawing.Size(125, 25);
+            this.textBox_address1.TabIndex = 8;
             // 
-            // textBox7
+            // textBox_address2
             // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox7.Location = new System.Drawing.Point(131, 760);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(216, 25);
-            this.textBox7.TabIndex = 9;
+            this.textBox_address2.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_address2.Location = new System.Drawing.Point(131, 760);
+            this.textBox_address2.Name = "textBox_address2";
+            this.textBox_address2.Size = new System.Drawing.Size(216, 25);
+            this.textBox_address2.TabIndex = 9;
             // 
-            // textBox8
+            // textBox_address3
             // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox8.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox8.Location = new System.Drawing.Point(131, 812);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(216, 25);
-            this.textBox8.TabIndex = 10;
-            this.textBox8.Text = "상세주소";
+            this.textBox_address3.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_address3.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox_address3.Location = new System.Drawing.Point(131, 812);
+            this.textBox_address3.Name = "textBox_address3";
+            this.textBox_address3.Size = new System.Drawing.Size(216, 25);
+            this.textBox_address3.TabIndex = 10;
+            this.textBox_address3.Text = "상세주소";
             // 
-            // button2
+            // button_addressButton
             // 
-            this.button2.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button2.Location = new System.Drawing.Point(262, 708);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(85, 25);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "우편번호";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_addressButton.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.button_addressButton.Location = new System.Drawing.Point(262, 708);
+            this.button_addressButton.Name = "button_addressButton";
+            this.button_addressButton.Size = new System.Drawing.Size(85, 25);
+            this.button_addressButton.TabIndex = 11;
+            this.button_addressButton.Text = "우편번호";
+            this.button_addressButton.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -234,21 +238,31 @@
             this.label7.TabIndex = 17;
             this.label7.Text = "주소";
             // 
-            // comboBox1
+            // comboBox_Department
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(129, 410);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(216, 23);
-            this.comboBox1.TabIndex = 18;
+            this.comboBox_Department.FormattingEnabled = true;
+            this.comboBox_Department.Items.AddRange(new object[] {
+            "임시부서",
+            "나중에DB에서",
+            "값가져올예정"});
+            this.comboBox_Department.Location = new System.Drawing.Point(129, 410);
+            this.comboBox_Department.Name = "comboBox_Department";
+            this.comboBox_Department.Size = new System.Drawing.Size(216, 23);
+            this.comboBox_Department.TabIndex = 18;
             // 
-            // comboBox2
+            // comboBox_team
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(129, 462);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(216, 23);
-            this.comboBox2.TabIndex = 19;
+            this.comboBox_team.FormattingEnabled = true;
+            this.comboBox_team.Items.AddRange(new object[] {
+            "부서명에따라",
+            "팀명다르게",
+            "계속업데이트",
+            "해야함.",
+            "지금은임시팀명"});
+            this.comboBox_team.Location = new System.Drawing.Point(129, 462);
+            this.comboBox_team.Name = "comboBox_team";
+            this.comboBox_team.Size = new System.Drawing.Size(216, 23);
+            this.comboBox_team.TabIndex = 19;
             // 
             // label8
             // 
@@ -290,17 +304,18 @@
             this.label11.TabIndex = 23;
             this.label11.Text = "비밀번호가 다릅니다.";
             // 
-            // button3
+            // SignUp_Button
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button3.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.button3.ForeColor = System.Drawing.SystemColors.Window;
-            this.button3.Location = new System.Drawing.Point(129, 917);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(221, 59);
-            this.button3.TabIndex = 24;
-            this.button3.Text = "가입";
-            this.button3.UseVisualStyleBackColor = false;
+            this.SignUp_Button.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.SignUp_Button.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SignUp_Button.ForeColor = System.Drawing.SystemColors.Window;
+            this.SignUp_Button.Location = new System.Drawing.Point(129, 917);
+            this.SignUp_Button.Name = "SignUp_Button";
+            this.SignUp_Button.Size = new System.Drawing.Size(221, 59);
+            this.SignUp_Button.TabIndex = 24;
+            this.SignUp_Button.Text = "가입";
+            this.SignUp_Button.UseVisualStyleBackColor = false;
+            this.SignUp_Button.Click += new System.EventHandler(this.SignUp_Button_Click);
             // 
             // SignUp
             // 
@@ -308,36 +323,36 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(432, 1053);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.SignUp_Button);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBox_team);
+            this.Controls.Add(this.comboBox_Department);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.button_addressButton);
+            this.Controls.Add(this.textBox_address3);
+            this.Controls.Add(this.textBox_address2);
+            this.Controls.Add(this.textBox_address1);
+            this.Controls.Add(this.textBox_Password_re);
+            this.Controls.Add(this.textBox_Password);
+            this.Controls.Add(this.textBox_Number);
+            this.Controls.Add(this.textBox_NickName);
+            this.Controls.Add(this.textBox_Name);
+            this.Controls.Add(this.button_photo_Button);
+            this.Controls.Add(this.pictureBox_Photo);
             this.Controls.Add(this.panel1);
             this.Name = "SignUp";
             this.Text = "SignUp";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -347,29 +362,29 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox pictureBox_Photo;
+        private System.Windows.Forms.Button button_photo_Button;
+        private System.Windows.Forms.TextBox textBox_Name;
+        private System.Windows.Forms.TextBox textBox_NickName;
+        private System.Windows.Forms.TextBox textBox_Number;
+        private System.Windows.Forms.TextBox textBox_Password;
+        private System.Windows.Forms.TextBox textBox_Password_re;
+        private System.Windows.Forms.TextBox textBox_address1;
+        private System.Windows.Forms.TextBox textBox_address2;
+        private System.Windows.Forms.TextBox textBox_address3;
+        private System.Windows.Forms.Button button_addressButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox_Department;
+        private System.Windows.Forms.ComboBox comboBox_team;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button SignUp_Button;
     }
 }

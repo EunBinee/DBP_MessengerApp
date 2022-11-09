@@ -18,7 +18,7 @@ namespace DBP_Project
             Application.SetCompatibleTextRenderingDefault(false);
             //Client.GetInstance().StartListen();
             //Query.GetInstance().RunQuery("SELECT NOW()");
-            Application.Run(new MainForm());
+            Application.Run(new LogIn());
         }
     }
 }

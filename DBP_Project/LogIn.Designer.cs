@@ -46,6 +46,7 @@
             this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 13;
             this.label3.Text = "회원가입";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // button1
             // 
@@ -56,6 +57,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "로그인";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // checkBox1
             // 
