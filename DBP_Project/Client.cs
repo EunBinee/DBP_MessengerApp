@@ -36,6 +36,7 @@ namespace DBP_Project
             var data = new byte[1024];
             conn_socket.Receive(data, data.Length, SocketFlags.None);
             myPeer = Int32.Parse(Encoding.UTF8.GetString(data));
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '" + myPeer + "' WHERE (`id` = 'temp');");
             MessageBox.Show("서버 접속 성공");
 
         }
@@ -43,7 +44,6 @@ namespace DBP_Project
         private void connect()
         {
             MessageBox.Show("듣는 중");
-            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '"+ myPeer +"' WHERE (`id` = 'temp');");
             while (true)
             {
                 // 데이터의 길이만큼 byte 배열을 생성한다.
@@ -51,7 +51,15 @@ namespace DBP_Project
                 // 데이터를 수신한다.
                 conn_socket.Receive(data, data.Length, SocketFlags.None);
                 // 수신된 데이터를 UTF8인코딩으로 string 타입으로 변환 후에 콘솔에 출력한다.
-                MessageBox.Show(Encoding.UTF8.GetString(data));
+                MessageBox.Show("카톡이 왔습니다.\n" + Encoding.UTF8.GetString(data));
+
+                if(Chat.instance.InvokeRequired)
+                {
+                    // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
+                    Chat.instance.BeginInvoke(new Action(() => Chat.instance.RecieveMsg()));
+                }
+
+                
             }
         }
 
