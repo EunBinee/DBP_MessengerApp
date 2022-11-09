@@ -30,7 +30,7 @@ namespace DBP_Project
         private void StartConnect()
         { 
             conn_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("211.199.81.165"), 8888));
+            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9998));
 
             // myPeer 저장
             var data = new byte[1024];
