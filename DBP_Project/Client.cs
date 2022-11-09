@@ -43,6 +43,7 @@ namespace DBP_Project
         private void connect()
         {
             MessageBox.Show("듣는 중");
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '"+ myPeer +"' WHERE (`id` = 'temp');");
             while (true)
             {
                 // 데이터의 길이만큼 byte 배열을 생성한다.
