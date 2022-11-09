@@ -203,7 +203,6 @@
             this.label4.Size = new System.Drawing.Size(65, 19);
             this.label4.TabIndex = 14;
             this.label4.Text = "사원번호";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -234,7 +233,6 @@
             this.label7.Size = new System.Drawing.Size(37, 19);
             this.label7.TabIndex = 17;
             this.label7.Text = "주소";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // comboBox1
             // 
