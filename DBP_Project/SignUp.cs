@@ -19,14 +19,26 @@ namespace DBP_Project
 
         private void SignUp_Button_Click(object sender, EventArgs e)
         {
-            //회원가입 버튼을 눌렀을 때,
-            // 확인 할 것
-            // 1. 사원 번호의 중복 여부
-            // 2. 재입력한 비밀번호가 같은지
-            // 3. 비어있는 칸이 있는지
+            //회원가입 버튼을 눌렀을 때, 확인 할 것
+            // 1. 비어있는 칸이 있는지
+            //foreach문으로 control중 텍스트 박스에 빈곳이 있는지 확인, 사진 등록도 했는지 확인
 
-            // 1~3을 전부 확인 후
+            // 2. 사원 번호의 중복 여부
+
+
+
+            // 3. 재입력한 비밀번호가 같은지
+
+
+
+
+
             // 4. 비밀번호 암호화 해서 저장
+
+
+            //-----------------------------------------------------------------
+            //다하면  SignUp_DB();
+
         }
 
         private void button_photo_Button_Click(object sender, EventArgs e)
@@ -65,6 +77,41 @@ namespace DBP_Project
             address = null;
         }
 
+        public void SignUp_DB()
+        {
+            //DB에 회원정보를 저장
 
+
+        }
+
+        private void pictureBox_Photo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SignUp_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_NickName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_Name_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
