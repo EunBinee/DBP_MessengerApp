@@ -77,6 +77,14 @@ namespace DBP_Project
             address = null;
         }
 
+
+        public void ForeachPanelControls()
+        {
+            //패널안에 있는 control들을 확인
+            // 값이 비었는지 확인
+
+            
+        }
         public void SignUp_DB()
         {
             //DB에 회원정보를 저장
@@ -84,34 +92,6 @@ namespace DBP_Project
 
         }
 
-        private void pictureBox_Photo_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SignUp_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_NickName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox_Name_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

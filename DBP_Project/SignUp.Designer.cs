@@ -102,7 +102,6 @@
             this.pictureBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Photo.TabIndex = 1;
             this.pictureBox_Photo.TabStop = false;
-            this.pictureBox_Photo.Click += new System.EventHandler(this.pictureBox_Photo_Click);
             // 
             // button_photo_Button
             // 
@@ -122,7 +121,6 @@
             this.textBox_Name.Name = "textBox_Name";
             this.textBox_Name.Size = new System.Drawing.Size(216, 25);
             this.textBox_Name.TabIndex = 3;
-            this.textBox_Name.TextChanged += new System.EventHandler(this.textBox_Name_TextChanged);
             // 
             // textBox_NickName
             // 
@@ -131,7 +129,6 @@
             this.textBox_NickName.Name = "textBox_NickName";
             this.textBox_NickName.Size = new System.Drawing.Size(216, 25);
             this.textBox_NickName.TabIndex = 4;
-            this.textBox_NickName.TextChanged += new System.EventHandler(this.textBox_NickName_TextChanged);
             // 
             // textBox_Number
             // 
@@ -203,7 +200,6 @@
             this.label2.Size = new System.Drawing.Size(37, 19);
             this.label2.TabIndex = 12;
             this.label2.Text = "이름";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -214,7 +210,6 @@
             this.label3.Size = new System.Drawing.Size(51, 19);
             this.label3.TabIndex = 13;
             this.label3.Text = "닉네임";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -423,7 +418,6 @@
             this.Controls.Add(this.flowLayoutPanel2);
             this.Name = "SignUp";
             this.Text = "SignUp";
-            this.Load += new System.EventHandler(this.SignUp_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).EndInit();
