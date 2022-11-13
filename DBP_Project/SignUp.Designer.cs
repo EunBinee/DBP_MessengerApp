@@ -177,6 +177,7 @@
             this.button_addressButton.TabIndex = 11;
             this.button_addressButton.Text = "우편번호";
             this.button_addressButton.UseVisualStyleBackColor = true;
+            this.button_addressButton.Click += new System.EventHandler(this.button_addressButton_Click);
             // 
             // label2
             // 

@@ -56,6 +56,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Address.Designer.cs">
+      <DependentUpon>Address.cs</DependentUpon>
+    </Compile>
     <Compile Include="Chat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="User_info.cs" />
+    <EmbeddedResource Include="Address.resx">
+      <DependentUpon>Address.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
     </EmbeddedResource>

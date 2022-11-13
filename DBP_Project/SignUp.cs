@@ -45,8 +45,26 @@ namespace DBP_Project
 
                 //사진 입력
                 pictureBox_Photo.Image = Image.FromFile(file);
-                pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;   
+                pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
+
+        private void button_addressButton_Click(object sender, EventArgs e)
+        {
+            //우편번호 찾기
+            Address address = new Address();
+            address.ShowDialog();
+
+            // 창이 닫히면 반환값을 반환한다.
+            if (address.gstrZipCode != "")
+            {
+                textBox_address1.Text = address.gstrZipCode;
+                textBox_address2.Text = address.gstrAddress1;
+            }
+
+            address = null;
+        }
+
+
     }
 }
