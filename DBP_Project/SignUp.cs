@@ -12,11 +12,14 @@ namespace DBP_Project
 {
     public partial class SignUp : Form
     {
+        string file = ""; //파일명
+
         string canUseIdText = "사용할 수 있는 아이디입니다.";
         string dupIdText = "이미 있는 사원번호입니다.";
 
         string PasswordTex_di = "비밀번호가 다릅니다.";
         string PasswordText = "비밀번호가 같습니다.";
+
 
         public SignUp()
         {
@@ -24,6 +27,7 @@ namespace DBP_Project
             label_DupNumber.Text = "";
         }
 
+        //등록하기 버튼
         private void SignUp_Button_Click(object sender, EventArgs e)
         {
 
@@ -40,13 +44,18 @@ namespace DBP_Project
                 if (label_DupNumber.Text == canUseIdText)   //중복이 없음
                 {
                     // 3. 재입력한 비밀번호가 같은지
-                    if(label_Password.Text == PasswordText)
+                    if (label_Password.Text == PasswordText)
                     {
                         // 4. 비밀번호 암호화 해서 저장
+                        string password_Encryption = Password_Encryption();  //암호화된 비밀번호
+
+                        string address = textBox_address2.Text + ", " + textBox_address3.Text;
 
 
                         //-----------------------------------------------------------------
                         //다하면  SignUp_DB();
+                        SignUp_DB(textBox_Number.Text, password_Encryption, textBox_Name.Text, "2", textBox_address1.Text, address, textBox_NickName.Text, file);
+                        this.Close();   //회원가입을 하면 창 닫힘
                     }
                     else
                     {
@@ -72,14 +81,15 @@ namespace DBP_Project
             }
 
         }
-
+        
+        //사진 등록 버튼
         private void button_photo_Button_Click(object sender, EventArgs e)
         {
             var FD = new System.Windows.Forms.OpenFileDialog();
             if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 //사진 파일을 가지고 옵니다.
-                string file = FD.FileName; //파일명
+                file = FD.FileName; //파일명
                 string[] fileName = FD.SafeFileName.Split('.'); //파일명
                 string fileName_c = fileName[0];
                 //확인용 메세지 박스
@@ -93,6 +103,7 @@ namespace DBP_Project
             }
         }
 
+        //우편번호 찾기 버튼
         private void button_addressButton_Click(object sender, EventArgs e)
         {
             //우편번호 찾기
@@ -109,22 +120,62 @@ namespace DBP_Project
             address = null;
         }
 
+        //중복 확인 버튼
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //중복 확인
+            bool isDup = DuplicateID();
+            //만약 ture면 중복인거, false이면 중복이 없는 거
 
+            if (!isDup)
+            {
+                //중복이 없음
+                label_DupNumber.Text = canUseIdText;
+                label_DupNumber.ForeColor = Color.Blue;
+            }
+            else
+            {
+                label_DupNumber.Text = dupIdText;
+                label_DupNumber.ForeColor = Color.Red;
+            }
+        }
+
+        //비밀번호 재입력할때 제대로 적었는지 체크
+        private void textBox_Password_re_TextChanged(object sender, EventArgs e)
+        { 
+            if(textBox_Password_re.Text=="")
+            {
+                label_Password.Text = "";
+            }
+            else if (textBox_Password.Text != textBox_Password_re.Text)
+            {
+                label_Password.Text = PasswordTex_di;
+                label_Password.ForeColor = Color.Red;
+            }
+            else if(textBox_Password.Text == textBox_Password_re.Text)
+            {
+                label_Password.Text = PasswordText;
+                label_Password.ForeColor = Color.Blue;
+            }
+        }
+
+
+        //회원가입할때 덜 적은 TextBox와 ComboBox가 있는지 확인
         public bool ForeachPanelControls()
         {
             //패널안에 있는 control들을 확인
             // 값이 비었는지 확인
             bool notEmpty = false;
-            foreach(Control control in flowLayoutPanel2.Controls)
+            foreach (Control control in flowLayoutPanel2.Controls)
             {
                 if (control is Panel)
                 {
                     //만약 Panel이면
-                    foreach(Control contr in control.Controls)
+                    foreach (Control contr in control.Controls)
                     {
-                        if(contr is TextBox)
+                        if (contr is TextBox)
                         {
-                            if(contr.Text == "")
+                            if (contr.Text == "")
                             {
                                 //만약 하나라도 안적혀 있다면..
                                 notEmpty = false;
@@ -136,7 +187,7 @@ namespace DBP_Project
                             }
                         }
                     }
-                    if(comboBox_Department.Text == "" || comboBox_team.Text == "")
+                    if (comboBox_Department.Text == "" || comboBox_team.Text == "")
                     {
                         notEmpty = false;
                     }
@@ -145,14 +196,15 @@ namespace DBP_Project
             return notEmpty;
         }
 
+        //중복되는 아이디가 있는지 체크
         public bool DuplicateID()
         {
             //0이 중복되는 것 1이 중복안되는 것
-            bool isDup = false;  
+            bool isDup = false;
             string query = "select(Case When '" + textBox_Number.Text + "' = id Then 0 else 1 End) as '중복' From `UserListTable`; ";
             DataTable dt = new DataTable();
             dt = Query.GetInstance().RunQuery(query);
-           // MessageBox.Show(query);
+            // MessageBox.Show(query);
             foreach (DataRow row in dt.Rows)
             {
 
@@ -173,50 +225,25 @@ namespace DBP_Project
             return isDup;
         }
 
-        public void SignUp_DB()
+        //비밀번호 암호화
+        private string Password_Encryption()
+        {
+            //암호화
+            string result = Sha265.GetInstance().SHA256_password(textBox_Password.Text);
+            MessageBox.Show(result);
+            return result;
+        }
+
+        //DB에 정보를 올린다.
+        public void SignUp_DB(string id, string password, string name, string admin, string zipCode, string address, string nickname, string profilePic)
         {
             //DB에 회원정보를 저장
+            string query = "INSERT INTO `talk`.`UserListTable` (`id`, `password`, `name`, `role`, `zipCode`, `userAddr`, `nickName`, `profilePic`, `peer`) " +
+                "VALUES ('" + id + "', '" + password + "', '" + name + "', '" + admin + "', '" + zipCode + "', '" + address + "', '" + nickname + "', '" + profilePic + "', '');";
 
-
+            Query.GetInstance().RunQuery(query);
         }
 
 
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //중복 확인
-            bool isDup = DuplicateID();
-            //만약 ture면 중복인거, false이면 중복이 없는 거
-
-            if (!isDup)
-            {
-                //중복이 없음
-                label_DupNumber.Text = canUseIdText;
-                label_DupNumber.ForeColor = Color.Blue;
-            }
-            else
-            {
-                label_DupNumber.Text = dupIdText;
-                label_DupNumber.ForeColor = Color.Red;
-            }
-        }
-
-        private void textBox_Password_re_TextChanged(object sender, EventArgs e)
-        { 
-            if(textBox_Password_re.Text=="")
-            {
-                label_Password.Text = "";
-            }
-            else if (textBox_Password.Text != textBox_Password_re.Text)
-            {
-                label_Password.Text = PasswordTex_di;
-                label_Password.ForeColor = Color.Red;
-            }
-            else if(textBox_Password.Text == textBox_Password_re.Text)
-            {
-                label_Password.Text = PasswordText;
-                label_Password.ForeColor = Color.Blue;
-            }
-        }
     }
 }
