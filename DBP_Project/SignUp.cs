@@ -45,7 +45,7 @@ namespace DBP_Project
             dt_Depart = new DataTable();
             dt_Depart = Query.GetInstance().RunQuery(query);
 
-            foreach (DataRow row in DepartDt.Rows)
+            foreach (DataRow row in dt_Depart.Rows)
             {
                 int id = int.Parse(row["departmentId"].ToString());
 
@@ -181,7 +181,7 @@ namespace DBP_Project
             }
         }
 
-        //비밀번호 재입력할때 제대로 적었는지 체크
+        //비밀번호 재입력할때 제대로 적었는지 
         private void textBox_Password_re_TextChanged(object sender, EventArgs e)
         { 
             if(textBox_Password_re.Text=="")
@@ -279,8 +279,8 @@ namespace DBP_Project
         public void SignUp_DB(string id, string password, string name, string admin, string zipCode, string address, string nickname, string profilePic)
         {
             //DB에 회원정보를 저장
-            string query = "INSERT INTO `talk`.`UserListTable` (`id`, `password`, `name`, `role`, `zipCode`, `userAddr`, `nickName`, `profilePic`, `peer`) " +
-                "VALUES ('" + id + "', '" + password + "', '" + name + "', '" + admin + "', '" + zipCode + "', '" + address + "', '" + nickname + "', '" + profilePic + "', '');";
+            string query = "INSERT INTO `talk`.`UserListTable` (`id`, `password`, `name`, `role`, `zipCode`, `userAddr`, `nickName`, `profilePic`) " +
+                "VALUES ('" + id + "', '" + password + "', '" + name + "', '" + admin + "', '" + zipCode + "', '" + address + "', '" + nickname + "', '" + profilePic + "');";
 
             Query.GetInstance().RunQuery(query);
         }
