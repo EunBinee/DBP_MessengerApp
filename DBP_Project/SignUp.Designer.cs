@@ -200,10 +200,6 @@
             // comboBox_Department
             // 
             this.comboBox_Department.FormattingEnabled = true;
-            this.comboBox_Department.Items.AddRange(new object[] {
-            "임시부서",
-            "나중에DB에서",
-            "값가져올예정"});
             this.comboBox_Department.Location = new System.Drawing.Point(115, 121);
             this.comboBox_Department.Name = "comboBox_Department";
             this.comboBox_Department.Size = new System.Drawing.Size(216, 23);
@@ -212,12 +208,6 @@
             // comboBox_team
             // 
             this.comboBox_team.FormattingEnabled = true;
-            this.comboBox_team.Items.AddRange(new object[] {
-            "부서명에따라",
-            "팀명다르게",
-            "계속업데이트",
-            "해야함.",
-            "지금은임시팀명"});
             this.comboBox_team.Location = new System.Drawing.Point(115, 173);
             this.comboBox_team.Name = "comboBox_team";
             this.comboBox_team.Size = new System.Drawing.Size(216, 23);

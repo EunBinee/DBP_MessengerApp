@@ -20,11 +20,52 @@ namespace DBP_Project
         string PasswordTex_di = "비밀번호가 다릅니다.";
         string PasswordText = "비밀번호가 같습니다.";
 
+        DataTable dt_Depart;    //부서를 담고있는 dt
 
         public SignUp()
         {
             InitializeComponent();
             label_DupNumber.Text = "";
+
+            AddComboBox();
+        }
+
+        private void AddComboBox()
+        {
+            //comboBox2.Items.Add("회사원");
+            //id를 저장한다.
+            //읽을 때마다 preID와 값이 같은지 확인
+            //만약 같지않다면, preID에 값을 넣어주고, 부서 콤보박스와 팀콤보박스의 값을 바꿔준다.
+            //같다면 팀 콤보박스의 값만 바꿔준다.
+
+
+            int preId=0; //이전 부서 ID
+
+            string query = "SELECT * FROM talk.departmentList;";
+            dt_Depart = new DataTable();
+            dt_Depart = Query.GetInstance().RunQuery(query);
+
+            foreach (DataRow row in DepartDt.Rows)
+            {
+                int id = int.Parse(row["departmentId"].ToString());
+
+                if (preId == id) //부서가 같다면 팀 콤보박스의 값만 바꿔준다.
+                {
+                    string team = row["teamName"].ToString();
+                    comboBox_team.Items.Add(team);
+                }
+                else
+                {
+                    preId = id;
+
+                    string depart = row["departmentName"].ToString();
+                   // string team = row["teamName"].ToString();
+
+                    comboBox_Department.Items.Add(depart);
+                   // comboBox_team.Items.Add(team);
+                }
+
+            }
         }
 
         //등록하기 버튼
