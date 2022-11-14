@@ -35,30 +35,31 @@
             this.button_photo_Button = new System.Windows.Forms.Button();
             this.textBox_Name = new System.Windows.Forms.TextBox();
             this.textBox_NickName = new System.Windows.Forms.TextBox();
-            this.textBox_Number = new System.Windows.Forms.TextBox();
-            this.textBox_Password = new System.Windows.Forms.TextBox();
-            this.textBox_Password_re = new System.Windows.Forms.TextBox();
             this.textBox_address1 = new System.Windows.Forms.TextBox();
             this.textBox_address2 = new System.Windows.Forms.TextBox();
             this.textBox_address3 = new System.Windows.Forms.TextBox();
             this.button_addressButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox_Department = new System.Windows.Forms.ComboBox();
             this.comboBox_team = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.SignUp_Button = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label_DupNumber = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox_Number = new System.Windows.Forms.TextBox();
+            this.textBox_Password = new System.Windows.Forms.TextBox();
+            this.label_Password = new System.Windows.Forms.Label();
+            this.textBox_Password_re = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -130,30 +131,6 @@
             this.textBox_NickName.Size = new System.Drawing.Size(216, 25);
             this.textBox_NickName.TabIndex = 4;
             // 
-            // textBox_Number
-            // 
-            this.textBox_Number.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_Number.Location = new System.Drawing.Point(115, 25);
-            this.textBox_Number.Name = "textBox_Number";
-            this.textBox_Number.Size = new System.Drawing.Size(216, 25);
-            this.textBox_Number.TabIndex = 5;
-            // 
-            // textBox_Password
-            // 
-            this.textBox_Password.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_Password.Location = new System.Drawing.Point(115, 93);
-            this.textBox_Password.Name = "textBox_Password";
-            this.textBox_Password.Size = new System.Drawing.Size(216, 25);
-            this.textBox_Password.TabIndex = 6;
-            // 
-            // textBox_Password_re
-            // 
-            this.textBox_Password_re.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_Password_re.Location = new System.Drawing.Point(115, 142);
-            this.textBox_Password_re.Name = "textBox_Password_re";
-            this.textBox_Password_re.Size = new System.Drawing.Size(216, 25);
-            this.textBox_Password_re.TabIndex = 7;
-            // 
             // textBox_address1
             // 
             this.textBox_address1.BackColor = System.Drawing.SystemColors.InactiveBorder;
@@ -173,12 +150,11 @@
             // textBox_address3
             // 
             this.textBox_address3.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_address3.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBox_address3.ForeColor = System.Drawing.SystemColors.WindowText;
             this.textBox_address3.Location = new System.Drawing.Point(115, 132);
             this.textBox_address3.Name = "textBox_address3";
             this.textBox_address3.Size = new System.Drawing.Size(216, 25);
             this.textBox_address3.TabIndex = 10;
-            this.textBox_address3.Text = "상세주소";
             // 
             // button_addressButton
             // 
@@ -210,36 +186,6 @@
             this.label3.Size = new System.Drawing.Size(51, 19);
             this.label3.TabIndex = 13;
             this.label3.Text = "닉네임";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(30, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 19);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "사원번호";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(30, 96);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 19);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "비밀번호";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label6.Location = new System.Drawing.Point(45, 145);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 19);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "재입력";
             // 
             // label7
             // 
@@ -297,26 +243,6 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "팀명";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(147, 63);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(187, 15);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "이미 있는 사원번호입니다.";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(177, 184);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(152, 15);
-            this.label11.TabIndex = 23;
-            this.label11.Text = "비밀번호가 다릅니다.";
-            // 
             // SignUp_Button
             // 
             this.SignUp_Button.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -373,18 +299,101 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Window;
+            this.panel4.Controls.Add(this.label_DupNumber);
+            this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.textBox_Number);
             this.panel4.Controls.Add(this.textBox_Password);
-            this.panel4.Controls.Add(this.label11);
+            this.panel4.Controls.Add(this.label_Password);
             this.panel4.Controls.Add(this.textBox_Password_re);
-            this.panel4.Controls.Add(this.label10);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Location = new System.Drawing.Point(3, 431);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(402, 215);
+            this.panel4.Size = new System.Drawing.Size(402, 202);
             this.panel4.TabIndex = 2;
+            // 
+            // label_DupNumber
+            // 
+            this.label_DupNumber.AutoSize = true;
+            this.label_DupNumber.Location = new System.Drawing.Point(114, 62);
+            this.label_DupNumber.Name = "label_DupNumber";
+            this.label_DupNumber.Size = new System.Drawing.Size(0, 15);
+            this.label_DupNumber.TabIndex = 25;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(246, 25);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(83, 25);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "중복 확인";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox_Number
+            // 
+            this.textBox_Number.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Number.Location = new System.Drawing.Point(115, 25);
+            this.textBox_Number.Name = "textBox_Number";
+            this.textBox_Number.Size = new System.Drawing.Size(125, 25);
+            this.textBox_Number.TabIndex = 5;
+            // 
+            // textBox_Password
+            // 
+            this.textBox_Password.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Password.Location = new System.Drawing.Point(117, 89);
+            this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.Size = new System.Drawing.Size(216, 25);
+            this.textBox_Password.TabIndex = 6;
+            // 
+            // label_Password
+            // 
+            this.label_Password.AutoSize = true;
+            this.label_Password.ForeColor = System.Drawing.Color.Red;
+            this.label_Password.Location = new System.Drawing.Point(179, 175);
+            this.label_Password.Name = "label_Password";
+            this.label_Password.Size = new System.Drawing.Size(0, 15);
+            this.label_Password.TabIndex = 23;
+            // 
+            // textBox_Password_re
+            // 
+            this.textBox_Password_re.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Password_re.Location = new System.Drawing.Point(117, 138);
+            this.textBox_Password_re.Name = "textBox_Password_re";
+            this.textBox_Password_re.Size = new System.Drawing.Size(216, 25);
+            this.textBox_Password_re.TabIndex = 7;
+            this.textBox_Password_re.TextChanged += new System.EventHandler(this.textBox_Password_re_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Location = new System.Drawing.Point(30, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 19);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "사원번호";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(32, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 19);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "비밀번호";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label6.Location = new System.Drawing.Point(47, 141);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 19);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "재입력";
             // 
             // panel5
             // 
@@ -394,7 +403,7 @@
             this.panel5.Controls.Add(this.textBox_address2);
             this.panel5.Controls.Add(this.button_addressButton);
             this.panel5.Controls.Add(this.textBox_address3);
-            this.panel5.Location = new System.Drawing.Point(3, 652);
+            this.panel5.Location = new System.Drawing.Point(3, 639);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(402, 187);
             this.panel5.TabIndex = 3;
@@ -403,7 +412,7 @@
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.Window;
             this.panel6.Controls.Add(this.SignUp_Button);
-            this.panel6.Location = new System.Drawing.Point(3, 845);
+            this.panel6.Location = new System.Drawing.Point(3, 832);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(402, 106);
             this.panel6.TabIndex = 4;
@@ -442,31 +451,32 @@
         private System.Windows.Forms.Button button_photo_Button;
         private System.Windows.Forms.TextBox textBox_Name;
         private System.Windows.Forms.TextBox textBox_NickName;
-        private System.Windows.Forms.TextBox textBox_Number;
-        private System.Windows.Forms.TextBox textBox_Password;
-        private System.Windows.Forms.TextBox textBox_Password_re;
         private System.Windows.Forms.TextBox textBox_address1;
         private System.Windows.Forms.TextBox textBox_address2;
         private System.Windows.Forms.TextBox textBox_address3;
         private System.Windows.Forms.Button button_addressButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox_Department;
         private System.Windows.Forms.ComboBox comboBox_team;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button SignUp_Button;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox_Number;
+        private System.Windows.Forms.TextBox textBox_Password;
+        private System.Windows.Forms.Label label_Password;
+        private System.Windows.Forms.TextBox textBox_Password_re;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label_DupNumber;
     }
 }
