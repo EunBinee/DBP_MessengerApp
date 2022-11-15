@@ -204,6 +204,7 @@
             this.comboBox_Department.Name = "comboBox_Department";
             this.comboBox_Department.Size = new System.Drawing.Size(216, 23);
             this.comboBox_Department.TabIndex = 18;
+            this.comboBox_Department.SelectedIndexChanged += new System.EventHandler(this.comboBox_Department_SelectedIndexChanged);
             // 
             // comboBox_team
             // 
@@ -212,6 +213,7 @@
             this.comboBox_team.Name = "comboBox_team";
             this.comboBox_team.Size = new System.Drawing.Size(216, 23);
             this.comboBox_team.TabIndex = 19;
+            this.comboBox_team.Click += new System.EventHandler(this.comboBox_team_Click);
             // 
             // label8
             // 

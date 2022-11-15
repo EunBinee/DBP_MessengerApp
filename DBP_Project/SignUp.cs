@@ -20,7 +20,9 @@ namespace DBP_Project
         string PasswordTex_di = "비밀번호가 다릅니다.";
         string PasswordText = "비밀번호가 같습니다.";
 
+        
         DataTable dt_Depart;    //부서를 담고있는 dt
+        string cur_Depart = "";          //현재 선택된 부서
 
         public SignUp()
         {
@@ -49,20 +51,15 @@ namespace DBP_Project
             {
                 int id = int.Parse(row["departmentId"].ToString());
 
-                if (preId == id) //부서가 같다면 팀 콤보박스의 값만 바꿔준다.
-                {
-                    string team = row["teamName"].ToString();
-                    comboBox_team.Items.Add(team);
-                }
-                else
+                if (preId != id) //부서가 같다면 팀 콤보박스의 값만 바꿔준다.
                 {
                     preId = id;
 
                     string depart = row["departmentName"].ToString();
-                   // string team = row["teamName"].ToString();
+                    // string team = row["teamName"].ToString();
 
                     comboBox_Department.Items.Add(depart);
-                   // comboBox_team.Items.Add(team);
+                    // comboBox_team.Items.Add(team);
                 }
 
             }
@@ -285,6 +282,40 @@ namespace DBP_Project
             Query.GetInstance().RunQuery(query);
         }
 
+      
+        private void comboBox_team_Click(object sender, EventArgs e)
+        {
+            //부서 콤보박스에 값이 들어가있는 경우, 바꾸기
+            if(cur_Depart != comboBox_Department.SelectedItem.ToString())
+            {
+                //부서 선택이 바뀌었으니, 갱신해줘야함.
+                cur_Depart = comboBox_Department.SelectedItem.ToString();
+                foreach (DataRow row in dt_Depart.Rows)
+                {
+                    string department = row["departmentName"].ToString();
 
+
+                    if (department == comboBox_Department.SelectedItem.ToString())
+                    {
+                        //만약 부서가 같다면
+                        string team = row["teamName"].ToString();
+                        comboBox_team.Items.Add(team);
+                    }
+
+                }
+            }
+          
+        }
+
+
+        private void comboBox_Department_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cur_Depart != comboBox_Department.SelectedItem.ToString())
+            {
+                
+                comboBox_team.Items.Clear();
+                comboBox_team.Text = "";
+            }
+        }
     }
 }
