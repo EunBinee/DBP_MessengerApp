@@ -275,14 +275,20 @@ namespace DBP_Project
         //DB에 정보를 올린다.
         public void SignUp_DB(string id, string password, string name, string admin, string zipCode, string address, string nickname, string profilePic)
         {
-            //DB에 회원정보를 저장
+            //DB에 회원정보를 저장->UserListTable
             string query = "INSERT INTO `talk`.`UserListTable` (`id`, `password`, `name`, `role`, `zipCode`, `userAddr`, `nickName`, `profilePic`) " +
                 "VALUES ('" + id + "', '" + password + "', '" + name + "', '" + admin + "', '" + zipCode + "', '" + address + "', '" + nickname + "', '" + profilePic + "');";
 
             Query.GetInstance().RunQuery(query);
+
+            query = "INSERT INTO `talk`.`Department` (`departmentId`, `userId`, `departmentName`, `teamName`) " +
+                "VALUES ('" + (comboBox_Department.SelectedIndex + 1).ToString() + "', '" + id + "', '"
+                + comboBox_Department.SelectedItem.ToString() + "', '" + comboBox_team.SelectedItem.ToString() + "');";
+            //INSERT INTO `talk`.`Department` (`departmentId`, `userId`, `departmentName`, `teamName`) VALUES ('2', '33', '32', '갭ㄹ');
+            Query.GetInstance().RunQuery(query);
         }
 
-      
+
         private void comboBox_team_Click(object sender, EventArgs e)
         {
             //부서 콤보박스에 값이 들어가있는 경우, 바꾸기
