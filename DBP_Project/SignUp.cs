@@ -24,6 +24,8 @@ namespace DBP_Project
         DataTable dt_Depart;    //부서를 담고있는 dt
         string cur_Depart = "";          //현재 선택된 부서
 
+
+
         public SignUp()
         {
             InitializeComponent();
@@ -31,6 +33,7 @@ namespace DBP_Project
 
             AddComboBox();
         }
+
 
         private void AddComboBox()
         {
@@ -281,16 +284,16 @@ namespace DBP_Project
 
             Query.GetInstance().RunQuery(query);
 
-            query = "INSERT INTO `talk`.`Department` (`departmentId`, `userId`, `departmentName`, `teamName`) " +
+            query = "INSERT INTO `talk`.`UserDepartment` (`departmentId`, `userId`, `departmentName`, `teamName`) " +
                 "VALUES ('" + (comboBox_Department.SelectedIndex + 1).ToString() + "', '" + id + "', '"
                 + comboBox_Department.SelectedItem.ToString() + "', '" + comboBox_team.SelectedItem.ToString() + "');";
-            //INSERT INTO `talk`.`Department` (`departmentId`, `userId`, `departmentName`, `teamName`) VALUES ('2', '33', '32', '갭ㄹ');
             Query.GetInstance().RunQuery(query);
         }
 
 
         private void comboBox_team_Click(object sender, EventArgs e)
         {
+        
             //부서 콤보박스에 값이 들어가있는 경우, 바꾸기
             if(cur_Depart != comboBox_Department.SelectedItem.ToString())
             {

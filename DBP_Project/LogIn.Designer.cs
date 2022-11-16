@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label_SignUp = new System.Windows.Forms.Label();
+            this.button_LogIn = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox_Password = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_Number = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label3
+            // label_SignUp
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label3.Location = new System.Drawing.Point(240, 510);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "회원가입";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.label_SignUp.AutoSize = true;
+            this.label_SignUp.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label_SignUp.Location = new System.Drawing.Point(240, 510);
+            this.label_SignUp.Name = "label_SignUp";
+            this.label_SignUp.Size = new System.Drawing.Size(67, 15);
+            this.label_SignUp.TabIndex = 13;
+            this.label_SignUp.Text = "회원가입";
+            this.label_SignUp.Click += new System.EventHandler(this.label_SignUp_Click);
             // 
-            // button1
+            // button_LogIn
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.button1.Location = new System.Drawing.Point(94, 438);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(242, 53);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "로그인";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button_LogIn.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button_LogIn.Location = new System.Drawing.Point(94, 438);
+            this.button_LogIn.Name = "button_LogIn";
+            this.button_LogIn.Size = new System.Drawing.Size(242, 53);
+            this.button_LogIn.TabIndex = 12;
+            this.button_LogIn.Text = "로그인";
+            this.button_LogIn.UseVisualStyleBackColor = false;
+            this.button_LogIn.Click += new System.EventHandler(this.button_LogIn_Click);
             // 
             // checkBox1
             // 
@@ -71,14 +71,14 @@
             this.checkBox1.Text = "사원번호, 비밀번호 기억하기";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // textBox_Password
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox2.Location = new System.Drawing.Point(94, 319);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(242, 25);
-            this.textBox2.TabIndex = 10;
+            this.textBox_Password.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Password.Location = new System.Drawing.Point(94, 319);
+            this.textBox_Password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.Size = new System.Drawing.Size(242, 25);
+            this.textBox_Password.TabIndex = 10;
             // 
             // label2
             // 
@@ -90,14 +90,14 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "비밀 번호";
             // 
-            // textBox1
+            // textBox_Number
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox1.Location = new System.Drawing.Point(94, 239);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(242, 25);
-            this.textBox1.TabIndex = 8;
+            this.textBox_Number.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Number.Location = new System.Drawing.Point(94, 239);
+            this.textBox_Number.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_Number.Name = "textBox_Number";
+            this.textBox_Number.Size = new System.Drawing.Size(242, 25);
+            this.textBox_Number.TabIndex = 8;
             // 
             // label1
             // 
@@ -115,12 +115,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(432, 653);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label_SignUp);
+            this.Controls.Add(this.button_LogIn);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox_Password);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_Number);
             this.Controls.Add(this.label1);
             this.Name = "LogIn";
             this.Text = "LogIn";
@@ -131,12 +131,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label_SignUp;
+        private System.Windows.Forms.Button button_LogIn;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox_Password;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_Number;
         private System.Windows.Forms.Label label1;
     }
 }
