@@ -90,7 +90,7 @@ namespace DBP_Project
             userManagerForm.Show();
             this.Controls.Add(userManagerForm);
             userManagerForm.StartPosition = FormStartPosition.Manual;
-            userManagerForm.Location = new Point(230, 50);
+            userManagerForm.Location = new Point(230, 35);
         }
     }
 }
