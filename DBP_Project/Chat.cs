@@ -133,5 +133,19 @@ namespace DBP_Project
         private void button3_Click(object sender, EventArgs e)
         {
         }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            this.Opacity = (trackBar1.Value) * 0.01;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.TopMost)
+                this.TopMost = false;
+            else
+                this.TopMost = true;
+
+        }
     }
 }

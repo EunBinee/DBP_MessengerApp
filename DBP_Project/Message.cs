@@ -12,16 +12,16 @@ namespace DBP_Project
 {
     public partial class Message : UserControl
     {
-        public Message()
-        {
-            InitializeComponent();
-        }
         public Message(string str)
         {
             InitializeComponent();
             this.msgBox.Text = str;
             this.msgBox.AutoSize = true;
             this.msgBox.MaximumSize = new Size(240, 0);
+        }
+        public Message()
+        {
+            InitializeComponent();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -50,6 +50,16 @@ namespace DBP_Project
             sendTimeLabel.Location = new Point(290, 20);
             msgBox.BackColor = SystemColors.Info;
             backPanel.BackColor = SystemColors.Info;
+        }
+
+        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+        }
+
+        private void 공지ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
         public void SetData(string name, string time)
         {

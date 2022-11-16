@@ -28,21 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.sendTimeLabel = new System.Windows.Forms.Label();
             this.msgBox = new System.Windows.Forms.Label();
             this.backPanel = new System.Windows.Forms.Panel();
             this.senderName = new System.Windows.Forms.Label();
             this.senderImg = new System.Windows.Forms.PictureBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.공지ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.senderImg)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sendTimeLabel
             // 
             this.sendTimeLabel.AutoSize = true;
-            this.sendTimeLabel.Location = new System.Drawing.Point(270, 20);
+            this.sendTimeLabel.Location = new System.Drawing.Point(386, 30);
+            this.sendTimeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.sendTimeLabel.Name = "sendTimeLabel";
-            this.sendTimeLabel.Size = new System.Drawing.Size(61, 12);
+            this.sendTimeLabel.Size = new System.Drawing.Size(96, 18);
             this.sendTimeLabel.TabIndex = 3;
             this.sendTimeLabel.Text = "오전 12:00";
             this.sendTimeLabel.Click += new System.EventHandler(this.label2_Click);
@@ -64,44 +70,72 @@
             this.backPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.backPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.backPanel.Controls.Add(this.msgBox);
-            this.backPanel.Location = new System.Drawing.Point(85, 36);
+            this.backPanel.Location = new System.Drawing.Point(121, 54);
+            this.backPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.backPanel.Name = "backPanel";
-            this.backPanel.Size = new System.Drawing.Size(245, 38);
+            this.backPanel.Size = new System.Drawing.Size(350, 57);
             this.backPanel.TabIndex = 4;
             // 
             // senderName
             // 
             this.senderName.AutoSize = true;
             this.senderName.Font = new System.Drawing.Font("굴림", 13F);
-            this.senderName.Location = new System.Drawing.Point(87, 15);
+            this.senderName.Location = new System.Drawing.Point(124, 22);
+            this.senderName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.senderName.Name = "senderName";
-            this.senderName.Size = new System.Drawing.Size(54, 18);
+            this.senderName.Size = new System.Drawing.Size(85, 26);
             this.senderName.TabIndex = 1;
             this.senderName.Text = "label1";
             // 
             // senderImg
             // 
             this.senderImg.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.senderImg.Location = new System.Drawing.Point(10, 10);
-            this.senderImg.Margin = new System.Windows.Forms.Padding(10);
+            this.senderImg.Location = new System.Drawing.Point(14, 15);
+            this.senderImg.Margin = new System.Windows.Forms.Padding(14, 15, 14, 15);
             this.senderImg.Name = "senderImg";
-            this.senderImg.Size = new System.Drawing.Size(64, 64);
+            this.senderImg.Size = new System.Drawing.Size(91, 96);
             this.senderImg.TabIndex = 0;
             this.senderImg.TabStop = false;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.삭제ToolStripMenuItem,
+            this.공지ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 101);
+            // 
+            // 삭제ToolStripMenuItem
+            // 
+            this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
+            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.삭제ToolStripMenuItem.Text = "삭제";
+            this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click);
+            // 
+            // 공지ToolStripMenuItem
+            // 
+            this.공지ToolStripMenuItem.Name = "공지ToolStripMenuItem";
+            this.공지ToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.공지ToolStripMenuItem.Text = "공지";
+            this.공지ToolStripMenuItem.Click += new System.EventHandler(this.공지ToolStripMenuItem_Click);
+            // 
             // Message
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.backPanel);
             this.Controls.Add(this.sendTimeLabel);
             this.Controls.Add(this.senderName);
             this.Controls.Add(this.senderImg);
-            this.Controls.Add(this.backPanel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Message";
-            this.Size = new System.Drawing.Size(360, 98);
+            this.Size = new System.Drawing.Size(514, 147);
             this.Load += new System.EventHandler(this.Message_Load);
             this.backPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.senderImg)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +147,8 @@
         private System.Windows.Forms.Panel backPanel;
         private System.Windows.Forms.Label senderName;
         private System.Windows.Forms.PictureBox senderImg;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 공지ToolStripMenuItem;
     }
 }
