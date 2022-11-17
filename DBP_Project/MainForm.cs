@@ -76,5 +76,12 @@ namespace DBP_Project
             tf.Hide();
             cf.Show();
         }
+
+        private void Move_Admin_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            ManagerForm ShowmanagerForm = new ManagerForm();
+            ShowmanagerForm.ShowDialog();
+        }
     }
 }

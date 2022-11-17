@@ -33,16 +33,16 @@ namespace DBP_Project
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Move_Admin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MainFormPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.MainFormPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,7 +52,7 @@ namespace DBP_Project
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.Move_Admin);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
@@ -78,20 +78,21 @@ namespace DBP_Project
             this.button5.Text = "Logout";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // Move_Admin
             // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(25, 306);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(186, 42);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Admin";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Move_Admin.FlatAppearance.BorderSize = 0;
+            this.Move_Admin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Move_Admin.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Move_Admin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.Move_Admin.Image = ((System.Drawing.Image)(resources.GetObject("Move_Admin.Image")));
+            this.Move_Admin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Move_Admin.Location = new System.Drawing.Point(25, 306);
+            this.Move_Admin.Name = "Move_Admin";
+            this.Move_Admin.Size = new System.Drawing.Size(186, 42);
+            this.Move_Admin.TabIndex = 1;
+            this.Move_Admin.Text = "Admin";
+            this.Move_Admin.UseVisualStyleBackColor = true;
+            this.Move_Admin.Click += new System.EventHandler(this.Move_Admin_Click);
             // 
             // button2
             // 
@@ -138,6 +139,13 @@ namespace DBP_Project
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(230, 173);
             this.panel2.TabIndex = 0;
+            // 
+            // MainFormPanel
+            // 
+            this.MainFormPanel.Location = new System.Drawing.Point(230, 0);
+            this.MainFormPanel.Name = "MainFormPanel";
+            this.MainFormPanel.Size = new System.Drawing.Size(724, 538);
+            this.MainFormPanel.TabIndex = 2;
             // 
             // label3
             // 
@@ -195,13 +203,6 @@ namespace DBP_Project
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // MainFormPanel
-            // 
-            this.MainFormPanel.Location = new System.Drawing.Point(230, 0);
-            this.MainFormPanel.Name = "MainFormPanel";
-            this.MainFormPanel.Size = new System.Drawing.Size(724, 538);
-            this.MainFormPanel.TabIndex = 2;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -240,7 +241,7 @@ namespace DBP_Project
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Move_Admin;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel MainFormPanel;
     }
