@@ -16,14 +16,15 @@ namespace DBP_Project
         {
             InitializeComponent();
         }
-
+        //회원가입 버튼
         private void label_SignUp_Click(object sender, EventArgs e)
         {
             //회원가입 label
             //모달: 위에 창을 새로 띄웠다면, 아래화면을 건드릴수없음
+            this.Hide();
             SignUp signUpForm = new SignUp();
             signUpForm.ShowDialog();//모달 하는 방법
-
+            this.Close();
         }
 
 
@@ -63,7 +64,7 @@ namespace DBP_Project
             {
                 //로그인 성공
                 //폼 띄우기
-                GoMainForm();
+                GoMainForm(curId);
             }
             else
             {
@@ -76,19 +77,52 @@ namespace DBP_Project
         {
             //암호화
             string result = Sha265.GetInstance().SHA256_password(textBox_Password.Text);
-            MessageBox.Show(result);
             return result;
         }
 
         //메인폼으로 이동
-        private void GoMainForm()
+        private void GoMainForm(string curId)
         {
-            MainForm mainForm = new MainForm();
-            mainForm.Show();//모달 하는 방법
-
+            //유저 정보를 저장한다. User_info
+            SaveUserInfo(curId);
+             /*
+            MessageBox.Show(User_info.GetInstance().ID);
+            MessageBox.Show(User_info.GetInstance().Password);
+            MessageBox.Show(User_info.GetInstance().Address);
+             */
             this.Hide();
+            MainForm mainForm = new MainForm();
+            mainForm.ShowDialog();
+            this.Close();   //회원가입을 하면 창 닫힘
         }
+        
+        //유저의 정보를 User_info(싱글톤)에 저장한다
+        private void SaveUserInfo(string curId)
+        {
+            //유저 정보를 저장한다. User_info
 
+            string query = "SELECT * FROM talk.UserListTable WHERE `id`=" + curId;
+            DataTable dt = new DataTable();
+            dt = Query.GetInstance().RunQuery(query);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                //만약 id가 같으면 비밀번호도 확인한다.
+
+                User_info.GetInstance().ID = curId;                                                     //사원번호
+                User_info.GetInstance().Password = row["password"].ToString();      //패스워드
+
+                User_info.GetInstance().Name = row["name"].ToString();                      //이름
+                User_info.GetInstance().NickName = row["nickName"].ToString();      //닉네임
+
+                User_info.GetInstance().Role = int.Parse(row["role"].ToString());           //관리자 여부 1은 관리자 2는 일반 사원
+
+                User_info.GetInstance().ZipCode = row["zipCode"].ToString();               //우편번호
+                User_info.GetInstance().Address = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
+                User_info.GetInstance().ProfilePic = row["profilePic"].ToString();            //프로필 사진
+            }
+        }
+        
 
     }
 }

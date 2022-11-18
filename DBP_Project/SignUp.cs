@@ -96,6 +96,10 @@ namespace DBP_Project
                         //-----------------------------------------------------------------
                         //다하면  SignUp_DB();
                         SignUp_DB(textBox_Number.Text, password_Encryption, textBox_Name.Text, "2", textBox_address1.Text, address, textBox_NickName.Text, file);
+
+                        this.Hide();
+                        LogIn login = new LogIn();
+                        login.ShowDialog();
                         this.Close();   //회원가입을 하면 창 닫힘
                     }
                     else
