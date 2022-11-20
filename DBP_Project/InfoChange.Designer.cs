@@ -65,6 +65,8 @@ namespace DBP_Project
             this.pictureBox_Photo = new System.Windows.Forms.PictureBox();
             this.button_photo_Button = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label_multiPro = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.SignUp_Button = new System.Windows.Forms.Button();
             this.panel5.SuspendLayout();
@@ -75,6 +77,7 @@ namespace DBP_Project
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -442,20 +445,41 @@ namespace DBP_Project
             this.flowLayoutPanel2.Controls.Add(this.panel3);
             this.flowLayoutPanel2.Controls.Add(this.panel4);
             this.flowLayoutPanel2.Controls.Add(this.panel5);
+            this.flowLayoutPanel2.Controls.Add(this.panel7);
             this.flowLayoutPanel2.Controls.Add(this.panel6);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 76);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(430, 578);
             this.flowLayoutPanel2.TabIndex = 28;
             // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel7.Controls.Add(this.label_multiPro);
+            this.panel7.Location = new System.Drawing.Point(3, 876);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(402, 320);
+            this.panel7.TabIndex = 5;
+            // 
+            // label_multiPro
+            // 
+            this.label_multiPro.AutoSize = true;
+            this.label_multiPro.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_multiPro.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.label_multiPro.Location = new System.Drawing.Point(17, 28);
+            this.label_multiPro.Name = "label_multiPro";
+            this.label_multiPro.Size = new System.Drawing.Size(111, 19);
+            this.label_multiPro.TabIndex = 17;
+            this.label_multiPro.Text = "멀티프로필 편집";
+            // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel6.Controls.Add(this.SignUp_Button);
-            this.panel6.Location = new System.Drawing.Point(3, 876);
+            this.panel6.Location = new System.Drawing.Point(3, 1202);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(402, 106);
-            this.panel6.TabIndex = 4;
+            this.panel6.TabIndex = 6;
             // 
             // SignUp_Button
             // 
@@ -491,6 +515,8 @@ namespace DBP_Project
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -524,8 +550,6 @@ namespace DBP_Project
         private System.Windows.Forms.PictureBox pictureBox_Photo;
         private System.Windows.Forms.Button button_photo_Button;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button SignUp_Button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -535,5 +559,9 @@ namespace DBP_Project
         private System.Windows.Forms.Label label_passwordRight;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox checkBox_ChangePassword;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label_multiPro;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button SignUp_Button;
     }
 }
