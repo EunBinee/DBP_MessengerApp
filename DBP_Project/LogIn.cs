@@ -85,11 +85,13 @@ namespace DBP_Project
         {
             //유저 정보를 저장한다. User_info
             SaveUserInfo(curId);
+
              /*
             MessageBox.Show(User_info.GetInstance().ID);
             MessageBox.Show(User_info.GetInstance().Password);
             MessageBox.Show(User_info.GetInstance().Address);
              */
+
             this.Hide();
             MainForm mainForm = new MainForm();
             mainForm.ShowDialog();

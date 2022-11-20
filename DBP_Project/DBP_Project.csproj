@@ -70,6 +70,13 @@
     </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="ConfigManager.cs" />
+    <Compile Include="Employee.cs" />
+    <Compile Include="InfoChange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfoChange.Designer.cs">
+      <DependentUpon>InfoChange.cs</DependentUpon>
+    </Compile>
     <Compile Include="Message.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InfoChange.resx">
+      <DependentUpon>InfoChange.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Message.resx">
       <DependentUpon>Message.cs</DependentUpon>

@@ -40,17 +40,18 @@
             // label_SignUp
             // 
             this.label_SignUp.AutoSize = true;
-            this.label_SignUp.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label_SignUp.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label_SignUp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label_SignUp.Location = new System.Drawing.Point(240, 510);
             this.label_SignUp.Name = "label_SignUp";
-            this.label_SignUp.Size = new System.Drawing.Size(67, 15);
+            this.label_SignUp.Size = new System.Drawing.Size(71, 15);
             this.label_SignUp.TabIndex = 13;
             this.label_SignUp.Text = "회원가입";
             this.label_SignUp.Click += new System.EventHandler(this.label_SignUp_Click);
             // 
             // button_LogIn
             // 
-            this.button_LogIn.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.button_LogIn.BackColor = System.Drawing.Color.White;
             this.button_LogIn.Location = new System.Drawing.Point(94, 438);
             this.button_LogIn.Name = "button_LogIn";
             this.button_LogIn.Size = new System.Drawing.Size(242, 53);
@@ -62,18 +63,19 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.checkBox1.Location = new System.Drawing.Point(94, 374);
+            this.checkBox1.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.checkBox1.Location = new System.Drawing.Point(97, 382);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(211, 23);
+            this.checkBox1.Size = new System.Drawing.Size(264, 21);
             this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "사원번호, 비밀번호 기억하기";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // textBox_Password
             // 
-            this.textBox_Password.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Password.BackColor = System.Drawing.Color.White;
             this.textBox_Password.Location = new System.Drawing.Point(94, 319);
             this.textBox_Password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_Password.Name = "textBox_Password";
@@ -83,16 +85,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(90, 286);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 19);
+            this.label2.Size = new System.Drawing.Size(86, 17);
             this.label2.TabIndex = 9;
             this.label2.Text = "비밀 번호";
             // 
             // textBox_Number
             // 
-            this.textBox_Number.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.textBox_Number.BackColor = System.Drawing.Color.White;
             this.textBox_Number.Location = new System.Drawing.Point(94, 239);
             this.textBox_Number.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_Number.Name = "textBox_Number";
@@ -102,10 +105,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(90, 201);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 19);
+            this.label1.Size = new System.Drawing.Size(86, 17);
             this.label1.TabIndex = 7;
             this.label1.Text = "사원 번호";
             // 
@@ -113,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(432, 653);
             this.Controls.Add(this.label_SignUp);
             this.Controls.Add(this.button_LogIn);

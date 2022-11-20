@@ -145,6 +145,7 @@ namespace DBP_Project
                 //사진 입력
                 pictureBox_Photo.Image = Image.FromFile(file);
                 pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;
+                MessageBox.Show(file);
             }
         }
 
@@ -169,20 +170,24 @@ namespace DBP_Project
         private void button1_Click(object sender, EventArgs e)
         {
             //중복 확인
-            bool isDup = DuplicateID();
-            //만약 ture면 중복인거, false이면 중복이 없는 거
+            if( textBox_Number.Text !="")
+            {
+                bool isDup = DuplicateID();
+                //만약 ture면 중복인거, false이면 중복이 없는 거
 
-            if (!isDup)
-            {
-                //중복이 없음
-                label_DupNumber.Text = canUseIdText;
-                label_DupNumber.ForeColor = Color.Blue;
+                if (!isDup)
+                {
+                    //중복이 없음
+                    label_DupNumber.Text = canUseIdText;
+                    label_DupNumber.ForeColor = Color.Blue;
+                }
+                else
+                {
+                    label_DupNumber.Text = dupIdText;
+                    label_DupNumber.ForeColor = Color.Red;
+                }
             }
-            else
-            {
-                label_DupNumber.Text = dupIdText;
-                label_DupNumber.ForeColor = Color.Red;
-            }
+
         }
 
         //비밀번호 재입력할때 제대로 적었는지 
