@@ -151,16 +151,12 @@ namespace DBP_Project
 
         private void notice_view()
         {
-            Notice notice = new Notice("공지11111ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd111111111111111111111");
-            //   flowLayoutPanel1.Controls.Add(notice);
-            //   flowLayoutPanel1.Controls.SetChildIndex(notice, 0);
-           // this.Controls.Add(notice);
+            Notice notice = new Notice("ㅂㅈㄷㄳㄴㄿㄴㅇ롤ㅇ솣ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ퓬1ㅇㅎㅇㄴㄹㅊㅇ낳론ㅍㅊ1인롱니ㅕㅇ뉴ㅗㅡ5ㅍ엃ㄴ아ㅓㅘㅣ너ㅏ5ㄴ어퓨ㅣㄴㅇ");
+
+            this.Controls.Add(notice);
             notice.Location = flowLayoutPanel1.Location;
-           // notice.Size = flowLayoutPanel1.Size;
             notice.BringToFront();
-           // notice.Dock = DockStyle.Fill;
-          //  notice.Anchor = 
-          //  flowLayoutPanel1.ScrollControlIntoView(notice);
+
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
     }
