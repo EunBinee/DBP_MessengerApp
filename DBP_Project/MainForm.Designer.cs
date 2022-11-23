@@ -34,6 +34,7 @@ namespace DBP_Project
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.Move_Admin = new System.Windows.Forms.Button();
+            // this.adminBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -53,6 +54,7 @@ namespace DBP_Project
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.Move_Admin);
+            // this.panel1.Controls.Add(this.adminBtn);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
@@ -93,6 +95,21 @@ namespace DBP_Project
             this.Move_Admin.Text = "Admin";
             this.Move_Admin.UseVisualStyleBackColor = true;
             this.Move_Admin.Click += new System.EventHandler(this.Move_Admin_Click);
+            // // adminBtn
+            // // 
+            // this.adminBtn.FlatAppearance.BorderSize = 0;
+            // this.adminBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            // this.adminBtn.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            // this.adminBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            // this.adminBtn.Image = ((System.Drawing.Image)(resources.GetObject("adminBtn.Image")));
+            // this.adminBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // this.adminBtn.Location = new System.Drawing.Point(25, 306);
+            // this.adminBtn.Name = "adminBtn";
+            // this.adminBtn.Size = new System.Drawing.Size(186, 42);
+            // this.adminBtn.TabIndex = 1;
+            // this.adminBtn.Text = "Admin";
+            // this.adminBtn.UseVisualStyleBackColor = true;
+            // this.adminBtn.Click += new System.EventHandler(this.adminBtn_Click);
             // 
             // button2
             // 
@@ -242,6 +259,7 @@ namespace DBP_Project
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button Move_Admin;
+        // private System.Windows.Forms.Button adminBtn;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel MainFormPanel;
     }

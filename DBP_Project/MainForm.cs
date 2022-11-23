@@ -14,6 +14,7 @@ namespace DBP_Project
     {
         TestTreeForm tf = new TestTreeForm();
         TestChatForm cf = new TestChatForm();
+        UserManagerForm userManagerForm = new UserManagerForm();
 
         public MainForm()
         {
@@ -68,12 +69,15 @@ namespace DBP_Project
         private void button1_Click(object sender, EventArgs e)
         {
             cf.Hide();
+            userManagerForm.Hide();
             tf.Show();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             tf.Hide();
+            userManagerForm.Hide();
             cf.Show();
         }
 
@@ -83,5 +87,16 @@ namespace DBP_Project
             ManagerForm ShowmanagerForm = new ManagerForm();
             ShowmanagerForm.ShowDialog();
         }
+        // private void adminBtn_Click(object sender, EventArgs e)
+        // {
+        //     tf.Hide();
+        //     cf.Hide();
+
+        //     userManagerForm.TopLevel = false;
+        //     userManagerForm.Show();
+        //     this.Controls.Add(userManagerForm);
+        //     userManagerForm.StartPosition = FormStartPosition.Manual;
+        //     userManagerForm.Location = new Point(230, 35);
+        // }
     }
 }
