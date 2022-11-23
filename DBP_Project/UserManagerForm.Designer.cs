@@ -356,7 +356,7 @@ namespace DBP_Project
             this.blockUserPanel.Controls.Add(this.deleteBlockUserBtn);
             this.blockUserPanel.Controls.Add(this.addBlockUserBtn);
             this.blockUserPanel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.blockUserPanel.Location = new System.Drawing.Point(-1, 0);
+            this.blockUserPanel.Location = new System.Drawing.Point(-1, -1);
             this.blockUserPanel.Name = "blockUserPanel";
             this.blockUserPanel.Size = new System.Drawing.Size(387, 240);
             this.blockUserPanel.TabIndex = 40;
