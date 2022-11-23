@@ -15,16 +15,20 @@ namespace DBP_Project
         public Notice()
         {
             InitializeComponent();
+            label1.AutoSize = true;
+            label1.MaximumSize = new Size(300, 40);
         }
         public Notice(string str)
         {
             InitializeComponent();
             this.label1.Text = str;
             label1.AutoSize = true;
-            //label1.MaximumSize = new Size(300,50);
-            //label1.MaximumSize =  
+            label1.MaximumSize = new Size(300,40);
         }
-
+        public void setText(string str)
+        {
+            this.label1.Text = str;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Parent.Controls.Remove(this);

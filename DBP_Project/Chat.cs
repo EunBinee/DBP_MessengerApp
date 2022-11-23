@@ -16,11 +16,15 @@ namespace DBP_Project
         public static string myID = "temp";
         private static string yourID = "test";
         public static Chat instance;
+        public Notice notice = new Notice();
         public Chat()
         {
             instance = this;
             InitializeComponent();
-            notice_view();
+            if (true)   //공지가 있으면
+            {
+                notice_view("ㅂㅈㄷㄳㄴㄿㄴㅇ롤ㅇ솣ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ퓬1ㅇㅎㅇㄴㄹㅊㅇ낳론ㅍㅊ1인롱니ㅕㅇ뉴ㅗㅡ5ㅍ엃ㄴ아ㅓㅘㅣ너ㅏ5ㄴ어퓨ㅣㄴㅇ");
+            }
         }
 
         private void Chat_Load(object sender, EventArgs e)
@@ -53,7 +57,7 @@ namespace DBP_Project
 
         private void SendMsg(string text,string time)
         {
-            Message msg = new Message(text);
+            Message msg = new Message(this,text);
             msg.SetMyMsg();
             msg.SetData("", time);
             msgInput.Text = "";
@@ -69,7 +73,7 @@ namespace DBP_Project
 
         private void DrawMsg(string text,string name, string time)
         {
-            Message msg = new Message(text);
+            Message msg = new Message(this,text);
             msg.SetData(name, time);
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
@@ -135,12 +139,12 @@ namespace DBP_Project
         {
         }
 
-        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        private void trackBar1_ValueChanged(object sender, EventArgs e)  //투명도
         {
             this.Opacity = (trackBar1.Value) * 0.01;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  //채팅방 z-index 고정
         {
             if (this.TopMost)
                 this.TopMost = false;
@@ -149,10 +153,13 @@ namespace DBP_Project
 
         }
 
-        private void notice_view()
+        public void notice_view(string str)  //공지 보기
         {
-            Notice notice = new Notice("ㅂㅈㄷㄳㄴㄿㄴㅇ롤ㅇ솣ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ퓬1ㅇㅎㅇㄴㄹㅊㅇ낳론ㅍㅊ1인롱니ㅕㅇ뉴ㅗㅡ5ㅍ엃ㄴ아ㅓㅘㅣ너ㅏ5ㄴ어퓨ㅣㄴㅇ");
-
+            if (this.Controls.Contains(notice) )
+            {
+                this.Controls.Remove(notice);
+            }
+            notice.setText(str);
             this.Controls.Add(notice);
             notice.Location = flowLayoutPanel1.Location;
             notice.BringToFront();

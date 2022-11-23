@@ -12,9 +12,11 @@ namespace DBP_Project
 {
     public partial class Message : UserControl
     {
-        public Message(string str)
+        private Chat chat;
+        public Message(Chat chat,string str)
         {
             InitializeComponent();
+            this.chat = chat;
             this.msgBox.Text = str;
             this.msgBox.AutoSize = true;
             this.msgBox.MaximumSize = new Size(240, 0);
@@ -59,7 +61,8 @@ namespace DBP_Project
 
         private void 공지ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            // 룸넘버, 챗넘버 받아와서 공지로 등록
+            chat.notice_view(this.msgBox.Text);
         }
         public void SetData(string name, string time)
         {

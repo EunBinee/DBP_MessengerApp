@@ -40,7 +40,9 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.Emptypanel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -117,6 +119,7 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.Controls.Add(this.Emptypanel4);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 81);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
@@ -183,6 +186,13 @@
             this.trackBar1.Value = 100;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
+            // Emptypanel4
+            // 
+            this.Emptypanel4.Location = new System.Drawing.Point(3, 3);
+            this.Emptypanel4.Name = "Emptypanel4";
+            this.Emptypanel4.Size = new System.Drawing.Size(534, 110);
+            this.Emptypanel4.TabIndex = 0;
+            // 
             // Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -197,6 +207,7 @@
             this.Text = "Chat";
             this.Load += new System.EventHandler(this.Chat_Load);
             this.panel2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -217,5 +228,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Panel Emptypanel4;
     }
 }
