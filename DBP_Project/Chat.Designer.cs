@@ -64,7 +64,7 @@
             // 
             this.msgInput.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.msgInput.Location = new System.Drawing.Point(123, 16);
-            this.msgInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.msgInput.Margin = new System.Windows.Forms.Padding(4);
             this.msgInput.Multiline = false;
             this.msgInput.Name = "msgInput";
             this.msgInput.Size = new System.Drawing.Size(283, 120);
@@ -74,7 +74,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(416, 16);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(107, 122);
             this.button5.TabIndex = 3;
@@ -85,7 +85,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(7, 104);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(107, 34);
             this.button4.TabIndex = 2;
@@ -95,7 +95,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(7, 60);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(107, 34);
             this.button3.TabIndex = 1;
@@ -106,7 +106,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(7, 16);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(107, 34);
             this.button2.TabIndex = 0;
@@ -119,7 +119,7 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 81);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(540, 820);
             this.flowLayoutPanel1.TabIndex = 3;
@@ -153,7 +153,7 @@
             // panel3
             // 
             this.panel3.Location = new System.Drawing.Point(0, 86);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(540, 810);
             this.panel3.TabIndex = 3;
@@ -192,7 +192,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Chat";
             this.Text = "Chat";
             this.Load += new System.EventHandler(this.Chat_Load);

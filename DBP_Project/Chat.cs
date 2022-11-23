@@ -20,6 +20,7 @@ namespace DBP_Project
         {
             instance = this;
             InitializeComponent();
+            notice_view();
         }
 
         private void Chat_Load(object sender, EventArgs e)
@@ -146,6 +147,21 @@ namespace DBP_Project
             else
                 this.TopMost = true;
 
+        }
+
+        private void notice_view()
+        {
+            Notice notice = new Notice("공지11111ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd111111111111111111111");
+            //   flowLayoutPanel1.Controls.Add(notice);
+            //   flowLayoutPanel1.Controls.SetChildIndex(notice, 0);
+           // this.Controls.Add(notice);
+            notice.Location = flowLayoutPanel1.Location;
+           // notice.Size = flowLayoutPanel1.Size;
+            notice.BringToFront();
+           // notice.Dock = DockStyle.Fill;
+          //  notice.Anchor = 
+          //  flowLayoutPanel1.ScrollControlIntoView(notice);
+            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
     }
 }

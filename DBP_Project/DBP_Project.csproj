@@ -70,6 +70,12 @@
     <Compile Include="Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Notice.Designer.cs">
+      <DependentUpon>Notice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Query.cs" />
     <Compile Include="TestChatForm.cs">
       <SubType>Form</SubType>
@@ -119,6 +125,9 @@
     <EmbeddedResource Include="Message.resx">
       <DependentUpon>Message.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Notice.resx">
+      <DependentUpon>Notice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TestChatForm.resx">
       <DependentUpon>TestChatForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +148,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
@@ -156,6 +166,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notice.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
