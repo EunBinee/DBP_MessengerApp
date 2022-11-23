@@ -123,6 +123,19 @@ namespace DBP_Project
                 User_info.GetInstance().Address = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
                 User_info.GetInstance().ProfilePic = row["profilePic"].ToString();            //프로필 사진
             }
+            query = "SELECT * FROM talk.UserDepartment WHERE `userId`=" + curId;
+
+            DataTable dt_depart = new DataTable();
+            dt_depart = Query.GetInstance().RunQuery(query);
+            User_info.GetInstance().GetWorkerInfo();
+
+
+            for(int i = 0 ; i < User_info.GetInstance().employees.Count; i++)
+            {
+                MessageBox.Show(User_info.GetInstance().employees[i].ID + ",    " + User_info.GetInstance().employees[i].Name + ",    " + User_info.GetInstance().employees[i].Team + ",    " + User_info.GetInstance().employees[i].NickName);
+            }
+
+
         }
         
 

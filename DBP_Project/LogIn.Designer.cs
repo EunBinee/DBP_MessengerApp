@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_Number = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // label_SignUp
@@ -142,5 +143,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_Number;
         private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
