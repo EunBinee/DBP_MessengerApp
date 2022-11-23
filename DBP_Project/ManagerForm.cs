@@ -19,11 +19,6 @@ namespace DBP_Project
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void Btn_Move_UserManager(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -33,8 +28,8 @@ namespace DBP_Project
 
         private void Btn_Search_By_Time(object sender, EventArgs e)
         {
-            string From_time = dateTimePicker2.Value.ToString("yyyy/MM/dd hh:mm:ss");
-            string To_time = dateTimePicker1.Value.ToString("yyyy/MM/dd hh:mm:ss");
+            string From_time = FromTimePicker.Value.ToString("yyyy/MM/dd hh:mm:ss");
+            string To_time = ToTimePicker.Value.ToString("yyyy/MM/dd hh:mm:ss");
 
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
@@ -47,14 +42,9 @@ namespace DBP_Project
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                dataGridView1.DataSource = dt;
+                Manager_Screen.DataSource = dt;
                 connection.Close();
             }
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Btn_Search_Keyword(object sender, EventArgs e)
@@ -70,7 +60,7 @@ namespace DBP_Project
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                dataGridView1.DataSource = dt;
+                Manager_Screen.DataSource = dt;
 
                 connection.Close();
             }
@@ -83,13 +73,12 @@ namespace DBP_Project
                 connection.Open();
                 String Query = String.Format("select * from ChatMsg where sender_ID = '{0}';", textBox5.Text);
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
-
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                dataGridView1.DataSource = dt;
+                Manager_Screen.DataSource = dt;
 
                 connection.Close();
             }
@@ -110,7 +99,7 @@ namespace DBP_Project
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                dataGridView1.DataSource = dt;
+                Manager_Screen.DataSource = dt;
 
                 MySqlDataReader rdr = cmd.ExecuteReader();
 
@@ -181,7 +170,7 @@ namespace DBP_Project
             {
                 connection.Open();
                 String Query;
-                foreach (DataGridViewRow row in dataGridView1.Rows) {
+                foreach (DataGridViewRow row in Manager_Screen.Rows) {
                     if (row.Cells["Row_num"].Value == null) {
                         break;
                     }
@@ -210,7 +199,7 @@ namespace DBP_Project
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
-                dataGridView1.DataSource = dt;
+                Manager_Screen.DataSource = dt;
 
                 connection.Close();
             }

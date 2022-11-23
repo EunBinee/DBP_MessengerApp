@@ -36,28 +36,28 @@ namespace DBP_Project
             this.label5 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Manager_Screen = new System.Windows.Forms.DataGridView();
+            this.Save_Change = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.Search_By_User = new System.Windows.Forms.Button();
+            this.Search_By_Keyword = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.ToTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.FromTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Search_By_Date = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.teamBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.departmentBox = new System.Windows.Forms.ComboBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Add_Department = new System.Windows.Forms.Button();
+            this.Lookup_Department = new System.Windows.Forms.Button();
             this.Move_UserManager = new System.Windows.Forms.Button();
             this.addDepartmentPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Manager_Screen)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -128,38 +128,38 @@ namespace DBP_Project
             this.label4.TabIndex = 0;
             this.label4.Text = "추가할 부서명";
             // 
-            // dataGridView1
+            // Manager_Screen
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 11);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 27;
-            this.dataGridView1.Size = new System.Drawing.Size(480, 339);
-            this.dataGridView1.TabIndex = 13;
+            this.Manager_Screen.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Manager_Screen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Manager_Screen.GridColor = System.Drawing.SystemColors.AppWorkspace;
+            this.Manager_Screen.Location = new System.Drawing.Point(10, 11);
+            this.Manager_Screen.Name = "Manager_Screen";
+            this.Manager_Screen.RowHeadersWidth = 51;
+            this.Manager_Screen.RowTemplate.Height = 27;
+            this.Manager_Screen.Size = new System.Drawing.Size(480, 339);
+            this.Manager_Screen.TabIndex = 13;
             // 
-            // button1
+            // Save_Change
             // 
-            this.button1.Location = new System.Drawing.Point(352, 366);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 35);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "변경사항 저장";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Btn_Change_Save);
+            this.Save_Change.Location = new System.Drawing.Point(352, 366);
+            this.Save_Change.Name = "Save_Change";
+            this.Save_Change.Size = new System.Drawing.Size(138, 35);
+            this.Save_Change.TabIndex = 7;
+            this.Save_Change.Text = "변경사항 저장";
+            this.Save_Change.UseVisualStyleBackColor = true;
+            this.Save_Change.Click += new System.EventHandler(this.Btn_Change_Save);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button7);
+            this.groupBox2.Controls.Add(this.Search_By_User);
+            this.groupBox2.Controls.Add(this.Search_By_Keyword);
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.ToTimePicker);
+            this.groupBox2.Controls.Add(this.FromTimePicker);
             this.groupBox2.Controls.Add(this.Search_By_Date);
             this.groupBox2.Location = new System.Drawing.Point(505, 11);
             this.groupBox2.Name = "groupBox2";
@@ -186,25 +186,25 @@ namespace DBP_Project
             this.label1.TabIndex = 22;
             this.label1.Text = "키워드";
             // 
-            // button8
+            // Search_By_User
             // 
-            this.button8.Location = new System.Drawing.Point(78, 222);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(114, 25);
-            this.button8.TabIndex = 21;
-            this.button8.Text = "사용자별 검색";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.Btn_Search_User);
+            this.Search_By_User.Location = new System.Drawing.Point(78, 222);
+            this.Search_By_User.Name = "Search_By_User";
+            this.Search_By_User.Size = new System.Drawing.Size(114, 25);
+            this.Search_By_User.TabIndex = 21;
+            this.Search_By_User.Text = "사용자별 검색";
+            this.Search_By_User.UseVisualStyleBackColor = true;
+            this.Search_By_User.Click += new System.EventHandler(this.Btn_Search_User);
             // 
-            // button7
+            // Search_By_Keyword
             // 
-            this.button7.Location = new System.Drawing.Point(78, 161);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(114, 25);
-            this.button7.TabIndex = 20;
-            this.button7.Text = "키워드별 검색";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.Btn_Search_Keyword);
+            this.Search_By_Keyword.Location = new System.Drawing.Point(78, 161);
+            this.Search_By_Keyword.Name = "Search_By_Keyword";
+            this.Search_By_Keyword.Size = new System.Drawing.Size(114, 25);
+            this.Search_By_Keyword.TabIndex = 20;
+            this.Search_By_Keyword.Text = "키워드별 검색";
+            this.Search_By_Keyword.UseVisualStyleBackColor = true;
+            this.Search_By_Keyword.Click += new System.EventHandler(this.Btn_Search_Keyword);
             // 
             // textBox5
             // 
@@ -220,24 +220,23 @@ namespace DBP_Project
             this.textBox4.Size = new System.Drawing.Size(146, 25);
             this.textBox4.TabIndex = 18;
             // 
-            // dateTimePicker1
+            // ToTimePicker
             // 
-            this.dateTimePicker1.CustomFormat = "yyyy/MM/dd hh:mm:ss";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(14, 69);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
-            this.dateTimePicker1.TabIndex = 17;
+            this.ToTimePicker.CustomFormat = "yyyy/MM/dd hh:mm:ss";
+            this.ToTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ToTimePicker.Location = new System.Drawing.Point(14, 69);
+            this.ToTimePicker.Name = "ToTimePicker";
+            this.ToTimePicker.Size = new System.Drawing.Size(200, 25);
+            this.ToTimePicker.TabIndex = 17;
             // 
-            // dateTimePicker2
+            // FromTimePicker
             // 
-            this.dateTimePicker2.CustomFormat = "yyyy/MM/dd hh:mm:ss";
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(14, 39);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 25);
-            this.dateTimePicker2.TabIndex = 16;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.FromTimePicker.CustomFormat = "yyyy/MM/dd hh:mm:ss";
+            this.FromTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.FromTimePicker.Location = new System.Drawing.Point(14, 39);
+            this.FromTimePicker.Name = "FromTimePicker";
+            this.FromTimePicker.Size = new System.Drawing.Size(200, 25);
+            this.FromTimePicker.TabIndex = 16;
             // 
             // Search_By_Date
             // 
@@ -255,8 +254,8 @@ namespace DBP_Project
             this.groupBox1.Controls.Add(this.teamBox);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.departmentBox);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.Add_Department);
+            this.groupBox1.Controls.Add(this.Lookup_Department);
             this.groupBox1.Location = new System.Drawing.Point(496, 287);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
@@ -302,25 +301,25 @@ namespace DBP_Project
             this.departmentBox.Size = new System.Drawing.Size(95, 23);
             this.departmentBox.TabIndex = 21;
             // 
-            // button5
+            // Add_Department
             // 
-            this.button5.Location = new System.Drawing.Point(14, 86);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 25);
-            this.button5.TabIndex = 20;
-            this.button5.Text = "부서 추가";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.Btn_Panel_On);
+            this.Add_Department.Location = new System.Drawing.Point(14, 86);
+            this.Add_Department.Name = "Add_Department";
+            this.Add_Department.Size = new System.Drawing.Size(93, 25);
+            this.Add_Department.TabIndex = 20;
+            this.Add_Department.Text = "부서 추가";
+            this.Add_Department.UseVisualStyleBackColor = true;
+            this.Add_Department.Click += new System.EventHandler(this.Btn_Panel_On);
             // 
-            // button2
+            // Lookup_Department
             // 
-            this.button2.Location = new System.Drawing.Point(114, 86);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(121, 25);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "전체 부서 조회";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Btn_Lookup_Department);
+            this.Lookup_Department.Location = new System.Drawing.Point(114, 86);
+            this.Lookup_Department.Name = "Lookup_Department";
+            this.Lookup_Department.Size = new System.Drawing.Size(121, 25);
+            this.Lookup_Department.TabIndex = 14;
+            this.Lookup_Department.Text = "전체 부서 조회";
+            this.Lookup_Department.UseVisualStyleBackColor = true;
+            this.Lookup_Department.Click += new System.EventHandler(this.Btn_Lookup_Department);
             // 
             // Move_UserManager
             // 
@@ -340,15 +339,15 @@ namespace DBP_Project
             this.Controls.Add(this.Move_UserManager);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Save_Change);
             this.Controls.Add(this.addDepartmentPanel);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.Manager_Screen);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ManagerForm";
             this.Text = "ManagerForm";
             this.addDepartmentPanel.ResumeLayout(false);
             this.addDepartmentPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Manager_Screen)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -365,25 +364,25 @@ namespace DBP_Project
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView Manager_Screen;
+        private System.Windows.Forms.Button Save_Change;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button Search_By_User;
+        private System.Windows.Forms.Button Search_By_Keyword;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker ToTimePicker;
+        private System.Windows.Forms.DateTimePicker FromTimePicker;
         private System.Windows.Forms.Button Search_By_Date;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox teamBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox departmentBox;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Add_Department;
+        private System.Windows.Forms.Button Lookup_Department;
         private System.Windows.Forms.Button Move_UserManager;
     }
 }
