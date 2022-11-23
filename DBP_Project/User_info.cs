@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DBP_Project
 {
@@ -192,7 +193,7 @@ namespace DBP_Project
                 //만약 id가 같으면 넘어가기, role이 1이면(관리자면) 넘어가기
                 if (id != row["id"].ToString() || 1 != int.Parse(row["role"].ToString()))
                 {
-                    string em_Id = row["password"].ToString();
+                    string em_Id = row["id"].ToString();
 
                     //멀티 프로필 확인
 
@@ -208,7 +209,7 @@ namespace DBP_Project
 
 
                     string query_ = "SELECT * FROM talk.UserDepartment WHERE `userId`=" + em_Id;
-
+                    MessageBox.Show(query_);
                     DataTable dt_depart = new DataTable();
                     dt_depart = Query.GetInstance().RunQuery(query_);
 
