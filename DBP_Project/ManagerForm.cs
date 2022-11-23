@@ -38,7 +38,7 @@ namespace DBP_Project
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-
+                
                 DataTable dt = new DataTable();
                 da.Fill(dt);
 
@@ -52,7 +52,7 @@ namespace DBP_Project
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query = String.Format("select data from ChatMsg where data like '%{0}%';",textBox4.Text);
+                String Query = String.Format("select data from ChatMsg where data like '%{0}%';",KeyWord_TextBox.Text);
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -71,7 +71,7 @@ namespace DBP_Project
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query = String.Format("select * from ChatMsg where sender_ID = '{0}';", textBox5.Text);
+                String Query = String.Format("select * from ChatMsg where sender_ID = '{0}';", User_TextBox.Text);
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
@@ -133,7 +133,7 @@ namespace DBP_Project
                 MySqlCommand cmd = new MySqlCommand(SelectQuery, connection);
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read()) {
-                    if (rdr["departmentName"].ToString() == textBox2.Text) {
+                    if (rdr["departmentName"].ToString() == Add_Department_Text.Text) {
                         chk = 1;
                         count = Int32.Parse(rdr["departmentID"].ToString());
                         break;
@@ -146,7 +146,7 @@ namespace DBP_Project
                 if (chk == 1)
                 {
                     InsertQuery = String.Format("insert into departmentList values ({0}, {1},'{2}','{3}')",
-                                Row + 1,count.ToString(), textBox2.Text, textBox3.Text);
+                                Row + 1,count.ToString(), Add_Department_Text.Text, Add_Team_Text.Text);
                     connection.Open();
                     cmd = new MySqlCommand(InsertQuery, connection);
                     cmd.ExecuteNonQuery();
@@ -156,7 +156,7 @@ namespace DBP_Project
 
                 count++;
                 InsertQuery = String.Format("insert into departmentList values ({0}, {1},'{2}','{3}')",
-                                Row + 1, count.ToString(), textBox2.Text, textBox3.Text);
+                                Row + 1, count.ToString(), Add_Department_Text.Text, Add_Team_Text.Text);
                 connection.Open();
                 cmd = new MySqlCommand(InsertQuery, connection);
                 cmd.ExecuteNonQuery();

@@ -31,10 +31,10 @@ namespace DBP_Project
         {
             this.addDepartmentPanel = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Add_Info = new System.Windows.Forms.Button();
+            this.Add_Team_Text = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Add_Department_Text = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.Manager_Screen = new System.Windows.Forms.DataGridView();
             this.Save_Change = new System.Windows.Forms.Button();
@@ -43,8 +43,8 @@ namespace DBP_Project
             this.label1 = new System.Windows.Forms.Label();
             this.Search_By_User = new System.Windows.Forms.Button();
             this.Search_By_Keyword = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.User_TextBox = new System.Windows.Forms.TextBox();
+            this.KeyWord_TextBox = new System.Windows.Forms.TextBox();
             this.ToTimePicker = new System.Windows.Forms.DateTimePicker();
             this.FromTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Search_By_Date = new System.Windows.Forms.Button();
@@ -65,10 +65,10 @@ namespace DBP_Project
             // addDepartmentPanel
             // 
             this.addDepartmentPanel.Controls.Add(this.button4);
-            this.addDepartmentPanel.Controls.Add(this.button3);
-            this.addDepartmentPanel.Controls.Add(this.textBox3);
+            this.addDepartmentPanel.Controls.Add(this.Add_Info);
+            this.addDepartmentPanel.Controls.Add(this.Add_Team_Text);
             this.addDepartmentPanel.Controls.Add(this.label5);
-            this.addDepartmentPanel.Controls.Add(this.textBox2);
+            this.addDepartmentPanel.Controls.Add(this.Add_Department_Text);
             this.addDepartmentPanel.Controls.Add(this.label4);
             this.addDepartmentPanel.Location = new System.Drawing.Point(88, 41);
             this.addDepartmentPanel.Name = "addDepartmentPanel";
@@ -86,22 +86,22 @@ namespace DBP_Project
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.Btn_Panel_Off);
             // 
-            // button3
+            // Add_Info
             // 
-            this.button3.Location = new System.Drawing.Point(83, 183);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(99, 42);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "추가";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.Btn_Add_Department);
+            this.Add_Info.Location = new System.Drawing.Point(83, 183);
+            this.Add_Info.Name = "Add_Info";
+            this.Add_Info.Size = new System.Drawing.Size(99, 42);
+            this.Add_Info.TabIndex = 4;
+            this.Add_Info.Text = "추가";
+            this.Add_Info.UseVisualStyleBackColor = true;
+            this.Add_Info.Click += new System.EventHandler(this.Btn_Add_Department);
             // 
-            // textBox3
+            // Add_Team_Text
             // 
-            this.textBox3.Location = new System.Drawing.Point(54, 137);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(151, 25);
-            this.textBox3.TabIndex = 3;
+            this.Add_Team_Text.Location = new System.Drawing.Point(54, 137);
+            this.Add_Team_Text.Name = "Add_Team_Text";
+            this.Add_Team_Text.Size = new System.Drawing.Size(151, 25);
+            this.Add_Team_Text.TabIndex = 3;
             // 
             // label5
             // 
@@ -112,12 +112,12 @@ namespace DBP_Project
             this.label5.TabIndex = 2;
             this.label5.Text = "추가할 팀명";
             // 
-            // textBox2
+            // Add_Department_Text
             // 
-            this.textBox2.Location = new System.Drawing.Point(54, 70);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 25);
-            this.textBox2.TabIndex = 1;
+            this.Add_Department_Text.Location = new System.Drawing.Point(54, 70);
+            this.Add_Department_Text.Name = "Add_Department_Text";
+            this.Add_Department_Text.Size = new System.Drawing.Size(151, 25);
+            this.Add_Department_Text.TabIndex = 1;
             // 
             // label4
             // 
@@ -156,8 +156,8 @@ namespace DBP_Project
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.Search_By_User);
             this.groupBox2.Controls.Add(this.Search_By_Keyword);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.User_TextBox);
+            this.groupBox2.Controls.Add(this.KeyWord_TextBox);
             this.groupBox2.Controls.Add(this.ToTimePicker);
             this.groupBox2.Controls.Add(this.FromTimePicker);
             this.groupBox2.Controls.Add(this.Search_By_Date);
@@ -206,19 +206,19 @@ namespace DBP_Project
             this.Search_By_Keyword.UseVisualStyleBackColor = true;
             this.Search_By_Keyword.Click += new System.EventHandler(this.Btn_Search_Keyword);
             // 
-            // textBox5
+            // User_TextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(68, 192);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(146, 25);
-            this.textBox5.TabIndex = 19;
+            this.User_TextBox.Location = new System.Drawing.Point(68, 192);
+            this.User_TextBox.Name = "User_TextBox";
+            this.User_TextBox.Size = new System.Drawing.Size(146, 25);
+            this.User_TextBox.TabIndex = 19;
             // 
-            // textBox4
+            // KeyWord_TextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(68, 131);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(146, 25);
-            this.textBox4.TabIndex = 18;
+            this.KeyWord_TextBox.Location = new System.Drawing.Point(68, 131);
+            this.KeyWord_TextBox.Name = "KeyWord_TextBox";
+            this.KeyWord_TextBox.Size = new System.Drawing.Size(146, 25);
+            this.KeyWord_TextBox.TabIndex = 18;
             // 
             // ToTimePicker
             // 
@@ -359,10 +359,10 @@ namespace DBP_Project
         #endregion
         private System.Windows.Forms.Panel addDepartmentPanel;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button Add_Info;
+        private System.Windows.Forms.TextBox Add_Team_Text;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Add_Department_Text;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView Manager_Screen;
         private System.Windows.Forms.Button Save_Change;
@@ -371,8 +371,8 @@ namespace DBP_Project
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button Search_By_User;
         private System.Windows.Forms.Button Search_By_Keyword;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox User_TextBox;
+        private System.Windows.Forms.TextBox KeyWord_TextBox;
         private System.Windows.Forms.DateTimePicker ToTimePicker;
         private System.Windows.Forms.DateTimePicker FromTimePicker;
         private System.Windows.Forms.Button Search_By_Date;
