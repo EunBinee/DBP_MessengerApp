@@ -98,10 +98,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.backPanel);
             this.Controls.Add(this.sendTimeLabel);
             this.Controls.Add(this.senderName);
             this.Controls.Add(this.senderImg);
+            this.Controls.Add(this.backPanel);
             this.Name = "Message";
             this.Size = new System.Drawing.Size(360, 98);
             this.Load += new System.EventHandler(this.Message_Load);

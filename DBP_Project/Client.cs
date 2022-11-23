@@ -30,15 +30,14 @@ namespace DBP_Project
         private void StartConnect()
         { 
             conn_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9998));
+            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9997));
 
             // myPeer 저장
             var data = new byte[1024];
             conn_socket.Receive(data, data.Length, SocketFlags.None);
             myPeer = Int32.Parse(Encoding.UTF8.GetString(data));
-            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '" + myPeer + "' WHERE (`id` = 'temp');");
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '" + myPeer + "' WHERE (`id` = '"+Chat.myID+"');");
             MessageBox.Show("서버 접속 성공");
-
         }
 
         private void connect()
@@ -58,8 +57,6 @@ namespace DBP_Project
                     // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
                     Chat.instance.BeginInvoke(new Action(() => Chat.instance.RecieveMsg()));
                 }
-
-                
             }
         }
 

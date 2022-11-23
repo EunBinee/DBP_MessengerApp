@@ -26,5 +26,10 @@ namespace DBP_Project
         {
             return strConn;
         }
+
+        public string GetTimeNow()
+        {
+            return DateTime.Now.ToString("t");
+        }
     }
 }

@@ -12,6 +12,10 @@ namespace DBP_Project
 {
     public partial class Message : UserControl
     {
+        public Message()
+        {
+            InitializeComponent();
+        }
         public Message(string str)
         {
             InitializeComponent();
@@ -45,5 +49,11 @@ namespace DBP_Project
             msgBox.BackColor = SystemColors.Info;
             backPanel.BackColor = SystemColors.Info;
         }
+        public void SetData(string name, string time)
+        {
+            senderName.Text = name;
+            sendTimeLabel.Text = time;
+        }
+
     }
 }
