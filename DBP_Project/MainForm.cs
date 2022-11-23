@@ -15,6 +15,7 @@ namespace DBP_Project
         TestTreeForm tf = new TestTreeForm();
         TestChatForm cf = new TestChatForm();
         UserManagerForm userManagerForm = new UserManagerForm();
+        ManagerForm managerForm = new ManagerForm();
 
         public MainForm()
         {
@@ -64,11 +65,25 @@ namespace DBP_Project
             this.Controls.Add(cf);
             cf.StartPosition = FormStartPosition.Manual;
             cf.Location = new Point(230, 50);
+
+
+            managerForm.TopLevel = false;
+            managerForm.Show();
+            this.Controls.Add(managerForm);
+            managerForm.StartPosition = FormStartPosition.Manual;
+            managerForm.Location = new Point(230, 50);
+
+            userManagerForm.TopLevel = false;
+            userManagerForm.Show();
+            this.Controls.Add(userManagerForm);
+            userManagerForm.StartPosition = FormStartPosition.Manual;
+            userManagerForm.Location = new Point(230, 50);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             cf.Hide();
+            managerForm.Hide();
             userManagerForm.Hide();
             tf.Show();
 
@@ -77,15 +92,21 @@ namespace DBP_Project
         private void button2_Click(object sender, EventArgs e)
         {
             tf.Hide();
+            managerForm.Hide();
             userManagerForm.Hide();
             cf.Show();
         }
 
         private void Move_Admin_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
-            ManagerForm ShowmanagerForm = new ManagerForm();
-            ShowmanagerForm.ShowDialog();
+            tf.Hide();
+            cf.Hide();
+            userManagerForm.Hide();
+            managerForm.Show();
+
+            // this.Visible = false;
+            // ManagerForm ShowmanagerForm = new ManagerForm();
+            // ShowmanagerForm.ShowDialog();
         }
         // private void adminBtn_Click(object sender, EventArgs e)
         // {

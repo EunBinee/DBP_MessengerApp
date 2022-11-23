@@ -14,6 +14,7 @@ namespace DBP_Project
     public partial class ManagerForm : Form
     {
         String strConn = "Server =15.164.218.208;" + "database = talk; uid = dbp; pwd = dbp; Charset=utf8;";
+
         public ManagerForm()
         {
             InitializeComponent();
