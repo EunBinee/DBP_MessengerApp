@@ -113,6 +113,7 @@ namespace DBP_Project
 
         private void Btn_Panel_On(object sender, EventArgs e)
         {
+            addDepartmentPanel.BringToFront();
             addDepartmentPanel.Visible = true;
         }
 

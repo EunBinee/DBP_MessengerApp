@@ -86,6 +86,8 @@ namespace DBP_Project
             managerForm.Hide();
             userManagerForm.Hide();
             tf.Show();
+            toUserMangerForm.Hide();
+            toManagerForm.Hide();
 
         }
 
@@ -95,6 +97,8 @@ namespace DBP_Project
             managerForm.Hide();
             userManagerForm.Hide();
             cf.Show();
+            toUserMangerForm.Hide();
+            toManagerForm.Hide();
         }
 
         private void Move_Admin_Click(object sender, EventArgs e)
@@ -103,10 +107,28 @@ namespace DBP_Project
             cf.Hide();
             userManagerForm.Hide();
             managerForm.Show();
-
+            toUserMangerForm.Show();
+            toManagerForm.Hide();
             // this.Visible = false;
             // ManagerForm ShowmanagerForm = new ManagerForm();
             // ShowmanagerForm.ShowDialog();
+        }
+
+
+        private void toUserMangerForm_Click(object sender, EventArgs e)
+        {
+            managerForm.Hide();
+            userManagerForm.Show();
+            toUserMangerForm.Hide();
+            toManagerForm.Show();
+        }
+
+        private void toManagerForm_Click(object sender, EventArgs e)
+        {
+            userManagerForm.Hide();
+            managerForm.Show();
+            toUserMangerForm.Show();
+            toManagerForm.Hide();
         }
         // private void adminBtn_Click(object sender, EventArgs e)
         // {

@@ -56,11 +56,6 @@ namespace DBP_Project
             this.blockDeleteBtn1 = new System.Windows.Forms.Button();
             this.deleteBlockChatBtn = new System.Windows.Forms.Button();
             this.blockDepartmentPanel = new System.Windows.Forms.Panel();
-            this.blockDepartmentBtn = new System.Windows.Forms.Button();
-            this.blockChatPanel = new System.Windows.Forms.Panel();
-            this.searchUserPanel = new System.Windows.Forms.Panel();
-            this.userSearchLabel = new System.Windows.Forms.Label();
-            this.switchMangerForm = new System.Windows.Forms.Button();
             this.blockUserPanel = new System.Windows.Forms.Panel();
             this.blockUserBtn = new System.Windows.Forms.Button();
             this.userBlockLabel = new System.Windows.Forms.Label();
@@ -68,11 +63,15 @@ namespace DBP_Project
             this.blockUserBox = new System.Windows.Forms.ComboBox();
             this.deleteBlockUserBtn = new System.Windows.Forms.Button();
             this.addBlockUserBtn = new System.Windows.Forms.Button();
+            this.blockDepartmentBtn = new System.Windows.Forms.Button();
+            this.blockChatPanel = new System.Windows.Forms.Panel();
+            this.searchUserPanel = new System.Windows.Forms.Panel();
+            this.userSearchLabel = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.blockDepartmentPanel.SuspendLayout();
+            this.blockUserPanel.SuspendLayout();
             this.blockChatPanel.SuspendLayout();
             this.searchUserPanel.SuspendLayout();
-            this.blockUserPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -346,78 +345,6 @@ namespace DBP_Project
             this.blockDepartmentPanel.Size = new System.Drawing.Size(387, 240);
             this.blockDepartmentPanel.TabIndex = 39;
             // 
-            // blockDepartmentBtn
-            // 
-            this.blockDepartmentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.blockDepartmentBtn.FlatAppearance.BorderSize = 0;
-            this.blockDepartmentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.blockDepartmentBtn.Image = ((System.Drawing.Image)(resources.GetObject("blockDepartmentBtn.Image")));
-            this.blockDepartmentBtn.Location = new System.Drawing.Point(326, 9);
-            this.blockDepartmentBtn.Name = "blockDepartmentBtn";
-            this.blockDepartmentBtn.Size = new System.Drawing.Size(46, 45);
-            this.blockDepartmentBtn.TabIndex = 38;
-            this.blockDepartmentBtn.UseVisualStyleBackColor = false;
-            this.blockDepartmentBtn.Click += new System.EventHandler(this.blockDepartmentBtn_Click);
-            // 
-            // blockChatPanel
-            // 
-            this.blockChatPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.blockChatPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.blockChatPanel.Controls.Add(this.blockChatList);
-            this.blockChatPanel.Controls.Add(this.blockChatLabel);
-            this.blockChatPanel.Controls.Add(this.blockChatBox);
-            this.blockChatPanel.Controls.Add(this.deleteBlockChatBtn);
-            this.blockChatPanel.Controls.Add(this.addBlockChatBtn);
-            this.blockChatPanel.Location = new System.Drawing.Point(322, 263);
-            this.blockChatPanel.Name = "blockChatPanel";
-            this.blockChatPanel.Size = new System.Drawing.Size(387, 232);
-            this.blockChatPanel.TabIndex = 37;
-            // 
-            // searchUserPanel
-            // 
-            this.searchUserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.searchUserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.searchUserPanel.Controls.Add(this.userSearchLabel);
-            this.searchUserPanel.Controls.Add(this.groupBox3);
-            this.searchUserPanel.Controls.Add(this.userBox);
-            this.searchUserPanel.Controls.Add(this.departmentComboBox);
-            this.searchUserPanel.Controls.Add(this.teamComboBox);
-            this.searchUserPanel.Controls.Add(this.saveBtn);
-            this.searchUserPanel.Controls.Add(this.label1);
-            this.searchUserPanel.Controls.Add(this.label6);
-            this.searchUserPanel.Controls.Add(this.label2);
-            this.searchUserPanel.Controls.Add(this.recentLogOut);
-            this.searchUserPanel.Controls.Add(this.label4);
-            this.searchUserPanel.Controls.Add(this.label5);
-            this.searchUserPanel.Controls.Add(this.recentLogIn);
-            this.searchUserPanel.ForeColor = System.Drawing.Color.White;
-            this.searchUserPanel.Location = new System.Drawing.Point(12, 17);
-            this.searchUserPanel.Name = "searchUserPanel";
-            this.searchUserPanel.Size = new System.Drawing.Size(293, 337);
-            this.searchUserPanel.TabIndex = 38;
-            // 
-            // userSearchLabel
-            // 
-            this.userSearchLabel.AllowDrop = true;
-            this.userSearchLabel.AutoSize = true;
-            this.userSearchLabel.Font = new System.Drawing.Font("Nirmala UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userSearchLabel.Location = new System.Drawing.Point(16, 13);
-            this.userSearchLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.userSearchLabel.Name = "userSearchLabel";
-            this.userSearchLabel.Size = new System.Drawing.Size(112, 25);
-            this.userSearchLabel.TabIndex = 39;
-            this.userSearchLabel.Text = "사용자 조회";
-            // 
-            // switchMangerForm
-            // 
-            this.switchMangerForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.switchMangerForm.Image = ((System.Drawing.Image)(resources.GetObject("switchMangerForm.Image")));
-            this.switchMangerForm.Location = new System.Drawing.Point(12, 385);
-            this.switchMangerForm.Name = "switchMangerForm";
-            this.switchMangerForm.Size = new System.Drawing.Size(61, 44);
-            this.switchMangerForm.TabIndex = 38;
-            this.switchMangerForm.UseVisualStyleBackColor = true;
-            // 
             // blockUserPanel
             // 
             this.blockUserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
@@ -503,6 +430,68 @@ namespace DBP_Project
             this.addBlockUserBtn.UseVisualStyleBackColor = true;
             this.addBlockUserBtn.Click += new System.EventHandler(this.addBlockUserBtn_Click);
             // 
+            // blockDepartmentBtn
+            // 
+            this.blockDepartmentBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.blockDepartmentBtn.FlatAppearance.BorderSize = 0;
+            this.blockDepartmentBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.blockDepartmentBtn.Image = ((System.Drawing.Image)(resources.GetObject("blockDepartmentBtn.Image")));
+            this.blockDepartmentBtn.Location = new System.Drawing.Point(326, 9);
+            this.blockDepartmentBtn.Name = "blockDepartmentBtn";
+            this.blockDepartmentBtn.Size = new System.Drawing.Size(46, 45);
+            this.blockDepartmentBtn.TabIndex = 38;
+            this.blockDepartmentBtn.UseVisualStyleBackColor = false;
+            this.blockDepartmentBtn.Click += new System.EventHandler(this.blockDepartmentBtn_Click);
+            // 
+            // blockChatPanel
+            // 
+            this.blockChatPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.blockChatPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.blockChatPanel.Controls.Add(this.blockChatList);
+            this.blockChatPanel.Controls.Add(this.blockChatLabel);
+            this.blockChatPanel.Controls.Add(this.blockChatBox);
+            this.blockChatPanel.Controls.Add(this.deleteBlockChatBtn);
+            this.blockChatPanel.Controls.Add(this.addBlockChatBtn);
+            this.blockChatPanel.Location = new System.Drawing.Point(322, 263);
+            this.blockChatPanel.Name = "blockChatPanel";
+            this.blockChatPanel.Size = new System.Drawing.Size(387, 232);
+            this.blockChatPanel.TabIndex = 37;
+            // 
+            // searchUserPanel
+            // 
+            this.searchUserPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.searchUserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchUserPanel.Controls.Add(this.userSearchLabel);
+            this.searchUserPanel.Controls.Add(this.groupBox3);
+            this.searchUserPanel.Controls.Add(this.userBox);
+            this.searchUserPanel.Controls.Add(this.departmentComboBox);
+            this.searchUserPanel.Controls.Add(this.teamComboBox);
+            this.searchUserPanel.Controls.Add(this.saveBtn);
+            this.searchUserPanel.Controls.Add(this.label1);
+            this.searchUserPanel.Controls.Add(this.label6);
+            this.searchUserPanel.Controls.Add(this.label2);
+            this.searchUserPanel.Controls.Add(this.recentLogOut);
+            this.searchUserPanel.Controls.Add(this.label4);
+            this.searchUserPanel.Controls.Add(this.label5);
+            this.searchUserPanel.Controls.Add(this.recentLogIn);
+            this.searchUserPanel.ForeColor = System.Drawing.Color.White;
+            this.searchUserPanel.Location = new System.Drawing.Point(12, 17);
+            this.searchUserPanel.Name = "searchUserPanel";
+            this.searchUserPanel.Size = new System.Drawing.Size(293, 337);
+            this.searchUserPanel.TabIndex = 38;
+            // 
+            // userSearchLabel
+            // 
+            this.userSearchLabel.AllowDrop = true;
+            this.userSearchLabel.AutoSize = true;
+            this.userSearchLabel.Font = new System.Drawing.Font("Nirmala UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userSearchLabel.Location = new System.Drawing.Point(16, 13);
+            this.userSearchLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.userSearchLabel.Name = "userSearchLabel";
+            this.userSearchLabel.Size = new System.Drawing.Size(112, 25);
+            this.userSearchLabel.TabIndex = 39;
+            this.userSearchLabel.Text = "사용자 조회";
+            // 
             // UserManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -512,7 +501,6 @@ namespace DBP_Project
             this.Controls.Add(this.searchUserPanel);
             this.Controls.Add(this.blockChatPanel);
             this.Controls.Add(this.blockDepartmentPanel);
-            this.Controls.Add(this.switchMangerForm);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -522,12 +510,12 @@ namespace DBP_Project
             this.groupBox3.PerformLayout();
             this.blockDepartmentPanel.ResumeLayout(false);
             this.blockDepartmentPanel.PerformLayout();
+            this.blockUserPanel.ResumeLayout(false);
+            this.blockUserPanel.PerformLayout();
             this.blockChatPanel.ResumeLayout(false);
             this.blockChatPanel.PerformLayout();
             this.searchUserPanel.ResumeLayout(false);
             this.searchUserPanel.PerformLayout();
-            this.blockUserPanel.ResumeLayout(false);
-            this.blockUserPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -562,7 +550,6 @@ namespace DBP_Project
         private System.Windows.Forms.Panel blockDepartmentPanel;
         private System.Windows.Forms.Panel blockChatPanel;
         private System.Windows.Forms.Panel searchUserPanel;
-        private System.Windows.Forms.Button switchMangerForm;
         private System.Windows.Forms.Button blockDepartmentBtn;
         private System.Windows.Forms.Panel blockUserPanel;
         private System.Windows.Forms.Button blockUserBtn;

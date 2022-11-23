@@ -34,7 +34,6 @@ namespace DBP_Project
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.Move_Admin = new System.Windows.Forms.Button();
-            // this.adminBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -44,6 +43,8 @@ namespace DBP_Project
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
+            this.toUserMangerForm = new System.Windows.Forms.Button();
+            this.toManagerForm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -54,7 +55,6 @@ namespace DBP_Project
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.Move_Admin);
-            // this.panel1.Controls.Add(this.adminBtn);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.panel2);
@@ -95,21 +95,6 @@ namespace DBP_Project
             this.Move_Admin.Text = "Admin";
             this.Move_Admin.UseVisualStyleBackColor = true;
             this.Move_Admin.Click += new System.EventHandler(this.Move_Admin_Click);
-            // // adminBtn
-            // // 
-            // this.adminBtn.FlatAppearance.BorderSize = 0;
-            // this.adminBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            // this.adminBtn.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // this.adminBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            // this.adminBtn.Image = ((System.Drawing.Image)(resources.GetObject("adminBtn.Image")));
-            // this.adminBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // this.adminBtn.Location = new System.Drawing.Point(25, 306);
-            // this.adminBtn.Name = "adminBtn";
-            // this.adminBtn.Size = new System.Drawing.Size(186, 42);
-            // this.adminBtn.TabIndex = 1;
-            // this.adminBtn.Text = "Admin";
-            // this.adminBtn.UseVisualStyleBackColor = true;
-            // this.adminBtn.Click += new System.EventHandler(this.adminBtn_Click);
             // 
             // button2
             // 
@@ -220,12 +205,38 @@ namespace DBP_Project
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // toUserMangerForm
+            // 
+            this.toUserMangerForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toUserMangerForm.Image = ((System.Drawing.Image)(resources.GetObject("toUserMangerForm.Image")));
+            this.toUserMangerForm.Location = new System.Drawing.Point(258, 464);
+            this.toUserMangerForm.Name = "toUserMangerForm";
+            this.toUserMangerForm.Size = new System.Drawing.Size(61, 44);
+            this.toUserMangerForm.TabIndex = 39;
+            this.toUserMangerForm.UseVisualStyleBackColor = true;
+            this.toUserMangerForm.Visible = false;
+            this.toUserMangerForm.Click += new System.EventHandler(this.toUserMangerForm_Click);
+            // 
+            // toManagerForm
+            // 
+            this.toManagerForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toManagerForm.Image = ((System.Drawing.Image)(resources.GetObject("toManagerForm.Image")));
+            this.toManagerForm.Location = new System.Drawing.Point(258, 464);
+            this.toManagerForm.Name = "toManagerForm";
+            this.toManagerForm.Size = new System.Drawing.Size(61, 44);
+            this.toManagerForm.TabIndex = 40;
+            this.toManagerForm.UseVisualStyleBackColor = true;
+            this.toManagerForm.Visible = false;
+            this.toManagerForm.Click += new System.EventHandler(this.toManagerForm_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(950, 550);
+            this.Controls.Add(this.toManagerForm);
+            this.Controls.Add(this.toUserMangerForm);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,5 +273,7 @@ namespace DBP_Project
         // private System.Windows.Forms.Button adminBtn;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel MainFormPanel;
+        private System.Windows.Forms.Button toUserMangerForm;
+        private System.Windows.Forms.Button toManagerForm;
     }
 }
