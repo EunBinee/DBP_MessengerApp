@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.sendTimeLabel = new System.Windows.Forms.Label();
-            this.msgBox = new System.Windows.Forms.RichTextBox();
+            this.msgBox = new System.Windows.Forms.Label();
             this.backPanel = new System.Windows.Forms.Panel();
             this.senderName = new System.Windows.Forms.Label();
             this.senderImg = new System.Windows.Forms.PictureBox();
@@ -51,16 +51,11 @@
             // 
             this.msgBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.msgBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.msgBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.msgBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.msgBox.DetectUrls = false;
             this.msgBox.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.msgBox.HideSelection = false;
             this.msgBox.Location = new System.Drawing.Point(3, 3);
             this.msgBox.Name = "msgBox";
-            this.msgBox.ReadOnly = true;
-            this.msgBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.msgBox.Size = new System.Drawing.Size(239, 33);
+            this.msgBox.Size = new System.Drawing.Size(240, 33);
             this.msgBox.TabIndex = 2;
             this.msgBox.Text = "안녕하세요";
             // 
@@ -114,7 +109,7 @@
 
         #endregion
         private System.Windows.Forms.Label sendTimeLabel;
-        private System.Windows.Forms.RichTextBox msgBox;
+        private System.Windows.Forms.Label msgBox;
         private System.Windows.Forms.Panel backPanel;
         private System.Windows.Forms.Label senderName;
         private System.Windows.Forms.PictureBox senderImg;

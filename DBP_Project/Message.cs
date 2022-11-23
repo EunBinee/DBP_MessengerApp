@@ -20,6 +20,8 @@ namespace DBP_Project
         {
             InitializeComponent();
             this.msgBox.Text = str;
+            this.msgBox.AutoSize = true;
+            this.msgBox.MaximumSize = new Size(240, 0);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace DBP_Project
         private void Message_Load(object sender, EventArgs e)
         {
             int size = (msgBox.Text.Length / 35) - 1;
-            this.Size = new Size(this.Size.Width, (96 + 17 * size));   
+            this.Size = new Size(this.Size.Width, (120 + 25 * size));   
         }
 
         public void SetDefault()
