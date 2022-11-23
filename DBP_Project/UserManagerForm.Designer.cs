@@ -59,6 +59,7 @@ namespace DBP_Project
             this.blockDepartmentBtn = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.button9 = new System.Windows.Forms.Button();
             this.blockUserPanel = new System.Windows.Forms.Panel();
             this.blockUserBtn = new System.Windows.Forms.Button();
@@ -67,7 +68,6 @@ namespace DBP_Project
             this.blockUserBox = new System.Windows.Forms.ComboBox();
             this.deleteBlockUserBtn = new System.Windows.Forms.Button();
             this.addBlockUserBtn = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.blockDepartmentPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -395,6 +395,18 @@ namespace DBP_Project
             this.panel3.Size = new System.Drawing.Size(293, 337);
             this.panel3.TabIndex = 38;
             // 
+            // label10
+            // 
+            this.label10.AllowDrop = true;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Nirmala UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(16, 13);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(112, 25);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "사용자 조회";
+            // 
             // button9
             // 
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -489,18 +501,6 @@ namespace DBP_Project
             this.addBlockUserBtn.Text = "추가";
             this.addBlockUserBtn.UseVisualStyleBackColor = true;
             this.addBlockUserBtn.Click += new System.EventHandler(this.addBlockUserBtn_Click);
-            // 
-            // label10
-            // 
-            this.label10.AllowDrop = true;
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Nirmala UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(16, 13);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(112, 25);
-            this.label10.TabIndex = 39;
-            this.label10.Text = "사용자 조회";
             // 
             // UserManagerForm
             // 
