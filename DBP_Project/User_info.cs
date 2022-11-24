@@ -190,39 +190,42 @@ namespace DBP_Project
 
             foreach (DataRow row in dt.Rows)
             {
-                //만약 id가 같으면 넘어가기, role이 1이면(관리자면) 넘어가기
-                if (id != row["id"].ToString() || 1 != int.Parse(row["role"].ToString()))
+                string em_Id = row["id"].ToString();
+
+                if (id == em_Id)
+                    continue;
+
+                if (int.Parse(row["role"].ToString()) == 1)
+                    continue;
+
+                //멀티 프로필 확인
+
+                string em_Name = row["name"].ToString();                      //이름
+                string em_NickName = row["nickName"].ToString();      //닉네임
+
+                string em_ZipCode = row["zipCode"].ToString();               //우편번호
+                string em_Address = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
+                string em_ProfilePic = row["profilePic"].ToString();            //프로필 사진
+
+                string em_Department = "";
+                string em_Team = "";
+
+
+                string query_ = "SELECT * FROM talk.UserDepartment WHERE `userId`='" + em_Id + "'";
+                MessageBox.Show(query_);
+                DataTable dt_depart = new DataTable();
+                dt_depart = Query.GetInstance().RunQuery(query_);
+
+                foreach (DataRow row_ in dt_depart.Rows)
                 {
-                    string em_Id = row["id"].ToString();
-
-                    //멀티 프로필 확인
-
-                    string em_Name = row["name"].ToString();                      //이름
-                    string em_NickName = row["nickName"].ToString();      //닉네임
-
-                    string em_ZipCode = row["zipCode"].ToString();               //우편번호
-                    string em_Address = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
-                    string em_ProfilePic = row["profilePic"].ToString();            //프로필 사진*/
-
-                    string em_Department = "";
-                    string em_Team = "";
-
-
-                    string query_ = "SELECT * FROM talk.UserDepartment WHERE `userId`=" + em_Id;
-                    MessageBox.Show(query_);
-                    DataTable dt_depart = new DataTable();
-                    dt_depart = Query.GetInstance().RunQuery(query_);
-
-                    foreach (DataRow row_ in dt_depart.Rows)
-                    {
-                        //만약 id가 같으면 비밀번호도 확인한다.
-                        em_Department = row_["departmentName"].ToString();      //부서명
-                        em_Team = row_["teamName"].ToString();                           //팀명
-                    }
-
-                    employees.Add(new Employee(em_Id, em_Name, em_NickName, em_Department, em_Team, em_ProfilePic));             
+                    //만약 id가 같으면 비밀번호도 확인한다.
+                    em_Department = row_["departmentName"].ToString();      //부서명
+                    em_Team = row_["teamName"].ToString();                           //팀명
                 }
+
+                employees.Add(new Employee(em_Id, em_Name, em_NickName, em_Department, em_Team, em_ProfilePic));
             }
+                
 
 
         }
