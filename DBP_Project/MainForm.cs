@@ -76,5 +76,13 @@ namespace DBP_Project
             tf.Hide();
             cf.Show();
         }
+
+        private void Button_UserInfo_Change_Click(object sender, EventArgs e)
+        {
+            //회원 정보 변경 버튼
+
+            InfoChange userInfoChange = new InfoChange();
+            userInfoChange.ShowDialog();
+        }
     }
 }

@@ -32,25 +32,29 @@ namespace DBP_Project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Button_UserInfo_Change = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.MainFormPanel = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.MainFormPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.MainFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.Button_UserInfo_Change);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -62,6 +66,16 @@ namespace DBP_Project
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 550);
             this.panel1.TabIndex = 0;
+            // 
+            // Button_UserInfo_Change
+            // 
+            this.Button_UserInfo_Change.Location = new System.Drawing.Point(31, 390);
+            this.Button_UserInfo_Change.Name = "Button_UserInfo_Change";
+            this.Button_UserInfo_Change.Size = new System.Drawing.Size(120, 38);
+            this.Button_UserInfo_Change.TabIndex = 2;
+            this.Button_UserInfo_Change.Text = "회원정보 변경";
+            this.Button_UserInfo_Change.UseVisualStyleBackColor = true;
+            this.Button_UserInfo_Change.Click += new System.EventHandler(this.Button_UserInfo_Change_Click);
             // 
             // button5
             // 
@@ -139,6 +153,23 @@ namespace DBP_Project
             this.panel2.Size = new System.Drawing.Size(230, 173);
             this.panel2.TabIndex = 0;
             // 
+            // MainFormPanel
+            // 
+            this.MainFormPanel.Controls.Add(this.button4);
+            this.MainFormPanel.Location = new System.Drawing.Point(230, 0);
+            this.MainFormPanel.Name = "MainFormPanel";
+            this.MainFormPanel.Size = new System.Drawing.Size(724, 538);
+            this.MainFormPanel.TabIndex = 2;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(0, 0);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 0;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -195,13 +226,6 @@ namespace DBP_Project
             this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // MainFormPanel
-            // 
-            this.MainFormPanel.Location = new System.Drawing.Point(230, 0);
-            this.MainFormPanel.Name = "MainFormPanel";
-            this.MainFormPanel.Size = new System.Drawing.Size(724, 538);
-            this.MainFormPanel.TabIndex = 2;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -223,6 +247,7 @@ namespace DBP_Project
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.MainFormPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -243,5 +268,7 @@ namespace DBP_Project
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Panel MainFormPanel;
+        private System.Windows.Forms.Button Button_UserInfo_Change;
+        private System.Windows.Forms.Button button4;
     }
 }
