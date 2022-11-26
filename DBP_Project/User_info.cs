@@ -168,49 +168,80 @@ namespace DBP_Project
 
 
 
-
-
-
-
         //----------------------------------------------------------------------------------------------------------------------------------
         public void GetWorkerInfo()
         {
             //사원의 정보를 불러옵니다.
+            string query = "";
+            
+            //1. 멀티프로필 확인.----------------------------------------------------------------------------------------------------
+            List<MultiProfile> multiProfiles = new List<MultiProfile>();
 
-            //1. 멀티프로필 확인.
-            //
+            //  SELECT* FROM talk.MultiProfile where `user_id` = '123';
+            query= "SELECT* FROM talk.MultiProfile where `user_id` = '"+ id + "'";
+            DataTable dt_Multi = new DataTable();
+            dt_Multi = Query.GetInstance().RunQuery(query);
 
-            //List<MultiProfile> multiProfiles = new List<MultiProfile>();
+            foreach (DataRow row_Multi in dt_Multi.Rows)
+            {
+                string Multi_id = row_Multi["doMultiProfile_Id"].ToString();
+                string Multi_nickName = row_Multi["nickname"].ToString();
+                string Multi_profile = row_Multi["profilePic"].ToString();
 
-            //2. 값을 불러온다. 자기자신은 빼고
+                multiProfiles.Add(new MultiProfile(Multi_id, Multi_nickName, Multi_profile));
+            }
 
-            string query = "SELECT * FROM talk.UserListTable";
+            //2. 값을 불러온다. 자기자신과 관리자는 빼고---------------------------------------------------------------------------
+
+            query = "SELECT * FROM talk.UserListTable where id != '" + id + "' and role =2;";
             DataTable dt = new DataTable();
             dt = Query.GetInstance().RunQuery(query);
 
             foreach (DataRow row in dt.Rows)
             {
                 string em_Id = row["id"].ToString();
+                bool isMulti = false;
+                int multiCount = 0;
+                //멀티 프로필 확인******************************************************************************************
+                if (multiProfiles.Count != 0)
+                {
+                    foreach (var multi in multiProfiles)
+                    {
+                        //em_id가 같은지 확인
+                        if (multi.ID == em_Id)
+                        {
+                            isMulti = true;
+                            break;
+                        }
+                        multiCount++;
+                    }
+                }
+                string em_NickName;
+                string em_ProfilePic;
+                if (isMulti)
+                {
+                    em_NickName = multiProfiles[multiCount].NickName;      //닉네임
+                    em_ProfilePic = multiProfiles[multiCount].ProfilePic;         //멀티프로필 사진
+                }
+                else
+                {
+                    em_NickName = row["nickName"].ToString();           //닉네임
+                    em_ProfilePic = row["profilePic"].ToString();            //프로필 사진
+                }
 
-                if (id == em_Id)
-                    continue;
+                //-----------------------------------------------------------------------------------------------------------------------------------
+              
+                string em_Name          = row["name"].ToString();                      //이름
 
-                if (int.Parse(row["role"].ToString()) == 1)
-                    continue;
-
-                //멀티 프로필 확인
-
-                string em_Name = row["name"].ToString();                      //이름
-                string em_NickName = row["nickName"].ToString();      //닉네임
-
-                string em_ZipCode = row["zipCode"].ToString();               //우편번호
-                string em_Address = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
-                string em_ProfilePic = row["profilePic"].ToString();            //프로필 사진
+                string em_ZipCode       = row["zipCode"].ToString();               //우편번호
+                string em_Address       = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
+                
 
                 string em_Department = "";
-                string em_Team = "";
+                string em_Team           = "";
 
 
+                //부서 확인-----------------------------------------------------------------------------------------------------------------------------------------------
                 string query_ = "SELECT * FROM talk.UserDepartment WHERE `userId`='" + em_Id + "'";
                 MessageBox.Show(query_);
                 DataTable dt_depart = new DataTable();
@@ -219,16 +250,15 @@ namespace DBP_Project
                 foreach (DataRow row_ in dt_depart.Rows)
                 {
                     //만약 id가 같으면 비밀번호도 확인한다.
-                    em_Department = row_["departmentName"].ToString();      //부서명
-                    em_Team = row_["teamName"].ToString();                           //팀명
+                    em_Department   = row_["departmentName"].ToString();                  //부서명
+                    em_Team             = row_["teamName"].ToString();                           //팀명
                 }
 
                 employees.Add(new Employee(em_Id, em_Name, em_NickName, em_Department, em_Team, em_ProfilePic));
             }
-                
-
 
         }
+
 
         class MultiProfile
         {

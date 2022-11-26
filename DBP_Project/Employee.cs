@@ -28,7 +28,6 @@ namespace DBP_Project
             this.profilePic = profilePic;
         }
 
-
         //편하게 쓰기위한.. 겟터와 세터..
         public string ID
         {
@@ -98,8 +97,6 @@ namespace DBP_Project
                 profilePic = value;
             }
         }
-
-
 
     }
 }
