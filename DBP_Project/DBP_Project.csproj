@@ -64,6 +64,12 @@
     </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="ConfigManager.cs" />
+    <Compile Include="Emoticon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Emoticon.Designer.cs">
+      <DependentUpon>Emoticon.cs</DependentUpon>
+    </Compile>
     <Compile Include="Message.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     <EmbeddedResource Include="Chat.resx">
       <DependentUpon>Chat.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Emoticon.resx">
+      <DependentUpon>Emoticon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +148,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
@@ -156,6 +166,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\004.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\006.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\008.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\010.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\011.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\012.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\013.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\014.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\015.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\016.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -12,16 +12,21 @@ namespace DBP_Project
 {
     public partial class Message : UserControl
     {
+        public string link;
         public Message()
         {
             InitializeComponent();
         }
-        public Message(string str)
+        public Message(string str, bool isFile = false)
         {
             InitializeComponent();
             this.msgBox.Text = str;
             this.msgBox.AutoSize = true;
             this.msgBox.MaximumSize = new Size(240, 0);
+            SetSize();
+
+            if (isFile == true)
+                SetLink(str);
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -30,6 +35,10 @@ namespace DBP_Project
         }
 
         private void Message_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void SetSize()
         {
             int size = (msgBox.Text.Length / 35) - 1;
             this.Size = new Size(this.Size.Width, (120 + 25 * size));   
@@ -50,12 +59,35 @@ namespace DBP_Project
             sendTimeLabel.Location = new Point(290, 20);
             msgBox.BackColor = SystemColors.Info;
             backPanel.BackColor = SystemColors.Info;
+
         }
         public void SetData(string name, string time)
         {
             senderName.Text = name;
             sendTimeLabel.Text = time;
         }
+        public void SetSenderImg(string str)
+        {
+            senderImg.ImageLocation = str;
+        }
+        public void SetImageMsg(string str)
+        {
+            pictureBox1.ImageLocation = str;
+            pictureBox1.Visible = true;
+            msgBox.Visible = false;
+        }
 
+        public void SetLink(string str)
+        {
+            linkLabel1.Visible = true;
+            linkLabel1.Text = str;
+            link = "http://15.164.218.208/forDB/" + str;
+            msgBox.Visible = false;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(link);
+        }
     }
 }

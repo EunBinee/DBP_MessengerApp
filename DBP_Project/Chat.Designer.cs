@@ -86,6 +86,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "파일";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -171,6 +172,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Chat";
             this.Text = "Chat";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Chat_FormClosed_1);
             this.Load += new System.EventHandler(this.Chat_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

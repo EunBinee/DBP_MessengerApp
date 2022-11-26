@@ -16,6 +16,7 @@ namespace DBP_Project
     internal class Client
     {
         Socket conn_socket;
+        Socket photo_socket;
         int myPeer = 0;
         private static Client instance = new Client();
         private Client()
@@ -40,6 +41,15 @@ namespace DBP_Project
             MessageBox.Show("서버 접속 성공");
         }
 
+        public void PhotoConnect()
+        {
+            photo_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            photo_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9996));
+        }
+        public void PhotoClose()
+        {
+            photo_socket.Close();
+        }
         private void connect()
         {
             MessageBox.Show("듣는 중");
@@ -73,5 +83,17 @@ namespace DBP_Project
             // 데이터를 전송한다.
             conn_socket.Send(data);
         }
+        public void SendByte(byte[] _data)
+        {
+            photo_socket.Send(_data);
+        }
+        public void SendByte(string _data)
+        {
+            // 보낼 메시지를 UTF8타입의 byte 배열로 변환한다.
+            var data = Encoding.UTF8.GetBytes(_data);
+            photo_socket.Send(data);
+            photo_socket.Close();
+        }
+
     }
 }
