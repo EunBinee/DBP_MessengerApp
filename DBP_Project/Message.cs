@@ -67,7 +67,17 @@ namespace DBP_Project
 
         private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string str = this.msgBox.Text;
+            DataTable dt = Query.GetInstance().RunQuery("Select id from ChatMsg where data = '" + str + "'");
+            int chatID = Convert.ToInt32(dt.Rows[0][0]);
             this.Parent.Controls.Remove(this);
+            if(chat.notice_chat == chatID)
+            {
+                Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = " + 0 + " WHERE room_ID = " + chat.roomID + ";");
+                //chat.Controls.Remove();
+
+            }
+            Query.GetInstance().RunQuery("delete from ChatMsg where id = " + chatID + ";");
         }
 
         private void 공지ToolStripMenuItem_Click(object sender, EventArgs e)
