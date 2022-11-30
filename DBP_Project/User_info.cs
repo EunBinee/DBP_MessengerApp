@@ -273,6 +273,7 @@ namespace DBP_Project
             }
 
             //게터 세터
+
             public string ID
             {
                 get

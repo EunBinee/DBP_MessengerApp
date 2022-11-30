@@ -216,8 +216,11 @@ namespace DBP_Project
             //패널안에 있는 control들을 확인
             // 값이 비었는지 확인
             bool notEmpty = false;
+            bool Stop = false;
             foreach (Control control in flowLayoutPanel2.Controls)
             {
+                if (Stop)
+                    break;
                 if (control is Panel)
                 {
                     //만약 Panel이면
@@ -229,6 +232,7 @@ namespace DBP_Project
                             {
                                 //만약 하나라도 안적혀 있다면..
                                 notEmpty = false;
+                                Stop = true;
                                 break;
                             }
                             else

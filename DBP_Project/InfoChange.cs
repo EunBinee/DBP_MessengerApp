@@ -49,7 +49,6 @@ namespace DBP_Project
             if (notEmpty)  //빈칸이 없음
             {
 
-                MessageBox.Show("빈 칸이 없어요~.");
 
             }
             else
@@ -66,22 +65,27 @@ namespace DBP_Project
             //패널안에 있는 control들을 확인
             // 값이 비었는지 확인
             bool notEmpty = false;
+            bool Stop = false;
 
+            bool CheckBox_Pass = false ;
             foreach (Control control in flowLayoutPanel.Controls)
             {
+                if (Stop)
+                    break;
+
                 if (control is Panel)
                 {
                     //만약 Panel이면
                     foreach (Control contr in control.Controls)
                     {
+                        //텍스트 박스를 만난다면
                         if (contr is TextBox)
                         {
-                            MessageBox.Show(contr.Text);
-
                             if (contr.Text == "")
                             {
                                 //만약 하나라도 안적혀 있다면..
                                 notEmpty = false;
+                                Stop = true;
                                 break;
                             }
                             else
@@ -90,13 +94,38 @@ namespace DBP_Project
                             }
                         }
 
+                        //그룹 박스를 만난다면
                         if (contr is GroupBox)
                         {
-                            //만약에 그룹 박스라면.. 
                             foreach (Control controlGroupBox in contr.Controls)
                             {
+                                if(controlGroupBox is CheckBox)
+                                {
+                                    //만약 체크 박스가 체크가 되어있으면, 
+                                    if (checkBox_Password.Checked)
+                                        CheckBox_Pass = true;
+                                    else
+                                        CheckBox_Pass = false;
 
+                                }
 
+                                if (CheckBox_Pass)
+                                {
+                                    if (controlGroupBox is TextBox)
+                                    {
+                                        if (controlGroupBox.Text == "")
+                                        {
+                                            //만약 하나라도 안적혀 있다면..
+                                            notEmpty = false;
+                                            Stop = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            notEmpty = true;
+                                        }
+                                    }
+                                }
 
                             }
                         }
