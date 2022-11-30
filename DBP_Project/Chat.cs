@@ -80,7 +80,7 @@ namespace DBP_Project
         }
         public void SendJpg(string text, string time)
         {
-            Message msg = new Message();
+            Message msg = new Message(this,text);
             msg.SetData("", time);
             msg.SetMyMsg();
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
@@ -110,7 +110,7 @@ namespace DBP_Project
 
         private void DrawJpg(string text, string name, string time)
         {
-            Message msg = new Message();
+            Message msg = new Message(this,text);
             msg.SetData(name, time);
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
             flowLayoutPanel1.Controls.Add(msg);

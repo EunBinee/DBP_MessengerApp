@@ -130,17 +130,17 @@
   <data name="010" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\010.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="007" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="014" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="005" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\005.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="014" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\014.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="notice" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\notice.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="012" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="009" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="008" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\008.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,20 +148,23 @@
   <data name="002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="001" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="016" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\016.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Mokoko" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\Mokoko.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="009" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\009.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\003.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="001" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="007" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\007.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="015" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\015.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,7 +172,7 @@
   <data name="013" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\013.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="notice" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\notice.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="check" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\check.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

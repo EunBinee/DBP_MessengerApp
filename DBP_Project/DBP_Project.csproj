@@ -280,6 +280,9 @@
   <ItemGroup>
     <None Include="Resources\notice.JPG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.JPG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if exist "$(TargetPath).locked" del "$(TargetPath).locked"
