@@ -13,13 +13,12 @@ namespace DBP_Project
     public partial class Message : UserControl
     {
         private Chat chat;
-        public Message(Chat chat,string str)
         public string link;
         public Message()
         {
             InitializeComponent();
         }
-        public Message(string str, bool isFile = false)
+        public Message(Chat chat,string str, bool isFile = false)
         {
             InitializeComponent();
             this.chat = chat;
@@ -31,10 +30,7 @@ namespace DBP_Project
             if (isFile == true)
                 SetLink(str);
         }
-        public Message()
-        {
-            InitializeComponent();
-        }
+
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -76,10 +72,11 @@ namespace DBP_Project
 
         private void 공지ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            chat.notice_set(1,2);
-            // 룸넘버, 챗넘버 받아와서 공지로 등록
+            string str = this.msgBox.Text;
+            DataTable dt = Query.GetInstance().RunQuery("Select id from ChatMsg where data = '" + str + "'");
+            int chatID = Convert.ToInt32(dt.Rows[0][0]);
+            chat.notice_set(chatID);
             chat.notice_view();
-            //chat.notice_view(this.msgBox.Text);
         }
         public void SetData(string name, string time)
         {

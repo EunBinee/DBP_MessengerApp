@@ -89,7 +89,7 @@ namespace DBP_Project
         }
         private void SendMsg(string text, string time,bool isFile = false)
         {
-            Message msg = new Message(text,isFile);
+            Message msg = new Message(this,text,isFile);
             msg.SetMyMsg();
             msg.SetData("", time);
             msgInput.Text = "";
@@ -100,7 +100,7 @@ namespace DBP_Project
 
         private void DrawMsg(string text,string name, string time,bool isFile = false)
         {
-            Message msg = new Message(text,isFile);
+            Message msg = new Message(this,text,isFile);
             msg.SetData(name, time);
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
@@ -322,7 +322,7 @@ namespace DBP_Project
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + myID + "');");
             MessageBox.Show("FormClose");
         }
-        }
+        
 
         private void trackBar1_ValueChanged(object sender, EventArgs e)  //투명도
         {
@@ -345,7 +345,7 @@ namespace DBP_Project
                 this.Controls.Remove(notice);
             }
             string str = "";
-            DataTable dt = Query.GetInstance().RunQuery("SELECT data FROM talk.ChatMsg WHERE id = (SELECT notice FROM talk.ChatRoom WHERE room_ID = "+ 2 +");");  //나중에 룸번호 받아와서 수정
+            DataTable dt = Query.GetInstance().RunQuery("SELECT data FROM talk.ChatMsg WHERE id = (SELECT notice FROM talk.ChatRoom WHERE room_ID = "+ roomID +");");  //나중에 룸번호 받아와서 수정
             str = dt.Rows[0][0].ToString();
             notice.setText(str);
             this.Controls.Add(notice);
@@ -354,9 +354,10 @@ namespace DBP_Project
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
-        public void notice_set(int chatId,int roomId)
+
+        public void notice_set(int chatId)  //공지 설정
         {
-            Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = "+chatId+" WHERE room_ID = "+roomId+";");
+            Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = "+chatId+" WHERE room_ID = "+roomID+";");
         }
 
     }

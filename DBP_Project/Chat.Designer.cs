@@ -35,12 +35,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.Emptypanel4 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.Emptypanel4 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -129,6 +129,13 @@
             this.flowLayoutPanel1.TabIndex = 3;
             this.flowLayoutPanel1.WrapContents = false;
             // 
+            // Emptypanel4
+            // 
+            this.Emptypanel4.Location = new System.Drawing.Point(3, 3);
+            this.Emptypanel4.Name = "Emptypanel4";
+            this.Emptypanel4.Size = new System.Drawing.Size(534, 110);
+            this.Emptypanel4.TabIndex = 0;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -150,7 +157,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(74, 46);
             this.button1.TabIndex = 3;
-            this.button1.Text = "설정";
+            this.button1.Text = "고정";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -186,13 +193,6 @@
             this.trackBar1.TabIndex = 0;
             this.trackBar1.Value = 100;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
-            // 
-            // Emptypanel4
-            // 
-            this.Emptypanel4.Location = new System.Drawing.Point(3, 3);
-            this.Emptypanel4.Name = "Emptypanel4";
-            this.Emptypanel4.Size = new System.Drawing.Size(534, 110);
-            this.Emptypanel4.TabIndex = 0;
             // 
             // Chat
             // 
