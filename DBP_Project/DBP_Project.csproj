@@ -160,7 +160,6 @@
     <Compile Include="UserManagerForm.Designer.cs">
       <DependentUpon>UserManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_info.cs" />
     <EmbeddedResource Include="ChatPanel.resx">
       <DependentUpon>ChatPanel.cs</DependentUpon>
     </EmbeddedResource>

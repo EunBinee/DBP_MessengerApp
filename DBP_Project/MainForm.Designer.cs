@@ -47,14 +47,12 @@ namespace DBP_Project
             this.toManagerForm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.MainFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-        
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.Move_Admin);
             this.panel1.Controls.Add(this.button2);
@@ -161,7 +159,6 @@ namespace DBP_Project
             this.label3.Size = new System.Drawing.Size(125, 15);
             this.label3.TabIndex = 1;
             this.label3.Text = "Some User Text Here";
-
             // 
             // label2
             // 
@@ -193,6 +190,7 @@ namespace DBP_Project
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button6
             // 
@@ -255,7 +253,6 @@ namespace DBP_Project
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.MainFormPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

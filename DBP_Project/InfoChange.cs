@@ -21,12 +21,14 @@ namespace DBP_Project
             GetUserInfo();
         }
 
-        //회원의 정보를 TEXTBOX에 넣어준다.
+        //처음 시작시 ==> 회원의 정보를 TEXTBOX에 넣어준다.
         public void GetUserInfo()
         {
-            textBox_Name.Text = User_info.GetInstance().Name;
-            textBox_NickName.Text = User_info.GetInstance().NickName;
-            textBox_Number.Text = User_info.GetInstance().ID;
+
+
+            textBox_name.Text = User_info.GetInstance().Name;
+            textBox_nickname.Text = User_info.GetInstance().NickName;
+            textBox_number.Text = User_info.GetInstance().ID;
 
             //비번은 패스
 
@@ -38,35 +40,77 @@ namespace DBP_Project
 
 
 
-        private void button_PasswordCheck_Click(object sender, EventArgs e)
+        //정보변경
+        private void ChangeInfo_Btn_Click(object sender, EventArgs e)
         {
-            //비밀 번호 변경시 현재 비밀 번호가 맞는지 확인
-            SignUp signUp = new SignUp();
 
-            string result = Sha265.GetInstance().SHA256_password(textBox_curPassword.Text);
+            bool notEmpty = ForeachPanelControls();
 
-            string cur_Password = User_info.GetInstance().Password;
-
-            if (cur_Password == result)
+            if (notEmpty)  //빈칸이 없음
             {
-                //현재 비밀번호가 맞다면?
-                label_passwordRight.Text = "비밀번호가 맞습니다.";
-                textBox_Password.BackColor = SystemColors.Window;
-                textBox_Password.Enabled = true;
-                textBox_Password_re.BackColor = SystemColors.Window;
-                textBox_Password_re.Enabled = true;
+
+                MessageBox.Show("빈 칸이 없어요~.");
+
             }
             else
             {
-                label_passwordRight.Text = "비밀번호가 틀립니다.";
+                //빈 칸이 있음
+                MessageBox.Show("빈 칸이 있습니다. 빈 칸을 채워주세요.");
             }
+
         }
 
-        private void checkBox_ChangePassword_CheckedChanged(object sender, EventArgs e)
+        //회원가입할때 덜 적은 TextBox와 ComboBox가 있는지 확인
+        public bool ForeachPanelControls()
         {
-            //비밀번호를 바꿀지 여부
+            //패널안에 있는 control들을 확인
+            // 값이 비었는지 확인
+            bool notEmpty = false;
 
-            if(checkBox_ChangePassword.Checked)
+            foreach (Control control in flowLayoutPanel.Controls)
+            {
+                if (control is Panel)
+                {
+                    //만약 Panel이면
+                    foreach (Control contr in control.Controls)
+                    {
+                        if (contr is TextBox)
+                        {
+                            MessageBox.Show(contr.Text);
+
+                            if (contr.Text == "")
+                            {
+                                //만약 하나라도 안적혀 있다면..
+                                notEmpty = false;
+                                break;
+                            }
+                            else
+                            {
+                                notEmpty = true;
+                            }
+                        }
+
+                        if (contr is GroupBox)
+                        {
+                            //만약에 그룹 박스라면.. 
+                            foreach (Control controlGroupBox in contr.Controls)
+                            {
+
+
+
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            return notEmpty;
+        }
+
+        //비밀번호를 바꿀지 여부 (체크박스)
+        private void checkBox_Password_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_Password.Checked)
             {
                 //체크됐으면
                 textBox_curPassword.Enabled = true;
@@ -78,14 +122,40 @@ namespace DBP_Project
                 textBox_curPassword.BackColor = SystemColors.ControlLight;
                 textBox_curPassword.Enabled = false;
 
-                textBox_Password.Text = "";
-                textBox_Password.BackColor = SystemColors.ControlLight;
-                textBox_Password.Enabled = false;
+                textBox_ChangePass.Text = "";
+                textBox_ChangePass.BackColor = SystemColors.ControlLight;
+                textBox_ChangePass.Enabled = false;
 
-                textBox_Password_re.Text = "";
-                textBox_Password_re.BackColor = SystemColors.ControlLight;
-                textBox_Password_re.Enabled = false;
+                textBox_ChangePass_re.Text = "";
+                textBox_ChangePass_re.BackColor = SystemColors.ControlLight;
+                textBox_ChangePass_re.Enabled = false;
             }
         }
+
+        //비밀 번호 변경시 현재 비밀 번호가 맞는지 확인
+        private void passwordCheck_Btn_Click(object sender, EventArgs e)
+        {
+            SignUp signUp = new SignUp();
+
+            string result = Sha265.GetInstance().SHA256_password(textBox_curPassword.Text);
+
+            string cur_Password = User_info.GetInstance().Password;
+
+            if (cur_Password == result)
+            {
+                //현재 비밀번호가 맞다면?
+                label_passwordRight.Text = "비밀번호가 맞습니다.";
+                textBox_ChangePass.BackColor = SystemColors.Window;
+                textBox_ChangePass.Enabled = true;
+                textBox_ChangePass_re.BackColor = SystemColors.Window;
+                textBox_ChangePass_re.Enabled = true;
+            }
+            else
+            {
+                label_passwordRight.Text = "비밀번호가 틀립니다.";
+            }
+        }
+
+
     }
 }
