@@ -60,13 +60,13 @@ namespace DBP_Project
                 // 데이터를 수신한다.
                 conn_socket.Receive(data, data.Length, SocketFlags.None);
                 // 수신된 데이터를 UTF8인코딩으로 string 타입으로 변환 후에 콘솔에 출력한다.
-                MessageBox.Show("카톡이 왔습니다.\n" + Encoding.UTF8.GetString(data));
 
                 if(Chat.instance.InvokeRequired)
                 {
                     // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
                     Chat.instance.BeginInvoke(new Action(() => Chat.instance.RecieveMsg()));
                 }
+                MessageBox.Show("카톡이 왔습니다.\n" + Encoding.UTF8.GetString(data));
             }
         }
 
