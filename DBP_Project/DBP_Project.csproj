@@ -155,9 +155,6 @@
       <DependentUpon>UserManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="User_info.cs" />
-    <EmbeddedResource Include="Chat.resx">
-      <DependentUpon>Chat.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ChatPanel.resx">
       <DependentUpon>ChatPanel.cs</DependentUpon>
     </EmbeddedResource>
