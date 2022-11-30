@@ -12,8 +12,13 @@ namespace DBP_Project
 {
     public partial class ChatPanel : UserControl
     {
-        public ChatPanel()
+        private string loginUser;
+        private string targetId;
+        private string roomId;
+        public ChatPanel(string loginUser, string targetId)
         {
+            this.loginUser = loginUser;
+            this.targetId = targetId;
             InitializeComponent();
         }
 
@@ -22,12 +27,17 @@ namespace DBP_Project
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ChatPanel_Load(object sender, EventArgs e)
         {
-
+               
+        }
+        
+        private void ChatPanel_Click(object sender, EventArgs e)
+        {
+            //클릭시 채팅방 오픈
         }
 
-        private void ChatPanel_Load(object sender, EventArgs e)
+        private void LastChat_Click(object sender, EventArgs e)
         {
 
         }
