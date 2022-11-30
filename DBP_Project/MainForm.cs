@@ -137,6 +137,12 @@ namespace DBP_Project
             toUserMangerForm.Show();
             toManagerForm.Hide();
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            InfoChange infoChange = new InfoChange();
+            infoChange.ShowDialog();
+        }
         // private void adminBtn_Click(object sender, EventArgs e)
         // {
         //     tf.Hide();

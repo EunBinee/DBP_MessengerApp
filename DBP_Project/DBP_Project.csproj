@@ -144,7 +144,6 @@
     <Compile Include="SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_info.cs" />
     <EmbeddedResource Include="Address.resx">
       <DependentUpon>Address.cs</DependentUpon>
     </EmbeddedResource>

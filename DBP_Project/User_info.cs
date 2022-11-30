@@ -242,7 +242,9 @@ namespace DBP_Project
 
                 //부서 확인-----------------------------------------------------------------------------------------------------------------------------------------------
                 string query_ = "SELECT * FROM talk.UserDepartment WHERE `userId`='" + em_Id + "'";
-                MessageBox.Show(query_);
+                
+                //MessageBox.Show(query_);
+                
                 DataTable dt_depart = new DataTable();
                 dt_depart = Query.GetInstance().RunQuery(query_);
 

@@ -27,7 +27,6 @@ namespace DBP_Project
             this.Close();
         }
 
-
         //로그인 버튼
         private void button_LogIn_Click(object sender, EventArgs e)
         {
@@ -124,12 +123,12 @@ namespace DBP_Project
             dt_depart = Query.GetInstance().RunQuery(query);
             User_info.GetInstance().GetWorkerInfo();
 
-
+            /*
             for(int i = 0 ; i < User_info.GetInstance().employees.Count; i++)
             {
                 MessageBox.Show(User_info.GetInstance().employees[i].ID + ",    " + User_info.GetInstance().employees[i].Name + ",    " + User_info.GetInstance().employees[i].Team + ",    " + User_info.GetInstance().employees[i].NickName);
             }
-
+            */
 
         }
         
