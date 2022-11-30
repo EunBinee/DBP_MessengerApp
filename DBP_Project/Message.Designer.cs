@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             this.sendTimeLabel = new System.Windows.Forms.Label();
-            this.msgBox = new System.Windows.Forms.RichTextBox();
+            this.msgBox = new System.Windows.Forms.Label();
             this.backPanel = new System.Windows.Forms.Panel();
             this.senderName = new System.Windows.Forms.Label();
             this.senderImg = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.backPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.senderImg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sendTimeLabel
@@ -51,16 +54,11 @@
             // 
             this.msgBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.msgBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.msgBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.msgBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.msgBox.DetectUrls = false;
             this.msgBox.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.msgBox.HideSelection = false;
-            this.msgBox.Location = new System.Drawing.Point(3, 3);
+            this.msgBox.Location = new System.Drawing.Point(2, 2);
             this.msgBox.Name = "msgBox";
-            this.msgBox.ReadOnly = true;
-            this.msgBox.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.msgBox.Size = new System.Drawing.Size(239, 33);
+            this.msgBox.Size = new System.Drawing.Size(240, 240);
             this.msgBox.TabIndex = 2;
             this.msgBox.Text = "안녕하세요";
             // 
@@ -68,10 +66,12 @@
             // 
             this.backPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.backPanel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.backPanel.Controls.Add(this.linkLabel1);
             this.backPanel.Controls.Add(this.msgBox);
+            this.backPanel.Controls.Add(this.pictureBox1);
             this.backPanel.Location = new System.Drawing.Point(85, 36);
             this.backPanel.Name = "backPanel";
-            this.backPanel.Size = new System.Drawing.Size(245, 38);
+            this.backPanel.Size = new System.Drawing.Size(245, 243);
             this.backPanel.TabIndex = 4;
             // 
             // senderName
@@ -94,19 +94,45 @@
             this.senderImg.TabIndex = 0;
             this.senderImg.TabStop = false;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pictureBox1.Enabled = false;
+            this.pictureBox1.Location = new System.Drawing.Point(2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(240, 240);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(3, 2);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(61, 12);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkLabel1";
+            this.linkLabel1.Visible = false;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // Message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.backPanel);
             this.Controls.Add(this.sendTimeLabel);
             this.Controls.Add(this.senderName);
             this.Controls.Add(this.senderImg);
+            this.Controls.Add(this.backPanel);
             this.Name = "Message";
-            this.Size = new System.Drawing.Size(360, 98);
+            this.Size = new System.Drawing.Size(360, 303);
             this.Load += new System.EventHandler(this.Message_Load);
             this.backPanel.ResumeLayout(false);
+            this.backPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.senderImg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,9 +140,11 @@
 
         #endregion
         private System.Windows.Forms.Label sendTimeLabel;
-        private System.Windows.Forms.RichTextBox msgBox;
+        private System.Windows.Forms.Label msgBox;
         private System.Windows.Forms.Panel backPanel;
         private System.Windows.Forms.Label senderName;
         private System.Windows.Forms.PictureBox senderImg;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

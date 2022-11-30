@@ -86,6 +86,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "파일";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -95,6 +96,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "사진";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -165,11 +167,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(378, 705);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "Chat";
             this.Text = "Chat";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Chat_FormClosed_1);
             this.Load += new System.EventHandler(this.Chat_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
