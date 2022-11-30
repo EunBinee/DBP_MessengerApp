@@ -14,6 +14,8 @@ namespace DBP_Project
     {
         TestTreeForm tf = new TestTreeForm();
         TestChatForm cf = new TestChatForm();
+        UserManagerForm userManagerForm = new UserManagerForm();
+        ManagerForm managerForm = new ManagerForm();
 
         public MainForm()
         {
@@ -63,18 +65,40 @@ namespace DBP_Project
             this.Controls.Add(cf);
             cf.StartPosition = FormStartPosition.Manual;
             cf.Location = new Point(230, 50);
+
+
+            managerForm.TopLevel = false;
+            managerForm.Show();
+            this.Controls.Add(managerForm);
+            managerForm.StartPosition = FormStartPosition.Manual;
+            managerForm.Location = new Point(230, 50);
+
+            userManagerForm.TopLevel = false;
+            userManagerForm.Show();
+            this.Controls.Add(userManagerForm);
+            userManagerForm.StartPosition = FormStartPosition.Manual;
+            userManagerForm.Location = new Point(230, 50);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             cf.Hide();
+            managerForm.Hide();
+            userManagerForm.Hide();
             tf.Show();
+            toUserMangerForm.Hide();
+            toManagerForm.Hide();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             tf.Hide();
+            managerForm.Hide();
+            userManagerForm.Hide();
             cf.Show();
+            toUserMangerForm.Hide();
+            toManagerForm.Hide();
         }
 
         private void Button_UserInfo_Change_Click(object sender, EventArgs e)
@@ -84,5 +108,45 @@ namespace DBP_Project
             InfoChange userInfoChange = new InfoChange();
             userInfoChange.ShowDialog();
         }
+        private void Move_Admin_Click(object sender, EventArgs e)
+        {
+            tf.Hide();
+            cf.Hide();
+            userManagerForm.Hide();
+            managerForm.Show();
+            toUserMangerForm.Show();
+            toManagerForm.Hide();
+            // this.Visible = false;
+            // ManagerForm ShowmanagerForm = new ManagerForm();
+            // ShowmanagerForm.ShowDialog();
+        }
+
+
+        private void toUserMangerForm_Click(object sender, EventArgs e)
+        {
+            managerForm.Hide();
+            userManagerForm.Show();
+            toUserMangerForm.Hide();
+            toManagerForm.Show();
+        }
+
+        private void toManagerForm_Click(object sender, EventArgs e)
+        {
+            userManagerForm.Hide();
+            managerForm.Show();
+            toUserMangerForm.Show();
+            toManagerForm.Hide();
+        }
+        // private void adminBtn_Click(object sender, EventArgs e)
+        // {
+        //     tf.Hide();
+        //     cf.Hide();
+
+        //     userManagerForm.TopLevel = false;
+        //     userManagerForm.Show();
+        //     this.Controls.Add(userManagerForm);
+        //     userManagerForm.StartPosition = FormStartPosition.Manual;
+        //     userManagerForm.Location = new Point(230, 35);
+        // }
     }
 }
