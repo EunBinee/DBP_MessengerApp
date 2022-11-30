@@ -18,10 +18,16 @@ namespace DBP_Project
         private static string yourID = "test";
         public string roomID = "2";
         public static Chat instance;
+        public Notice notice = new Notice();
         public Chat()
         {
             instance = this;
             InitializeComponent();
+            if (true)   //공지가 있으면
+            {
+                notice_view();
+                //notice_view("ㅂㅈㄷㄳㄴㄿㄴㅇ롤ㅇ솣ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ퓬1ㅇㅎㅇㄴㄹㅊㅇ낳론ㅍㅊ1인롱니ㅕㅇ뉴ㅗㅡ5ㅍ엃ㄴ아ㅓㅘㅣ너ㅏ5ㄴ어퓨ㅣㄴㅇ");
+            }
         }
 
         private void Chat_Load(object sender, EventArgs e)
@@ -316,5 +322,42 @@ namespace DBP_Project
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + myID + "');");
             MessageBox.Show("FormClose");
         }
+        }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)  //투명도
+        {
+            this.Opacity = (trackBar1.Value) * 0.01;
+        }
+
+        private void button1_Click(object sender, EventArgs e)  //채팅방 z-index 고정
+        {
+            if (this.TopMost)
+                this.TopMost = false;
+            else
+                this.TopMost = true;
+
+        }
+
+        public void notice_view()  //공지 보기
+        {
+            if (this.Controls.Contains(notice) )
+            {
+                this.Controls.Remove(notice);
+            }
+            string str = "";
+            DataTable dt = Query.GetInstance().RunQuery("SELECT data FROM talk.ChatMsg WHERE id = (SELECT notice FROM talk.ChatRoom WHERE room_ID = "+ 2 +");");  //나중에 룸번호 받아와서 수정
+            str = dt.Rows[0][0].ToString();
+            notice.setText(str);
+            this.Controls.Add(notice);
+            notice.Location = flowLayoutPanel1.Location;
+            notice.BringToFront();
+
+            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+        }
+        public void notice_set(int chatId,int roomId)
+        {
+            Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = "+chatId+" WHERE room_ID = "+roomId+";");
+        }
+
     }
 }

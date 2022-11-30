@@ -12,6 +12,8 @@ namespace DBP_Project
 {
     public partial class Message : UserControl
     {
+        private Chat chat;
+        public Message(Chat chat,string str)
         public string link;
         public Message()
         {
@@ -20,6 +22,7 @@ namespace DBP_Project
         public Message(string str, bool isFile = false)
         {
             InitializeComponent();
+            this.chat = chat;
             this.msgBox.Text = str;
             this.msgBox.AutoSize = true;
             this.msgBox.MaximumSize = new Size(240, 0);
@@ -27,6 +30,10 @@ namespace DBP_Project
 
             if (isFile == true)
                 SetLink(str);
+        }
+        public Message()
+        {
+            InitializeComponent();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -60,6 +67,19 @@ namespace DBP_Project
             msgBox.BackColor = SystemColors.Info;
             backPanel.BackColor = SystemColors.Info;
 
+        }
+
+        private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Parent.Controls.Remove(this);
+        }
+
+        private void 공지ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chat.notice_set(1,2);
+            // 룸넘버, 챗넘버 받아와서 공지로 등록
+            chat.notice_view();
+            //chat.notice_view(this.msgBox.Text);
         }
         public void SetData(string name, string time)
         {

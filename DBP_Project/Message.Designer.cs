@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.sendTimeLabel = new System.Windows.Forms.Label();
             this.msgBox = new System.Windows.Forms.Label();
             this.backPanel = new System.Windows.Forms.Panel();
@@ -35,9 +36,13 @@
             this.senderImg = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.삭제ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.공지ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.senderImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // sendTimeLabel
@@ -118,10 +123,35 @@
             this.linkLabel1.Visible = false;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.삭제ToolStripMenuItem,
+            this.공지ToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(241, 101);
+            // 
+            // 삭제ToolStripMenuItem
+            // 
+            this.삭제ToolStripMenuItem.Name = "삭제ToolStripMenuItem";
+            this.삭제ToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.삭제ToolStripMenuItem.Text = "삭제";
+            this.삭제ToolStripMenuItem.Click += new System.EventHandler(this.삭제ToolStripMenuItem_Click);
+            // 
+            // 공지ToolStripMenuItem
+            // 
+            this.공지ToolStripMenuItem.Name = "공지ToolStripMenuItem";
+            this.공지ToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.공지ToolStripMenuItem.Text = "공지";
+            this.공지ToolStripMenuItem.Click += new System.EventHandler(this.공지ToolStripMenuItem_Click);
+            // 
             // Message
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Controls.Add(this.backPanel);
             this.Controls.Add(this.sendTimeLabel);
             this.Controls.Add(this.senderName);
             this.Controls.Add(this.senderImg);
@@ -133,6 +163,7 @@
             this.backPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.senderImg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +177,8 @@
         private System.Windows.Forms.PictureBox senderImg;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 삭제ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 공지ToolStripMenuItem;
     }
 }
