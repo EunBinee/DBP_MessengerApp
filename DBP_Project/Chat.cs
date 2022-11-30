@@ -20,6 +20,7 @@ namespace DBP_Project
         public static Chat instance;
         public Notice notice = new Notice();
         public int notice_chat = 0;
+        List<Message> messages = new List<Message>(); 
         public Chat()
         {
             instance = this;
@@ -84,6 +85,7 @@ namespace DBP_Project
             msg.SetData("", time);
             msg.SetMyMsg();
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
+            messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
@@ -94,6 +96,8 @@ namespace DBP_Project
             Message msg = new Message(this,text,isFile);
             msg.SetMyMsg();
             msg.SetData("", time);
+
+            messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
@@ -104,6 +108,8 @@ namespace DBP_Project
         {
             Message msg = new Message(this,text,isFile);
             msg.SetData(name, time);
+
+            messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
         }
@@ -113,6 +119,8 @@ namespace DBP_Project
             Message msg = new Message(this,text);
             msg.SetData(name, time);
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
+
+            messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
         }
@@ -144,6 +152,11 @@ namespace DBP_Project
                 }
                 else
                     DrawMsg(text, id, time);
+            }
+
+            for(int i = 0; i < messages.Count; i++)
+            {
+                messages[i].SetRead();
             }
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
