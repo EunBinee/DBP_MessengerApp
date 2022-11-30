@@ -61,8 +61,10 @@ namespace DBP_Project
 
         private void 공지ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            chat.notice_set(1,2);
             // 룸넘버, 챗넘버 받아와서 공지로 등록
-            chat.notice_view(this.msgBox.Text);
+            chat.notice_view();
+            //chat.notice_view(this.msgBox.Text);
         }
         public void SetData(string name, string time)
         {

@@ -23,7 +23,8 @@ namespace DBP_Project
             InitializeComponent();
             if (true)   //공지가 있으면
             {
-                notice_view("ㅂㅈㄷㄳㄴㄿㄴㅇ롤ㅇ솣ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ퓬1ㅇㅎㅇㄴㄹㅊㅇ낳론ㅍㅊ1인롱니ㅕㅇ뉴ㅗㅡ5ㅍ엃ㄴ아ㅓㅘㅣ너ㅏ5ㄴ어퓨ㅣㄴㅇ");
+                notice_view();
+                //notice_view("ㅂㅈㄷㄳㄴㄿㄴㅇ롤ㅇ솣ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ퓬1ㅇㅎㅇㄴㄹㅊㅇ낳론ㅍㅊ1인롱니ㅕㅇ뉴ㅗㅡ5ㅍ엃ㄴ아ㅓㅘㅣ너ㅏ5ㄴ어퓨ㅣㄴㅇ");
             }
         }
 
@@ -153,12 +154,15 @@ namespace DBP_Project
 
         }
 
-        public void notice_view(string str)  //공지 보기
+        public void notice_view()  //공지 보기
         {
             if (this.Controls.Contains(notice) )
             {
                 this.Controls.Remove(notice);
             }
+            string str = "";
+            DataTable dt = Query.GetInstance().RunQuery("SELECT data FROM talk.ChatMsg WHERE id = (SELECT notice FROM talk.ChatRoom WHERE room_ID = "+ 2 +");");  //나중에 룸번호 받아와서 수정
+            str = dt.Rows[0][0].ToString();
             notice.setText(str);
             this.Controls.Add(notice);
             notice.Location = flowLayoutPanel1.Location;
@@ -166,5 +170,10 @@ namespace DBP_Project
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
+        public void notice_set(int chatId,int roomId)
+        {
+            Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = "+chatId+" WHERE room_ID = "+roomId+";");
+        }
+
     }
 }
