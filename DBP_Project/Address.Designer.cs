@@ -35,7 +35,7 @@ namespace DBP_Project
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(592, 610);
             this.Name = "Address";
             this.Text = "Address";
             this.Load += new System.EventHandler(this.Address_Load);

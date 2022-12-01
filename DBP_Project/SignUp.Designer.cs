@@ -162,9 +162,9 @@
             // 
             this.button_addressButton.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_addressButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.button_addressButton.Location = new System.Drawing.Point(246, 28);
+            this.button_addressButton.Location = new System.Drawing.Point(248, 20);
             this.button_addressButton.Name = "button_addressButton";
-            this.button_addressButton.Size = new System.Drawing.Size(85, 25);
+            this.button_addressButton.Size = new System.Drawing.Size(85, 36);
             this.button_addressButton.TabIndex = 11;
             this.button_addressButton.Text = "우편번호";
             this.button_addressButton.UseVisualStyleBackColor = true;
@@ -412,7 +412,6 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(402, 187);
             this.panel5.TabIndex = 3;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // panel6
             // 
