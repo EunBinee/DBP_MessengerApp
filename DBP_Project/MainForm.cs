@@ -78,6 +78,17 @@ namespace DBP_Project
             this.Controls.Add(userManagerForm);
             userManagerForm.StartPosition = FormStartPosition.Manual;
             userManagerForm.Location = new Point(230, 50);
+
+            // 사진 읽기
+            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + User_info.GetInstance().ID + "'";
+            DataTable dt = Query.GetInstance().RunQuery(query);
+            string filename = dt.Rows[0][0].ToString();
+
+            if (filename != "")
+            {
+                pictureBox1.ImageLocation = "http://15.164.218.208/forDB/" + filename;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
