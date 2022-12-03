@@ -82,8 +82,7 @@ namespace DBP_Project
 
                 //string query = "SELECT `nickName` FROM talk.UserListTable WHERE `peer` = '"+peer+"';";
                 //DataTable dt = Query.GetInstance().RunQuery(query);
-
-                MessageBox.Show("메세지가 왔습니다."); // dt.Rows[0][0] + "로 부터
+                new Thread(() => { MessageBox.Show("메세지가 왔습니다."); }).Start(); // dt.Rows[0][0] + "로 부터
             }
         }
 

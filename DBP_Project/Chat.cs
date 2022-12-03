@@ -119,6 +119,7 @@ namespace DBP_Project
         {
             Message msg = new Message(this,text,isFile);
             msg.SetData(name, time);
+            msg.SetSenderImg(yourID);
 
             messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
