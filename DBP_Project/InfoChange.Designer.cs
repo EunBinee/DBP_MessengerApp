@@ -34,7 +34,6 @@ namespace DBP_Project
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.photoRegis_Btn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@ namespace DBP_Project
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label_Password = new System.Windows.Forms.Label();
             this.checkBox_Password = new System.Windows.Forms.CheckBox();
             this.textBox_curPassword = new System.Windows.Forms.TextBox();
             this.label_passwordRight = new System.Windows.Forms.Label();
@@ -68,21 +68,19 @@ namespace DBP_Project
             this.panel6 = new System.Windows.Forms.Panel();
             this.ChangeInfo_Btn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label_Password = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -132,16 +130,6 @@ namespace DBP_Project
             this.panel2.Size = new System.Drawing.Size(402, 201);
             this.panel2.TabIndex = 7;
             // 
-            // pictureBox
-            // 
-            this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-            this.pictureBox.Location = new System.Drawing.Point(115, 26);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox.TabIndex = 1;
-            this.pictureBox.TabStop = false;
-            // 
             // photoRegis_Btn
             // 
             this.photoRegis_Btn.BackColor = System.Drawing.SystemColors.Window;
@@ -152,8 +140,7 @@ namespace DBP_Project
             this.photoRegis_Btn.Size = new System.Drawing.Size(60, 39);
             this.photoRegis_Btn.TabIndex = 2;
             this.photoRegis_Btn.Text = "등록";
-            this.photoRegis_Btn.UseVisualStyleBackColor = false;
-            // 
+            this.photoRegis_Btn.UseVisualStyleBackColor = false;            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -285,6 +272,15 @@ namespace DBP_Project
             this.groupBox3.Size = new System.Drawing.Size(360, 254);
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
+            // 
+            // label_Password
+            // 
+            this.label_Password.AutoSize = true;
+            this.label_Password.ForeColor = System.Drawing.Color.Red;
+            this.label_Password.Location = new System.Drawing.Point(105, 220);
+            this.label_Password.Name = "label_Password";
+            this.label_Password.Size = new System.Drawing.Size(0, 15);
+            this.label_Password.TabIndex = 33;
             // 
             // checkBox_Password
             // 
@@ -483,30 +479,12 @@ namespace DBP_Project
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel7.Controls.Add(this.button1);
             this.panel7.Controls.Add(this.label2);
-            this.panel7.Controls.Add(this.groupBox1);
             this.panel7.Location = new System.Drawing.Point(3, 1038);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(402, 497);
+            this.panel7.Size = new System.Drawing.Size(402, 199);
             this.panel7.TabIndex = 14;
-            // 
-            // label_Password
-            // 
-            this.label_Password.AutoSize = true;
-            this.label_Password.ForeColor = System.Drawing.Color.Red;
-            this.label_Password.Location = new System.Drawing.Point(105, 220);
-            this.label_Password.Name = "label_Password";
-            this.label_Password.Size = new System.Drawing.Size(0, 15);
-            this.label_Password.TabIndex = 33;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Location = new System.Drawing.Point(20, 72);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 398);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
             // 
             // label2
             // 
@@ -518,15 +496,25 @@ namespace DBP_Project
             this.label2.TabIndex = 19;
             this.label2.Text = "멀티 프로필";
             // 
-            // checkBox1
+            // pictureBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(31, 42);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(139, 19);
-            this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "멀티프로필 변경";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
+            this.pictureBox.Location = new System.Drawing.Point(115, 26);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 1;
+            this.pictureBox.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(19, 79);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(361, 80);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "멀티프로필 변경하러 가기";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // InfoChange
             // 
@@ -541,7 +529,6 @@ namespace DBP_Project
             this.panel1.PerformLayout();
             this.flowLayoutPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -553,8 +540,7 @@ namespace DBP_Project
             this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -600,7 +586,6 @@ namespace DBP_Project
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label_Password;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button button1;
     }
 }

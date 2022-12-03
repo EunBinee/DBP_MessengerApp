@@ -12,21 +12,7 @@ namespace DBP_Project
     {
         // 로그인을 한 유저의 정보를 모아둔 클래스
         //싱글톤
-        private string id;
-        private string password;
-        private string name;
-        private string nickName;
-        private int role;     // 1 관리자, 2 사원
 
-        private string department;
-        private string team;
-        private string zipCode;
-        private string address;
-
-        private string profilePic;
-
-        //유저외의 다른 사원들을 저장한다. (관리자 미포함)
-        public List<Employee> employees = new List<Employee>();
         
         private static User_info instance = new User_info();
         //생성자
@@ -52,7 +38,29 @@ namespace DBP_Project
         {
             return instance;
         }
-        
+
+
+
+        private string id;
+        private string password;
+        private string name;
+        private string nickName;
+        private int role;     // 1 관리자, 2 사원
+
+        private string department;
+        private string team;
+        private string zipCode;
+        private string address;
+
+        private string profilePic;
+
+        //유저외의 다른 사원들을 저장한다. (관리자 미포함)
+        public List<Employee> employees = new List<Employee>();
+
+        //나의 멀티프로필을 저장
+        private MultiProfile_Class myMultiProfile;
+        public List<string> multiProfileEmployee = new List<string>();
+
         //편하게 쓰기위한.. 겟터와 세터..
         public string ID
         {
@@ -166,17 +174,30 @@ namespace DBP_Project
             }
         }
 
+        public MultiProfile_Class MyMultiProfile
+        {
+            get
+            {
+                return myMultiProfile;
+            }
+        }
 
+        public void SetMyMultiProfile(string myNickname, string myProfile)
+        {
+            myMultiProfile.NickName = myNickname;
+            myMultiProfile.ProfilePic = myProfile;
+        }
         //----------------------------------------------------------------------------------------------------------------------------------
+
+        //로그인할 때 모든 직원 정보를 읽어온다.
         public void GetWorkerInfo()
         {
             //사원의 정보를 불러옵니다.
             string query = "";
             
             //1. 멀티프로필 확인.----------------------------------------------------------------------------------------------------
-            List<MultiProfile> multiProfiles = new List<MultiProfile>();
+            List<MultiProfile_Class> multiProfiles = new List<MultiProfile_Class>();
 
-            //  SELECT* FROM talk.MultiProfile where `user_id` = '123';
             query= "SELECT* FROM talk.MultiProfile where `user_id` = '"+ id + "'";
             DataTable dt_Multi = new DataTable();
             dt_Multi = Query.GetInstance().RunQuery(query);
@@ -187,7 +208,7 @@ namespace DBP_Project
                 string Multi_nickName = row_Multi["nickname"].ToString();
                 string Multi_profile = row_Multi["profilePic"].ToString();
 
-                multiProfiles.Add(new MultiProfile(Multi_id, Multi_nickName, Multi_profile));
+                multiProfiles.Add(new MultiProfile_Class(Multi_id, Multi_nickName, Multi_profile));
             }
 
             //2. 값을 불러온다. 자기자신과 관리자는 빼고---------------------------------------------------------------------------
@@ -258,56 +279,31 @@ namespace DBP_Project
 
         }
 
-
-        class MultiProfile
+        //로그인할 때 나의 멀티프로필을 가지고 온다.
+        //1. 내가 설정한 프로필과 별명
+        //2. 내가 보여주기로 한 사람들의 리스트
+        public void GetMyMultiProfile()
         {
-            private string id;     //user(나 : 로그인한 사람)에게 멀티 프로필을 건 사람의 사원번호(id)
-            private string nickName;
-            private string profilePic;
+            string query = "SELECT * FROM talk.MultiProfile where doMultiProfile_Id = '" + id + "';";
 
-            public MultiProfile(string id, string nickName, string profilePic)
+            DataTable dt = new DataTable();
+            dt = Query.GetInstance().RunQuery(query);
+
+            string myProfile = "";
+            string myNickname = "";
+            foreach (DataRow row in dt.Rows)
             {
-                this.id = id;
-                this.nickName = nickName;
-                this.profilePic = profilePic;
+                myProfile = row["profilePic"].ToString();
+                myNickname = row["nickname"].ToString();
+                string user_id = row["user_id"].ToString();
+                multiProfileEmployee.Add(user_id);
             }
 
-            //게터 세터
-
-            public string ID
-            {
-                get
-                {
-                    return id;
-                }
-                set
-                {
-                    id = value;
-                }
-            }
-            public string NickName
-            {
-                get
-                {
-                    return nickName;
-                }
-                set
-                {
-                    nickName = value;
-                }
-            }
-            public string ProfilePic
-            {
-                get
-                {
-                    return profilePic;
-                }
-                set
-                {
-                    profilePic = value;
-                }
-            }
+            myMultiProfile = new MultiProfile_Class(id, myNickname, myProfile);
         }
+
+
+           
 
     }
 }

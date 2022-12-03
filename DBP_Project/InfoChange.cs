@@ -154,6 +154,8 @@ namespace DBP_Project
                                     else
                                         CheckBox_Pass = false;
 
+
+
                                 }
 
                                 if (CheckBox_Pass)
@@ -321,7 +323,9 @@ namespace DBP_Project
         }
 
 
+        private void button1_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }

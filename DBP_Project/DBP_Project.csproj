@@ -104,6 +104,13 @@
     <Compile Include="Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
+    <Compile Include="MultiProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiProfile.Designer.cs">
+      <DependentUpon>MultiProfile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MultiProfile_Class.cs" />
     <Compile Include="Query.cs" />
     <Compile Include="Sha265.cs" />
     <Compile Include="TestChatForm.cs">
@@ -174,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Message.resx">
       <DependentUpon>Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiProfile.resx">
+      <DependentUpon>MultiProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestChatForm.resx">
       <DependentUpon>TestChatForm.cs</DependentUpon>
