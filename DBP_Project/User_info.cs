@@ -257,7 +257,6 @@ namespace DBP_Project
 
                 employees.Add(new Employee(em_Id, em_Name, em_NickName, em_Department, em_Team, em_ProfilePic));
             }
-
         }
 
 

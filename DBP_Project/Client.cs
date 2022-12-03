@@ -18,6 +18,7 @@ namespace DBP_Project
         Socket conn_socket;
         Socket photo_socket;
         int myPeer = 0;
+        public List<Chat> chats = new List<Chat>();
         private static Client instance = new Client();
         private Client()
         {
@@ -37,8 +38,16 @@ namespace DBP_Project
             var data = new byte[1024];
             conn_socket.Receive(data, data.Length, SocketFlags.None);
             myPeer = Int32.Parse(Encoding.UTF8.GetString(data));
-            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '" + myPeer + "' WHERE (`id` = '"+Chat.myID+"');");
-            MessageBox.Show("서버 접속 성공");
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '" + myPeer + "' WHERE (`id` = '"+ User_info.GetInstance().ID +"');");
+        }
+
+        public void AddNewChatRoom(string yourID,string roomID)
+        {
+            Chat chat = new Chat();
+            chats.Add(chat);
+            chat.yourID = yourID;
+            chat.roomID = roomID;
+            chat.Show();
         }
 
         public void PhotoConnect()
@@ -52,7 +61,6 @@ namespace DBP_Project
         }
         private void connect()
         {
-            MessageBox.Show("듣는 중");
             while (true)
             {
                 // 데이터의 길이만큼 byte 배열을 생성한다.
@@ -61,12 +69,21 @@ namespace DBP_Project
                 conn_socket.Receive(data, data.Length, SocketFlags.None);
                 // 수신된 데이터를 UTF8인코딩으로 string 타입으로 변환 후에 콘솔에 출력한다.
 
-                if(Chat.instance.InvokeRequired)
+                string peer = Encoding.UTF8.GetString(data);
+
+                foreach (Chat chat in chats)
                 {
-                    // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
-                    Chat.instance.BeginInvoke(new Action(() => Chat.instance.RecieveMsg()));
+                    if (chat.InvokeRequired)
+                    {
+                        // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
+                        chat.BeginInvoke(new Action(() => chat.RecieveMsg(peer)));
+                    }
                 }
-                MessageBox.Show("카톡이 왔습니다.\n" + Encoding.UTF8.GetString(data));
+
+                //string query = "SELECT `nickName` FROM talk.UserListTable WHERE `peer` = '"+peer+"';";
+                //DataTable dt = Query.GetInstance().RunQuery(query);
+
+                MessageBox.Show("메세지가 왔습니다."); // dt.Rows[0][0] + "로 부터
             }
         }
 

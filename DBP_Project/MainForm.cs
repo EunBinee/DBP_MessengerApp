@@ -54,6 +54,7 @@ namespace DBP_Project
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            Client.GetInstance().StartListen();
             tf.TopLevel = false;
             tf.Show();
             this.Controls.Add(tf);
@@ -89,6 +90,8 @@ namespace DBP_Project
                 pictureBox1.ImageLocation = "http://15.164.218.208/forDB/" + filename;
                 pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             }
+
+            name_label.Text = User_info.GetInstance().Name;
         }
 
         private void button1_Click(object sender, EventArgs e)

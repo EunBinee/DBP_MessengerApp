@@ -14,10 +14,13 @@ namespace DBP_Project
     public partial class Chat : Form
     {
         // 내 ID와 상대의 ID
-        public static string myID = "cor";
-        private static string yourID = "test";
+        public string myID;
+        public string yourID;
         public string roomID = "2";
+        public int yourPeer = 0;
+
         public static Chat instance;
+
         public Notice notice = new Notice();
         public int notice_chat = 0;
         List<Message> messages = new List<Message>(); 
@@ -35,8 +38,16 @@ namespace DBP_Project
 
         private void Chat_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("대화내용을 불러옵니다.");
+            myID = User_info.GetInstance().ID;
+            DataTable dt = Query.GetInstance().RunQuery("SELECT peer from talk.UserListTable WHERE id = '" + yourID + "';");
+            yourPeer = Int32.Parse(dt.Rows[0][0].ToString());
+
+            //MessageBox.Show(yourPeer.ToString());
+            //MessageBox.Show("대화내용을 불러옵니다.");
             LoadChatByRoomId(roomID);
+
+
+
         }
 
         // 메세지 전송 버튼 클릭
@@ -126,11 +137,13 @@ namespace DBP_Project
         }
 
         // TCP를 통해 메세지를 받았을 때 호출
-        public void RecieveMsg()
+        public void RecieveMsg(string str)
         {
+            if ((str.Equals(yourPeer.ToString())))
+                return;
+
             // 송신자로부터 알림 받음
             DataTable dt = Query.GetInstance().RunQuery("SELECT `data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "' AND `read_check` = '1';");
-            //UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE (`id` = '14');
 
             // 상대가 전송한 메세지 폼에 그리기
             for (int i = 0; i < dt.Rows.Count; i++)
@@ -177,7 +190,7 @@ namespace DBP_Project
                 string time = dt.Rows[i][2].ToString();
                 string isImg = dt.Rows[i][3].ToString();
 
-                Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
+                Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
 
                 // 내가 보낸 메시제리면
                 if(myID == id)
@@ -334,8 +347,7 @@ namespace DBP_Project
 
         private void Chat_FormClosed_1(object sender, FormClosedEventArgs e)
         {
-            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + myID + "');");
-            MessageBox.Show("FormClose");
+            //Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + myID + "');");
         }
         
 

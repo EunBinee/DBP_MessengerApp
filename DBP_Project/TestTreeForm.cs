@@ -12,7 +12,7 @@ namespace DBP_Project
 {
     public partial class TestTreeForm : Form
     {
-        private string loginUser = "cor";
+        private string loginUser = User_info.GetInstance().ID;
         //public TreeView tv = new TreeView();
         Profil pf = null;
 
