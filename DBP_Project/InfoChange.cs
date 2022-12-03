@@ -64,7 +64,7 @@ namespace DBP_Project
                         {
                             // 4. 비밀번호 암호화 해서 저장
                             password = Sha265.GetInstance().SHA256_password(textBox_ChangePass.Text);  //암호화된 비밀번호
-                            MessageBox.Show(password);
+                           
 
                             string address = textBox_address2.Text + ", " + textBox_address3.Text;
 
@@ -322,10 +322,12 @@ namespace DBP_Project
             }
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        //멀티프로필 폼으로 이동.
+        private void button_multiProfile_Click(object sender, EventArgs e)
         {
+            MultiProfile multiProfileForm = new MultiProfile();
 
+            multiProfileForm.ShowDialog();
         }
     }
 }

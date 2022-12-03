@@ -125,10 +125,10 @@ namespace DBP_Project
             User_info.GetInstance().GetWorkerInfo();
             User_info.GetInstance().GetMyMultiProfile();
 
-            MessageBox.Show("나의 멀티 프로필 : " + User_info.GetInstance().MyMultiProfile.NickName);
+            /*MessageBox.Show("나의 멀티 프로필 : " + User_info.GetInstance().MyMultiProfile.NickName);
             MessageBox.Show("나의 멀티 프로필 : " + User_info.GetInstance().MyMultiProfile.ProfilePic);
             for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
-                MessageBox.Show("변경된 employee : " + User_info.GetInstance().employees[i].NickName);
+                MessageBox.Show("변경된 employee : " + User_info.GetInstance().employees[i].NickName);*/
         }
         
 
