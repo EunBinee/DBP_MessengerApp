@@ -13,10 +13,22 @@ namespace DBP_Project
     public partial class Message : UserControl
     {
         private Chat chat;
+        public int chatID;
+        public int chatType;
         public string link;
-        public Message()
+        public Message(Chat chat, string str)
         {
             InitializeComponent();
+            this.chat = chat;
+            this.msgBox.Text = str;
+            DataTable dt = Query.GetInstance().RunQuery("Select id,read_check,isImg from talk.ChatMsg where data = '" + this.msgBox.Text + "'");  // 채팅 id,읽음,타입
+            this.chatID = Convert.ToInt32(dt.Rows[0][0]);
+
+            if (Convert.ToInt32(dt.Rows[0][1]) == 0)
+            {
+                this.pictureBox2.Visible = true;
+            }
+            this.chatType = Convert.ToInt32(dt.Rows[0][2]);
         }
         public Message(Chat chat,string str, bool isFile = false)
         {
@@ -29,8 +41,21 @@ namespace DBP_Project
 
             if (isFile == true)
                 SetLink(str);
-        }
+            DataTable dt = Query.GetInstance().RunQuery("Select id,read_check,isImg from talk.ChatMsg where data = '" + this.msgBox.Text + "'");  // 채팅 id,읽음,타입
+            this.chatID = Convert.ToInt32(dt.Rows[0][0]);
 
+            if(Convert.ToInt32(dt.Rows[0][1]) == 0)
+            {
+                this.pictureBox2.Visible = true;
+            }
+            this.chatType = Convert.ToInt32(dt.Rows[0][2]);
+
+        }
+        
+        public void SetRead()
+        {
+            this.pictureBox2.Visible = true;
+        }
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -67,14 +92,26 @@ namespace DBP_Project
 
         private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string str = this.msgBox.Text;
+            DataTable dt = Query.GetInstance().RunQuery("Select id from talk.ChatMsg where data = '" + str + "'");
+            int chatID = Convert.ToInt32(dt.Rows[0][0]);
             this.Parent.Controls.Remove(this);
+            if(chat.notice_chat == chatID)
+            {
+                Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = " + 0 + " WHERE room_ID = " + chat.roomID + ";");
+                //chat.Controls.Remove();
+
+            }
+            Query.GetInstance().RunQuery("delete from talk.ChatMsg where id = " + chatID + ";");
         }
 
         private void 공지ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(this.chatType != 0)
+            {
+                return;
+            }
             string str = this.msgBox.Text;
-            DataTable dt = Query.GetInstance().RunQuery("Select id from ChatMsg where data = '" + str + "'");
-            int chatID = Convert.ToInt32(dt.Rows[0][0]);
             chat.notice_set(chatID);
             chat.notice_view();
         }

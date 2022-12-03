@@ -19,14 +19,17 @@ namespace DBP_Project
         public string roomID = "2";
         public static Chat instance;
         public Notice notice = new Notice();
+        public int notice_chat = 0;
+        List<Message> messages = new List<Message>(); 
         public Chat()
         {
             instance = this;
             InitializeComponent();
-            if (true)   //공지가 있으면
+            DataTable dt = Query.GetInstance().RunQuery("SELECT notice FROM talk.ChatRoom WHERE room_ID = " + roomID + ";");
+            notice_chat = Convert.ToInt32(dt.Rows[0][0]);
+            if (notice_chat != 0)   //공지가 있으면
             {
                 notice_view();
-                //notice_view("ㅂㅈㄷㄳㄴㄿㄴㅇ롤ㅇ솣ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ퓬1ㅇㅎㅇㄴㄹㅊㅇ낳론ㅍㅊ1인롱니ㅕㅇ뉴ㅗㅡ5ㅍ엃ㄴ아ㅓㅘㅣ너ㅏ5ㄴ어퓨ㅣㄴㅇ");
             }
         }
 
@@ -78,10 +81,11 @@ namespace DBP_Project
         }
         public void SendJpg(string text, string time)
         {
-            Message msg = new Message();
+            Message msg = new Message(this,text);
             msg.SetData("", time);
             msg.SetMyMsg();
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
+            messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
@@ -92,6 +96,8 @@ namespace DBP_Project
             Message msg = new Message(this,text,isFile);
             msg.SetMyMsg();
             msg.SetData("", time);
+
+            messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
@@ -102,15 +108,19 @@ namespace DBP_Project
         {
             Message msg = new Message(this,text,isFile);
             msg.SetData(name, time);
+
+            messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
         }
 
         private void DrawJpg(string text, string name, string time)
         {
-            Message msg = new Message();
+            Message msg = new Message(this,text);
             msg.SetData(name, time);
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
+
+            messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
             flowLayoutPanel1.ScrollControlIntoView(msg);
         }
@@ -142,6 +152,11 @@ namespace DBP_Project
                 }
                 else
                     DrawMsg(text, id, time);
+            }
+
+            for(int i = 0; i < messages.Count; i++)
+            {
+                messages[i].SetRead();
             }
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
@@ -345,7 +360,11 @@ namespace DBP_Project
                 this.Controls.Remove(notice);
             }
             string str = "";
-            DataTable dt = Query.GetInstance().RunQuery("SELECT data FROM talk.ChatMsg WHERE id = (SELECT notice FROM talk.ChatRoom WHERE room_ID = "+ roomID +");");  //나중에 룸번호 받아와서 수정
+            DataTable dt = Query.GetInstance().RunQuery("SELECT data FROM talk.ChatMsg WHERE id = (SELECT notice FROM talk.ChatRoom WHERE room_ID = "+ roomID +");"); 
+            if(dt.Rows.Count == 0 || notice_chat == 0)
+            {
+                return;
+            }
             str = dt.Rows[0][0].ToString();
             notice.setText(str);
             this.Controls.Add(notice);
@@ -358,6 +377,7 @@ namespace DBP_Project
         public void notice_set(int chatId)  //공지 설정
         {
             Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = "+chatId+" WHERE room_ID = "+roomID+";");
+            this.notice_chat = chatId;
         }
 
     }
