@@ -63,12 +63,6 @@ namespace DBP_Project.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap Mokoko {
-            get {
-                object obj = ResourceManager.GetObject("Mokoko", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
         internal static System.Drawing.Bitmap _001 {
             get {
                 object obj = ResourceManager.GetObject("001", resourceCulture);
@@ -222,6 +216,36 @@ namespace DBP_Project.Properties {
         internal static System.Drawing.Bitmap _016 {
             get {
                 object obj = ResourceManager.GetObject("016", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap check {
+            get {
+                object obj = ResourceManager.GetObject("check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap Mokoko {
+            get {
+                object obj = ResourceManager.GetObject("Mokoko", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap notice {
+            get {
+                object obj = ResourceManager.GetObject("notice", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

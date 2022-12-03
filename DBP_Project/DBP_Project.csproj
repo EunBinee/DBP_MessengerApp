@@ -104,6 +104,12 @@
     <Compile Include="Message.Designer.cs">
       <DependentUpon>Message.cs</DependentUpon>
     </Compile>
+    <Compile Include="Notice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Notice.Designer.cs">
+      <DependentUpon>Notice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Query.cs" />
     <Compile Include="Sha265.cs" />
     <Compile Include="TestChatForm.cs">
@@ -159,7 +165,6 @@
     <Compile Include="UserManagerForm.Designer.cs">
       <DependentUpon>UserManagerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="User_info.cs" />
     <EmbeddedResource Include="ChatPanel.resx">
       <DependentUpon>ChatPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Message.resx">
       <DependentUpon>Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notice.resx">
+      <DependentUpon>Notice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestChatForm.resx">
       <DependentUpon>TestChatForm.cs</DependentUpon>
@@ -267,6 +275,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\016.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notice.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\check.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

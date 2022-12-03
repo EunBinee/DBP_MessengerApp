@@ -20,8 +20,8 @@ namespace DBP_Project
             //Query.GetInstance().RunQuery("SELECT NOW()");
             Client.GetInstance().StartListen();
             Query.GetInstance().RunQuery("SELECT NOW()");
-            Application.Run(new LogIn());
-            //Application.Run(new Chat());
+            //Application.Run(new LogIn());
+            Application.Run(new Chat());
         }
     }
 }
