@@ -103,11 +103,6 @@ namespace DBP_Project
                 Manager_Screen.DataSource = dt;
 
                 MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read()) {
-                    departmentBox.Items.Add(rdr["departmentName"].ToString());
-                    teamBox.Items.Add(rdr["teamName"].ToString());
-                }
             }
         }
 
@@ -166,43 +161,91 @@ namespace DBP_Project
             }
         }
 
-        private void Btn_Change_Save(object sender, EventArgs e)
+        private void Btn_Manage_UserDepartment(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ChangeDepartmentPanel.Visible = false;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ChangeTeamPanel.Visible = false;
+        }
+
+        private void Change_Team_Click(object sender, EventArgs e)
+        {
+            ChangeTeamPanel.Visible = true;
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query;
-                foreach (DataGridViewRow row in Manager_Screen.Rows) {
-                    if (row.Cells["Row_num"].Value == null) {
-                        break;
-                    }
-                    int Row = Int32.Parse(row.Cells["Row_num"].Value.ToString());
-                    int departmentId = Int32.Parse(row.Cells["departmentId"].Value.ToString());
-                    String departmentName = row.Cells["departmentName"].Value.ToString();
-                    String teamName = row.Cells["teamName"].Value.ToString();
-                    Query = String.Format("update departmentList set departmentId = {0}, departmentName = '{1}', teamName = '{2}' where Row_num = {3};"
-                        , departmentId, departmentName, teamName, Row);
-                    MySqlCommand cmd = new MySqlCommand(Query, connection);
-                    cmd.ExecuteNonQuery();
+                String SelectQuery = "select * from departmentList"; // 조회
+                MySqlCommand cmd = new MySqlCommand(SelectQuery, connection);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    TeamComboBox.Items.Add(rdr["teamName"].ToString());
                 }
+                connection.Close();
             }
         }
 
-        private void Btn_Manage_UserDepartment(object sender, EventArgs e)
+        private void Change_Department_Click(object sender, EventArgs e)
+        {
+            ChangeDepartmentPanel.Visible = true;
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                connection.Open();
+                String SelectQuery = "select * from departmentList"; // 조회
+                MySqlCommand cmd = new MySqlCommand(SelectQuery, connection);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    DepartmentComboBox.Items.Add(rdr["departmentName"].ToString());
+                }
+                connection.Close();
+            }
+        }
+
+        private void Change_Department_Info_Click(object sender, EventArgs e) // 부서정보 변경
         {
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query = String.Format("select * from UserDepartment;");
+                String Query = String.Format("update departmentList set departmentName = '{0}' where departmentName = '{1}';"
+                    ,textBox1.Text,DepartmentComboBox.SelectedItem.ToString());
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
+                cmd.ExecuteNonQuery();
+                connection.Close();
 
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                connection.Open();
+                Query = String.Format("update UserDepartment set departmentName = '{0}' where departmentName = '{1}';"
+                    ,textBox1.Text,DepartmentComboBox.SelectedItem.ToString());
+                cmd = new MySqlCommand(Query, connection);
+                cmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
 
-                DataTable dt = new DataTable();
-                da.Fill(dt);
+        private void Change_Team_Info_Click(object sender, EventArgs e) // 팀정보 변경
+        {
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                connection.Open();
+                String Query = String.Format("update departmentList set teamName = '{0}' where teamName = '{1}';"
+                    , textBox2.Text, TeamComboBox.SelectedItem.ToString());
+                MySqlCommand cmd = new MySqlCommand(Query, connection);
+                cmd.ExecuteNonQuery();
+                connection.Close();
 
-                Manager_Screen.DataSource = dt;
-
+                connection.Open();
+                Query = String.Format("update UserDepartment set teamName = '{0}' where teamName = '{1}';"
+                    , textBox2.Text, TeamComboBox.SelectedItem.ToString());
+                cmd = new MySqlCommand(Query, connection);
+                cmd.ExecuteNonQuery();
                 connection.Close();
             }
         }
