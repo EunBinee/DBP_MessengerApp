@@ -27,7 +27,6 @@ namespace DBP_Project
             this.Close();
         }
 
-
         //로그인 버튼
         private void button_LogIn_Click(object sender, EventArgs e)
         {

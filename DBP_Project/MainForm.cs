@@ -65,6 +65,8 @@ namespace DBP_Project
             userNameLabel.Text = User_info.GetInstance().NickName; // 현재 로그인한 사용자 이름 라벨에 출력
             
             tf.TopLevel = false;  // 메인폼 위에 띄워지는 폼들을 메인폼안에서 컨트롤되게 바인딩 해주는 작업
+            Client.GetInstance().StartListen();
+            tf.TopLevel = false;
             tf.Show();
             this.Controls.Add(tf);
             tf.StartPosition = FormStartPosition.Manual;
@@ -88,6 +90,19 @@ namespace DBP_Project
             this.Controls.Add(userManagerForm);
             userManagerForm.StartPosition = FormStartPosition.Manual;
             userManagerForm.Location = new Point(230, 50);
+
+            // 사진 읽기
+            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + User_info.GetInstance().ID + "'";
+            DataTable dt = Query.GetInstance().RunQuery(query);
+            string filename = dt.Rows[0][0].ToString();
+
+            if (filename != "")
+            {
+                pictureBox1.ImageLocation = "http://15.164.218.208/forDB/" + filename;
+                pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+
+            name_label.Text = User_info.GetInstance().Name;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -161,6 +176,11 @@ namespace DBP_Project
 
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            InfoChange infoChange = new InfoChange();
+            infoChange.ShowDialog();
+        }
         // private void adminBtn_Click(object sender, EventArgs e)
         // {
         //     tf.Hide();

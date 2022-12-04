@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -130,7 +131,11 @@ namespace DBP_Project
         //사진 등록 버튼
         private void button_photo_Button_Click(object sender, EventArgs e)
         {
-            var FD = new System.Windows.Forms.OpenFileDialog();
+
+            OpenFileDialog FD = new OpenFileDialog();
+            FD.DefaultExt = "jpg";
+            FD.Filter = "Images Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg;*.jpeg;*.gif;*.bmp;*.png";
+
             if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 //사진 파일을 가지고 옵니다.
@@ -287,9 +292,32 @@ namespace DBP_Project
         //DB에 정보를 올린다.
         public void SignUp_DB(string id, string password, string name, string admin, string zipCode, string address, string nickname, string profilePic)
         {
+            Client.GetInstance().PhotoConnect();
+
+            //profilePic
+            string newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
+
+            var data = Encoding.UTF8.GetBytes(newFileName);
+            Client.GetInstance().SendByte(data);
+
+            int bufferCapacity = 1024;
+            using (FileStream fs = new FileStream(profilePic, FileMode.Open, FileAccess.Read))
+            {
+                byte[] buf = new byte[bufferCapacity];
+                int c;
+
+                while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                {
+                    Client.GetInstance().SendByte(buf);
+                }
+            }
+
+            Client.GetInstance().PhotoClose();
+
+
             //DB에 회원정보를 저장->UserListTable
             string query = "INSERT INTO `talk`.`UserListTable` (`id`, `password`, `name`, `role`, `zipCode`, `userAddr`, `nickName`, `profilePic`) " +
-                "VALUES ('" + id + "', '" + password + "', '" + name + "', '" + admin + "', '" + zipCode + "', '" + address + "', '" + nickname + "', '" + profilePic + "');";
+                "VALUES ('" + id + "', '" + password + "', '" + name + "', '" + admin + "', '" + zipCode + "', '" + address + "', '" + nickname + "', '" + newFileName + "');";
 
             Query.GetInstance().RunQuery(query);
 

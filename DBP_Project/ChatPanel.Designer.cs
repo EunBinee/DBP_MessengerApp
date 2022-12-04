@@ -40,7 +40,6 @@ namespace DBP_Project
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::DBP_Project.Properties.Resources.Mokoko;
             this.pictureBox1.Location = new System.Drawing.Point(43, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(67, 60);
@@ -64,10 +63,11 @@ namespace DBP_Project
             this.LastChat.Size = new System.Drawing.Size(192, 12);
             this.LastChat.TabIndex = 2;
             this.LastChat.Text = "last chat";
+            this.LastChat.Click += new System.EventHandler(this.LastChat_Click);
             // 
             // Favorite
             // 
-            this.Favorite.Location = new System.Drawing.Point(17, 44);
+            this.Favorite.Location = new System.Drawing.Point(17, 41);
             this.Favorite.Name = "Favorite";
             this.Favorite.Size = new System.Drawing.Size(20, 20);
             this.Favorite.TabIndex = 3;
@@ -82,7 +82,6 @@ namespace DBP_Project
             this.TimeLabel.Size = new System.Drawing.Size(56, 19);
             this.TimeLabel.TabIndex = 4;
             this.TimeLabel.Text = "time";
-            this.TimeLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // NumLabel
             // 
@@ -108,6 +107,7 @@ namespace DBP_Project
             this.Name = "ChatPanel";
             this.Size = new System.Drawing.Size(439, 105);
             this.Load += new System.EventHandler(this.ChatPanel_Load);
+            this.Click += new System.EventHandler(this.ChatPanel_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

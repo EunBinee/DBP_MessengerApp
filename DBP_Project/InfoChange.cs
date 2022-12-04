@@ -24,6 +24,19 @@ namespace DBP_Project
         //회원의 정보를 TEXTBOX에 넣어준다.
         public void GetUserInfo()
         {
+           
+            // 사진 읽기
+            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + User_info.GetInstance().ID + "'";
+            DataTable dt = Query.GetInstance().RunQuery(query);
+            string filename = dt.Rows[0][0].ToString();
+
+            if (filename != "")
+            {
+                pictureBox.ImageLocation = "http://15.164.218.208/forDB/" + filename;
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+
+
             textBox_Name.Text = User_info.GetInstance().Name;
             textBox_NickName.Text = User_info.GetInstance().NickName;
             textBox_Number.Text = User_info.GetInstance().ID;
