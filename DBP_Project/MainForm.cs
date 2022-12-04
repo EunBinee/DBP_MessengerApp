@@ -54,16 +54,7 @@ namespace DBP_Project
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {
-            //userImgBox.Image.Dispose();
-            //var webClient = new WebClient();
-            //byte[] imageBytes = webClient.DownloadData("http://www.google.com/images/logos/ps_logo2.png");
-
-//            userImgBox.ImageLocation = "http://15.164.218.208/forDB/"+User_info.GetInstance().ProfilePic;
-            userImgBox.ImageLocation = "http://15.164.218.208/forDB/"+ "/2022_11_30_17_18_55.jpg";
-
-            userNameLabel.Text = User_info.GetInstance().NickName; // 현재 로그인한 사용자 이름 라벨에 출력
-            
+        {       
             tf.TopLevel = false;  // 메인폼 위에 띄워지는 폼들을 메인폼안에서 컨트롤되게 바인딩 해주는 작업
             Client.GetInstance().StartListen();
             tf.TopLevel = false;

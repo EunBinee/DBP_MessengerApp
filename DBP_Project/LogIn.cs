@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +17,36 @@ namespace DBP_Project
         public LogIn()
         {
             InitializeComponent();
+            validateRecentLogin();
         }
+
+        private void validateRecentLogin() // 사원번호, 비밀번호 기억하기 체크 되어있는지 판단하는 함수
+        {
+            string path = Directory.GetCurrentDirectory(); // 최근 로그인 정보가 존재하는 파일의 경로
+            path += "\\recentLoginInfo.txt";
+
+            FileInfo fi = new FileInfo(path); //FileInfo.Exists로 파일 존재유무 확인
+
+            if (fi.Exists) { // 만약 파일 존재하면 읽어오기
+                Stream rs = new FileStream("recentLoginInfo.txt", FileMode.Open);
+                BinaryFormatter deserializer = new BinaryFormatter();
+
+                RecentLoginInfo des = (RecentLoginInfo)deserializer.Deserialize(rs); // 역 직렬화
+
+                if (des.isChecked == "true") // 사원번호, 비밀번호 기억하기 체크 되어 있으면 
+                {
+                    checkBox1.Checked = true;
+                    textBox_Number.Text = des.recentId;
+                    textBox_Password.Text = des.recentPwd;
+                }
+                else
+                {
+                    checkBox1.Checked = false;
+                }
+                rs.Close();
+            }
+        }
+
         //회원가입 버튼
         private void label_SignUp_Click(object sender, EventArgs e)
         {
@@ -25,6 +56,19 @@ namespace DBP_Project
             SignUp signUpForm = new SignUp();
             signUpForm.ShowDialog();//모달 하는 방법
             this.Close();
+        }
+
+
+        private void serializeFomatter(RecentLoginInfo rli) // 파라미터에 맞게 직렬화 해주는 메소드
+        {
+            // 현재 로그인하려는 사원번호와 pwd를 recentLofinInfo.txt에 저장
+            Stream ws = new FileStream("recentLoginInfo.txt", FileMode.Create); 
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            RecentLoginInfo recentLoginInfo = rli; // RecentLoginInfo 클래스에 넣어 직렬화
+
+            serializer.Serialize(ws, recentLoginInfo); // 직렬화 수행
+            ws.Close();
         }
 
         //로그인 버튼
@@ -37,6 +81,7 @@ namespace DBP_Project
 
             string curId = textBox_Number.Text;    //입력한 id
             string curPassword = Password_Encryption(); //입력한 password
+            string beforeEncryptionPwd = textBox_Password.Text;
 
             string query = "SELECT * FROM talk.UserListTable";
             DataTable dt = new DataTable();
@@ -61,6 +106,11 @@ namespace DBP_Project
 
             if (successLogIn)
             {
+                if (checkBox1.Checked) // 로그인 성공하고 사원번호, 비밀번호 기억하기 체크해둔 경우 
+                    serializeFomatter(new RecentLoginInfo("true", curId, beforeEncryptionPwd));
+                else 
+                    serializeFomatter(new RecentLoginInfo()); // 체크 안된경우 기본생성자 객체 (false, "","") 넘겨줌
+
                 //로그인 성공
                 //폼 띄우기
                 GoMainForm(curId);
@@ -131,7 +181,5 @@ namespace DBP_Project
             */
 
         }
-        
-
     }
 }
