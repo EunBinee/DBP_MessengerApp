@@ -243,7 +243,9 @@ namespace DBP_Project
 
                 //부서 확인-----------------------------------------------------------------------------------------------------------------------------------------------
                 string query_ = "SELECT * FROM talk.UserDepartment WHERE `userId`='" + em_Id + "'";
-                MessageBox.Show(query_);
+                
+                //MessageBox.Show(query_);
+                
                 DataTable dt_depart = new DataTable();
                 dt_depart = Query.GetInstance().RunQuery(query_);
 
@@ -256,7 +258,6 @@ namespace DBP_Project
 
                 employees.Add(new Employee(em_Id, em_Name, em_NickName, em_Department, em_Team, em_ProfilePic, em_btype));
             }
-
         }
 
 

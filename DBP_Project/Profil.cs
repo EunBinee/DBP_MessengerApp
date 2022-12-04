@@ -53,6 +53,22 @@ namespace DBP_Project
             if(dt.Rows.Count == 0)
             {
                 MessageBox.Show("채팅방 오픈");
+                string check = $"SELECT room_ID FROM talk.ChatRoom WHERE (`user1` = '{loginUser}' AND `user2` = '{targetID}') OR (`user1` = '{targetID}' AND `user2` = '{loginUser}');";
+                DataTable dt2 = Query.GetInstance().RunQuery(check);
+
+                // 방이 없다면 생성
+                if (dt2.Rows.Count == 0)
+                {
+                    string query = $"INSERT INTO `talk`.`ChatRoom` (`user1`, `user2`, `notice`) VALUES ('{loginUser}', '{targetID}', '0');";
+                    Query.GetInstance().RunQuery(query);
+
+                    check = $"SELECT room_ID FROM talk.ChatRoom WHERE (`user1` = '{loginUser}' AND `user2` = '{targetID}');";
+                    dt2 = Query.GetInstance().RunQuery(check);
+                }
+
+                Client.GetInstance().AddNewChatRoom(targetID,dt2.Rows[0][0].ToString());
+                this.Close();
+
             }
             else
             {

@@ -66,6 +66,19 @@ namespace DBP_Project
         {
         }
 
+        public void SetSenderImg(string yourID)
+        {
+            // 사진 읽기
+            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + yourID + "'";
+            DataTable dt = Query.GetInstance().RunQuery(query);
+            string filename = dt.Rows[0][0].ToString();
+
+            if (filename != "")
+            {
+                senderImg.ImageLocation = "http://15.164.218.208/forDB/" + filename;
+                senderImg.SizeMode = PictureBoxSizeMode.Zoom;
+            }
+        }
         private void SetSize()
         {
             int size = (msgBox.Text.Length / 35) - 1;
@@ -118,12 +131,11 @@ namespace DBP_Project
         public void SetData(string name, string time)
         {
             senderName.Text = name;
-            sendTimeLabel.Text = time;
+
+
+            sendTimeLabel.Text = DateTime.Parse(time).ToString("t");
         }
-        public void SetSenderImg(string str)
-        {
-            senderImg.ImageLocation = str;
-        }
+
         public void SetImageMsg(string str)
         {
             pictureBox1.ImageLocation = str;

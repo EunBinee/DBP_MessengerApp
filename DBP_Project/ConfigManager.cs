@@ -29,7 +29,7 @@ namespace DBP_Project
 
         public string GetTimeNow()
         {
-            return DateTime.Now.ToString("t");
+            return DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss");
         }
     }
 }
