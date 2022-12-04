@@ -32,7 +32,7 @@ namespace DBP_Project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button5 = new System.Windows.Forms.Button();
+            this.logOutBtn = new System.Windows.Forms.Button();
             this.Move_Admin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -40,22 +40,20 @@ namespace DBP_Project
             this.MainFormPanel = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.userNameLabel = new System.Windows.Forms.Label();
+            this.userImgBox = new System.Windows.Forms.PictureBox();
             this.button6 = new System.Windows.Forms.Button();
             this.toUserMangerForm = new System.Windows.Forms.Button();
             this.toManagerForm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.MainFormPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userImgBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-        
-            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.logOutBtn);
             this.panel1.Controls.Add(this.Move_Admin);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
@@ -67,20 +65,21 @@ namespace DBP_Project
             this.panel1.Size = new System.Drawing.Size(230, 550);
             this.panel1.TabIndex = 0;
             // 
-            // button5
+            // logOutBtn
             // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(31, 464);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(186, 42);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Logout";
-            this.button5.UseVisualStyleBackColor = true;
+            this.logOutBtn.FlatAppearance.BorderSize = 0;
+            this.logOutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.logOutBtn.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logOutBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.logOutBtn.Image = ((System.Drawing.Image)(resources.GetObject("logOutBtn.Image")));
+            this.logOutBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.logOutBtn.Location = new System.Drawing.Point(31, 464);
+            this.logOutBtn.Name = "logOutBtn";
+            this.logOutBtn.Size = new System.Drawing.Size(186, 42);
+            this.logOutBtn.TabIndex = 1;
+            this.logOutBtn.Text = "Logout";
+            this.logOutBtn.UseVisualStyleBackColor = true;
+            this.logOutBtn.Click += new System.EventHandler(this.logOutBtn_Click);
             // 
             // Move_Admin
             // 
@@ -135,8 +134,8 @@ namespace DBP_Project
             this.panel2.Controls.Add(this.MainFormPanel);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.userNameLabel);
+            this.panel2.Controls.Add(this.userImgBox);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -161,7 +160,6 @@ namespace DBP_Project
             this.label3.Size = new System.Drawing.Size(125, 15);
             this.label3.TabIndex = 1;
             this.label3.Text = "Some User Text Here";
-
             // 
             // label2
             // 
@@ -172,27 +170,28 @@ namespace DBP_Project
             this.label2.Size = new System.Drawing.Size(0, 18);
             this.label2.TabIndex = 3;
             // 
-            // label1
+            // userNameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(149)))));
-            this.label1.Location = new System.Drawing.Point(72, 103);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 18);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "User Name";
+            this.userNameLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(149)))));
+            this.userNameLabel.Location = new System.Drawing.Point(72, 103);
+            this.userNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.userNameLabel.Name = "userNameLabel";
+            this.userNameLabel.Size = new System.Drawing.Size(93, 18);
+            this.userNameLabel.TabIndex = 2;
+            this.userNameLabel.Text = "User Name";
+            this.userNameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
+            // userImgBox
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(75, 26);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(86, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.userImgBox.Image = ((System.Drawing.Image)(resources.GetObject("userImgBox.Image")));
+            this.userImgBox.Location = new System.Drawing.Point(75, 26);
+            this.userImgBox.Margin = new System.Windows.Forms.Padding(4);
+            this.userImgBox.Name = "userImgBox";
+            this.userImgBox.Size = new System.Drawing.Size(86, 60);
+            this.userImgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.userImgBox.TabIndex = 1;
+            this.userImgBox.TabStop = false;
+            this.userImgBox.Click += new System.EventHandler(this.userImgBox_Click);
             // 
             // button6
             // 
@@ -255,8 +254,7 @@ namespace DBP_Project
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.MainFormPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userImgBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -267,12 +265,12 @@ namespace DBP_Project
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label userNameLabel;
+        private System.Windows.Forms.PictureBox userImgBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button logOutBtn;
         private System.Windows.Forms.Button Move_Admin;
         // private System.Windows.Forms.Button adminBtn;
         private System.Windows.Forms.Button button6;

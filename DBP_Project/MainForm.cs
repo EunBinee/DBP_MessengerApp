@@ -16,6 +16,7 @@ namespace DBP_Project
         TestChatForm cf = new TestChatForm();
         UserManagerForm userManagerForm = new UserManagerForm();
         ManagerForm managerForm = new ManagerForm();
+        
 
         public MainForm()
         {
@@ -54,7 +55,16 @@ namespace DBP_Project
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            tf.TopLevel = false;
+            //userImgBox.Image.Dispose();
+            //var webClient = new WebClient();
+            //byte[] imageBytes = webClient.DownloadData("http://www.google.com/images/logos/ps_logo2.png");
+
+//            userImgBox.ImageLocation = "http://15.164.218.208/forDB/"+User_info.GetInstance().ProfilePic;
+            userImgBox.ImageLocation = "http://15.164.218.208/forDB/"+ "/2022_11_30_17_18_55.jpg";
+
+            userNameLabel.Text = User_info.GetInstance().NickName; // 현재 로그인한 사용자 이름 라벨에 출력
+            
+            tf.TopLevel = false;  // 메인폼 위에 띄워지는 폼들을 메인폼안에서 컨트롤되게 바인딩 해주는 작업
             tf.Show();
             this.Controls.Add(tf);
             tf.StartPosition = FormStartPosition.Manual;
@@ -137,6 +147,20 @@ namespace DBP_Project
             toUserMangerForm.Show();
             toManagerForm.Hide();
         }
+
+        private void logOutBtn_Click(object sender, EventArgs e) // 로그아웃 버튼을 누른경우
+        {
+            this.Hide();
+            LogIn newLogin = new LogIn();
+            newLogin.ShowDialog();
+            this.Close(); // 기존 메인폼 없애고 로그인 폼으로 전환
+        }
+
+        private void userImgBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
         // private void adminBtn_Click(object sender, EventArgs e)
         // {
         //     tf.Hide();
