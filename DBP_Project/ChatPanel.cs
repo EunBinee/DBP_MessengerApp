@@ -53,15 +53,16 @@ namespace DBP_Project
                             LastChat.Text = dt.Rows[0]["data"].ToString();
                             TimeLabel.Text = dt.Rows[0]["send_time"].ToString();
                         }
-                    }
-                    //최근대화내역체크 - 체크상태(읽음), 체크아님(안읽음)
-                    if (dt.Rows[0]["read_check"].ToString() == "1")
-                    {
-                        ReadCheck.CheckState = CheckState.Unchecked;
-                    }
-                    else
-                    {
-                        ReadCheck.CheckState = CheckState.Checked;
+                        //최근대화내역체크 - 체크상태(읽음), 체크아님(안읽음)
+                        if (dt.Rows[0]["read_check"].ToString() == "1")
+                        {
+                            ReadCheck.CheckState = CheckState.Unchecked;
+                        }
+                        else
+                        {
+                            ReadCheck.CheckState = CheckState.Checked;
+                        }
+
                     }
 
                 }
@@ -74,8 +75,7 @@ namespace DBP_Project
         {
             ReadCheck.CheckState = CheckState.Checked;
             //클릭시 채팅방 오픈
-            MessageBox.Show(this.roomId);
-
+            Client.GetInstance().AddNewChatRoom(this.targetId, this.roomId);
         }
     }
 }

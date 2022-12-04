@@ -12,7 +12,7 @@ namespace DBP_Project
 {
     public partial class TestTreeForm : Form
     {
-        private string loginUser = User_info.GetInstance().ID;
+        private string loginUser = "";
         //public TreeView tv = new TreeView();
         Profil pf = null;
 
@@ -20,7 +20,7 @@ namespace DBP_Project
 
         public TestTreeForm()
         {
-            //loginUser = User_info.GetInstance().ID;
+            loginUser = User_info.GetInstance().ID;
             //User_info.GetInstance().GetWorkerInfo();
             InitializeComponent();
         }
