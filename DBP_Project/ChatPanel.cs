@@ -25,7 +25,7 @@ namespace DBP_Project
 
         private void ChatPanel_Load(object sender, EventArgs e)
         {
-            for(int i = 0; i < User_info.GetInstance().employees.Count; i++)
+            for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
             {
                 if (User_info.GetInstance().employees[i].ID.Equals(targetId))
                 {
@@ -36,7 +36,7 @@ namespace DBP_Project
                         $" IN (SELECT MAX(send_time) FROM ChatMsg WHERE room_ID = '{roomId}')";
                     //ChatMsg send_time date_format 이상으로 시간에 이상있음
                     DataTable dt = Query.GetInstance().RunQuery(q);
-                    if(dt.Rows.Count <= 0)
+                    if (dt.Rows.Count <= 0)
                     {
                         LastChat.Text = "최근 대화내역 없음";
                         TimeLabel.Text = "";
@@ -55,7 +55,7 @@ namespace DBP_Project
                         }
                     }
                     //최근대화내역체크 - 체크상태(읽음), 체크아님(안읽음)
-                    if(dt.Rows[0]["read_check"].ToString() == "1")
+                    if (dt.Rows[0]["read_check"].ToString() == "1")
                     {
                         ReadCheck.CheckState = CheckState.Unchecked;
                     }
@@ -66,16 +66,16 @@ namespace DBP_Project
 
                 }
             }
-            
-            
+
+
         }
-        
+
         private void ChatPanel_Click(object sender, EventArgs e)
         {
             ReadCheck.CheckState = CheckState.Checked;
             //클릭시 채팅방 오픈
             MessageBox.Show(this.roomId);
-            
+
         }
     }
 }
