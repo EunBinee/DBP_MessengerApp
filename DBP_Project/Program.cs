@@ -21,7 +21,7 @@ namespace DBP_Project
             Client.GetInstance().StartListen();
             Query.GetInstance().RunQuery("SELECT NOW()");
             //Application.Run(new LogIn());
-            Application.Run(new Chat());
+            Application.Run(new MainForm());
         }
     }
 }

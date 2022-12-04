@@ -30,11 +30,10 @@ namespace DBP_Project
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.NaemLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
             this.LastChat = new System.Windows.Forms.Label();
-            this.Favorite = new System.Windows.Forms.CheckBox();
+            this.ReadCheck = new System.Windows.Forms.CheckBox();
             this.TimeLabel = new System.Windows.Forms.Label();
-            this.NumLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,62 +46,53 @@ namespace DBP_Project
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // NaemLabel
+            // NameLabel
             // 
-            this.NaemLabel.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.NaemLabel.Location = new System.Drawing.Point(133, 28);
-            this.NaemLabel.Name = "NaemLabel";
-            this.NaemLabel.Size = new System.Drawing.Size(194, 19);
-            this.NaemLabel.TabIndex = 1;
-            this.NaemLabel.Text = "Name";
+            this.NameLabel.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.NameLabel.ForeColor = System.Drawing.Color.White;
+            this.NameLabel.Location = new System.Drawing.Point(133, 21);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(194, 19);
+            this.NameLabel.TabIndex = 1;
+            this.NameLabel.Text = "Name";
             // 
             // LastChat
             // 
+            this.LastChat.ForeColor = System.Drawing.Color.White;
             this.LastChat.Location = new System.Drawing.Point(135, 69);
             this.LastChat.Name = "LastChat";
             this.LastChat.Size = new System.Drawing.Size(192, 12);
             this.LastChat.TabIndex = 2;
             this.LastChat.Text = "last chat";
-            this.LastChat.Click += new System.EventHandler(this.LastChat_Click);
             // 
-            // Favorite
+            // ReadCheck
             // 
-            this.Favorite.Location = new System.Drawing.Point(17, 41);
-            this.Favorite.Name = "Favorite";
-            this.Favorite.Size = new System.Drawing.Size(20, 20);
-            this.Favorite.TabIndex = 3;
-            this.Favorite.UseVisualStyleBackColor = true;
-            this.Favorite.CheckedChanged += new System.EventHandler(this.Favorite_CheckedChanged);
+            this.ReadCheck.Enabled = false;
+            this.ReadCheck.Location = new System.Drawing.Point(17, 41);
+            this.ReadCheck.Name = "ReadCheck";
+            this.ReadCheck.Size = new System.Drawing.Size(20, 20);
+            this.ReadCheck.TabIndex = 3;
+            this.ReadCheck.UseVisualStyleBackColor = true;
             // 
             // TimeLabel
             // 
             this.TimeLabel.Font = new System.Drawing.Font("굴림", 13F);
-            this.TimeLabel.Location = new System.Drawing.Point(342, 29);
+            this.TimeLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.TimeLabel.Location = new System.Drawing.Point(333, 21);
             this.TimeLabel.Name = "TimeLabel";
             this.TimeLabel.Size = new System.Drawing.Size(56, 19);
             this.TimeLabel.TabIndex = 4;
             this.TimeLabel.Text = "time";
             // 
-            // NumLabel
-            // 
-            this.NumLabel.BackColor = System.Drawing.Color.Red;
-            this.NumLabel.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.NumLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.NumLabel.Location = new System.Drawing.Point(342, 65);
-            this.NumLabel.Name = "NumLabel";
-            this.NumLabel.Size = new System.Drawing.Size(44, 23);
-            this.NumLabel.TabIndex = 5;
-            this.NumLabel.Text = "Num";
-            // 
             // ChatPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.NumLabel);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(80)))));
             this.Controls.Add(this.TimeLabel);
-            this.Controls.Add(this.Favorite);
+            this.Controls.Add(this.ReadCheck);
             this.Controls.Add(this.LastChat);
-            this.Controls.Add(this.NaemLabel);
+            this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ChatPanel";
             this.Size = new System.Drawing.Size(439, 105);
@@ -116,10 +106,9 @@ namespace DBP_Project
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label NaemLabel;
+        private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label LastChat;
-        private System.Windows.Forms.CheckBox Favorite;
+        private System.Windows.Forms.CheckBox ReadCheck;
         private System.Windows.Forms.Label TimeLabel;
-        private System.Windows.Forms.Label NumLabel;
     }
 }

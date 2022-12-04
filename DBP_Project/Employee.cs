@@ -17,8 +17,9 @@ namespace DBP_Project
         private string team;
 
         private string profilePic;
+        private string btype; //차단 타입
 
-        public Employee(string id, string name, string nickName, string department, string team, string profilePic)
+        public Employee(string id, string name, string nickName, string department, string team, string profilePic, string btype)
         {
             this.id = id;
             this.name = name;
@@ -26,6 +27,7 @@ namespace DBP_Project
             this.department = department;
             this.team = team;
             this.profilePic = profilePic;
+            this.btype = btype;
         }
 
         //편하게 쓰기위한.. 겟터와 세터..
@@ -95,6 +97,18 @@ namespace DBP_Project
             set
             {
                 profilePic = value;
+            }
+        }
+
+        public string Btype
+        {
+            get
+            {
+                return btype;
+            }
+            set
+            {
+                btype = value;
             }
         }
 

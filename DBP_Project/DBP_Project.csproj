@@ -110,6 +110,12 @@
     <Compile Include="Notice.Designer.cs">
       <DependentUpon>Notice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Profil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Profil.Designer.cs">
+      <DependentUpon>Profil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Query.cs" />
     <Compile Include="Sha265.cs" />
     <Compile Include="TestChatForm.cs">
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Notice.resx">
       <DependentUpon>Notice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profil.resx">
+      <DependentUpon>Profil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestChatForm.resx">
       <DependentUpon>TestChatForm.cs</DependentUpon>

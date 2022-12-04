@@ -12,7 +12,7 @@ namespace DBP_Project
 {
     public partial class TestTreeForm : Form
     {
-        private string loginUser = "cor";
+        private string loginUser = "1";
         //public TreeView tv = new TreeView();
         Profil pf = null;
 
@@ -20,7 +20,8 @@ namespace DBP_Project
 
         public TestTreeForm()
         {
-            //loginUser = User_info.GetInstance().id;
+            //loginUser = User_info.GetInstance().ID;
+            //User_info.GetInstance().GetWorkerInfo();
             InitializeComponent();
         }
 
@@ -63,30 +64,33 @@ namespace DBP_Project
                 }
             }
 
-            dt = Query.GetInstance().RunQuery("SELECT l.departmentName, l.teamName, l.id, l.name, l.nickName, IFNULL(b.blockType, 0) as bType FROM" +
+            /*dt = Query.GetInstance().RunQuery("SELECT l.departmentName, l.teamName, l.id, l.name, l.nickName, IFNULL(b.blockType, 0) as bType FROM" +
                 "(SELECT * FROM UserDepartment, UserListTable WHERE id = userid AND NOT id = '" + loginUser + "') as l LEFT JOIN " +
                 "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "' AND blockType IS NOT NULL) as b ON l.id = b.blockUserId " +
                 "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '" + loginUser +
                 "' AND blockDepartment IS NOT NULL)");
-            foreach (DataRow dr in dt.Rows)
+            */
+            for(int i = 0; i < User_info.GetInstance().employees.Count; i++)
             {
-                foreach (TreeNode tn in tv.Nodes)
+                if(User_info.GetInstance().employees[i].Btype != "1")
                 {
-                    foreach (TreeNode ttn in tn.Nodes)
+                    foreach (TreeNode tn in tv.Nodes)
                     {
-                        if (dr["teamName"].ToString().Equals(ttn.Text))
+                        if (User_info.GetInstance().employees[i].Department == tn.Text)
                         {
-                            if (dr["bType"].ToString() != "1")
+                            foreach (TreeNode ttn in tn.Nodes)
                             {
-                                TreeNode ntn = new TreeNode(dr["nickName"].ToString() + "(" + dr["name"].ToString() + ")");
-                                ntn.Name = dr["id"].ToString();
-                                ttn.Nodes.Add(ntn);
+                                if (User_info.GetInstance().employees[i].Team.Equals(ttn.Text))
+                                {                               
+                                     TreeNode ntn = new TreeNode(User_info.GetInstance().employees[i].NickName + "(" + User_info.GetInstance().employees[i].Name + ")");
+                                     ntn.Name = User_info.GetInstance().employees[i].ID;
+                                     ttn.Nodes.Add(ntn);
+                                }
                             }
                         }
                     }
                 }
             }
-            
         }
 
         private void FavoriteBtn_Click(object sender, EventArgs e)
@@ -155,9 +159,16 @@ namespace DBP_Project
                         {
                             if (dr["bType"].ToString() != "1")
                             {
-                                TreeNode ntn = new TreeNode(dr["nickName"].ToString() + "(" + dr["name"].ToString() + ")");
-                                ntn.Name = dr["id"].ToString();
-                                ttn.Nodes.Add(ntn);
+                                //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
+                                for(int i = 0; i < User_info.GetInstance().employees.Count; i++)
+                                {
+                                    if (User_info.GetInstance().employees[i].ID.Equals(dr["id"].ToString()))
+                                    {
+                                        TreeNode ntn = new TreeNode(User_info.GetInstance().employees[i].NickName + "(" + User_info.GetInstance().employees[i].Name + ")");
+                                        ntn.Name = User_info.GetInstance().employees[i].ID;
+                                        ttn.Nodes.Add(ntn);
+                                    }
+                                }
                             }
                         }
                     }
@@ -259,9 +270,16 @@ namespace DBP_Project
                         {
                             if (dr["bType"].ToString() != "1")
                             {
-                                TreeNode ntn = new TreeNode(dr["nickName"].ToString() + "(" + dr["name"].ToString() + ")");
-                                ntn.Name = dr["id"].ToString();
-                                ttn.Nodes.Add(ntn);
+                                //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
+                                for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
+                                {
+                                    if (User_info.GetInstance().employees[i].ID.Equals(dr["id"].ToString()))
+                                    {
+                                        TreeNode ntn = new TreeNode(User_info.GetInstance().employees[i].NickName + "(" + User_info.GetInstance().employees[i].Name + ")");
+                                        ntn.Name = User_info.GetInstance().employees[i].ID;
+                                        ttn.Nodes.Add(ntn);
+                                    }
+                                }
                             }
                         }
                     }
@@ -307,9 +325,16 @@ namespace DBP_Project
                         {
                             if (dr["bType"].ToString() != "1")
                             {
-                                TreeNode ntn = new TreeNode(dr["nickName"].ToString() + "(" + dr["name"].ToString() + ")");
-                                ntn.Name = dr["id"].ToString();
-                                ttn.Nodes.Add(ntn);
+                                //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
+                                for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
+                                {
+                                    if (User_info.GetInstance().employees[i].ID.Equals(dr["id"].ToString()))
+                                    {
+                                        TreeNode ntn = new TreeNode(User_info.GetInstance().employees[i].NickName + "(" + User_info.GetInstance().employees[i].Name + ")");
+                                        ntn.Name = User_info.GetInstance().employees[i].ID;
+                                        ttn.Nodes.Add(ntn);
+                                    }
+                                }
                             }
                         }
                     }
@@ -356,9 +381,16 @@ namespace DBP_Project
                         {
                             if (dr["bType"].ToString() != "1")
                             {
-                                TreeNode ntn = new TreeNode(dr["nickName"].ToString() + "(" + dr["name"].ToString() + ")");
-                                ntn.Name = dr["id"].ToString();
-                                ttn.Nodes.Add(ntn);
+                                //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
+                                for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
+                                {
+                                    if (User_info.GetInstance().employees[i].ID.Equals(dr["id"].ToString()))
+                                    {
+                                        TreeNode ntn = new TreeNode(User_info.GetInstance().employees[i].NickName + "(" + User_info.GetInstance().employees[i].Name + ")");
+                                        ntn.Name = User_info.GetInstance().employees[i].ID;
+                                        ttn.Nodes.Add(ntn);
+                                    }
+                                }
                             }
                         }
                     }

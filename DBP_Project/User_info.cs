@@ -32,7 +32,7 @@ namespace DBP_Project
         //생성자
         private User_info()
         {
-
+            
         }
 
         //나중에 로그인 후, 회원정보 변경할때 쓸 생성자
@@ -192,7 +192,7 @@ namespace DBP_Project
 
             //2. 값을 불러온다. 자기자신과 관리자는 빼고---------------------------------------------------------------------------
 
-            query = "SELECT * FROM talk.UserListTable where id != '" + id + "' and role =2;";
+            query = "SELECT *, ifnull(B.blockUserId, 0) btype FROM talk.UserListTable LEFT JOIN (SELECT * FROM BlockInfo WHERE userId = '" + id + "') as B ON UserListTable.id = B.blockUserId where id != '" + id + "' and role =2;";
             DataTable dt = new DataTable();
             dt = Query.GetInstance().RunQuery(query);
 
@@ -234,10 +234,11 @@ namespace DBP_Project
 
                 string em_ZipCode       = row["zipCode"].ToString();               //우편번호
                 string em_Address       = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
-                
+                string em_btype         = row["btype"].ToString();                //차단타입 정보
 
                 string em_Department = "";
                 string em_Team           = "";
+                
 
 
                 //부서 확인-----------------------------------------------------------------------------------------------------------------------------------------------
@@ -253,7 +254,7 @@ namespace DBP_Project
                     em_Team             = row_["teamName"].ToString();                           //팀명
                 }
 
-                employees.Add(new Employee(em_Id, em_Name, em_NickName, em_Department, em_Team, em_ProfilePic));
+                employees.Add(new Employee(em_Id, em_Name, em_NickName, em_Department, em_Team, em_ProfilePic, em_btype));
             }
 
         }
