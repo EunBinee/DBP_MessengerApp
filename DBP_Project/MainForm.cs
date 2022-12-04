@@ -16,6 +16,7 @@ namespace DBP_Project
         TestChatForm cf = new TestChatForm();
         UserManagerForm userManagerForm = new UserManagerForm();
         ManagerForm managerForm = new ManagerForm();
+        
 
         public MainForm()
         {
@@ -53,7 +54,8 @@ namespace DBP_Project
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {
+        {       
+            tf.TopLevel = false;  // 메인폼 위에 띄워지는 폼들을 메인폼안에서 컨트롤되게 바인딩 해주는 작업
             Client.GetInstance().StartListen();
             tf.TopLevel = false;
             tf.Show();
@@ -152,6 +154,20 @@ namespace DBP_Project
             toManagerForm.Hide();
         }
 
+
+
+        private void logOutBtn_Click(object sender, EventArgs e) // 로그아웃 버튼을 누른경우
+        {
+            this.Hide();
+            LogIn newLogin = new LogIn();
+            newLogin.ShowDialog();
+            this.Close(); // 기존 메인폼 없애고 로그인 폼으로 전환
+        }
+
+        private void userImgBox_Click(object sender, EventArgs e)
+        {
+
+        }
 
         //---------------------------------------------------------------------------------------------
         //회원 번호 변경 => 위에 프로필 사진 클릭시

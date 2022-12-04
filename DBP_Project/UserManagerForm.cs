@@ -103,8 +103,10 @@ namespace DBP_Project
             {
                 string currentUserId = userBox.Text; // 사용자의 부서와 팀 정상적으로 선택하면 DB에 업데이트
                 string currentDepartment = departmentComboBox.SelectedItem.ToString();
+                string getDepartmentIdQuery = $"SELECT distinct departmentId FROM talk.departmentList where departmentName = '{currentDepartment}'";
+                int currentDepartmentId =Convert.ToInt32(Query.GetInstance().RunQuery(getDepartmentIdQuery).Rows[0]["departmentId"]);
                 string currentTeam = teamComboBox.SelectedItem.ToString();
-                string saveInfoQuery = $"UPDATE UserDepartment SET departmentName = '{currentDepartment}', teamName = '{currentTeam}' where userId = '{currentUserId}'";
+                string saveInfoQuery = $"UPDATE UserDepartment SET departmentId = {currentDepartmentId}, departmentName = '{currentDepartment}', teamName = '{currentTeam}' where userId = '{currentUserId}'";
                 Query.GetInstance().RunQuery(saveInfoQuery);
             }
         }

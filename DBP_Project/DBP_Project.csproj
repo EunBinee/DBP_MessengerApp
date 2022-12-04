@@ -124,6 +124,7 @@
     </Compile>
     <Compile Include="MultiProfile_Class.cs" />
     <Compile Include="Query.cs" />
+    <Compile Include="RecentLoginInfo.cs" />
     <Compile Include="Sha265.cs" />
     <Compile Include="TestChatForm.cs">
       <SubType>Form</SubType>
