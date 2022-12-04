@@ -161,6 +161,7 @@ namespace DBP_Project
             this.Hide();
             LogIn newLogin = new LogIn();
             newLogin.ShowDialog();
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
             this.Close(); // 기존 메인폼 없애고 로그인 폼으로 전환
         }
 
@@ -175,6 +176,11 @@ namespace DBP_Project
         {
             InfoChange infoChange = new InfoChange();
             infoChange.ShowDialog();//모달 하는 방법
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
         }
         //---------------------------------------------------------------------------------------------
 

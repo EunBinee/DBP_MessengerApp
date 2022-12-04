@@ -157,7 +157,7 @@ namespace DBP_Project
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
             this.label3.Location = new System.Drawing.Point(60, 136);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 15);
+            this.label3.Size = new System.Drawing.Size(105, 13);
             this.label3.TabIndex = 1;
             this.label3.Text = "Some User Text Here";
             // 
@@ -167,7 +167,7 @@ namespace DBP_Project
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(178)))));
             this.label2.Location = new System.Drawing.Point(72, 136);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 18);
+            this.label2.Size = new System.Drawing.Size(0, 15);
             this.label2.TabIndex = 3;
             // 
             // name_label
@@ -232,7 +232,7 @@ namespace DBP_Project
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(950, 550);
@@ -246,6 +246,7 @@ namespace DBP_Project
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseMove);
