@@ -180,6 +180,7 @@ namespace DBP_Project
                 User_info.GetInstance().SetMyMultiProfile(textBox_NickName.Text, "");
 
                 MessageBox.Show("변경완료!");
+                this.Close();
             }
         }
 
