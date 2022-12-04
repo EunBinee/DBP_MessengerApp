@@ -13,7 +13,7 @@ namespace DBP_Project
 {
     public partial class SignUp : Form
     {
-        string file = ""; //파일명
+        string file = "default.jpg"; //파일명
 
         string canUseIdText = "사용할 수 있는 아이디입니다.";
         string dupIdText = "이미 있는 사원번호입니다.";
@@ -143,14 +143,12 @@ namespace DBP_Project
                 string[] fileName = FD.SafeFileName.Split('.'); //파일명
                 string fileName_c = fileName[0];
                 //확인용 메세지 박스
-                MessageBox.Show(file);
-                MessageBox.Show(fileName[0]);
-                MessageBox.Show(fileName[1]);
+
 
                 //사진 입력
                 pictureBox_Photo.Image = Image.FromFile(file);
                 pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;
-                MessageBox.Show(file);
+
             }
         }
 
@@ -296,27 +294,31 @@ namespace DBP_Project
         //DB에 정보를 올린다.
         public void SignUp_DB(string id, string password, string name, string admin, string zipCode, string address, string nickname, string profilePic)
         {
-            Client.GetInstance().PhotoConnect();
-
-            //profilePic
-            string newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
-
-            var data = Encoding.UTF8.GetBytes(newFileName);
-            Client.GetInstance().SendByte(data);
-
-            int bufferCapacity = 1024;
-            using (FileStream fs = new FileStream(profilePic, FileMode.Open, FileAccess.Read))
+            string newFileName = "default.jpg";
+            if(file != "default.jpg")
             {
-                byte[] buf = new byte[bufferCapacity];
-                int c;
 
-                while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                Client.GetInstance().PhotoConnect();
+
+                //profilePic
+                newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
+
+                var data = Encoding.UTF8.GetBytes(newFileName);
+                Client.GetInstance().SendByte(data);
+
+                int bufferCapacity = 1024;
+                using (FileStream fs = new FileStream(profilePic, FileMode.Open, FileAccess.Read))
                 {
-                    Client.GetInstance().SendByte(buf);
-                }
-            }
+                    byte[] buf = new byte[bufferCapacity];
+                    int c;
 
-            Client.GetInstance().PhotoClose();
+                    while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                    {
+                        Client.GetInstance().SendByte(buf);
+                    }
+                }
+                Client.GetInstance().PhotoClose();
+            }
 
 
             //DB에 회원정보를 저장->UserListTable

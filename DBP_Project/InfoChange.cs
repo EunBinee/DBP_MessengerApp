@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,14 @@ namespace DBP_Project
 {
     public partial class InfoChange : Form
     {
-        string file = ""; //파일명
+        string file = "default.jpg"; //파일명
         //비밀 번호의 경우, 만약 비번을 옳게 쳤다면.. 아래이 재입력칸이 활성화 되도록
         string canUseIdText = "사용할 수 있는 아이디입니다.";
         string dupIdText = "이미 있는 사원번호입니다.";
 
         string PasswordTex_di = "비밀번호가 다릅니다.";
         string PasswordText = "비밀번호가 같습니다.";
+        public MainForm mainForm;
 
         public InfoChange()
         {
@@ -32,20 +34,14 @@ namespace DBP_Project
         {
            
             // 사진 읽기
-            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + User_info.GetInstance().ID + "'";
-            DataTable dt = Query.GetInstance().RunQuery(query);
-            string filename = dt.Rows[0][0].ToString();
+            string filename = User_info.GetInstance().ProfilePic;
 
             if (filename != "")
             {
                 pictureBox.ImageLocation = "http://15.164.218.208/forDB/" + filename;
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                file = filename;
             }
-
-
-            /*textBox_Name.Text = User_info.GetInstance().Name;
-            textBox_NickName.Text = User_info.GetInstance().NickName;
-            textBox_Number.Text = User_info.GetInstance().ID;*/
 
             textBox_name.Text = User_info.GetInstance().Name;
             textBox_nickname.Text = User_info.GetInstance().NickName;
@@ -74,6 +70,7 @@ namespace DBP_Project
                     string password = "";
                     if (checkBox_Password.Checked)
                     {
+
                         //만약 비밀 번호 변경을 하고 싶다면
 
                         // 3. 재입력한 비밀번호가 같은지
@@ -290,9 +287,36 @@ namespace DBP_Project
         //DB에 정보를 올린다. 
         public void Update_DB(string id,string password, string name, string zipCode, string address, string nickname, string profilePic)
         {
+            string newFileName = "default.jpg";
+            if (profilePic != "default.jpg" && profilePic != User_info.GetInstance().ProfilePic)
+            {
+
+                Client.GetInstance().PhotoConnect();
+
+                //profilePic
+                newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
+
+                var data = Encoding.UTF8.GetBytes(newFileName);
+                Client.GetInstance().SendByte(data);
+
+                int bufferCapacity = 1024;
+                using (FileStream fs = new FileStream(profilePic, FileMode.Open, FileAccess.Read))
+                {
+                    byte[] buf = new byte[bufferCapacity];
+                    int c;
+
+                    while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                    {
+                        Client.GetInstance().SendByte(buf);
+                    }
+                }
+                Client.GetInstance().PhotoClose();
+                profilePic = newFileName;
+            }
+
             //DB에 회원정보를 저장->UserListTable
             string query = "UPDATE `talk`.`UserListTable` SET `id` = '" + id + "',  `password` = '" + password + "', `name` = '" + name + "',  `zipCode` = '" + zipCode + "', `userAddr` = '"
-                + address + "', `nickName` = '" + nickname + "', `profilePic` = '2022_11_30_17_0224_15.jpg' WHERE (`id` = '" + User_info.GetInstance().ID + "');";
+                + address + "', `nickName` = '" + nickname + "', `profilePic` = '" + profilePic + "' WHERE (`id` = '" + User_info.GetInstance().ID + "');";
             Query.GetInstance().RunQuery(query);
 
             MessageBox.Show("변경완료");
@@ -317,6 +341,9 @@ namespace DBP_Project
             label_Password.Text = "";
             checkBox_Password.Checked = false;
             PasswordCheckBoxFalse();
+
+            mainForm.LoadProfilePic();
+            this.Close();
         }
 
 
@@ -345,6 +372,28 @@ namespace DBP_Project
             MultiProfile multiProfileForm = new MultiProfile();
 
             multiProfileForm.ShowDialog();
+        }
+
+
+        //사진 등록 버튼
+        private void photoRegis_Btn_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog FD = new OpenFileDialog();
+            FD.DefaultExt = "jpg";
+            FD.Filter = "Images Files(*.jpg; *.jpeg; *.gif; *.bmp; *.png)|*.jpg;*.jpeg;*.gif;*.bmp;*.png";
+
+            if (FD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                //사진 파일을 가지고 옵니다.
+                file = FD.FileName; //파일명
+                string[] fileName = FD.SafeFileName.Split('.'); //파일명
+                string fileName_c = fileName[0];
+
+                //사진 입력
+                pictureBox.Image = Image.FromFile(file);
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
     }
 }
