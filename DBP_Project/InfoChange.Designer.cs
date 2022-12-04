@@ -413,8 +413,7 @@ namespace DBP_Project
             this.panel5.Controls.Add(this.textBox_address2);
             this.panel5.Controls.Add(this.button_addressButton);
             this.panel5.Controls.Add(this.textBox_address3);
-            this.panel5.Location = new System.Drawing.Point(3, 543);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Location = new System.Drawing.Point(3, 683);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(402, 203);
             this.panel5.TabIndex = 12;
@@ -422,10 +421,9 @@ namespace DBP_Project
             // textBox_address1
             // 
             this.textBox_address1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_address1.Location = new System.Drawing.Point(101, 22);
-            this.textBox_address1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox_address1.Location = new System.Drawing.Point(115, 28);
             this.textBox_address1.Name = "textBox_address1";
-            this.textBox_address1.Size = new System.Drawing.Size(110, 21);
+            this.textBox_address1.Size = new System.Drawing.Size(125, 25);
             this.textBox_address1.TabIndex = 8;
             // 
             // label7
@@ -433,19 +431,18 @@ namespace DBP_Project
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label7.Location = new System.Drawing.Point(52, 23);
+            this.label7.Location = new System.Drawing.Point(59, 29);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(30, 16);
+            this.label7.Size = new System.Drawing.Size(37, 19);
             this.label7.TabIndex = 17;
             this.label7.Text = "주소";
             // 
             // textBox_address2
             // 
             this.textBox_address2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_address2.Location = new System.Drawing.Point(101, 64);
-            this.textBox_address2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox_address2.Location = new System.Drawing.Point(115, 80);
             this.textBox_address2.Name = "textBox_address2";
-            this.textBox_address2.Size = new System.Drawing.Size(190, 21);
+            this.textBox_address2.Size = new System.Drawing.Size(216, 25);
             this.textBox_address2.TabIndex = 9;
             // 
             // button_addressButton
@@ -522,9 +519,9 @@ namespace DBP_Project
             // 
             // InfoChange
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 522);
+            this.ClientSize = new System.Drawing.Size(432, 653);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel);
             this.Name = "InfoChange";
