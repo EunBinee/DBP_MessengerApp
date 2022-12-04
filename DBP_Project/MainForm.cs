@@ -82,10 +82,15 @@ namespace DBP_Project
             userManagerForm.StartPosition = FormStartPosition.Manual;
             userManagerForm.Location = new Point(230, 50);
 
+            LoadProfilePic();
+        }
+
+
+        public void LoadProfilePic()
+        {
             // 사진 읽기
-            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + User_info.GetInstance().ID + "'";
-            DataTable dt = Query.GetInstance().RunQuery(query);
-            string filename = dt.Rows[0][0].ToString();
+
+            string filename = User_info.GetInstance().ProfilePic;
 
             if (filename != "")
             {
@@ -95,7 +100,6 @@ namespace DBP_Project
 
             name_label.Text = User_info.GetInstance().Name;
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             cf.Hide();
@@ -174,6 +178,7 @@ namespace DBP_Project
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             InfoChange infoChange = new InfoChange();
+            infoChange.mainForm = this;
             infoChange.ShowDialog();//모달 하는 방법
         }
         //---------------------------------------------------------------------------------------------

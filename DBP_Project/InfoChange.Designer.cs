@@ -151,6 +151,7 @@ namespace DBP_Project
             this.photoRegis_Btn.TabIndex = 2;
             this.photoRegis_Btn.Text = "등록";
             this.photoRegis_Btn.UseVisualStyleBackColor = false;
+            this.photoRegis_Btn.Click += new System.EventHandler(this.photoRegis_Btn_Click);
             // 
             // panel3
             // 

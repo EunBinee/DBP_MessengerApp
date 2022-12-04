@@ -128,6 +128,7 @@ namespace DBP_Project
             this.button_photo_Button.TabIndex = 2;
             this.button_photo_Button.Text = "등록";
             this.button_photo_Button.UseVisualStyleBackColor = false;
+            this.button_photo_Button.Click += new System.EventHandler(this.button_photo_Button_Click);
             // 
             // textBox_NickName
             // 

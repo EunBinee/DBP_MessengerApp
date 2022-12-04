@@ -173,7 +173,7 @@ namespace DBP_Project
             // name_label
             // 
             this.name_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(149)))));
-            this.name_label.Location = new System.Drawing.Point(72, 103);
+            this.name_label.Location = new System.Drawing.Point(72, 118);
             this.name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.name_label.Name = "name_label";
             this.name_label.Size = new System.Drawing.Size(93, 18);
@@ -186,7 +186,7 @@ namespace DBP_Project
             this.pictureBox1.Location = new System.Drawing.Point(75, 26);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(86, 60);
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
