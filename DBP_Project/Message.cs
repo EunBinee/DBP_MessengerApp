@@ -131,6 +131,8 @@ namespace DBP_Project
         public void SetData(string name, string time)
         {
             senderName.Text = name;
+
+
             sendTimeLabel.Text = DateTime.Parse(time).ToString("t");
         }
 
