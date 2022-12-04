@@ -122,14 +122,12 @@ namespace DBP_Project
             DataTable dt_depart = new DataTable();
             dt_depart = Query.GetInstance().RunQuery(query);
             User_info.GetInstance().GetWorkerInfo();
+            User_info.GetInstance().GetMyMultiProfile();
 
-            /*
-            for(int i = 0 ; i < User_info.GetInstance().employees.Count; i++)
-            {
-                MessageBox.Show(User_info.GetInstance().employees[i].ID + ",    " + User_info.GetInstance().employees[i].Name + ",    " + User_info.GetInstance().employees[i].Team + ",    " + User_info.GetInstance().employees[i].NickName);
-            }
-            */
-
+            /*MessageBox.Show("나의 멀티 프로필 : " + User_info.GetInstance().MyMultiProfile.NickName);
+            MessageBox.Show("나의 멀티 프로필 : " + User_info.GetInstance().MyMultiProfile.ProfilePic);
+            for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
+                MessageBox.Show("변경된 employee : " + User_info.GetInstance().employees[i].NickName);*/
         }
         
 

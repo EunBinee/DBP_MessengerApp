@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUp));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox_Photo = new System.Windows.Forms.PictureBox();
             this.button_photo_Button = new System.Windows.Forms.Button();
             this.textBox_Name = new System.Windows.Forms.TextBox();
             this.textBox_NickName = new System.Windows.Forms.TextBox();
@@ -62,14 +60,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.pictureBox_Photo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -93,16 +92,6 @@
             this.label1.Size = new System.Drawing.Size(119, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "회원가입";
-            // 
-            // pictureBox_Photo
-            // 
-            this.pictureBox_Photo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox_Photo.Image")));
-            this.pictureBox_Photo.Location = new System.Drawing.Point(115, 26);
-            this.pictureBox_Photo.Name = "pictureBox_Photo";
-            this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_Photo.TabIndex = 1;
-            this.pictureBox_Photo.TabStop = false;
             // 
             // button_photo_Button
             // 
@@ -162,9 +151,9 @@
             // 
             this.button_addressButton.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_addressButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.button_addressButton.Location = new System.Drawing.Point(246, 28);
+            this.button_addressButton.Location = new System.Drawing.Point(248, 20);
             this.button_addressButton.Name = "button_addressButton";
-            this.button_addressButton.Size = new System.Drawing.Size(85, 25);
+            this.button_addressButton.Size = new System.Drawing.Size(85, 36);
             this.button_addressButton.TabIndex = 11;
             this.button_addressButton.Text = "우편번호";
             this.button_addressButton.UseVisualStyleBackColor = true;
@@ -422,6 +411,16 @@
             this.panel6.Size = new System.Drawing.Size(402, 106);
             this.panel6.TabIndex = 4;
             // 
+            // pictureBox_Photo
+            // 
+            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources.Mokoko;
+            this.pictureBox_Photo.Location = new System.Drawing.Point(115, 26);
+            this.pictureBox_Photo.Name = "pictureBox_Photo";
+            this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Photo.TabIndex = 1;
+            this.pictureBox_Photo.TabStop = false;
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -434,7 +433,6 @@
             this.Text = "SignUp";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).EndInit();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -444,6 +442,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).EndInit();
             this.ResumeLayout(false);
 
         }

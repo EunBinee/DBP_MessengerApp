@@ -152,11 +152,18 @@ namespace DBP_Project
             toManagerForm.Hide();
         }
 
+
+        //---------------------------------------------------------------------------------------------
+        //회원 번호 변경 => 위에 프로필 사진 클릭시
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             InfoChange infoChange = new InfoChange();
-            infoChange.ShowDialog();
+            infoChange.ShowDialog();//모달 하는 방법
         }
+        //---------------------------------------------------------------------------------------------
+
+
+
         // private void adminBtn_Click(object sender, EventArgs e)
         // {
         //     tf.Hide();

@@ -177,7 +177,7 @@ namespace DBP_Project
             //중복 확인
             if( textBox_Number.Text !="")
             {
-                bool isDup = DuplicateID();
+                bool isDup = DuplicateID(textBox_Number.Text);
                 //만약 ture면 중복인거, false이면 중복이 없는 거
 
                 if (!isDup)
@@ -221,8 +221,11 @@ namespace DBP_Project
             //패널안에 있는 control들을 확인
             // 값이 비었는지 확인
             bool notEmpty = false;
+            bool Stop = false;
             foreach (Control control in flowLayoutPanel2.Controls)
             {
+                if (Stop)
+                    break;
                 if (control is Panel)
                 {
                     //만약 Panel이면
@@ -234,6 +237,7 @@ namespace DBP_Project
                             {
                                 //만약 하나라도 안적혀 있다면..
                                 notEmpty = false;
+                                Stop = true;
                                 break;
                             }
                             else
@@ -252,11 +256,11 @@ namespace DBP_Project
         }
 
         //중복되는 아이디가 있는지 체크
-        public bool DuplicateID()
+        public bool DuplicateID(string ID)
         {
             //0이 중복되는 것 1이 중복안되는 것
             bool isDup = false;
-            string query = "select(Case When '" + textBox_Number.Text + "' = id Then 0 else 1 End) as '중복' From `UserListTable`; ";
+            string query = "select(Case When '" + ID + "' = id Then 0 else 1 End) as '중복' From `UserListTable`; ";
             DataTable dt = new DataTable();
             dt = Query.GetInstance().RunQuery(query);
             // MessageBox.Show(query);
@@ -363,5 +367,6 @@ namespace DBP_Project
                 comboBox_team.Text = "";
             }
         }
+
     }
 }
