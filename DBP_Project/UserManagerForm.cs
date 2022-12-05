@@ -212,6 +212,15 @@ namespace DBP_Project
                 MessageBox.Show("이미 차단한 사용자ID입니다.");
             else
             {
+                /*
+                DataTable dt = Query.GetInstance().RunQuery($"select * from BlockInfo where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'");
+                string tmp = dt.Rows[0]["blockType"].ToString();
+                //if (dt.Rows.Count != 0)
+                if(dt.Rows.Count != 0 && Convert.ToInt32(dt.Rows[0]["blockType"]) == 1)
+                {
+                    MessageBox.Show("aaaa");
+                }
+                */
                 string updateBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockType) Value('{currentUserId}', '{selectedUserId}', 2)";
                 Query.GetInstance().RunQuery(updateBlockListQuery);
 

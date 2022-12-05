@@ -171,7 +171,7 @@ namespace DBP_Project
             this.Hide();
 
             string currentUserId = User_info.GetInstance().ID;
-            string time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string logOutTimeQuery = $"UPDATE LogInHistory SET LogOutTime = '{time}' where userId = '{currentUserId}'";
             Query.GetInstance().RunQuery(logOutTimeQuery);
 

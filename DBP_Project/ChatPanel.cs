@@ -46,12 +46,14 @@ namespace DBP_Project
                         if (dt.Rows[0]["isImg"].ToString() == "1")
                         {
                             LastChat.Text = "사진을 보냈습니다.";
-                            TimeLabel.Text = dt.Rows[0]["send_time"].ToString();
+                            string time = dt.Rows[0]["send_time"].ToString();
+                            TimeLabel.Text = DateTime.Parse(time).ToString("t");
                         }
                         else
                         {
                             LastChat.Text = dt.Rows[0]["data"].ToString();
-                            TimeLabel.Text = dt.Rows[0]["send_time"].ToString();
+                            string time = dt.Rows[0]["send_time"].ToString();
+                            TimeLabel.Text = DateTime.Parse(time).ToString("t");
                         }
                         //최근대화내역체크 - 체크상태(읽음), 체크아님(안읽음)
                         if (dt.Rows[0]["read_check"].ToString() == "1")

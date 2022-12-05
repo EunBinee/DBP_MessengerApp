@@ -68,16 +68,12 @@ namespace DBP_Project
 
         public void SetSenderImg(string yourID)
         {
-            // 사진 읽기
-            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + yourID + "'";
-            DataTable dt = Query.GetInstance().RunQuery(query);
-            string filename = dt.Rows[0][0].ToString();
+            //프로필 시작 처리
+            Employee employee = User_info.GetInstance().GetEmployee(yourID);
 
-            if (filename != "")
-            {
-                senderImg.ImageLocation = "http://15.164.218.208/forDB/" + filename;
-                senderImg.SizeMode = PictureBoxSizeMode.Zoom;
-            }
+            senderName.Text = employee.NickName;
+            senderImg.ImageLocation = "http://15.164.218.208/forDB/" + employee.ProfilePic;
+            senderImg.SizeMode = PictureBoxSizeMode.Zoom;
         }
         private void SetSize()
         {
@@ -127,11 +123,8 @@ namespace DBP_Project
             chat.notice_set(chatID);
             chat.notice_view();
         }
-        public void SetData(string name, string time)
+        public void SetData(string time)
         {
-            senderName.Text = name;
-
-
             sendTimeLabel.Text = DateTime.Parse(time).ToString("t");
         }
 
