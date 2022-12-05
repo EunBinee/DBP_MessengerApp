@@ -41,6 +41,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -50,6 +51,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.msgInput);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.button4);
@@ -76,7 +78,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(291, 11);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 81);
+            this.button5.Size = new System.Drawing.Size(75, 52);
             this.button5.TabIndex = 3;
             this.button5.Text = "전송";
             this.button5.UseVisualStyleBackColor = true;
@@ -188,6 +190,16 @@
             this.trackBar1.Value = 100;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(291, 69);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 4;
+            this.button6.Text = "검색";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Chat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -224,5 +236,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Panel Emptypanel4;
+        private System.Windows.Forms.Button button6;
     }
 }

@@ -40,8 +40,6 @@ namespace DBP_Project
             DataTable dt = Query.GetInstance().RunQuery("SELECT peer from talk.UserListTable WHERE id = '" + yourID + "';");
             yourPeer = Int32.Parse(dt.Rows[0][0].ToString());
 
-            //MessageBox.Show(yourPeer.ToString());
-            //MessageBox.Show("대화내용을 불러옵니다.");
             LoadChatByRoomId(roomID);
 
 
@@ -62,7 +60,6 @@ namespace DBP_Project
                 "VALUES ('"+ roomID + "', '"+myID+"', '"+yourID+"', '" + msgInput.Text + "','" + time + "');");
             DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
             int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-            MessageBox.Show(chatId.ToString());
 
             // TCP를 통해 수신자에게 알림
             SendToSignal();
@@ -88,7 +85,6 @@ namespace DBP_Project
                 "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + text + "','" + time + "','1');");
             DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
             int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-            MessageBox.Show(chatId.ToString());
 
             // TCP를 통해 수신자에게 알림
             SendToSignal();
@@ -97,7 +93,7 @@ namespace DBP_Project
         public void SendJpg(int chatId,string text, string time)
         {
             Message msg = new Message(this, chatId, text);
-            msg.SetData("", time);
+            msg.SetData(time);
             msg.SetMyMsg();
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
             messages.Add(msg);
@@ -110,7 +106,7 @@ namespace DBP_Project
         {
             Message msg = new Message(this, chatId, text,isFile);
             msg.SetMyMsg();
-            msg.SetData("", time);
+            msg.SetData(time);
 
             messages.Add(msg);
             msgInput.Text = "";
@@ -122,7 +118,7 @@ namespace DBP_Project
         private void DrawMsg(int chatId, string text,string name, string time,bool isFile = false)
         {
             Message msg = new Message(this, chatId, text,isFile);
-            msg.SetData(name, time);
+            msg.SetData(time);
             msg.SetSenderImg(yourID);
 
             messages.Add(msg);
@@ -133,7 +129,7 @@ namespace DBP_Project
         private void DrawJpg(int chatId, string text, string name, string time)
         {
             Message msg = new Message(this, chatId, text);
-            msg.SetData(name, time);
+            msg.SetData(time);
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
             msg.SetSenderImg(yourID);
 
@@ -261,7 +257,6 @@ namespace DBP_Project
                 foreach (string filename in openFile.FileNames)
                 {
                     Client.GetInstance().PhotoConnect();
-                    msgInput.Text = filename;
 
                     string newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
 
@@ -271,7 +266,6 @@ namespace DBP_Project
                         "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + newFileName + "','" + time + "','1');");
                     DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
                     int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-                    MessageBox.Show(chatId.ToString());
 
                     // TCP를 통해 수신자에게 알림
                     SendToSignal();
@@ -310,7 +304,6 @@ namespace DBP_Project
                 foreach (string filename in openFile.FileNames)
                 {
                     Client.GetInstance().PhotoConnect();
-                    msgInput.Text = filename;
 
                     string newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".zip";
 
@@ -321,7 +314,6 @@ namespace DBP_Project
                         "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + newFileName + "','" + time + "','2');");
                     DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
                     int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-                    MessageBox.Show(chatId.ToString());
 
                     // TCP를 통해 수신자에게 알림
                     SendToSignal();
@@ -406,5 +398,9 @@ namespace DBP_Project
             this.notice_chat = chatId;
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FindMsg(msgInput.Text);
+        }
     }
 }
