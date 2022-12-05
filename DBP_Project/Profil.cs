@@ -57,7 +57,7 @@ namespace DBP_Project
                 string q = $"SELECT * FROM BlockInfo WHERE userID = '{loginUser}' AND blockUserId = '{targetID}'";
                 DataTable dt = Query.GetInstance().RunQuery(q);
 
-                if (dt.Rows[0]["blockChat"].ToString() == "0")
+                if (dt.Rows.Count == 0 || dt.Rows[0]["blockChat"].ToString() == "0")
                 {
                     MessageBox.Show("채팅방 오픈");
                     string check = $"SELECT room_ID FROM talk.ChatRoom WHERE (`user1` = '{loginUser}' AND `user2` = '{targetID}') OR (`user1` = '{targetID}' AND `user2` = '{loginUser}');";

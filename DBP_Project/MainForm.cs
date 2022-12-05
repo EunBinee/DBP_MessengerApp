@@ -51,7 +51,8 @@ namespace DBP_Project
         private void button6_Click(object sender, EventArgs e) // 우상단 종료버튼 눌렀을때 종료
         {
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
-            Client.GetInstance().Socket_Exit();
+            //Client.GetInstance().Socket_Exit();
+            //this.Close();
             Application.Exit();
         }
 
@@ -202,7 +203,7 @@ namespace DBP_Project
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Client.GetInstance().Socket_Exit();
+            //Client.GetInstance().Socket_Exit();
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
         }
         //---------------------------------------------------------------------------------------------

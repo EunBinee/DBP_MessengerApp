@@ -256,8 +256,29 @@ namespace DBP_Project
 
                 string em_ZipCode       = row["zipCode"].ToString();               //우편번호
                 string em_Address       = row["userAddr"].ToString();             //주소 ( ", "로 split할 수있음)
-                string em_blockLook         = row["blockLook"].ToString();                //차단타입 정보
-                string em_blockChat = row["blockChat"].ToString();
+
+                
+                string em_blockLook;                //차단타입 정보
+                string em_blockChat;
+                if(row["blockLook"].ToString() == "")
+                {
+                    em_blockLook = "0";
+                }
+                else
+                {
+                    em_blockLook = row["blcokLook"].ToString();
+                }
+
+                if (row["blockChat"].ToString() == "")
+                {
+                    em_blockChat = "0";
+                }
+                else
+                {
+                    em_blockChat = row["blcokChat"].ToString();
+                }
+
+
 
                 string em_Department = "";
                 string em_Team           = "";
