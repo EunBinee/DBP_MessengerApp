@@ -115,6 +115,8 @@ namespace DBP_Project
         private void Btn_Panel_Off(object sender, EventArgs e)
         {
             addDepartmentPanel.Visible = false;
+            Add_Department_Text.Text = "";
+            Add_Team_Text.Text = "";
         }
 
         private void Btn_Add_Department(object sender, EventArgs e)
@@ -159,6 +161,10 @@ namespace DBP_Project
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
+            addDepartmentPanel.Visible = false;
+            Btn_Lookup_Department(null, null);
+            Add_Department_Text.Text = "";
+            Add_Team_Text.Text = "";
         }
 
         private void Btn_Manage_UserDepartment(object sender, EventArgs e)
@@ -169,16 +175,23 @@ namespace DBP_Project
         private void button1_Click(object sender, EventArgs e)
         {
             ChangeDepartmentPanel.Visible = false;
+            textBox1.Text = "";
+            DepartmentComboBox.SelectedIndex = -1;
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             ChangeTeamPanel.Visible = false;
+            TeamComboBox.SelectedIndex = -1;
+            textBox2.Text = "";
         }
 
         private void Change_Team_Click(object sender, EventArgs e)
         {
             ChangeTeamPanel.Visible = true;
+            TeamComboBox.Items.Clear();
+            List<String> list = new List<string>();
+
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
@@ -187,15 +200,19 @@ namespace DBP_Project
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    TeamComboBox.Items.Add(rdr["teamName"].ToString());
+                    list.Add(rdr["teamName"].ToString());
                 }
+                list = list.Distinct().ToList();
+                TeamComboBox.Items.AddRange(list.ToArray());
                 connection.Close();
             }
         }
 
         private void Change_Department_Click(object sender, EventArgs e)
         {
+            DepartmentComboBox.Items.Clear();
             ChangeDepartmentPanel.Visible = true;
+            List<String> list = new List<String>();
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
@@ -204,8 +221,10 @@ namespace DBP_Project
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
-                    DepartmentComboBox.Items.Add(rdr["departmentName"].ToString());
+                    list.Add(rdr["departmentName"].ToString());
                 }
+                list = list.Distinct().ToList();
+                DepartmentComboBox.Items.AddRange(list.ToArray());
                 connection.Close();
             }
         }
@@ -228,6 +247,10 @@ namespace DBP_Project
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
+            Btn_Lookup_Department(null, null);
+            ChangeDepartmentPanel.Visible = false;
+            DepartmentComboBox.SelectedIndex = -1;
+            textBox1.Text = "";
         }
 
         private void Change_Team_Info_Click(object sender, EventArgs e) // 팀정보 변경
@@ -248,6 +271,10 @@ namespace DBP_Project
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
+            Btn_Lookup_Department(null, null);
+            ChangeTeamPanel.Visible = false;
+            TeamComboBox.SelectedItem = -1;
+            textBox2.Text = "";
         }
     }
 }
