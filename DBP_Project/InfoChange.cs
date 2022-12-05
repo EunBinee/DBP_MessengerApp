@@ -27,6 +27,8 @@ namespace DBP_Project
             //회원 정보 변경을 하는 폼
             InitializeComponent();
             GetUserInfo();
+            SetMultiProfileComboBox();
+
         }
 
         //처음 시작시 ==> 회원의 정보를 TEXTBOX에 넣어준다.
@@ -55,26 +57,23 @@ namespace DBP_Project
             textBox_address3.Text = address[1];
         }
 
-        public void SetMultiProfileButton()
+        public void SetMultiProfileComboBox()
         {
-            //만약 멀티프로필이 있다면, 멀프 수만큼 버튼을 만든다.
-
-            CheckBox checkBox = new CheckBox();
-
-            checkBox.Name = "CheckBox_multiProfileEmployee_" + Selectnumber;
-            checkBox.Width = 240;
-
-
-            checkBox.Text = comboBox_AddMultiEmployee.SelectedItem.ToString();
-
-            checkBox.Checked = true;
-
-            flowLayoutPanel_MultiProfile.Controls.Add(checkBox);
-
-            Selectnumber++; //체크박스 이름 뒤에 붙을 번호
-
-
+            for (int i = 0; i < User_info.GetInstance().myMultiProfileList.Count; i++)
+            {
+                string text = "나의 " + (i + 1) + "번째 멀티프로필";
+                comboBox_myMultiProfileList.Items.Add(text);
+            }
         }
+
+
+
+
+
+
+
+
+
 
         //정보변경
         private void ChangeInfo_Btn_Click(object sender, EventArgs e)
@@ -388,8 +387,8 @@ namespace DBP_Project
         //멀티프로필 폼으로 이동. //새로운 멀티 프로필 생성
         private void button_multiProfile_Click(object sender, EventArgs e)
         {
+            User_info.GetInstance().MultiProfileIndex = User_info.GetInstance().myMultiProfileList.Count;
             MultiProfile multiProfileForm = new MultiProfile();
-
             multiProfileForm.ShowDialog();
         }
 
@@ -413,6 +412,23 @@ namespace DBP_Project
                 pictureBox.Image = Image.FromFile(file);
                 pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             }
+        }
+
+        private void ChangeMultiP_Btn_Click(object sender, EventArgs e)
+        {
+            //나의 멀티 프로필 변경
+
+            if (comboBox_myMultiProfileList.SelectedIndex == -1)
+                return;
+
+
+            int myMultiProfileIndex = comboBox_myMultiProfileList.SelectedIndex;
+            User_info.GetInstance().MultiProfileIndex = myMultiProfileIndex;
+
+            MultiProfile multiProfileForm = new MultiProfile();
+            multiProfileForm.ShowDialog();
+
+
         }
     }
 }

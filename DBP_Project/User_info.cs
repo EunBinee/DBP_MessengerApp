@@ -59,10 +59,10 @@ namespace DBP_Project
         public List<Employee> employees = new List<Employee>();
 
         //나의 멀티프로필을 저장
-        private List<MultiProfile_Class> myMultiProfileList = new List<MultiProfile_Class>();
+        public List<MultiProfile_Class> myMultiProfileList = new List<MultiProfile_Class>();
         public List<List<string>> multiProfileEmployee = new List<List<string>>();
-        
-        
+
+        private int multiProfileIndex;
 
 
         //편하게 쓰기위한.. 겟터와 세터..
@@ -177,20 +177,21 @@ namespace DBP_Project
             }
         }
 
-
+        public int MultiProfileIndex
+        {
+            get
+            {
+                return multiProfileIndex;
+            }
+            set
+            {
+                multiProfileIndex = value;
+            }
+        }
 
 
         //나의 멀티 프로필---------------------------------------------------------------------------------------------------------
-        public MultiProfile_Class GetMyMultiProfile(int index)
-        {
-            return myMultiProfileList[index];
-        }
 
-        public void SetMyMultiProfile(string myNickname, string myProfile, int index)
-        {
-            myMultiProfileList[index].NickName = myNickname;
-            myMultiProfileList[index].ProfilePic = myProfile;
-        }
         //----------------------------------------------------------------------------------------------------------------------------------
 
         //로그인할 때 모든 직원 정보를 읽어온다.
@@ -299,12 +300,13 @@ namespace DBP_Project
             string myNickname = "";
             foreach (DataRow row in dt.Rows)
             {
+                
                 myProfile = row["profilePic"].ToString();
                 myNickname = row["nickname"].ToString();
                 string user_id = row["user_id"].ToString();
 
 
-                int index = GetMyMultiPListIndex(myNickname);
+                int index = GetMyMultiPListIndex(myNickname, myProfile);
 
                 if (index == -1)
                 {
@@ -337,7 +339,7 @@ namespace DBP_Project
             return employees[i];
         }
 
-        public int GetMyMultiPListIndex(string myMultiNickname)
+        public int GetMyMultiPListIndex(string myMultiNickname, string myProfilePic)
         {
             if (myMultiProfileList.Count > 0)
             {
@@ -345,7 +347,8 @@ namespace DBP_Project
                 {
                     if (myMultiProfileList[i].NickName == myMultiNickname) 
                     {
-                        return i;
+                        if(myMultiProfileList[i].ProfilePic == myProfilePic)
+                                 return i;
                     }
                 }
             }

@@ -8,6 +8,7 @@ namespace DBP_Project
 {
     class MultiProfile_Class
     {
+        private int multiprofileNo;
         private string id;     //user(나 : 로그인한 사람)에게 멀티 프로필을 건 사람의 사원번호(id)
         private string nickName;
         private string profilePic;
@@ -24,7 +25,17 @@ namespace DBP_Project
         }
 
         //게터 세터
-
+        public int MultiprofileNo
+        {
+            get
+            {
+                return multiprofileNo;
+            }
+            set
+            {
+                multiprofileNo = value;
+            }
+        }
         public string ID
         {
             get

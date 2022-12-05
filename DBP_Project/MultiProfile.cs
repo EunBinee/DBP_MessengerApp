@@ -14,6 +14,7 @@ namespace DBP_Project
     public partial class MultiProfile : Form
     {
         int Selectnumber = 0; //체크박스 이름 뒤에 붙을 번호
+        int multiProfileIndex = 0;
         string file = "default.jpg"; //파일명
 
         public MultiProfile()
@@ -28,31 +29,30 @@ namespace DBP_Project
         //시작할때 모든 정보를 넣는다.
         void GeMultiPrifilerInfo()
         {
-            if (User_info.GetInstance().MyMultiProfile.NickName == "" && User_info.GetInstance().MyMultiProfile.ProfilePic == "")
+            multiProfileIndex = User_info.GetInstance().MultiProfileIndex;
+            if (multiProfileIndex == User_info.GetInstance().myMultiProfileList.Count)
             {
-                //만약 둘 다 빈칸이면 멀티프로필을 설정 안한 것이다.
-                if (User_info.GetInstance().multiProfileEmployee.Count == 0)
-                {
-                    //그리고 만약 아무도 설정을 안했다면.. 기본 이미지로 가야함.
-                    textBox_NickName.Text = User_info.GetInstance().NickName;
+                //새로 만드는 멀티 프로필이면!?
 
-                    pictureBox_Photo.ImageLocation = "http://15.164.218.208/forDB/" + file;
-                    pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;
+                //기본 이미지로 가야함.
+                textBox_NickName.Text = User_info.GetInstance().NickName;
 
-                }
-
+                pictureBox_Photo.ImageLocation = "http://15.164.218.208/forDB/" + file;
+                pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;
             }
             else
             {
-                textBox_NickName.Text = User_info.GetInstance().MyMultiProfile.NickName;
-                pictureBox_Photo.ImageLocation = "http://15.164.218.208/forDB/" + User_info.GetInstance().MyMultiProfile.ProfilePic;
+                //새로 만드는 멀티 프로필이 아니라면?!
+
+                textBox_NickName.Text = User_info.GetInstance().myMultiProfileList[multiProfileIndex].NickName;
+                pictureBox_Photo.ImageLocation = "http://15.164.218.208/forDB/" + User_info.GetInstance().myMultiProfileList[multiProfileIndex].ProfilePic;
                 pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;
 
-                file = User_info.GetInstance().MyMultiProfile.ProfilePic;
+                file = User_info.GetInstance().myMultiProfileList[multiProfileIndex].ProfilePic;
 
 
                 //멀티프로필 설정된 사람들.
-                for (int i = 0; i < User_info.GetInstance().multiProfileEmployee.Count; i++)
+                for (int i = 0; i < User_info.GetInstance().multiProfileEmployee[multiProfileIndex].Count; i++)
                 {
                     CheckBox checkBox = new CheckBox();
 
@@ -61,7 +61,7 @@ namespace DBP_Project
                     string multiEmployeeName = "";
                     for (int j = 0; j < User_info.GetInstance().employees.Count; j++)
                     {
-                        if (User_info.GetInstance().employees[j].ID == User_info.GetInstance().multiProfileEmployee[i])
+                        if (User_info.GetInstance().employees[j].ID == User_info.GetInstance().multiProfileEmployee[multiProfileIndex][i])
                         {
                             multiEmployeeName = User_info.GetInstance().employees[j].Name;
                         }
@@ -69,7 +69,7 @@ namespace DBP_Project
                     }
                     //체크박스 안 내용은 멀티프로필을 건 직원의 사원번호와 이름
 
-                    checkBox.Text = multiEmployeeName + ",(" + User_info.GetInstance().multiProfileEmployee[i] + ")";
+                    checkBox.Text = multiEmployeeName + ",(" + User_info.GetInstance().multiProfileEmployee[multiProfileIndex][i] + ")";
                     checkBox.Width = 240;
                     checkBox.Checked = true;
 
@@ -77,7 +77,13 @@ namespace DBP_Project
                     Selectnumber++; //체크박스 이름 뒤에 붙을 번호
                 }
 
+
+
+
             }
+
+
+
             //----------------------------------------------------------------------------------------------------------------------------------------------------------
             //콤보 박스 변경 (현재 내가 멀티프로필 걸어둔 사람들 빼고)
             comboBox_AddMultiEmployee.Items.Clear();
@@ -87,9 +93,12 @@ namespace DBP_Project
                 bool canSetCombo = true;
                 for (int j = 0; j < User_info.GetInstance().multiProfileEmployee.Count; j++)
                 {
-                    if (User_info.GetInstance().employees[i].ID == User_info.GetInstance().multiProfileEmployee[j])
+                    for(int k= 0;k<User_info.GetInstance().multiProfileEmployee[j].Count;k++)
                     {
-                        canSetCombo = false;
+                        if (User_info.GetInstance().employees[i].ID == User_info.GetInstance().multiProfileEmployee[j][k])
+                        {
+                            canSetCombo = false;
+                        }
                     }
                 }
 
@@ -134,6 +143,12 @@ namespace DBP_Project
         }
 
 
+
+
+
+
+
+
         //변경 버튼
         private void Change_Button_Click(object sender, EventArgs e)
         {
@@ -142,101 +157,178 @@ namespace DBP_Project
             bool checkPicture = false;
             string newFileName = "default.jpg";
             //DB에 저장 및 UserInfo의 multiProfileEmployee 변경
-            foreach (Control control in flowLayoutPanel_MultiProfile.Controls)
+
+
+            List<string> multiProfileEmployeeList = new List<string>();
+            if (multiProfileIndex == User_info.GetInstance().myMultiProfileList.Count)
             {
-                if (control is CheckBox)
+                //만약 값이 없는 경우 ==> 새로 만든 멀티 프로필일 경우
+
+                foreach (Control control in flowLayoutPanel_MultiProfile.Controls)
                 {
-                    if (((CheckBox)control).Checked)
+                    if (control is CheckBox)
                     {
-                        //만약 체크되어있다면, DB에 올리기
-                        //그리고 UserInfo의 값도 변경
-
-                        if (!useMultiProfile)
+                        if (((CheckBox)control).Checked)
                         {
-
-
-                            if(!checkPicture)
+                            //만약 체크되어있다면, DB에 올리기
+                            //그리고 UserInfo의 값도 변경
+                            if (!useMultiProfile)
                             {
-                                checkPicture= true;
-                                //사진 
-                                if ((file != "default.jpg") && file != User_info.GetInstance().MyMultiProfile.ProfilePic)
+                                //딱 한번 사진 이름 변경
+                                if (!checkPicture)
                                 {
-
-                                    Client.GetInstance().PhotoConnect();
-
-                                    //profilePic
-                                    newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
-
-                                    var data = Encoding.UTF8.GetBytes(newFileName);
-                                    Client.GetInstance().SendByte(data);
-
-                                    int bufferCapacity = 1024;
-                                    using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                                    checkPicture = true;
+                                    //사진 
+                                    if ((file != "default.jpg") && file != User_info.GetInstance().myMultiProfileList[multiProfileIndex].ProfilePic)
                                     {
-                                        byte[] buf = new byte[bufferCapacity];
-                                        int c;
 
-                                        while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                                        Client.GetInstance().PhotoConnect();
+
+                                        //profilePic
+                                        newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
+
+                                        var data = Encoding.UTF8.GetBytes(newFileName);
+                                        Client.GetInstance().SendByte(data);
+
+                                        int bufferCapacity = 1024;
+                                        using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
                                         {
-                                            Client.GetInstance().SendByte(buf);
+                                            byte[] buf = new byte[bufferCapacity];
+                                            int c;
+
+                                            while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                                            {
+                                                Client.GetInstance().SendByte(buf);
+                                            }
                                         }
+                                        Client.GetInstance().PhotoClose();
+
+                                        file = newFileName;
                                     }
-                                    Client.GetInstance().PhotoClose();
 
-                                    file = newFileName;
                                 }
-                               
+
+                                //myMultiProfileList
+                                User_info.GetInstance().myMultiProfileList.Add(new MultiProfile_Class(User_info.GetInstance().ID, textBox_NickName.Text, file));
+
+                                useMultiProfile = true;
                             }
 
+                            string textBoxName = ((CheckBox)control).Text;
+                            //( 와 )를 삭제
+                            textBoxName = textBoxName.Replace("(", "");
+                            textBoxName = textBoxName.Replace(")", "");
 
+                            //자른다.  :  [0]이 이름 , [1]이 아이디
+                            string[] multiProfileArray = textBoxName.Split(',');
 
-                            if (User_info.GetInstance().multiProfileEmployee.Count > 0) 
-                            {
-                                //값이 존재하면 지워준다.
-                                string query_ = "DELETE FROM `talk`.`MultiProfile` WHERE  `doMultiProfile_Id` = '" + User_info.GetInstance().ID + "'";
-                                Query.GetInstance().RunQuery(query_);
-                            }
+                            multiProfileEmployeeList.Add(multiProfileArray[1]);
 
-                            User_info.GetInstance().multiProfileEmployee.Clear();
-                            useMultiProfile = true;
+                            string query = "INSERT INTO `talk`.`MultiProfile` (`doMultiProfile_Id`, `user_id`, `nickname`, `profilePic`) VALUES('" + User_info.GetInstance().ID + "', '" + multiProfileArray[1] + "', '" + textBox_NickName.Text + "','" + file + "' '');";
+                            Query.GetInstance().RunQuery(query);
+
                         }
-
-
-                        string textBoxName = ((CheckBox)control).Text;
-                        //( 와 )를 삭제
-                        textBoxName = textBoxName.Replace("(", "");
-                        textBoxName = textBoxName.Replace(")", "");
-
-                        //자른다.  :  [0]이 이름 , [1]이 아이디
-                        string[] multiProfileArray = textBoxName.Split(',');
-
-
-                        User_info.GetInstance().multiProfileEmployee.Add(multiProfileArray[1]);
-
-                        string query = "INSERT INTO `talk`.`MultiProfile` (`doMultiProfile_Id`, `user_id`, `nickname`, `profilePic`) VALUES('" + User_info.GetInstance().ID + "', '" + multiProfileArray[1] + "', '" + textBox_NickName.Text + "','" + file + "' '');";
-                        Query.GetInstance().RunQuery(query);
-                        
                     }
                 }
+                User_info.GetInstance().multiProfileEmployee.Add(multiProfileEmployeeList);
+
+
+                //나의 멀티 프로필을 저장한다.
+                if (useMultiProfile)
+                {
+                    this.Close();
+                }
+                else if (!useMultiProfile)
+                {
+                    this.Close();
+                }
             }
-
-            //나의 멀티 프로필을 저장한다.
-            if (useMultiProfile)
+            else
             {
-               
+                //값이 있는 경우 ==>원래 있는 값일 경우
 
-                User_info.GetInstance().SetMyMultiProfile(textBox_NickName.Text, newFileName);
+                string curNickName = User_info.GetInstance().myMultiProfileList[multiProfileIndex].NickName;
+                foreach (Control control in flowLayoutPanel_MultiProfile.Controls)
+                {
+                    if (control is CheckBox)
+                    {
+                        if (((CheckBox)control).Checked)
+                        {
+                            //만약 체크되어있다면, DB에 올리기
+                            //그리고 UserInfo의 값도 변경
+                            if (!useMultiProfile)
+                            {
+                                //딱 한번 사진 이름 변경
+                                if (!checkPicture)
+                                {
+                                    checkPicture = true;
+                                    //사진 
+                                    if ((file != "default.jpg") && file != User_info.GetInstance().myMultiProfileList[multiProfileIndex].ProfilePic)
+                                    {
 
+                                        Client.GetInstance().PhotoConnect();
 
-                this.Close();
-            }
-            else if (!useMultiProfile)
-            {
-                //값이 존재하면 지워준다.
-                string query_ = "DELETE FROM `talk`.`MultiProfile` WHERE  `doMultiProfile_Id` = '" + User_info.GetInstance().ID + "'";
-                Query.GetInstance().RunQuery(query_);
+                                        //profilePic
+                                        newFileName = DateTime.Now.ToString("yyyy_MM_dd_HH_mm_ss") + ".jpg";
 
-                this.Close();
+                                        var data = Encoding.UTF8.GetBytes(newFileName);
+                                        Client.GetInstance().SendByte(data);
+
+                                        int bufferCapacity = 1024;
+                                        using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                                        {
+                                            byte[] buf = new byte[bufferCapacity];
+                                            int c;
+
+                                            while ((c = fs.Read(buf, 0, buf.Length)) > 0)
+                                            {
+                                                Client.GetInstance().SendByte(buf);
+                                            }
+                                        }
+                                        Client.GetInstance().PhotoClose();
+
+                                        file = newFileName;
+                                    }
+
+                                }
+
+                                //myMultiProfileList
+                                User_info.GetInstance().myMultiProfileList.Add(new MultiProfile_Class(User_info.GetInstance().ID, textBox_NickName.Text, file));
+
+                                useMultiProfile = true;
+                            }
+
+                            string textBoxName = ((CheckBox)control).Text;
+                            //( 와 )를 삭제
+                            textBoxName = textBoxName.Replace("(", "");
+                            textBoxName = textBoxName.Replace(")", "");
+
+                            //자른다.  :  [0]이 이름 , [1]이 아이디
+                            string[] multiProfileArray = textBoxName.Split(',');
+
+                            multiProfileEmployeeList.Add(multiProfileArray[1]);
+
+                            string query = "INSERT INTO `talk`.`MultiProfile` (`doMultiProfile_Id`, `user_id`, `nickname`, `profilePic`) VALUES('" + User_info.GetInstance().ID + "', '" + multiProfileArray[1] + "', '" + textBox_NickName.Text + "','" + file + "' '');";
+                            Query.GetInstance().RunQuery(query);
+
+                        }
+                    }
+                }
+                User_info.GetInstance().multiProfileEmployee.Add(multiProfileEmployeeList);
+
+                //나의 멀티 프로필을 저장한다.
+                if (useMultiProfile)
+                {
+                    this.Close();
+                }
+                else if (!useMultiProfile)
+                {
+                    //값이 존재하면 지워준다.
+                    string query_ = "DELETE FROM `talk`.`MultiProfile` WHERE  `doMultiProfile_Id` = '" + User_info.GetInstance().ID + "' and `nickname` = '" + curNickName + "'";
+                    Query.GetInstance().RunQuery(query_);
+
+                    this.Close();
+                }
             }
         }
 

@@ -69,9 +69,11 @@ namespace DBP_Project
             this.panel6 = new System.Windows.Forms.Panel();
             this.ChangeInfo_Btn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.ChangeMultiP_Btn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox_myMultiProfileList = new System.Windows.Forms.ComboBox();
             this.button_multiProfile = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel_MultiProfile = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -492,13 +494,42 @@ namespace DBP_Project
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.panel7.Controls.Add(this.flowLayoutPanel_MultiProfile);
+            this.panel7.Controls.Add(this.ChangeMultiP_Btn);
+            this.panel7.Controls.Add(this.label3);
+            this.panel7.Controls.Add(this.comboBox_myMultiProfileList);
             this.panel7.Controls.Add(this.button_multiProfile);
             this.panel7.Controls.Add(this.label2);
             this.panel7.Location = new System.Drawing.Point(3, 1038);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(402, 503);
             this.panel7.TabIndex = 14;
+            // 
+            // ChangeMultiP_Btn
+            // 
+            this.ChangeMultiP_Btn.Location = new System.Drawing.Point(246, 252);
+            this.ChangeMultiP_Btn.Name = "ChangeMultiP_Btn";
+            this.ChangeMultiP_Btn.Size = new System.Drawing.Size(134, 43);
+            this.ChangeMultiP_Btn.TabIndex = 23;
+            this.ChangeMultiP_Btn.Text = "변경하기";
+            this.ChangeMultiP_Btn.UseVisualStyleBackColor = true;
+            this.ChangeMultiP_Btn.Click += new System.EventHandler(this.ChangeMultiP_Btn_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 173);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(167, 15);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "나의 멀티프로필 리스트";
+            // 
+            // comboBox_myMultiProfileList
+            // 
+            this.comboBox_myMultiProfileList.FormattingEnabled = true;
+            this.comboBox_myMultiProfileList.Location = new System.Drawing.Point(19, 201);
+            this.comboBox_myMultiProfileList.Name = "comboBox_myMultiProfileList";
+            this.comboBox_myMultiProfileList.Size = new System.Drawing.Size(360, 23);
+            this.comboBox_myMultiProfileList.TabIndex = 21;
             // 
             // button_multiProfile
             // 
@@ -519,16 +550,6 @@ namespace DBP_Project
             this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "멀티 프로필";
-            // 
-            // flowLayoutPanel_MultiProfile
-            // 
-            this.flowLayoutPanel_MultiProfile.AutoScroll = true;
-            this.flowLayoutPanel_MultiProfile.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel_MultiProfile.Location = new System.Drawing.Point(54, 181);
-            this.flowLayoutPanel_MultiProfile.Name = "flowLayoutPanel_MultiProfile";
-            this.flowLayoutPanel_MultiProfile.Size = new System.Drawing.Size(294, 283);
-            this.flowLayoutPanel_MultiProfile.TabIndex = 21;
-            this.flowLayoutPanel_MultiProfile.WrapContents = false;
             // 
             // InfoChange
             // 
@@ -601,6 +622,8 @@ namespace DBP_Project
         private System.Windows.Forms.Label label_Password;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_multiProfile;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_MultiProfile;
+        private System.Windows.Forms.Button ChangeMultiP_Btn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox_myMultiProfileList;
     }
 }
