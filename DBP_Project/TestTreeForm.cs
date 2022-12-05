@@ -41,9 +41,10 @@ namespace DBP_Project
         {
             tv.BackColor = Color.FromArgb(46, 51, 80);
             tv.ForeColor = Color.White;
+            User_info.GetInstance().GetWorkerInfo();
 
             DataTable dt = Query.GetInstance().RunQuery("SELECT departmentName FROM UserDepartment, UserListTable WHERE "
-                +"departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '" 
+                +"departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '" 
                 + loginUser+"' AND blockDepartment IS NOT NULL) group by departmentName");
             foreach (DataRow dr in dt.Rows)
             {
@@ -51,7 +52,7 @@ namespace DBP_Project
             }
 
             dt = Query.GetInstance().RunQuery("SELECT departmentName, teamName FROM UserDepartment, UserListTable WHERE "
-                + "departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '"
+                + "departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '"
                 + loginUser + "' AND blockDepartment IS NOT NULL) group by departmentName, teamName");
             foreach (DataRow dr in dt.Rows)
             {
@@ -72,7 +73,7 @@ namespace DBP_Project
             */
             for(int i = 0; i < User_info.GetInstance().employees.Count; i++)
             {
-                if(User_info.GetInstance().employees[i].Btype != "1")
+                if(User_info.GetInstance().employees[i].BlockLook != "1")
                 {
                     foreach (TreeNode tn in tv.Nodes)
                     {
@@ -109,10 +110,11 @@ namespace DBP_Project
 
         private void FavoriteTreeLoad()
         {
+            User_info.GetInstance().GetWorkerInfo();
             DataTable dt = Query.GetInstance().RunQuery("SELECT departmentName FROM(SELECT departmentName, teamName, name, id " +
                 $"FROM UserDepartment, UserListTable, (SELECT target_id FROM test_Favorite WHERE user_id = '{loginUser}') as t " +
                 $"WHERE UserDepartment.userid = UserListTable.id AND UserListTable.id = t.target_id) as favorite " +
-                $"WHERE departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '{loginUser}' AND " +
+                $"WHERE departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '{loginUser}' AND " +
                 $"blockDepartment IS NOT NULL) GROUP BY departmentName");
             if(dt.Rows.Count < 1)
             {
@@ -127,7 +129,7 @@ namespace DBP_Project
             dt = Query.GetInstance().RunQuery("SELECT departmentName, teamName FROM(SELECT departmentName, teamName, name, id " +
                 $"FROM UserDepartment, UserListTable, (SELECT target_id FROM test_Favorite WHERE user_id = '{loginUser}') as t " +
                 $"WHERE UserDepartment.userid = UserListTable.id AND UserListTable.id = t.target_id) as favorite " +
-                $"WHERE departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '{loginUser}' AND " +
+                $"WHERE departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '{loginUser}' AND " +
                 $"blockDepartment IS NOT NULL) GROUP BY departmentName, teamName");
             foreach (DataRow dr in dt.Rows)
             {
@@ -140,14 +142,14 @@ namespace DBP_Project
                 }
             }
 
-            dt = Query.GetInstance().RunQuery("SELECT l.departmentName, l.teamName, l.id, l.name, l.nickName, IFNULL(b.blockType, 0) as bType FROM" +
+            dt = Query.GetInstance().RunQuery("SELECT * FROM" +
                 "(SELECT departmentName, teamName, name, nickName, id FROM(SELECT departmentName, teamName, name, nickName, id " +
                 $"FROM UserDepartment, UserListTable, (SELECT target_id FROM test_Favorite WHERE user_id = '{loginUser}') as t " +
                 $"WHERE UserDepartment.userid = UserListTable.id AND UserListTable.id = t.target_id) as favorite " +
                 $"WHERE departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '{loginUser}' AND " +
                 $"blockDepartment IS NOT NULL)) as l LEFT JOIN " +
-                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "' AND blockType IS NOT NULL) as b ON l.id = b.blockUserId " +
-                "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '" + loginUser +
+                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "') as b ON l.id = b.blockUserId " +
+                "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '" + loginUser +
                 "' AND blockDepartment IS NOT NULL)");
             foreach (DataRow dr in dt.Rows)
             {
@@ -157,7 +159,7 @@ namespace DBP_Project
                     {
                         if (dr["teamName"].ToString().Equals(ttn.Text))
                         {
-                            if (dr["bType"].ToString() != "1")
+                            if (dr["blockLook"].ToString() != "1")
                             {
                                 //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
                                 for(int i = 0; i < User_info.GetInstance().employees.Count; i++)
@@ -178,6 +180,7 @@ namespace DBP_Project
 
         private void TreeSearchBtn_Click(object sender, EventArgs e)
         {
+            User_info.GetInstance().GetWorkerInfo();
             string wizard = SearchWizard.Text;
             string word = SearchWord.Text;
             DataTable dt;
@@ -255,9 +258,9 @@ namespace DBP_Project
                 }
             }
 
-            dt = Query.GetInstance().RunQuery("SELECT l.departmentName, l.teamName, l.id, l.name, l.nickName, IFNULL(b.blockType, 0) as bType FROM" +
+            dt = Query.GetInstance().RunQuery("SELECT * FROM" +
                 "(SELECT * FROM UserDepartment, UserListTable WHERE id = userid AND NOT id = '" + loginUser + "') as l LEFT JOIN " +
-                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "' AND blockType IS NOT NULL) as b ON l.id = b.blockUserId " +
+                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "') as b ON l.id = b.blockUserId " +
                 "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '" + loginUser +
                 "' AND blockDepartment IS NOT NULL)");
             foreach (DataRow dr in dt.Rows)
@@ -268,7 +271,7 @@ namespace DBP_Project
                     {
                         if (dr["teamName"].ToString().Equals(ttn.Text))
                         {
-                            if (dr["bType"].ToString() != "1")
+                            if (dr["blockLook"].ToString() != "1")
                             {
                                 //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
                                 for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
@@ -290,7 +293,7 @@ namespace DBP_Project
         private void SearchID(string wizard, string word)
         {
             DataTable dt = Query.GetInstance().RunQuery("SELECT departmentName FROM UserDepartment, UserListTable WHERE "
-                + "departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '"
+                + "departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '"
                 + loginUser + "' AND blockDepartment IS NOT NULL) AND UserListTable.id = UserDepartment.userid " +
                 "AND userid LIKE '%" + word + "%' group by departmentName");
             foreach (DataRow dr in dt.Rows)
@@ -310,10 +313,10 @@ namespace DBP_Project
                 }
             }
 
-            dt = Query.GetInstance().RunQuery("SELECT l.departmentName, l.teamName, l.id, l.name, l.nickName, IFNULL(b.blockType, 0) as bType FROM" +
+            dt = Query.GetInstance().RunQuery("SELECT * FROM" +
                 "(SELECT * FROM UserDepartment, UserListTable WHERE id = userid AND NOT id = '" + loginUser + "') as l LEFT JOIN " +
-                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "' AND blockType IS NOT NULL) as b ON l.id = b.blockUserId " +
-                "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '" + loginUser +
+                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "') as b ON l.id = b.blockUserId " +
+                "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '" + loginUser +
                 "' AND blockDepartment IS NOT NULL) AND l.id LIKE '%" + word + "%'");
             foreach (DataRow dr in dt.Rows)
             {
@@ -323,7 +326,7 @@ namespace DBP_Project
                     {
                         if (dr["teamName"].ToString().Equals(ttn.Text))
                         {
-                            if (dr["bType"].ToString() != "1")
+                            if (dr["blockLook"].ToString() != "1")
                             {
                                 //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
                                 for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
@@ -346,7 +349,7 @@ namespace DBP_Project
         {
             DataTable dt = Query.GetInstance().RunQuery("select departmentName from UserDepartment, UserListTable where UserDepartment." +
                 "userid = UserListTable.id and name like '%" + word + "%' AND departmentName NOT IN " +
-                "(SELECT blockDepartment FROM BlockInfo WHERE userid = '"
+                "(SELECT blockDepartment FROM BlockInfo WHERE userId = '"
                 + loginUser + "' AND blockDepartment IS NOT NULL) group by departmentName");
             foreach (DataRow dr in dt.Rows)
             {
@@ -366,10 +369,10 @@ namespace DBP_Project
                 }
             }
 
-            dt = Query.GetInstance().RunQuery("SELECT l.departmentName, l.teamName, l.id, l.name, l.nickName, IFNULL(b.blockType, 0) as bType FROM" +
+            dt = Query.GetInstance().RunQuery("SELECT * FROM" +
                 "(SELECT * FROM UserDepartment, UserListTable WHERE id = userid AND NOT id = '" + loginUser + "') as l LEFT JOIN " +
-                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "' AND blockType IS NOT NULL) as b ON l.id = b.blockUserId " +
-                "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '" + loginUser +
+                "(SELECT * FROM BlockInfo WHERE userId = '" + loginUser + "') as b ON l.id = b.blockUserId " +
+                "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userId = '" + loginUser +
                 "' AND blockDepartment IS NOT NULL) AND l.name LIKE '%" + word + "%'");
             foreach (DataRow dr in dt.Rows)
             {
@@ -379,7 +382,7 @@ namespace DBP_Project
                     {
                         if (dr["teamName"].ToString().Equals(ttn.Text))
                         {
-                            if (dr["bType"].ToString() != "1")
+                            if (dr["blockLook"].ToString() != "1")
                             {
                                 //MessageBox.Show(User_info.GetInstance().employees.Count.ToString());
                                 for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
