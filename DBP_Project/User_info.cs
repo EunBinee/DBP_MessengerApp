@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -58,8 +59,11 @@ namespace DBP_Project
         public List<Employee> employees = new List<Employee>();
 
         //나의 멀티프로필을 저장
-        private MultiProfile_Class myMultiProfile;
-        public List<string> multiProfileEmployee = new List<string>();
+        private List<MultiProfile_Class> myMultiProfileList = new List<MultiProfile_Class>();
+        public List<List<string>> multiProfileEmployee = new List<List<string>>();
+        
+        
+
 
         //편하게 쓰기위한.. 겟터와 세터..
         public string ID
@@ -173,18 +177,19 @@ namespace DBP_Project
             }
         }
 
-        public MultiProfile_Class MyMultiProfile
+
+
+
+        //나의 멀티 프로필---------------------------------------------------------------------------------------------------------
+        public MultiProfile_Class GetMyMultiProfile(int index)
         {
-            get
-            {
-                return myMultiProfile;
-            }
+            return myMultiProfileList[index];
         }
 
-        public void SetMyMultiProfile(string myNickname, string myProfile)
+        public void SetMyMultiProfile(string myNickname, string myProfile, int index)
         {
-            myMultiProfile.NickName = myNickname;
-            myMultiProfile.ProfilePic = myProfile;
+            myMultiProfileList[index].NickName = myNickname;
+            myMultiProfileList[index].ProfilePic = myProfile;
         }
         //----------------------------------------------------------------------------------------------------------------------------------
 
@@ -297,10 +302,23 @@ namespace DBP_Project
                 myProfile = row["profilePic"].ToString();
                 myNickname = row["nickname"].ToString();
                 string user_id = row["user_id"].ToString();
-                multiProfileEmployee.Add(user_id);
+
+
+                int index = GetMyMultiPListIndex(myNickname);
+
+                if (index == -1)
+                {
+                    //없는 멀티 프로필
+                    multiProfileEmployee.Add(new List<string> { user_id });
+                    myMultiProfileList.Add(new MultiProfile_Class(id, myNickname, myProfile));
+                }
+                else if (index != -1)
+                {
+                    //있는 멀티 프로필
+                    multiProfileEmployee[index].Add(user_id);
+                }
             }
 
-            myMultiProfile = new MultiProfile_Class(id, myNickname, myProfile);
         }
 
 
@@ -319,10 +337,19 @@ namespace DBP_Project
             return employees[i];
         }
 
-
-
-
-           
-
+        public int GetMyMultiPListIndex(string myMultiNickname)
+        {
+            if (myMultiProfileList.Count > 0)
+            {
+                for (int i = 0; i < myMultiProfileList.Count; i++)
+                {
+                    if (myMultiProfileList[i].NickName == myMultiNickname) 
+                    {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        }
     }
 }

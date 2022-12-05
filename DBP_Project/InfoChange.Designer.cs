@@ -71,6 +71,7 @@ namespace DBP_Project
             this.panel7 = new System.Windows.Forms.Panel();
             this.button_multiProfile = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel_MultiProfile = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -491,20 +492,21 @@ namespace DBP_Project
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel7.Controls.Add(this.flowLayoutPanel_MultiProfile);
             this.panel7.Controls.Add(this.button_multiProfile);
             this.panel7.Controls.Add(this.label2);
             this.panel7.Location = new System.Drawing.Point(3, 1038);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(402, 199);
+            this.panel7.Size = new System.Drawing.Size(402, 503);
             this.panel7.TabIndex = 14;
             // 
             // button_multiProfile
             // 
             this.button_multiProfile.Location = new System.Drawing.Point(19, 79);
             this.button_multiProfile.Name = "button_multiProfile";
-            this.button_multiProfile.Size = new System.Drawing.Size(361, 80);
+            this.button_multiProfile.Size = new System.Drawing.Size(361, 60);
             this.button_multiProfile.TabIndex = 20;
-            this.button_multiProfile.Text = "멀티프로필 변경하러 가기";
+            this.button_multiProfile.Text = "멀티프로필 추가 ";
             this.button_multiProfile.UseVisualStyleBackColor = true;
             this.button_multiProfile.Click += new System.EventHandler(this.button_multiProfile_Click);
             // 
@@ -517,6 +519,16 @@ namespace DBP_Project
             this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "멀티 프로필";
+            // 
+            // flowLayoutPanel_MultiProfile
+            // 
+            this.flowLayoutPanel_MultiProfile.AutoScroll = true;
+            this.flowLayoutPanel_MultiProfile.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel_MultiProfile.Location = new System.Drawing.Point(54, 181);
+            this.flowLayoutPanel_MultiProfile.Name = "flowLayoutPanel_MultiProfile";
+            this.flowLayoutPanel_MultiProfile.Size = new System.Drawing.Size(294, 283);
+            this.flowLayoutPanel_MultiProfile.TabIndex = 21;
+            this.flowLayoutPanel_MultiProfile.WrapContents = false;
             // 
             // InfoChange
             // 
@@ -589,5 +601,6 @@ namespace DBP_Project
         private System.Windows.Forms.Label label_Password;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button_multiProfile;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel_MultiProfile;
     }
 }

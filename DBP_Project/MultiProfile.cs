@@ -45,7 +45,6 @@ namespace DBP_Project
             else
             {
                 textBox_NickName.Text = User_info.GetInstance().MyMultiProfile.NickName;
-                MessageBox.Show(User_info.GetInstance().MyMultiProfile.ProfilePic);
                 pictureBox_Photo.ImageLocation = "http://15.164.218.208/forDB/" + User_info.GetInstance().MyMultiProfile.ProfilePic;
                 pictureBox_Photo.SizeMode = PictureBoxSizeMode.Zoom;
 
@@ -107,7 +106,6 @@ namespace DBP_Project
         private void button_addMultiEmployee_Click(object sender, EventArgs e)
         {
             if(comboBox_AddMultiEmployee.SelectedIndex != -1)
-            //if (comboBox_AddMultiEmployee.SelectedItem.ToString() != "")
             {
                 CheckBox checkBox = new CheckBox();
 

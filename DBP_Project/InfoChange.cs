@@ -55,7 +55,26 @@ namespace DBP_Project
             textBox_address3.Text = address[1];
         }
 
+        public void SetMultiProfileButton()
+        {
+            //만약 멀티프로필이 있다면, 멀프 수만큼 버튼을 만든다.
 
+            CheckBox checkBox = new CheckBox();
+
+            checkBox.Name = "CheckBox_multiProfileEmployee_" + Selectnumber;
+            checkBox.Width = 240;
+
+
+            checkBox.Text = comboBox_AddMultiEmployee.SelectedItem.ToString();
+
+            checkBox.Checked = true;
+
+            flowLayoutPanel_MultiProfile.Controls.Add(checkBox);
+
+            Selectnumber++; //체크박스 이름 뒤에 붙을 번호
+
+
+        }
 
         //정보변경
         private void ChangeInfo_Btn_Click(object sender, EventArgs e)
@@ -366,7 +385,7 @@ namespace DBP_Project
             }
         }
 
-        //멀티프로필 폼으로 이동.
+        //멀티프로필 폼으로 이동. //새로운 멀티 프로필 생성
         private void button_multiProfile_Click(object sender, EventArgs e)
         {
             MultiProfile multiProfileForm = new MultiProfile();
