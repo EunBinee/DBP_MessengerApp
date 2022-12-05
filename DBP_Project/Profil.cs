@@ -48,32 +48,39 @@ namespace DBP_Project
 
         private void OpenChatRoomBtn_Click(object sender, EventArgs e)
         {
-            string q = $"SELECT blockType FROM BlockInfo WHERE userID = '{loginUser}' AND blockUserId = '{targetID}'";
-            DataTable dt = Query.GetInstance().RunQuery(q);
-
-            if(dt.Rows.Count == 0)
+            if(User_info.GetInstance().Role == 1)
             {
-                MessageBox.Show("채팅방 오픈");
-                string check = $"SELECT room_ID FROM talk.ChatRoom WHERE (`user1` = '{loginUser}' AND `user2` = '{targetID}') OR (`user1` = '{targetID}' AND `user2` = '{loginUser}');";
-                DataTable dt2 = Query.GetInstance().RunQuery(check);
-
-                // 방이 없다면 생성
-                if (dt2.Rows.Count == 0)
-                {
-                    string query = $"INSERT INTO `talk`.`ChatRoom` (`user1`, `user2`, `notice`) VALUES ('{loginUser}', '{targetID}', '0');";
-                    Query.GetInstance().RunQuery(query);
-
-                    check = $"SELECT room_ID FROM talk.ChatRoom WHERE (`user1` = '{loginUser}' AND `user2` = '{targetID}');";
-                    dt2 = Query.GetInstance().RunQuery(check);
-                }
-
-                Client.GetInstance().AddNewChatRoom(targetID,dt2.Rows[0][0].ToString());
-                this.Close();
-
+                MessageBox.Show("관리자는 채팅할 수 없습니다.");
             }
             else
             {
-                MessageBox.Show("채팅권한이 없습니다.");
+                string q = $"SELECT * FROM BlockInfo WHERE userID = '{loginUser}' AND blockUserId = '{targetID}'";
+                DataTable dt = Query.GetInstance().RunQuery(q);
+
+                if (dt.Rows.Count == 0 || dt.Rows[0]["blockChat"].ToString() == "0")
+                {
+                    MessageBox.Show("채팅방 오픈");
+                    string check = $"SELECT room_ID FROM talk.ChatRoom WHERE (`user1` = '{loginUser}' AND `user2` = '{targetID}') OR (`user1` = '{targetID}' AND `user2` = '{loginUser}');";
+                    DataTable dt2 = Query.GetInstance().RunQuery(check);
+
+                    // 방이 없다면 생성
+                    if (dt2.Rows.Count == 0)
+                    {
+                        string query = $"INSERT INTO `talk`.`ChatRoom` (`user1`, `user2`, `notice`) VALUES ('{loginUser}', '{targetID}', '0');";
+                        Query.GetInstance().RunQuery(query);
+
+                        check = $"SELECT room_ID FROM talk.ChatRoom WHERE (`user1` = '{loginUser}' AND `user2` = '{targetID}');";
+                        dt2 = Query.GetInstance().RunQuery(check);
+                    }
+
+                    Client.GetInstance().AddNewChatRoom(targetID, dt2.Rows[0][0].ToString());
+                    this.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("채팅권한이 없습니다.");
+                }
             }
         }
 
