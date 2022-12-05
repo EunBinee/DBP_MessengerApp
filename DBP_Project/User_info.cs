@@ -266,7 +266,7 @@ namespace DBP_Project
                 }
                 else
                 {
-                    em_blockLook = row["blcokLook"].ToString();
+                    em_blockLook = row["blockLook"].ToString();
                 }
 
                 if (row["blockChat"].ToString() == "")
@@ -275,7 +275,7 @@ namespace DBP_Project
                 }
                 else
                 {
-                    em_blockChat = row["blcokChat"].ToString();
+                    em_blockChat = row["blockChat"].ToString();
                 }
 
 
