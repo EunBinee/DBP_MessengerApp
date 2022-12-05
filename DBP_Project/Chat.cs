@@ -30,6 +30,7 @@ namespace DBP_Project
             InitializeComponent();
             DataTable dt = Query.GetInstance().RunQuery("SELECT notice FROM talk.ChatRoom WHERE room_ID = " + roomID + ";");
             notice_chat = Convert.ToInt32(dt.Rows[0][0]);
+
             if (notice_chat != 0)   //공지가 있으면
             {
                 notice_view();
@@ -131,6 +132,7 @@ namespace DBP_Project
             Message msg = new Message(this,text);
             msg.SetData(name, time);
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
+            msg.SetSenderImg(yourID);
 
             messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
