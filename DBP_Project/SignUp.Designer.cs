@@ -47,6 +47,7 @@
             this.SignUp_Button = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox_Photo = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label_DupNumber = new System.Windows.Forms.Label();
@@ -60,15 +61,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.pictureBox_Photo = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -208,6 +208,7 @@
             this.comboBox_team.Name = "comboBox_team";
             this.comboBox_team.Size = new System.Drawing.Size(216, 23);
             this.comboBox_team.TabIndex = 19;
+            this.comboBox_team.SelectedIndexChanged += new System.EventHandler(this.comboBox_team_SelectedIndexChanged);
             this.comboBox_team.Click += new System.EventHandler(this.comboBox_team_Click);
             // 
             // label8
@@ -268,6 +269,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(402, 201);
             this.panel2.TabIndex = 0;
+            // 
+            // pictureBox_Photo
+            // 
+            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources._default;
+            this.pictureBox_Photo.Location = new System.Drawing.Point(115, 26);
+            this.pictureBox_Photo.Name = "pictureBox_Photo";
+            this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox_Photo.TabIndex = 1;
+            this.pictureBox_Photo.TabStop = false;
             // 
             // panel3
             // 
@@ -414,16 +425,6 @@
             this.panel6.Size = new System.Drawing.Size(402, 106);
             this.panel6.TabIndex = 4;
             // 
-            // pictureBox_Photo
-            // 
-            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources._default;
-            this.pictureBox_Photo.Location = new System.Drawing.Point(115, 26);
-            this.pictureBox_Photo.Name = "pictureBox_Photo";
-            this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);
-            this.pictureBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_Photo.TabIndex = 1;
-            this.pictureBox_Photo.TabStop = false;
-            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -438,6 +439,7 @@
             this.panel1.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -445,7 +447,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Photo)).EndInit();
             this.ResumeLayout(false);
 
         }

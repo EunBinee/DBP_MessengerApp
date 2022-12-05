@@ -117,7 +117,6 @@ namespace DBP_Project
                 role = value;
             }
         }
-
         public string Department
         {
             get
@@ -192,10 +191,12 @@ namespace DBP_Project
         //로그인할 때 모든 직원 정보를 읽어온다.
         public void GetWorkerInfo()
         {
+            employees.Clear();
             //사원의 정보를 불러옵니다.
             string query = "";
-            
+
             //1. 멀티프로필 확인.----------------------------------------------------------------------------------------------------
+   
             List<MultiProfile_Class> multiProfiles = new List<MultiProfile_Class>();
 
             query= "SELECT* FROM talk.MultiProfile where `user_id` = '"+ id + "'";
@@ -301,6 +302,24 @@ namespace DBP_Project
 
             myMultiProfile = new MultiProfile_Class(id, myNickname, myProfile);
         }
+
+
+        public Employee GetEmployee(string employeeId)
+        {
+            int i = 0;
+            for( i  = 0; i < employees.Count; i++)
+            {
+                if (employees[i].ID == employeeId)
+                {
+                    break;
+                }
+
+            }
+
+            return employees[i];
+        }
+
+
 
 
            
