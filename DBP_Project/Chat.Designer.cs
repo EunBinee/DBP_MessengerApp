@@ -56,7 +56,7 @@
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 483);
+            this.panel2.Location = new System.Drawing.Point(0, 607);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(378, 104);
@@ -126,7 +126,7 @@
             // Emptypanel4
             // 
             this.Emptypanel4.Location = new System.Drawing.Point(2, 2);
-            this.Emptypanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Emptypanel4.Margin = new System.Windows.Forms.Padding(2);
             this.Emptypanel4.Name = "Emptypanel4";
             this.Emptypanel4.Size = new System.Drawing.Size(374, 73);
             this.Emptypanel4.TabIndex = 0;
@@ -179,7 +179,7 @@
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(236, 12);
-            this.trackBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(2);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Minimum = 10;
             this.trackBar1.Name = "trackBar1";
@@ -193,7 +193,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(378, 587);
+            this.ClientSize = new System.Drawing.Size(378, 711);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
