@@ -29,8 +29,8 @@ namespace DBP_Project
 
         private void Btn_Search_By_Time(object sender, EventArgs e)
         {
-            string From_time = FromTimePicker.Value.ToString("yyyy/MM/dd hh:mm:ss");
-            string To_time = ToTimePicker.Value.ToString("yyyy/MM/dd hh:mm:ss");
+            string From_time = FromTimePicker.Value.ToString("yyyy/MM/dd HH:mm:ss");
+            string To_time = ToTimePicker.Value.ToString("yyyy/MM/dd HH:mm:ss");
 
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {

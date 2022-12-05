@@ -244,7 +244,7 @@ namespace DBP_Project
             // 
             // ToTimePicker
             // 
-            this.ToTimePicker.CustomFormat = "yyyy/MM/dd hh:mm:ss";
+            this.ToTimePicker.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.ToTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.ToTimePicker.Location = new System.Drawing.Point(14, 69);
             this.ToTimePicker.Name = "ToTimePicker";
@@ -253,7 +253,7 @@ namespace DBP_Project
             // 
             // FromTimePicker
             // 
-            this.FromTimePicker.CustomFormat = "yyyy/MM/dd hh:mm:ss";
+            this.FromTimePicker.CustomFormat = "yyyy/MM/dd HH:mm:ss";
             this.FromTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.FromTimePicker.Location = new System.Drawing.Point(14, 39);
             this.FromTimePicker.Name = "FromTimePicker";
@@ -330,7 +330,7 @@ namespace DBP_Project
             this.ChangeDepartmentPanel.Controls.Add(this.label3);
             this.ChangeDepartmentPanel.Controls.Add(this.label6);
             this.ChangeDepartmentPanel.ForeColor = System.Drawing.Color.White;
-            this.ChangeDepartmentPanel.Location = new System.Drawing.Point(305, 50);
+            this.ChangeDepartmentPanel.Location = new System.Drawing.Point(310, 50);
             this.ChangeDepartmentPanel.Name = "ChangeDepartmentPanel";
             this.ChangeDepartmentPanel.Size = new System.Drawing.Size(274, 250);
             this.ChangeDepartmentPanel.TabIndex = 20;

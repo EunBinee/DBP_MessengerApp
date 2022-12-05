@@ -166,8 +166,10 @@ namespace DBP_Project
                 else
                     DrawMsg(chatId, text, id, time);
             }
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
+            SendToReadSignal();
 
-            for(int i = 0; i < messages.Count; i++)
+            for (int i = 0; i < messages.Count; i++)
             {
                 messages[i].SetRead();
             }
@@ -233,6 +235,8 @@ namespace DBP_Project
                         DrawMsg(chatId,text, id, time);
                 }
             }
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
+            SendToReadSignal();
 
 
             Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
