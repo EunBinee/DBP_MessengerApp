@@ -316,6 +316,11 @@ namespace DBP_Project
         //2. 내가 보여주기로 한 사람들의 리스트
         public void GetMyMultiProfile()
         {
+
+            myMultiProfileList.Clear();
+
+            multiProfileEmployee.Clear();
+
             string query = "SELECT * FROM talk.MultiProfile where doMultiProfile_Id = '" + id + "';";
 
             DataTable dt = new DataTable();
