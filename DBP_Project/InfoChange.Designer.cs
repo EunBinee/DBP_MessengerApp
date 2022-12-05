@@ -74,6 +74,7 @@ namespace DBP_Project
             this.comboBox_myMultiProfileList = new System.Windows.Forms.ComboBox();
             this.button_multiProfile = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonSynchroni = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -494,6 +495,7 @@ namespace DBP_Project
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.panel7.Controls.Add(this.buttonSynchroni);
             this.panel7.Controls.Add(this.ChangeMultiP_Btn);
             this.panel7.Controls.Add(this.label3);
             this.panel7.Controls.Add(this.comboBox_myMultiProfileList);
@@ -550,6 +552,16 @@ namespace DBP_Project
             this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "멀티 프로필";
+            // 
+            // buttonSynchroni
+            // 
+            this.buttonSynchroni.Location = new System.Drawing.Point(235, 16);
+            this.buttonSynchroni.Name = "buttonSynchroni";
+            this.buttonSynchroni.Size = new System.Drawing.Size(144, 43);
+            this.buttonSynchroni.TabIndex = 24;
+            this.buttonSynchroni.Text = "동기화";
+            this.buttonSynchroni.UseVisualStyleBackColor = true;
+            this.buttonSynchroni.Click += new System.EventHandler(this.buttonSynchroni_Click);
             // 
             // InfoChange
             // 
@@ -625,5 +637,6 @@ namespace DBP_Project
         private System.Windows.Forms.Button ChangeMultiP_Btn;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox_myMultiProfileList;
+        private System.Windows.Forms.Button buttonSynchroni;
     }
 }

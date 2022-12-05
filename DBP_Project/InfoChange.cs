@@ -57,8 +57,12 @@ namespace DBP_Project
             textBox_address3.Text = address[1];
         }
 
+
+
+
         public void SetMultiProfileComboBox()
         {
+            comboBox_myMultiProfileList.Items.Clear();
             for (int i = 0; i < User_info.GetInstance().myMultiProfileList.Count; i++)
             {
                 string text = "나의 " + (i + 1) + "번째 멀티프로필";
@@ -407,6 +411,9 @@ namespace DBP_Project
             }
         }
 
+
+
+        //멀티 프로필 변경 버튼
         private void ChangeMultiP_Btn_Click(object sender, EventArgs e)
         {
             //나의 멀티 프로필 변경
@@ -422,6 +429,12 @@ namespace DBP_Project
             multiProfileForm.ShowDialog();
 
 
+        }
+
+        //멀티 프로필 동기화 버튼
+        private void buttonSynchroni_Click(object sender, EventArgs e)
+        {
+            SetMultiProfileComboBox();
         }
     }
 }

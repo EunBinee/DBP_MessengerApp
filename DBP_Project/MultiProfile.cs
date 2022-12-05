@@ -320,7 +320,6 @@ namespace DBP_Project
                         }
                     }
                 }
-                //User_info.GetInstance().multiProfileEmployee.Add(multiProfileEmployeeList);
                 User_info.GetInstance().multiProfileEmployee[multiProfileIndex].Clear();
                 User_info.GetInstance().multiProfileEmployee[multiProfileIndex]=multiProfileEmployeeList;
                 //나의 멀티 프로필을 저장한다.
@@ -333,6 +332,11 @@ namespace DBP_Project
                     //값이 존재하면 지워준다.
                     string query_ = "DELETE FROM `talk`.`MultiProfile` WHERE  `doMultiProfile_Id` = '" + User_info.GetInstance().ID + "' and `nickname` = '" + curNickName + "'";
                     Query.GetInstance().RunQuery(query_);
+                    //리스트의 값도 지워준다.
+                    User_info.GetInstance().myMultiProfileList.RemoveAt(multiProfileIndex);
+                    User_info.GetInstance().multiProfileEmployee[multiProfileIndex].Clear(); 
+                    User_info.GetInstance().multiProfileEmployee.RemoveAt(multiProfileIndex);
+
 
                     this.Close();
                 }
