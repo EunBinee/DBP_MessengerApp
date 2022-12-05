@@ -62,7 +62,6 @@ namespace DBP_Project
                 "VALUES ('"+ roomID + "', '"+myID+"', '"+yourID+"', '" + msgInput.Text + "','" + time + "');");
             DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
             int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-            MessageBox.Show(chatId.ToString());
 
             // TCP를 통해 수신자에게 알림
             SendToSignal();
@@ -88,7 +87,6 @@ namespace DBP_Project
                 "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + text + "','" + time + "','1');");
             DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
             int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-            MessageBox.Show(chatId.ToString());
 
             // TCP를 통해 수신자에게 알림
             SendToSignal();
@@ -270,7 +268,6 @@ namespace DBP_Project
                         "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + newFileName + "','" + time + "','1');");
                     DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
                     int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-                    MessageBox.Show(chatId.ToString());
 
                     // TCP를 통해 수신자에게 알림
                     SendToSignal();
@@ -320,7 +317,6 @@ namespace DBP_Project
                         "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + newFileName + "','" + time + "','2');");
                     DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
                     int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
-                    MessageBox.Show(chatId.ToString());
 
                     // TCP를 통해 수신자에게 알림
                     SendToSignal();
