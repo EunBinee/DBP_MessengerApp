@@ -156,8 +156,6 @@ namespace DBP_Project
                 string time = dt.Rows[i][3].ToString();
                 string isImg = dt.Rows[i][4].ToString();
 
-                Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
-                SendToReadSignal();
                 // 상대가 전송한 메세지
                 if (isImg == "1")
                     DrawJpg(chatId, text, id, time);
@@ -173,6 +171,9 @@ namespace DBP_Project
             {
                 messages[i].SetRead();
             }
+
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
+            SendToReadSignal();
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
@@ -204,8 +205,6 @@ namespace DBP_Project
                 string time = dt.Rows[i][3].ToString();
                 string isImg = dt.Rows[i][4].ToString();
 
-                Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
-                SendToReadSignal();
                 // 내가 보낸 메시제리면
                 if (myID == id)
                 {
@@ -234,6 +233,10 @@ namespace DBP_Project
                         DrawMsg(chatId,text, id, time);
                 }
             }
+
+
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
+            SendToReadSignal();
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }

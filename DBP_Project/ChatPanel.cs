@@ -15,6 +15,11 @@ namespace DBP_Project
         private string loginUser;
         private string targetId;
         private string roomId;
+
+        public ChatPanel()
+        {
+            InitializeComponent();
+        }
         public ChatPanel(string loginUser, string targetId, string roomId)
         {
             this.loginUser = loginUser;
@@ -34,6 +39,7 @@ namespace DBP_Project
                         User_info.GetInstance().employees[i].Name + ")";
                     string q = $"SELECT * FROM ChatMsg WHERE room_ID = '{roomId}' AND send_time" +
                         $" IN (SELECT MAX(send_time) FROM ChatMsg WHERE room_ID = '{roomId}')";
+
                     //ChatMsg send_time date_format 이상으로 시간에 이상있음
                     DataTable dt = Query.GetInstance().RunQuery(q);
                     if (dt.Rows.Count <= 0)
@@ -54,30 +60,36 @@ namespace DBP_Project
                             LastChat.Text = dt.Rows[0]["data"].ToString();
                             string time = dt.Rows[0]["send_time"].ToString();
                             TimeLabel.Text = DateTime.Parse(time).ToString("t");
+                            MessageBox.Show(time, DateTime.Parse(time).ToString("t"));
                         }
+
                         //최근대화내역체크 - 체크상태(읽음), 체크아님(안읽음)
                         if (dt.Rows[0]["read_check"].ToString() == "1")
                         {
-                            ReadCheck.CheckState = CheckState.Unchecked;
+                            pictureBox2.Visible = false;
                         }
                         else
                         {
-                            ReadCheck.CheckState = CheckState.Checked;
+                            pictureBox2.Visible = true;
                         }
 
+                        Employee employee = User_info.GetInstance().GetEmployee(targetId);
+                        pictureBox1.ImageLocation = "http://15.164.218.208/forDB/" + employee.ProfilePic;
                     }
-
                 }
             }
-
-
         }
 
         private void ChatPanel_Click(object sender, EventArgs e)
         {
-            ReadCheck.CheckState = CheckState.Checked;
+            pictureBox2.Visible = true;
             //클릭시 채팅방 오픈
             Client.GetInstance().AddNewChatRoom(this.targetId, this.roomId);
+        }
+
+        private void LastChat_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
