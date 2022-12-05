@@ -28,9 +28,6 @@ namespace DBP_Project
         {
             instance = this;
             InitializeComponent();
-            DataTable dt = Query.GetInstance().RunQuery("SELECT notice FROM talk.ChatRoom WHERE room_ID = " + roomID + ";");
-            notice_chat = Convert.ToInt32(dt.Rows[0][0]);
-
             if (notice_chat != 0)   //공지가 있으면
             {
                 notice_view();
@@ -63,12 +60,15 @@ namespace DBP_Project
             // 메세지를 DB에 저장
             Query.GetInstance().RunQuery("INSERT INTO `talk`.`ChatMsg` (`room_ID`,`sender_ID`, `recv_ID`, `data`,`send_time`) " +
                 "VALUES ('"+ roomID + "', '"+myID+"', '"+yourID+"', '" + msgInput.Text + "','" + time + "');");
+            DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
+            int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
+            MessageBox.Show(chatId.ToString());
 
             // TCP를 통해 수신자에게 알림
             SendToSignal();
 
             // 메세지를 폼에 등록 및 초기화
-            SendMsg(msgInput.Text,time);
+            SendMsg(chatId,msgInput.Text,time);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -86,14 +86,17 @@ namespace DBP_Project
             // 메세지를 DB에 저장
             Query.GetInstance().RunQuery("INSERT INTO `talk`.`ChatMsg` (`room_ID`, `sender_ID`, `recv_ID`, `data`,`send_time`,`isImg`) " +
                 "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + text + "','" + time + "','1');");
+            DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
+            int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
+            MessageBox.Show(chatId.ToString());
 
             // TCP를 통해 수신자에게 알림
             SendToSignal();
-            SendJpg(text,time);
+            SendJpg(chatId,text,time);
         }
-        public void SendJpg(string text, string time)
+        public void SendJpg(int chatId,string text, string time)
         {
-            Message msg = new Message(this,text);
+            Message msg = new Message(this, chatId, text);
             msg.SetData("", time);
             msg.SetMyMsg();
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
@@ -103,9 +106,9 @@ namespace DBP_Project
             flowLayoutPanel1.ScrollControlIntoView(msg);
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
-        private void SendMsg(string text, string time,bool isFile = false)
+        private void SendMsg(int chatId, string text, string time,bool isFile = false)
         {
-            Message msg = new Message(this,text,isFile);
+            Message msg = new Message(this, chatId, text,isFile);
             msg.SetMyMsg();
             msg.SetData("", time);
 
@@ -116,9 +119,9 @@ namespace DBP_Project
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
 
-        private void DrawMsg(string text,string name, string time,bool isFile = false)
+        private void DrawMsg(int chatId, string text,string name, string time,bool isFile = false)
         {
-            Message msg = new Message(this,text,isFile);
+            Message msg = new Message(this, chatId, text,isFile);
             msg.SetData(name, time);
             msg.SetSenderImg(yourID);
 
@@ -127,9 +130,9 @@ namespace DBP_Project
             flowLayoutPanel1.ScrollControlIntoView(msg);
         }
 
-        private void DrawJpg(string text, string name, string time)
+        private void DrawJpg(int chatId, string text, string name, string time)
         {
-            Message msg = new Message(this,text);
+            Message msg = new Message(this, chatId, text);
             msg.SetData(name, time);
             msg.SetImageMsg("http://15.164.218.208/forDB/" + text);
             msg.SetSenderImg(yourID);
@@ -146,28 +149,29 @@ namespace DBP_Project
                 return;
 
             // 송신자로부터 알림 받음
-            DataTable dt = Query.GetInstance().RunQuery("SELECT `data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "' AND `read_check` = '1';");
+            DataTable dt = Query.GetInstance().RunQuery("SELECT `id`,`data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "' AND `read_check` = '1';");
 
             // 상대가 전송한 메세지 폼에 그리기
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 // 메세지 읽음 표시
-                string text = dt.Rows[i][0].ToString();
-                string id = dt.Rows[i][1].ToString();
-                string time = dt.Rows[i][2].ToString();
-                string isImg = dt.Rows[i][3].ToString();
+                int chatId = Convert.ToInt32(dt.Rows[i][0]);
+                string text = dt.Rows[i][1].ToString();
+                string id = dt.Rows[i][2].ToString();
+                string time = dt.Rows[i][3].ToString();
+                string isImg = dt.Rows[i][4].ToString();
 
                 Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
 
                 // 상대가 전송한 메세지
                 if (isImg == "1")
-                    DrawJpg(text, id, time);
+                    DrawJpg(chatId, text, id, time);
                 else if(isImg == "2")
                 {
-                    DrawMsg(text, id, time,true);
+                    DrawMsg(chatId, text, id, time,true);
                 }
                 else
-                    DrawMsg(text, id, time);
+                    DrawMsg(chatId, text, id, time);
             }
 
             for(int i = 0; i < messages.Count; i++)
@@ -182,16 +186,17 @@ namespace DBP_Project
         public void LoadChatByRoomId(string roomId)
         {
             // 송신자로부터 알림 받음
-            DataTable dt = Query.GetInstance().RunQuery("SELECT `data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `room_ID` = '" + roomId + "';");
+            DataTable dt = Query.GetInstance().RunQuery("SELECT `id`,`data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `room_ID` = '" + roomId + "';");
 
             // 상대가 전송한 메세지 폼에 그리기
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 // 메세지 읽음 표시
-                string text = dt.Rows[i][0].ToString();
-                string id = dt.Rows[i][1].ToString();
-                string time = dt.Rows[i][2].ToString();
-                string isImg = dt.Rows[i][3].ToString();
+                int chatId = Convert.ToInt32(dt.Rows[i][0]);
+                string text = dt.Rows[i][1].ToString();
+                string id = dt.Rows[i][2].ToString();
+                string time = dt.Rows[i][3].ToString();
+                string isImg = dt.Rows[i][4].ToString();
 
                 Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
 
@@ -200,27 +205,27 @@ namespace DBP_Project
                 {
                     if(isImg == "1")
                     {
-                        SendJpg(text, time);
+                        SendJpg(chatId,text, time);
                     }
                     else if (isImg == "2")
                     {
-                        SendMsg(text, time, true);
+                        SendMsg(chatId,text, time, true);
                     }
                     else
-                        SendMsg(text, time);
+                        SendMsg(chatId,text, time);
                 }
                 else if(yourID == id) // 내가 받은 메세지라면
                 {
                     if (isImg == "1")
                     {
-                        DrawJpg(text,id, time);
+                        DrawJpg(chatId,text, id, time);
                     }
                     else if (isImg == "2")
                     {
-                        DrawMsg(text, id, time, true);
+                        DrawMsg(chatId,text, id, time, true);
                     }
                     else
-                        DrawMsg(text, id, time);
+                        DrawMsg(chatId,text, id, time);
                 }
             }
 
@@ -264,6 +269,9 @@ namespace DBP_Project
                     // 메세지를 DB에 저장
                     Query.GetInstance().RunQuery("INSERT INTO `talk`.`ChatMsg` (`room_ID`, `sender_ID`, `recv_ID`, `data`,`send_time`,`isImg`) " +
                         "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + newFileName + "','" + time + "','1');");
+                    DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
+                    int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
+                    MessageBox.Show(chatId.ToString());
 
                     // TCP를 통해 수신자에게 알림
                     SendToSignal();
@@ -284,7 +292,7 @@ namespace DBP_Project
                     }
 
                     // 메세지를 폼에 등록 및 초기화
-                    SendJpg(newFileName, time);
+                    SendJpg(chatId,newFileName, time);
                     Client.GetInstance().PhotoClose();
                 }
             }
@@ -311,6 +319,9 @@ namespace DBP_Project
                     // 메세지를 DB에 저장
                     Query.GetInstance().RunQuery("INSERT INTO `talk`.`ChatMsg` (`room_ID`, `sender_ID`, `recv_ID`, `data`,`send_time`,`isImg`) " +
                         "VALUES ('" + roomID + "', '" + myID + "', '" + yourID + "', '" + newFileName + "','" + time + "','2');");
+                    DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
+                    int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
+                    MessageBox.Show(chatId.ToString());
 
                     // TCP를 통해 수신자에게 알림
                     SendToSignal();
@@ -331,7 +342,7 @@ namespace DBP_Project
                     }
 
                     // 메세지를 폼에 등록 및 초기화
-                    SendMsg(newFileName, time,true);
+                    SendMsg(chatId,newFileName, time,true);
                     Client.GetInstance().PhotoClose();
                 }
             }
