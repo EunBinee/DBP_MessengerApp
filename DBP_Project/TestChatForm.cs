@@ -15,11 +15,12 @@ namespace DBP_Project
     {
         private string loginUser = "";
         private int roomCount = 0;
-        
+        public static TestChatForm instance;
 
         // Thread myThread = new Thread(ChatListLoad);
         public TestChatForm()
         {
+            instance = this;
             loginUser = User_info.GetInstance().ID;
             InitializeComponent();
         }
@@ -32,8 +33,9 @@ namespace DBP_Project
             //myThread.Start(tp);
         }
 
-        private void ChatLoad()
+        public void ChatLoad()
         {
+            flowLayoutPanel1.Controls.Clear();
             
             string q = $"SELECT * FROM ChatRoom WHERE user1 = '{loginUser}' OR user2 = '{loginUser}'";
             DataTable dt = Query.GetInstance().RunQuery(q);

@@ -32,7 +32,7 @@ namespace DBP_Project
         private void StartConnect()
         { 
             conn_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9997));
+            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9996));
 
             // myPeer 저장
             var data = new byte[1024];
@@ -78,8 +78,9 @@ namespace DBP_Project
                 string peer = Encoding.UTF8.GetString(data);
                 char type = peer[0];
                 peer = peer.Substring(1);
-                if (type == 1)
+                if (type == '1')
                 {
+                    TestChatForm.instance.BeginInvoke(new Action(() => TestChatForm.instance.ChatLoad()));
 
                     foreach (Chat chat in chats)
                     {
@@ -95,7 +96,7 @@ namespace DBP_Project
                     //new Thread(() => { MessageBox.Show("메세지가 왔습니다."); }).Start(); // dt.Rows[0][0] + "로 부터
                     MessageBox.Show("메세지가 왔습니다.");
                 }
-                else if (type == 2)
+                else if (type == '2')
                 {
                     foreach (Chat chat in chats)
                     {
