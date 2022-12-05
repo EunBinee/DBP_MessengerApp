@@ -218,6 +218,7 @@
             this.comboBox_team.Name = "comboBox_team";
             this.comboBox_team.Size = new System.Drawing.Size(190, 20);
             this.comboBox_team.TabIndex = 19;
+            this.comboBox_team.SelectedIndexChanged += new System.EventHandler(this.comboBox_team_SelectedIndexChanged);
             this.comboBox_team.Click += new System.EventHandler(this.comboBox_team_Click);
             // 
             // label8
@@ -284,11 +285,10 @@
             // 
             // pictureBox_Photo
             // 
-            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources.Mokoko;
-            this.pictureBox_Photo.Location = new System.Drawing.Point(101, 21);
-            this.pictureBox_Photo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources._default;
+            this.pictureBox_Photo.Location = new System.Drawing.Point(115, 26);
             this.pictureBox_Photo.Name = "pictureBox_Photo";
-            this.pictureBox_Photo.Size = new System.Drawing.Size(131, 120);
+            this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);
             this.pictureBox_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox_Photo.TabIndex = 1;
             this.pictureBox_Photo.TabStop = false;
@@ -366,8 +366,10 @@
             this.textBox_Password.Location = new System.Drawing.Point(102, 71);
             this.textBox_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_Password.Name = "textBox_Password";
-            this.textBox_Password.Size = new System.Drawing.Size(190, 21);
+            this.textBox_Password.PasswordChar = '*';
+            this.textBox_Password.Size = new System.Drawing.Size(216, 25);
             this.textBox_Password.TabIndex = 6;
+            this.textBox_Password.TextChanged += new System.EventHandler(this.textBox_Password_TextChanged);
             // 
             // label_Password
             // 
@@ -384,7 +386,8 @@
             this.textBox_Password_re.Location = new System.Drawing.Point(102, 110);
             this.textBox_Password_re.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_Password_re.Name = "textBox_Password_re";
-            this.textBox_Password_re.Size = new System.Drawing.Size(190, 21);
+            this.textBox_Password_re.PasswordChar = '*';
+            this.textBox_Password_re.Size = new System.Drawing.Size(216, 25);
             this.textBox_Password_re.TabIndex = 7;
             this.textBox_Password_re.TextChanged += new System.EventHandler(this.textBox_Password_re_TextChanged);
             // 

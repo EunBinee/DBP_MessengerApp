@@ -287,7 +287,6 @@ namespace DBP_Project
         {
             //암호화
             string result = Sha265.GetInstance().SHA256_password(textBox_Password.Text);
-            MessageBox.Show(result);
             return result;
         }
 
@@ -378,6 +377,16 @@ namespace DBP_Project
             {
                 e.Handled = true;
             }
+        }
+        private void textBox_Password_TextChanged(object sender, EventArgs e)
+        {
+            textBox_Password_re.Text = "";
+            label_Password.Text = "";
+        }
+
+        private void comboBox_team_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

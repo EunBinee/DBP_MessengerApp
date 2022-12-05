@@ -72,7 +72,7 @@ namespace DBP_Project
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query = String.Format("select * from ChatMsg where sender_ID = '{0}';", User_TextBox.Text);
+                String Query = String.Format("select * from talk.ChatMsg where sender_ID like '%{0}%';", User_TextBox.Text);
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
