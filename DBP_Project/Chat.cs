@@ -28,8 +28,6 @@ namespace DBP_Project
         {
             instance = this;
             InitializeComponent();
-            DataTable dt = Query.GetInstance().RunQuery("SELECT notice FROM talk.ChatRoom WHERE room_ID = " + roomID + ";");
-            notice_chat = Convert.ToInt32(dt.Rows[0][0]);
             if (notice_chat != 0)   //공지가 있으면
             {
                 notice_view();
