@@ -76,22 +76,39 @@ namespace DBP_Project
                 // 수신된 데이터를 UTF8인코딩으로 string 타입으로 변환 후에 콘솔에 출력한다.
 
                 string peer = Encoding.UTF8.GetString(data);
-
-                foreach (Chat chat in chats)
+                char type = peer[0];
+                peer = peer.Substring(1);
+                if (type == 1)
                 {
-                    if (chat.InvokeRequired)
+
+                    foreach (Chat chat in chats)
                     {
-                        // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
-                        chat.BeginInvoke(new Action(() => chat.RecieveMsg(peer)));
+                        if (chat.InvokeRequired)
+                        {
+                            // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
+                            chat.BeginInvoke(new Action(() => chat.RecieveMsg(peer)));
+                        }
+                    }
+
+                    //string query = "SELECT `nickName` FROM talk.UserListTable WHERE `peer` = '"+peer+"';";
+                    //DataTable dt = Query.GetInstance().RunQuery(query);
+                    //new Thread(() => { MessageBox.Show("메세지가 왔습니다."); }).Start(); // dt.Rows[0][0] + "로 부터
+                    MessageBox.Show("메세지가 왔습니다.");
+                }
+                else if (type == 2)
+                {
+                    foreach (Chat chat in chats)
+                    {
+                        if (chat.InvokeRequired)
+                        {
+                            // 카톡 그리기 호출해야함, 지금 상태는 고정 상대
+                            chat.BeginInvoke(new Action(() => chat.RecieveReadChk(peer)));
+                        }
                     }
                 }
-
-                //string query = "SELECT `nickName` FROM talk.UserListTable WHERE `peer` = '"+peer+"';";
-                //DataTable dt = Query.GetInstance().RunQuery(query);
-                new Thread(() => { MessageBox.Show("메세지가 왔습니다."); }).Start(); // dt.Rows[0][0] + "로 부터
             }
         }
-        private void connectRead()
+/*        private void connectRead()
         {
             while (true)
             {
@@ -112,7 +129,7 @@ namespace DBP_Project
                     }
                 }
             }
-        }
+        }*/
 
         public void StartListen()
         {
@@ -120,12 +137,12 @@ namespace DBP_Project
             thread1.IsBackground = true; // Form이 종료되면 thread1도 종료.
             thread1.Start(); // thread1 시작.
         }
-        public void StartReadChk()
+/*        public void StartReadChk()
         {
             Thread thread2 = new Thread(connectRead); // Thread 객채 생성, Form과는 별도 쓰레드에서 connect 함수가 실행됨.
             thread2.IsBackground = true; // 채팅방 Form이 종료되면 thread1도 종료.
             thread2.Start(); // thread2 시작.
-        }
+        }*/
         public void SendMsg(string str)
         {
             // 보낼 메시지를 UTF8타입의 byte 배열로 변환한다.

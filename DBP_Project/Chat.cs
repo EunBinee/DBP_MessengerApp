@@ -43,8 +43,7 @@ namespace DBP_Project
             //MessageBox.Show(yourPeer.ToString());
             //MessageBox.Show("대화내용을 불러옵니다.");
             LoadChatByRoomId(roomID);
-            Client.GetInstance().StartReadChk();
-
+            //Client.GetInstance().StartReadChk();
 
         }
 
@@ -370,7 +369,7 @@ namespace DBP_Project
             DataTable dt = Query.GetInstance().RunQuery("SELECT `peer` FROM talk.UserListTable WHERE `id` = '" + yourID + "';");
             if (dt.Rows[0][0].ToString() != "00000")
             {
-                string trig = "1" + dt.Rows[0][0].ToString();
+                string trig = "2" + dt.Rows[0][0].ToString();
                 Client.GetInstance().SendReadChk(trig);
             }
         }
