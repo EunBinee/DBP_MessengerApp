@@ -43,7 +43,7 @@ namespace DBP_Project
             //MessageBox.Show(yourPeer.ToString());
             //MessageBox.Show("대화내용을 불러옵니다.");
             LoadChatByRoomId(roomID);
-
+            Client.GetInstance().StartReadChk();
 
 
         }
@@ -159,7 +159,7 @@ namespace DBP_Project
                 string isImg = dt.Rows[i][4].ToString();
 
                 Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
-
+                SendToReadSignal();
                 // 상대가 전송한 메세지
                 if (isImg == "1")
                     DrawJpg(chatId, text, id, time);
@@ -177,6 +177,17 @@ namespace DBP_Project
             }
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+        }
+        // TCP를 통해 읽음확인
+        public void RecieveReadChk(string str)
+        {
+            if ((str.Equals(yourPeer.ToString())))
+                return;
+
+            for (int i = 0; i < messages.Count; i++)
+            {
+                messages[i].SetRead();
+            }
         }
 
         // 해당 방 메세지 전부 로드
@@ -196,9 +207,9 @@ namespace DBP_Project
                 string isImg = dt.Rows[i][4].ToString();
 
                 Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
-
+                SendToReadSignal();
                 // 내가 보낸 메시제리면
-                if(myID == id)
+                if (myID == id)
                 {
                     if(isImg == "1")
                     {
@@ -351,6 +362,16 @@ namespace DBP_Project
             {
                 string trig = "1" + dt.Rows[0][0].ToString();
                 Client.GetInstance().SendMsg(trig);
+            }
+        }
+        void SendToReadSignal()
+        {
+            // TCP를 통해 수신자에게 알림 + 비로그인시 예외처리
+            DataTable dt = Query.GetInstance().RunQuery("SELECT `peer` FROM talk.UserListTable WHERE `id` = '" + yourID + "';");
+            if (dt.Rows[0][0].ToString() != "00000")
+            {
+                string trig = "1" + dt.Rows[0][0].ToString();
+                Client.GetInstance().SendReadChk(trig);
             }
         }
 
