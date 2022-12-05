@@ -60,7 +60,7 @@ namespace DBP_Project
                             LastChat.Text = dt.Rows[0]["data"].ToString();
                             string time = dt.Rows[0]["send_time"].ToString();
                             TimeLabel.Text = DateTime.Parse(time).ToString("t");
-                            MessageBox.Show(time, DateTime.Parse(time).ToString("t"));
+                            //MessageBox.Show(time, DateTime.Parse(time).ToString("t"));
                         }
 
                         //최근대화내역체크 - 체크상태(읽음), 체크아님(안읽음)

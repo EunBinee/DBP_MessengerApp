@@ -66,7 +66,7 @@ namespace DBP_Project
             this.LastChat.Size = new System.Drawing.Size(192, 12);
             this.LastChat.TabIndex = 2;
             this.LastChat.Text = "last chat";
-            this.LastChat.Click += new System.EventHandler(this.LastChat_Click);
+
             // 
             // ReadCheck
             // 
