@@ -213,7 +213,7 @@ namespace DBP_Project
 
             //2. 값을 불러온다. 자기자신과 관리자는 빼고---------------------------------------------------------------------------
 
-            query = "SELECT *, ifnull(B.blockUserId, 0) btype FROM talk.UserListTable LEFT JOIN (SELECT * FROM BlockInfo WHERE userId = '" + id + "') as B ON UserListTable.id = B.blockUserId where id != '" + id + "' and role =2;";
+            query = "SELECT *, ifnull(B.blockType, 0) btype FROM talk.UserListTable LEFT JOIN (SELECT * FROM BlockInfo WHERE userId = '" + id + "') as B ON UserListTable.id = B.blockUserId where id != '" + id + "' and role =2;";
             DataTable dt = new DataTable();
             dt = Query.GetInstance().RunQuery(query);
 
