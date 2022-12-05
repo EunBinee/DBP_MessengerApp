@@ -370,5 +370,10 @@ namespace DBP_Project
             }
         }
 
+        private void textBox_Password_TextChanged(object sender, EventArgs e)
+        {
+            textBox_Password_re.Text = "";
+            label_Password.Text = "";
+        }
     }
 }

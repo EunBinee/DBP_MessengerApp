@@ -335,8 +335,10 @@
             this.textBox_Password.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.textBox_Password.Location = new System.Drawing.Point(117, 89);
             this.textBox_Password.Name = "textBox_Password";
+            this.textBox_Password.PasswordChar = '*';
             this.textBox_Password.Size = new System.Drawing.Size(216, 25);
             this.textBox_Password.TabIndex = 6;
+            this.textBox_Password.TextChanged += new System.EventHandler(this.textBox_Password_TextChanged);
             // 
             // label_Password
             // 
@@ -352,6 +354,7 @@
             this.textBox_Password_re.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.textBox_Password_re.Location = new System.Drawing.Point(117, 138);
             this.textBox_Password_re.Name = "textBox_Password_re";
+            this.textBox_Password_re.PasswordChar = '*';
             this.textBox_Password_re.Size = new System.Drawing.Size(216, 25);
             this.textBox_Password_re.TabIndex = 7;
             this.textBox_Password_re.TextChanged += new System.EventHandler(this.textBox_Password_re_TextChanged);
@@ -413,7 +416,7 @@
             // 
             // pictureBox_Photo
             // 
-            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources.Mokoko;
+            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources._default;
             this.pictureBox_Photo.Location = new System.Drawing.Point(115, 26);
             this.pictureBox_Photo.Name = "pictureBox_Photo";
             this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);
