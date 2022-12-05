@@ -54,7 +54,13 @@ namespace DBP_Project
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {       
+        {
+
+            if (User_info.GetInstance().Role == 2)
+                Move_Admin.Visible = false;
+            else
+                Move_Admin.Visible = true;
+
             tf.TopLevel = false;  // 메인폼 위에 띄워지는 폼들을 메인폼안에서 컨트롤되게 바인딩 해주는 작업
             Client.GetInstance().StartListen();
             tf.TopLevel = false;
@@ -163,6 +169,12 @@ namespace DBP_Project
         private void logOutBtn_Click(object sender, EventArgs e) // 로그아웃 버튼을 누른경우
         {
             this.Hide();
+
+            string currentUserId = User_info.GetInstance().ID;
+            string time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            string logOutTimeQuery = $"UPDATE LogInHistory SET LogOutTime = '{time}' where userId = '{currentUserId}'";
+            Query.GetInstance().RunQuery(logOutTimeQuery);
+
             LogIn newLogin = new LogIn();
             newLogin.ShowDialog();
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
