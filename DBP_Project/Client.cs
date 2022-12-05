@@ -47,7 +47,13 @@ namespace DBP_Project
             chats.Add(chat);
             chat.yourID = yourID;
             chat.roomID = roomID;
+            DataTable dt = Query.GetInstance().RunQuery("SELECT notice FROM talk.ChatRoom WHERE room_ID = " + roomID + ";");
+            chat.notice_chat = Convert.ToInt32(dt.Rows[0][0]);
             chat.Show();
+            if (chat.notice_chat != 0)   //공지가 있으면
+            {
+                chat.notice_view();
+            }
         }
 
         public void PhotoConnect()

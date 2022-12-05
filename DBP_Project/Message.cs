@@ -16,21 +16,21 @@ namespace DBP_Project
         public int chatID;
         public int chatType;
         public string link;
-        public Message(Chat chat, string str)
+        public Message(Chat chat, int chatID , string str)
         {
             InitializeComponent();
             this.chat = chat;
             this.msgBox.Text = str;
-            DataTable dt = Query.GetInstance().RunQuery("Select id,read_check,isImg from talk.ChatMsg where data = '" + this.msgBox.Text + "'");  // 채팅 id,읽음,타입
-            this.chatID = Convert.ToInt32(dt.Rows[0][0]);
+            DataTable dt = Query.GetInstance().RunQuery("Select read_check,isImg from talk.ChatMsg where id = '" + chatID + "'");  //읽음,타입
+            this.chatID = chatID;
 
-            if (Convert.ToInt32(dt.Rows[0][1]) == 0)
+            if (Convert.ToInt32(dt.Rows[0][0]) == 0)
             {
                 this.pictureBox2.Visible = true;
             }
-            this.chatType = Convert.ToInt32(dt.Rows[0][2]);
+            this.chatType = Convert.ToInt32(dt.Rows[0][1]);
         }
-        public Message(Chat chat,string str, bool isFile = false)
+        public Message(Chat chat, int chatID,string str, bool isFile = false)
         {
             InitializeComponent();
             this.chat = chat;
@@ -41,14 +41,14 @@ namespace DBP_Project
 
             if (isFile == true)
                 SetLink(str);
-            DataTable dt = Query.GetInstance().RunQuery("Select id,read_check,isImg from talk.ChatMsg where data = '" + this.msgBox.Text + "'");  // 채팅 id,읽음,타입
-            this.chatID = Convert.ToInt32(dt.Rows[0][0]);
+            DataTable dt = Query.GetInstance().RunQuery("Select read_check,isImg from talk.ChatMsg where id = '" + chatID + "'");  // 읽음,타입
+            this.chatID = chatID;
 
-            if(Convert.ToInt32(dt.Rows[0][1]) == 0)
+            if(Convert.ToInt32(dt.Rows[0][0]) == 0)
             {
                 this.pictureBox2.Visible = true;
             }
-            this.chatType = Convert.ToInt32(dt.Rows[0][2]);
+            this.chatType = Convert.ToInt32(dt.Rows[0][1]);
 
         }
         
@@ -68,16 +68,12 @@ namespace DBP_Project
 
         public void SetSenderImg(string yourID)
         {
-            // 사진 읽기
-            string query = "SELECT profilePic FROM talk.UserListTable WHERE id = '" + yourID + "'";
-            DataTable dt = Query.GetInstance().RunQuery(query);
-            string filename = dt.Rows[0][0].ToString();
+            //프로필 시작 처리
+            Employee employee = User_info.GetInstance().GetEmployee(yourID);
 
-            if (filename != "")
-            {
-                senderImg.ImageLocation = "http://15.164.218.208/forDB/" + filename;
-                senderImg.SizeMode = PictureBoxSizeMode.Zoom;
-            }
+            senderName.Text = employee.NickName;
+            senderImg.ImageLocation = "http://15.164.218.208/forDB/" + employee.ProfilePic;
+            senderImg.SizeMode = PictureBoxSizeMode.Zoom;
         }
         private void SetSize()
         {
@@ -106,13 +102,12 @@ namespace DBP_Project
         private void 삭제ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string str = this.msgBox.Text;
-            DataTable dt = Query.GetInstance().RunQuery("Select id from talk.ChatMsg where data = '" + str + "'");
-            int chatID = Convert.ToInt32(dt.Rows[0][0]);
+/*            DataTable dt = Query.GetInstance().RunQuery("Select id from talk.ChatMsg where data = '" + str + "'");
+            int chatID = Convert.ToInt32(dt.Rows[0][0]);*/
             this.Parent.Controls.Remove(this);
             if(chat.notice_chat == chatID)
             {
                 Query.GetInstance().RunQuery("UPDATE talk.ChatRoom SET notice = " + 0 + " WHERE room_ID = " + chat.roomID + ";");
-                //chat.Controls.Remove();
 
             }
             Query.GetInstance().RunQuery("delete from talk.ChatMsg where id = " + chatID + ";");
@@ -128,11 +123,8 @@ namespace DBP_Project
             chat.notice_set(chatID);
             chat.notice_view();
         }
-        public void SetData(string name, string time)
+        public void SetData(string time)
         {
-            senderName.Text = name;
-
-
             sendTimeLabel.Text = DateTime.Parse(time).ToString("t");
         }
 

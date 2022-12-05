@@ -98,7 +98,7 @@ namespace DBP_Project
             // 
             // pictureBox_Photo
             // 
-            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources.Mokoko;
+            this.pictureBox_Photo.Image = global::DBP_Project.Properties.Resources._default;
             this.pictureBox_Photo.Location = new System.Drawing.Point(115, 26);
             this.pictureBox_Photo.Name = "pictureBox_Photo";
             this.pictureBox_Photo.Size = new System.Drawing.Size(150, 150);

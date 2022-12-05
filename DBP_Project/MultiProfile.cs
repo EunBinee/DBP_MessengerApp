@@ -106,7 +106,8 @@ namespace DBP_Project
         //추가 버튼
         private void button_addMultiEmployee_Click(object sender, EventArgs e)
         {
-            if (comboBox_AddMultiEmployee.SelectedItem.ToString() != "")
+            if(comboBox_AddMultiEmployee.SelectedIndex != -1)
+            //if (comboBox_AddMultiEmployee.SelectedItem.ToString() != "")
             {
                 CheckBox checkBox = new CheckBox();
 

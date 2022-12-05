@@ -80,17 +80,16 @@ namespace DBP_Project
         private void Profil_Load(object sender, EventArgs e)
         {
             //프로필 시작 처리
-            string q = "SELECT name, profilePic FROM UserListTable WHERE id = '" + targetID + "'";
-            DataTable dt = Query.GetInstance().RunQuery(q);
+            Employee employee = User_info.GetInstance().GetEmployee(targetID);
 
-            label1.Text = "이름: " + dt.Rows[0]["name"].ToString();
-            pictureBox1.ImageLocation = "http://15.164.218.208/forDB/" + dt.Rows[0]["profilePic"];
+            label1.Text = "이름: " + employee.NickName + "(" + employee.Name + ")";
+            pictureBox1.ImageLocation = "http://15.164.218.208/forDB/" + employee.ProfilePic;
 
             this.Location = new Point(240, 60);
             
             //즐겨찾기 처리
-            q = "SELECT * FROM test_Favorite WHERE user_id = '" + loginUser + "' and target_id = '" + targetID + "'";
-            dt = Query.GetInstance().RunQuery(q);
+            string q = "SELECT * FROM test_Favorite WHERE user_id = '" + loginUser + "' and target_id = '" + targetID + "'";
+            DataTable dt = Query.GetInstance().RunQuery(q);
             if(dt.Rows.Count > 0)
             {
                 FavoriteCheckBox.CheckState = CheckState.Checked;

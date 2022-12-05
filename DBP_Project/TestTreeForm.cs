@@ -70,6 +70,10 @@ namespace DBP_Project
                 "WHERE l.departmentName NOT IN (SELECT blockDepartment FROM BlockInfo WHERE userid = '" + loginUser +
                 "' AND blockDepartment IS NOT NULL)");
             */
+            
+
+            //다시 유저의 정보를 불러온다.
+            User_info.GetInstance().GetWorkerInfo();
             for(int i = 0; i < User_info.GetInstance().employees.Count; i++)
             {
                 if(User_info.GetInstance().employees[i].Btype != "1")

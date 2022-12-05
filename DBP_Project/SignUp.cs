@@ -287,7 +287,6 @@ namespace DBP_Project
         {
             //암호화
             string result = Sha265.GetInstance().SHA256_password(textBox_Password.Text);
-            MessageBox.Show(result);
             return result;
         }
 
@@ -336,7 +335,9 @@ namespace DBP_Project
 
         private void comboBox_team_Click(object sender, EventArgs e)
         {
-        
+            if (comboBox_Department.SelectedIndex == -1)
+                return;
+
             //부서 콤보박스에 값이 들어가있는 경우, 바꾸기
             if(cur_Depart != comboBox_Department.SelectedItem.ToString())
             {
@@ -370,5 +371,22 @@ namespace DBP_Project
             }
         }
 
+        private void textBox_Number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!(char.IsDigit(e.KeyChar) || e.KeyChar == Convert.ToChar(Keys.Back)))
+            {
+                e.Handled = true;
+            }
+        }
+        private void textBox_Password_TextChanged(object sender, EventArgs e)
+        {
+            textBox_Password_re.Text = "";
+            label_Password.Text = "";
+        }
+
+        private void comboBox_team_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
