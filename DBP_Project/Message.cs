@@ -71,6 +71,7 @@ namespace DBP_Project
             //프로필 시작 처리
             Employee employee = User_info.GetInstance().GetEmployee(yourID);
 
+            senderName.Text = employee.NickName;
             senderImg.ImageLocation = "http://15.164.218.208/forDB/" + employee.ProfilePic;
             senderImg.SizeMode = PictureBoxSizeMode.Zoom;
         }
@@ -122,11 +123,8 @@ namespace DBP_Project
             chat.notice_set(chatID);
             chat.notice_view();
         }
-        public void SetData(string name, string time)
+        public void SetData(string time)
         {
-            senderName.Text = name;
-
-
             sendTimeLabel.Text = DateTime.Parse(time).ToString("t");
         }
 

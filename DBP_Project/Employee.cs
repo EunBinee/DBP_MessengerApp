@@ -17,9 +17,10 @@ namespace DBP_Project
         private string team;
 
         private string profilePic;
-        private string btype; //차단 타입
+        private string blockLook;   //보기 차단
+        private string blockChat;   //채팅 차단
 
-        public Employee(string id, string name, string nickName, string department, string team, string profilePic, string btype)
+        public Employee(string id, string name, string nickName, string department, string team, string profilePic, string blockLook, string blockChat)
         {
             this.id = id;
             this.name = name;
@@ -27,7 +28,8 @@ namespace DBP_Project
             this.department = department;
             this.team = team;
             this.profilePic = profilePic;
-            this.btype = btype;
+            this.blockLook = blockLook;
+            this.blockChat = blockChat;
         }
 
         //편하게 쓰기위한.. 겟터와 세터..
@@ -100,15 +102,27 @@ namespace DBP_Project
             }
         }
 
-        public string Btype
+        public string BlockLook
         {
             get
             {
-                return btype;
+                return blockLook;
             }
             set
             {
-                btype = value;
+                blockLook = value;
+            }
+        }
+
+        public string BlockChat
+        {
+            get
+            {
+                return blockChat;
+            }
+            set
+            {
+                blockChat = value;
             }
         }
 

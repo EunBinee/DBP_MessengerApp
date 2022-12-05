@@ -39,7 +39,7 @@ namespace DBP_Project
 
             blockChatBox.Items.Clear();
             blockUserBox.Items.Clear();
-            
+
             foreach (DataRow row in userListTable.Rows)
             {
                 blockChatBox.Items.Add(row["id"].ToString());
@@ -65,7 +65,7 @@ namespace DBP_Project
                 MessageBox.Show("일치하는 사용자가 없습니다.");
                 return;
             }
-            
+
             getDepartmentList();
 
             userBox.Text = userInfoDataTable.Rows[0]["userId"].ToString();
@@ -104,7 +104,7 @@ namespace DBP_Project
                 string currentUserId = userBox.Text; // 사용자의 부서와 팀 정상적으로 선택하면 DB에 업데이트
                 string currentDepartment = departmentComboBox.SelectedItem.ToString();
                 string getDepartmentIdQuery = $"SELECT distinct departmentId FROM talk.departmentList where departmentName = '{currentDepartment}'";
-                int currentDepartmentId =Convert.ToInt32(Query.GetInstance().RunQuery(getDepartmentIdQuery).Rows[0]["departmentId"]);
+                int currentDepartmentId = Convert.ToInt32(Query.GetInstance().RunQuery(getDepartmentIdQuery).Rows[0]["departmentId"]);
                 string currentTeam = teamComboBox.SelectedItem.ToString();
                 string saveInfoQuery = $"UPDATE UserDepartment SET departmentId = {currentDepartmentId}, departmentName = '{currentDepartment}', teamName = '{currentTeam}' where userId = '{currentUserId}'";
                 Query.GetInstance().RunQuery(saveInfoQuery);
@@ -160,7 +160,7 @@ namespace DBP_Project
             {
                 string currentUserId = userBox.Text;
                 string selectedDepartment = blockComboBox1.SelectedItem.ToString();
-                if(blockDepartmentList.FindString(selectedDepartment) == -1)
+                if (blockDepartmentList.FindString(selectedDepartment) == -1)
                 {
                     MessageBox.Show("현재 차단목록에 존재하지않는 부서입니다.");
                     return;
@@ -181,7 +181,7 @@ namespace DBP_Project
 
         private void getBlockChatListByUid(string currentUserId) // UserId로 DB에서 채팅 차단 정보를 가져오는 함수
         {
-            string getBlockChatListQuery = $"SELECT blockUserId FROM BlockInfo where userId = '{currentUserId}' and blockType = 2;";
+            string getBlockChatListQuery = $"SELECT blockUserId FROM BlockInfo where userId = '{currentUserId}' and blockChat = 1;";
             DataTable blockChatTable = Query.GetInstance().RunQuery(getBlockChatListQuery);
 
             blockChatList.Items.Clear();
@@ -212,8 +212,18 @@ namespace DBP_Project
                 MessageBox.Show("이미 차단한 사용자ID입니다.");
             else
             {
-                string updateBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockType) Value('{currentUserId}', '{selectedUserId}', 2)";
-                Query.GetInstance().RunQuery(updateBlockListQuery);
+                DataTable dt = Query.GetInstance().RunQuery($"select * from BlockInfo where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'");
+                //if (dt.Rows.Count != 0)
+                if (dt.Rows.Count == 0)
+                {
+                    string insertBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockChat, blockLook) Value('{currentUserId}', '{selectedUserId}', 1, 0)";
+                    Query.GetInstance().RunQuery(insertBlockListQuery);
+                }
+                else
+                {
+                    string updateBlockListQuery = $"update BlockInfo SET blockChat = 1 where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'";
+                    Query.GetInstance().RunQuery(updateBlockListQuery);
+                }
 
                 getBlockChatListByUid(userBox.Text);
             }
@@ -233,7 +243,7 @@ namespace DBP_Project
                     MessageBox.Show("현재 차단목록에 존재하지않는 유저ID입니다.");
                     return;
                 }
-                string deleteBlockChatQuery = $"delete from BlockInfo where userId = '{currentUserId}' and blockuserId = '{selectedUserId}' and blockType = 2";
+                string deleteBlockChatQuery = $"update BlockInfo set blockChat = 0 where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'";
                 Query.GetInstance().RunQuery(deleteBlockChatQuery);
                 getBlockChatListByUid(userBox.Text);
             }
@@ -249,7 +259,7 @@ namespace DBP_Project
 
         private void getBlockUserListByUid(string currentUserId) // UserId로 사용자 보기 차단 리스트를 가져오는 함수
         {
-            string getBlockUserListQuery = $"SELECT blockUserId FROM BlockInfo where userId = '{currentUserId}' and blockType = 1;";
+            string getBlockUserListQuery = $"SELECT blockUserId FROM BlockInfo where userId = '{currentUserId}' and blockLook = 1;";
             DataTable blockUserTable = Query.GetInstance().RunQuery(getBlockUserListQuery);
 
             blockUserList.Items.Clear();
@@ -280,8 +290,22 @@ namespace DBP_Project
                 MessageBox.Show("이미 차단한 사용자ID입니다.");
             else
             {
-                string updateBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockType) Value('{currentUserId}', '{selectedUserId}', 1)";
-                Query.GetInstance().RunQuery(updateBlockListQuery);
+
+                DataTable dt = Query.GetInstance().RunQuery($"select * from BlockInfo where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'");
+                //if (dt.Rows.Count != 0)
+                if (dt.Rows.Count == 0)
+                {
+                    string insertBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockChat, blockLook) Value('{currentUserId}', '{selectedUserId}', 0, 1)";
+                    Query.GetInstance().RunQuery(insertBlockListQuery);
+                }
+                else
+                {
+                    string updateBlockListQuery = $"update BlockInfo SET blockLook = 1 where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'";
+                    Query.GetInstance().RunQuery(updateBlockListQuery);
+                }
+
+                //string updateBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockType) Value('{currentUserId}', '{selectedUserId}', 1)";
+                //Query.GetInstance().RunQuery(updateBlockListQuery);
 
                 getBlockUserListByUid(userBox.Text);
             }
@@ -300,7 +324,7 @@ namespace DBP_Project
                     MessageBox.Show("현재 보기차단목록에 존재하지않는 유저ID입니다.");
                     return;
                 }
-                string deleteBlockChatQuery = $"delete from BlockInfo where userId = '{currentUserId}' and blockuserId = '{selectedUserId}' and blockType = 1";
+                string deleteBlockChatQuery = $"update BlockInfo set blockLook = 0 where userId = '{currentUserId}' and blockuserId = '{selectedUserId}'";
                 Query.GetInstance().RunQuery(deleteBlockChatQuery);
                 getBlockUserListByUid(userBox.Text);
             }

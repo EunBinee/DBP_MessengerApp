@@ -34,14 +34,16 @@ namespace DBP_Project
             this.LastChat = new System.Windows.Forms.Label();
             this.ReadCheck = new System.Windows.Forms.CheckBox();
             this.TimeLabel = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(43, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(13, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 60);
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -50,7 +52,7 @@ namespace DBP_Project
             // 
             this.NameLabel.Font = new System.Drawing.Font("굴림", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.NameLabel.ForeColor = System.Drawing.Color.White;
-            this.NameLabel.Location = new System.Drawing.Point(133, 21);
+            this.NameLabel.Location = new System.Drawing.Point(110, 20);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(194, 19);
             this.NameLabel.TabIndex = 1;
@@ -59,16 +61,17 @@ namespace DBP_Project
             // LastChat
             // 
             this.LastChat.ForeColor = System.Drawing.Color.White;
-            this.LastChat.Location = new System.Drawing.Point(135, 69);
+            this.LastChat.Location = new System.Drawing.Point(112, 69);
             this.LastChat.Name = "LastChat";
             this.LastChat.Size = new System.Drawing.Size(192, 12);
             this.LastChat.TabIndex = 2;
             this.LastChat.Text = "last chat";
+
             // 
             // ReadCheck
             // 
             this.ReadCheck.Enabled = false;
-            this.ReadCheck.Location = new System.Drawing.Point(17, 41);
+            this.ReadCheck.Location = new System.Drawing.Point(427, 49);
             this.ReadCheck.Name = "ReadCheck";
             this.ReadCheck.Size = new System.Drawing.Size(20, 20);
             this.ReadCheck.TabIndex = 3;
@@ -78,27 +81,40 @@ namespace DBP_Project
             // 
             this.TimeLabel.Font = new System.Drawing.Font("굴림", 13F);
             this.TimeLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.TimeLabel.Location = new System.Drawing.Point(333, 21);
+            this.TimeLabel.Location = new System.Drawing.Point(262, 20);
             this.TimeLabel.Name = "TimeLabel";
-            this.TimeLabel.Size = new System.Drawing.Size(56, 19);
+            this.TimeLabel.Size = new System.Drawing.Size(127, 48);
             this.TimeLabel.TabIndex = 4;
             this.TimeLabel.Text = "time";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::DBP_Project.Properties.Resources.check;
+            this.pictureBox2.Location = new System.Drawing.Point(265, 60);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 21);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // ChatPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(80)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.TimeLabel);
             this.Controls.Add(this.ReadCheck);
             this.Controls.Add(this.LastChat);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.pictureBox1);
             this.Name = "ChatPanel";
-            this.Size = new System.Drawing.Size(439, 105);
+            this.Size = new System.Drawing.Size(624, 105);
             this.Load += new System.EventHandler(this.ChatPanel_Load);
             this.Click += new System.EventHandler(this.ChatPanel_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,5 +126,6 @@ namespace DBP_Project
         private System.Windows.Forms.Label LastChat;
         private System.Windows.Forms.CheckBox ReadCheck;
         private System.Windows.Forms.Label TimeLabel;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

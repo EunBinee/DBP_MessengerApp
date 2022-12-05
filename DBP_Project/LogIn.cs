@@ -114,7 +114,7 @@ namespace DBP_Project
                 //로그인 성공
                 //폼 띄우기
 
-                string time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 string loginTimeQuery = $"INSERT INTO LogInHistory VALUES ('{curId}', '{time}', null) ON DUPLICATE KEY UPDATE userId = '{curId}' , LogInTime = '{time}'";
                 Query.GetInstance().RunQuery(loginTimeQuery);
                 GoMainForm(curId);

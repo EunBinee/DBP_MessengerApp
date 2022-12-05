@@ -13,7 +13,7 @@ namespace DBP_Project
     public partial class MainForm : Form
     {
         TestTreeForm tf = new TestTreeForm();
-        TestChatForm cf = new TestChatForm();
+        TestChatForm cf = TestChatForm.getInstance();
         UserManagerForm userManagerForm = new UserManagerForm();
         ManagerForm managerForm = new ManagerForm();
         
@@ -50,6 +50,9 @@ namespace DBP_Project
 
         private void button6_Click(object sender, EventArgs e) // 우상단 종료버튼 눌렀을때 종료
         {
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
+            //Client.GetInstance().Socket_Exit();
+            //this.Close();
             Application.Exit();
         }
 
@@ -108,6 +111,7 @@ namespace DBP_Project
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            User_info.GetInstance().GetWorkerInfo();
             cf.Hide();
             managerForm.Hide();
             userManagerForm.Hide();
@@ -119,10 +123,12 @@ namespace DBP_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
+            User_info.GetInstance().GetWorkerInfo();
             tf.Hide();
             managerForm.Hide();
             userManagerForm.Hide();
             cf.Show();
+            cf.ChatLoad();
             toUserMangerForm.Hide();
             toManagerForm.Hide();
         }
@@ -171,7 +177,7 @@ namespace DBP_Project
             this.Hide();
 
             string currentUserId = User_info.GetInstance().ID;
-            string time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string logOutTimeQuery = $"UPDATE LogInHistory SET LogOutTime = '{time}' where userId = '{currentUserId}'";
             Query.GetInstance().RunQuery(logOutTimeQuery);
 
@@ -197,6 +203,7 @@ namespace DBP_Project
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //Client.GetInstance().Socket_Exit();
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
         }
         //---------------------------------------------------------------------------------------------

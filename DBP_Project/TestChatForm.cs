@@ -15,25 +15,31 @@ namespace DBP_Project
     {
         private string loginUser = "";
         private int roomCount = 0;
-        
+        public static TestChatForm instance = new TestChatForm();
 
         // Thread myThread = new Thread(ChatListLoad);
         public TestChatForm()
         {
+            instance = this;
             loginUser = User_info.GetInstance().ID;
             InitializeComponent();
         }
 
+        public static TestChatForm getInstance()
+        {
+            return instance;
+        }
+
         private void TestChatForm_Load(object sender, EventArgs e)
         {
-            //채팅방 목록 쿼리 받은 후, 반복문
             ChatLoad();
             //ThreadParam tp = new ThreadParam(loginUser, roomCount);
             //myThread.Start(tp);
         }
 
-        private void ChatLoad()
+        public void ChatLoad()
         {
+            flowLayoutPanel1.Controls.Clear();
             
             string q = $"SELECT * FROM ChatRoom WHERE user1 = '{loginUser}' OR user2 = '{loginUser}'";
             DataTable dt = Query.GetInstance().RunQuery(q);
@@ -46,7 +52,8 @@ namespace DBP_Project
                 {
                     if((User_info.GetInstance().employees[i].ID == dr["user1"].ToString()||
                         User_info.GetInstance().employees[i].ID == dr["user2"].ToString()) && 
-                        User_info.GetInstance().employees[i].Btype == "0")
+                        User_info.GetInstance().employees[i].BlockChat == "0" &&
+                        User_info.GetInstance().employees[i].BlockLook == "0")
                     {
                         isRoom = true;
                     }
