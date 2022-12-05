@@ -27,7 +27,6 @@ namespace DBP_Project
 
         private void TestChatForm_Load(object sender, EventArgs e)
         {
-            //채팅방 목록 쿼리 받은 후, 반복문
             ChatLoad();
             //ThreadParam tp = new ThreadParam(loginUser, roomCount);
             //myThread.Start(tp);
@@ -48,7 +47,8 @@ namespace DBP_Project
                 {
                     if((User_info.GetInstance().employees[i].ID == dr["user1"].ToString()||
                         User_info.GetInstance().employees[i].ID == dr["user2"].ToString()) && 
-                        User_info.GetInstance().employees[i].Btype == "0")
+                        User_info.GetInstance().employees[i].BlockChat == "0" &&
+                        User_info.GetInstance().employees[i].BlockLook == "0")
                     {
                         isRoom = true;
                     }

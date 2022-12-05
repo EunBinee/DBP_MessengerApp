@@ -110,6 +110,7 @@ namespace DBP_Project
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            User_info.GetInstance().GetWorkerInfo();
             cf.Hide();
             managerForm.Hide();
             userManagerForm.Hide();
@@ -121,10 +122,12 @@ namespace DBP_Project
 
         private void button2_Click(object sender, EventArgs e)
         {
+            User_info.GetInstance().GetWorkerInfo();
             tf.Hide();
             managerForm.Hide();
             userManagerForm.Hide();
             cf.Show();
+            cf.ChatLoad();
             toUserMangerForm.Hide();
             toManagerForm.Hide();
         }

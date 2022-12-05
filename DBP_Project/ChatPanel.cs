@@ -69,15 +69,20 @@ namespace DBP_Project
 
                 }
             }
-
-
         }
 
         private void ChatPanel_Click(object sender, EventArgs e)
         {
-            ReadCheck.CheckState = CheckState.Checked;
-            //클릭시 채팅방 오픈
-            Client.GetInstance().AddNewChatRoom(this.targetId, this.roomId);
+            if (User_info.GetInstance().Role == 1)
+            {
+                MessageBox.Show("관리자는 채팅을 참여할 수 없습니다.");
+            }
+            else
+            {
+                ReadCheck.CheckState = CheckState.Checked;
+                //클릭시 채팅방 오픈
+                Client.GetInstance().AddNewChatRoom(this.targetId, this.roomId);
+            }
         }
     }
 }
