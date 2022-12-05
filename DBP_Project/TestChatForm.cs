@@ -15,7 +15,7 @@ namespace DBP_Project
     {
         private string loginUser = "";
         private int roomCount = 0;
-        public static TestChatForm instance;
+        public static TestChatForm instance = new TestChatForm();
 
         // Thread myThread = new Thread(ChatListLoad);
         public TestChatForm()
@@ -23,6 +23,11 @@ namespace DBP_Project
             instance = this;
             loginUser = User_info.GetInstance().ID;
             InitializeComponent();
+        }
+
+        public static TestChatForm getInstance()
+        {
+            return instance;
         }
 
         private void TestChatForm_Load(object sender, EventArgs e)

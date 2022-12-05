@@ -13,7 +13,7 @@ namespace DBP_Project
     public partial class MainForm : Form
     {
         TestTreeForm tf = new TestTreeForm();
-        TestChatForm cf = new TestChatForm();
+        TestChatForm cf = TestChatForm.getInstance();
         UserManagerForm userManagerForm = new UserManagerForm();
         ManagerForm managerForm = new ManagerForm();
         

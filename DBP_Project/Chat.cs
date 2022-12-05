@@ -65,6 +65,8 @@ namespace DBP_Project
 
             // 메세지를 폼에 등록 및 초기화
             SendMsg(chatId,msgInput.Text,time);
+
+            TestChatForm.getInstance().ChatLoad();
         }
 
         private void button2_Click(object sender, EventArgs e)
