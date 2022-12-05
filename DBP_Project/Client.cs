@@ -28,11 +28,14 @@ namespace DBP_Project
         {
             return instance;
         }
-
+        public void Socket_Exit()
+        {
+            conn_socket.Close();
+        }
         private void StartConnect()
         { 
             conn_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9996));
+            conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9997));
 
             // myPeer 저장
             var data = new byte[1024];
