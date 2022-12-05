@@ -179,7 +179,7 @@ namespace DBP_Project
                                 {
                                     checkPicture = true;
                                     //사진 
-                                    if ((file != "default.jpg") && file != User_info.GetInstance().myMultiProfileList[multiProfileIndex].ProfilePic)
+                                    if (file != "default.jpg")
                                     {
 
                                         Client.GetInstance().PhotoConnect();
@@ -293,7 +293,13 @@ namespace DBP_Project
                                 }
 
                                 //myMultiProfileList
-                                User_info.GetInstance().myMultiProfileList.Add(new MultiProfile_Class(User_info.GetInstance().ID, textBox_NickName.Text, file));
+                                User_info.GetInstance().myMultiProfileList[multiProfileIndex].ID = User_info.GetInstance().ID;
+                                User_info.GetInstance().myMultiProfileList[multiProfileIndex].NickName = textBox_NickName.Text;
+                                User_info.GetInstance().myMultiProfileList[multiProfileIndex].ProfilePic = file;
+
+                                string query_ = "DELETE FROM `talk`.`MultiProfile` WHERE  `doMultiProfile_Id` = '" + User_info.GetInstance().ID + "' and `nickname` = '" + curNickName + "'";
+                                Query.GetInstance().RunQuery(query_);
+
 
                                 useMultiProfile = true;
                             }
@@ -314,8 +320,9 @@ namespace DBP_Project
                         }
                     }
                 }
-                User_info.GetInstance().multiProfileEmployee.Add(multiProfileEmployeeList);
-
+                //User_info.GetInstance().multiProfileEmployee.Add(multiProfileEmployeeList);
+                User_info.GetInstance().multiProfileEmployee[multiProfileIndex].Clear();
+                User_info.GetInstance().multiProfileEmployee[multiProfileIndex]=multiProfileEmployeeList;
                 //나의 멀티 프로필을 저장한다.
                 if (useMultiProfile)
                 {

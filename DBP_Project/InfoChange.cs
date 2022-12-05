@@ -68,13 +68,6 @@ namespace DBP_Project
 
 
 
-
-
-
-
-
-
-
         //정보변경
         private void ChangeInfo_Btn_Click(object sender, EventArgs e)
         {
