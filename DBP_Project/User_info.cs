@@ -35,6 +35,18 @@ namespace DBP_Project
             this.profilePic = profilePic;
         }
 
+        public void LoginUserChange(string id, string password, string name, string nickName, int role, string zipCode, string address, string profilePic)
+        {
+            this.id = id;
+            this.password = password;
+            this.name = name;
+            this.nickName = nickName;
+            this.role = role;
+            this.zipCode = zipCode;
+            this.address = address;
+            this.profilePic = profilePic;
+        }
+
         public static User_info GetInstance()
         {
             return instance;

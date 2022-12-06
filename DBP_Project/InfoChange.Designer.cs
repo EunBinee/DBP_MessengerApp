@@ -69,12 +69,12 @@ namespace DBP_Project
             this.panel6 = new System.Windows.Forms.Panel();
             this.ChangeInfo_Btn = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.buttonSynchroni = new System.Windows.Forms.Button();
             this.ChangeMultiP_Btn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox_myMultiProfileList = new System.Windows.Forms.ComboBox();
             this.button_multiProfile = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.buttonSynchroni = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -93,8 +93,9 @@ namespace DBP_Project
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(432, 70);
+            this.panel1.Size = new System.Drawing.Size(378, 56);
             this.panel1.TabIndex = 27;
             // 
             // label1
@@ -103,9 +104,9 @@ namespace DBP_Project
             this.label1.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.label1.Font = new System.Drawing.Font("한컴산뜻돋움", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.label1.Location = new System.Drawing.Point(125, 20);
+            this.label1.Location = new System.Drawing.Point(109, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 36);
+            this.label1.Size = new System.Drawing.Size(145, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "회원정보 변경";
             // 
@@ -119,9 +120,10 @@ namespace DBP_Project
             this.flowLayoutPanel.Controls.Add(this.panel5);
             this.flowLayoutPanel.Controls.Add(this.panel6);
             this.flowLayoutPanel.Controls.Add(this.panel7);
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 76);
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 61);
+            this.flowLayoutPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(430, 578);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(376, 462);
             this.flowLayoutPanel.TabIndex = 28;
             // 
             // panel2
@@ -129,17 +131,19 @@ namespace DBP_Project
             this.panel2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel2.Controls.Add(this.pictureBox);
             this.panel2.Controls.Add(this.photoRegis_Btn);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Location = new System.Drawing.Point(3, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(402, 201);
+            this.panel2.Size = new System.Drawing.Size(352, 161);
             this.panel2.TabIndex = 7;
             // 
             // pictureBox
             // 
             this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
-            this.pictureBox.Location = new System.Drawing.Point(115, 26);
+            this.pictureBox.Location = new System.Drawing.Point(101, 21);
+            this.pictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(150, 150);
+            this.pictureBox.Size = new System.Drawing.Size(131, 120);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
@@ -149,9 +153,10 @@ namespace DBP_Project
             this.photoRegis_Btn.BackColor = System.Drawing.SystemColors.Window;
             this.photoRegis_Btn.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.photoRegis_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.photoRegis_Btn.Location = new System.Drawing.Point(271, 137);
+            this.photoRegis_Btn.Location = new System.Drawing.Point(237, 110);
+            this.photoRegis_Btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.photoRegis_Btn.Name = "photoRegis_Btn";
-            this.photoRegis_Btn.Size = new System.Drawing.Size(60, 39);
+            this.photoRegis_Btn.Size = new System.Drawing.Size(52, 31);
             this.photoRegis_Btn.TabIndex = 2;
             this.photoRegis_Btn.Text = "등록";
             this.photoRegis_Btn.UseVisualStyleBackColor = false;
@@ -164,9 +169,10 @@ namespace DBP_Project
             this.panel3.Controls.Add(this.textBox_name);
             this.panel3.Controls.Add(this.textBox_nickname);
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Location = new System.Drawing.Point(3, 210);
+            this.panel3.Location = new System.Drawing.Point(3, 167);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(402, 118);
+            this.panel3.Size = new System.Drawing.Size(352, 94);
             this.panel3.TabIndex = 8;
             // 
             // label11
@@ -174,26 +180,28 @@ namespace DBP_Project
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label11.Location = new System.Drawing.Point(47, 74);
+            this.label11.Location = new System.Drawing.Point(41, 59);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 19);
+            this.label11.Size = new System.Drawing.Size(41, 16);
             this.label11.TabIndex = 13;
             this.label11.Text = "닉네임";
             // 
             // textBox_name
             // 
             this.textBox_name.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_name.Location = new System.Drawing.Point(115, 22);
+            this.textBox_name.Location = new System.Drawing.Point(101, 18);
+            this.textBox_name.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(216, 25);
+            this.textBox_name.Size = new System.Drawing.Size(190, 21);
             this.textBox_name.TabIndex = 3;
             // 
             // textBox_nickname
             // 
             this.textBox_nickname.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_nickname.Location = new System.Drawing.Point(115, 73);
+            this.textBox_nickname.Location = new System.Drawing.Point(101, 58);
+            this.textBox_nickname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_nickname.Name = "textBox_nickname";
-            this.textBox_nickname.Size = new System.Drawing.Size(216, 25);
+            this.textBox_nickname.Size = new System.Drawing.Size(190, 21);
             this.textBox_nickname.TabIndex = 4;
             // 
             // label12
@@ -201,9 +209,9 @@ namespace DBP_Project
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label12.Location = new System.Drawing.Point(62, 23);
+            this.label12.Location = new System.Drawing.Point(54, 18);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 19);
+            this.label12.Size = new System.Drawing.Size(30, 16);
             this.label12.TabIndex = 12;
             this.label12.Text = "이름";
             // 
@@ -216,26 +224,28 @@ namespace DBP_Project
             this.panel4.Controls.Add(this.label14);
             this.panel4.Controls.Add(this.label15);
             this.panel4.Controls.Add(this.groupBox3);
-            this.panel4.Location = new System.Drawing.Point(3, 334);
+            this.panel4.Location = new System.Drawing.Point(3, 265);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(402, 343);
+            this.panel4.Size = new System.Drawing.Size(352, 274);
             this.panel4.TabIndex = 9;
             // 
             // label_DupNumber
             // 
             this.label_DupNumber.AutoSize = true;
-            this.label_DupNumber.Location = new System.Drawing.Point(121, 53);
+            this.label_DupNumber.Location = new System.Drawing.Point(106, 42);
             this.label_DupNumber.Name = "label_DupNumber";
-            this.label_DupNumber.Size = new System.Drawing.Size(0, 15);
+            this.label_DupNumber.Size = new System.Drawing.Size(0, 12);
             this.label_DupNumber.TabIndex = 25;
             // 
             // DuplicateCheckBtn
             // 
             this.DuplicateCheckBtn.BackColor = System.Drawing.SystemColors.Window;
             this.DuplicateCheckBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.DuplicateCheckBtn.Location = new System.Drawing.Point(246, 25);
+            this.DuplicateCheckBtn.Location = new System.Drawing.Point(215, 20);
+            this.DuplicateCheckBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.DuplicateCheckBtn.Name = "DuplicateCheckBtn";
-            this.DuplicateCheckBtn.Size = new System.Drawing.Size(83, 25);
+            this.DuplicateCheckBtn.Size = new System.Drawing.Size(73, 20);
             this.DuplicateCheckBtn.TabIndex = 24;
             this.DuplicateCheckBtn.Text = "중복 확인";
             this.DuplicateCheckBtn.UseVisualStyleBackColor = false;
@@ -244,18 +254,19 @@ namespace DBP_Project
             // textBox_number
             // 
             this.textBox_number.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_number.Location = new System.Drawing.Point(113, 25);
+            this.textBox_number.Location = new System.Drawing.Point(99, 20);
+            this.textBox_number.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_number.Name = "textBox_number";
-            this.textBox_number.Size = new System.Drawing.Size(125, 25);
+            this.textBox_number.Size = new System.Drawing.Size(110, 21);
             this.textBox_number.TabIndex = 5;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.ForeColor = System.Drawing.Color.Red;
-            this.label14.Location = new System.Drawing.Point(177, 254);
+            this.label14.Location = new System.Drawing.Point(155, 203);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(0, 15);
+            this.label14.Size = new System.Drawing.Size(0, 12);
             this.label14.TabIndex = 23;
             // 
             // label15
@@ -263,9 +274,9 @@ namespace DBP_Project
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label15.Location = new System.Drawing.Point(30, 28);
+            this.label15.Location = new System.Drawing.Point(26, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(65, 19);
+            this.label15.Size = new System.Drawing.Size(52, 16);
             this.label15.TabIndex = 14;
             this.label15.Text = "사원번호";
             // 
@@ -283,9 +294,11 @@ namespace DBP_Project
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.textBox_ChangePass);
             this.groupBox3.Controls.Add(this.label21);
-            this.groupBox3.Location = new System.Drawing.Point(20, 81);
+            this.groupBox3.Location = new System.Drawing.Point(18, 65);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(360, 254);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(315, 203);
             this.groupBox3.TabIndex = 33;
             this.groupBox3.TabStop = false;
             // 
@@ -293,17 +306,18 @@ namespace DBP_Project
             // 
             this.label_Password.AutoSize = true;
             this.label_Password.ForeColor = System.Drawing.Color.Red;
-            this.label_Password.Location = new System.Drawing.Point(105, 220);
+            this.label_Password.Location = new System.Drawing.Point(92, 176);
             this.label_Password.Name = "label_Password";
-            this.label_Password.Size = new System.Drawing.Size(0, 15);
+            this.label_Password.Size = new System.Drawing.Size(0, 12);
             this.label_Password.TabIndex = 33;
             // 
             // checkBox_Password
             // 
             this.checkBox_Password.AutoSize = true;
-            this.checkBox_Password.Location = new System.Drawing.Point(70, 24);
+            this.checkBox_Password.Location = new System.Drawing.Point(61, 19);
+            this.checkBox_Password.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBox_Password.Name = "checkBox_Password";
-            this.checkBox_Password.Size = new System.Drawing.Size(237, 19);
+            this.checkBox_Password.Size = new System.Drawing.Size(190, 16);
             this.checkBox_Password.TabIndex = 32;
             this.checkBox_Password.Text = "비밀번호를 변경하시겠습니까?";
             this.checkBox_Password.UseVisualStyleBackColor = true;
@@ -313,17 +327,18 @@ namespace DBP_Project
             // 
             this.textBox_curPassword.BackColor = System.Drawing.SystemColors.ControlLight;
             this.textBox_curPassword.Enabled = false;
-            this.textBox_curPassword.Location = new System.Drawing.Point(91, 71);
+            this.textBox_curPassword.Location = new System.Drawing.Point(80, 57);
+            this.textBox_curPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_curPassword.Name = "textBox_curPassword";
-            this.textBox_curPassword.Size = new System.Drawing.Size(127, 25);
+            this.textBox_curPassword.Size = new System.Drawing.Size(112, 21);
             this.textBox_curPassword.TabIndex = 26;
             // 
             // label_passwordRight
             // 
             this.label_passwordRight.AutoSize = true;
-            this.label_passwordRight.Location = new System.Drawing.Point(105, 99);
+            this.label_passwordRight.Location = new System.Drawing.Point(92, 79);
             this.label_passwordRight.Name = "label_passwordRight";
-            this.label_passwordRight.Size = new System.Drawing.Size(0, 15);
+            this.label_passwordRight.Size = new System.Drawing.Size(0, 12);
             this.label_passwordRight.TabIndex = 31;
             // 
             // label17
@@ -331,17 +346,18 @@ namespace DBP_Project
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label17.Location = new System.Drawing.Point(23, 195);
+            this.label17.Location = new System.Drawing.Point(20, 156);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(51, 19);
+            this.label17.Size = new System.Drawing.Size(41, 16);
             this.label17.TabIndex = 16;
             this.label17.Text = "재입력";
             // 
             // passwordCheck_Btn
             // 
-            this.passwordCheck_Btn.Location = new System.Drawing.Point(224, 73);
+            this.passwordCheck_Btn.Location = new System.Drawing.Point(196, 58);
+            this.passwordCheck_Btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.passwordCheck_Btn.Name = "passwordCheck_Btn";
-            this.passwordCheck_Btn.Size = new System.Drawing.Size(83, 23);
+            this.passwordCheck_Btn.Size = new System.Drawing.Size(73, 18);
             this.passwordCheck_Btn.TabIndex = 30;
             this.passwordCheck_Btn.Text = "확인";
             this.passwordCheck_Btn.UseVisualStyleBackColor = true;
@@ -352,9 +368,9 @@ namespace DBP_Project
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label18.Location = new System.Drawing.Point(7, 152);
+            this.label18.Location = new System.Drawing.Point(6, 122);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 19);
+            this.label18.Size = new System.Drawing.Size(52, 16);
             this.label18.TabIndex = 15;
             this.label18.Text = "비밀번호";
             // 
@@ -363,9 +379,9 @@ namespace DBP_Project
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label19.Location = new System.Drawing.Point(37, 71);
+            this.label19.Location = new System.Drawing.Point(32, 57);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(37, 19);
+            this.label19.Size = new System.Drawing.Size(30, 16);
             this.label19.TabIndex = 29;
             this.label19.Text = "현재";
             // 
@@ -373,9 +389,10 @@ namespace DBP_Project
             // 
             this.textBox_ChangePass_re.BackColor = System.Drawing.SystemColors.ControlLight;
             this.textBox_ChangePass_re.Enabled = false;
-            this.textBox_ChangePass_re.Location = new System.Drawing.Point(93, 192);
+            this.textBox_ChangePass_re.Location = new System.Drawing.Point(81, 154);
+            this.textBox_ChangePass_re.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_ChangePass_re.Name = "textBox_ChangePass_re";
-            this.textBox_ChangePass_re.Size = new System.Drawing.Size(214, 25);
+            this.textBox_ChangePass_re.Size = new System.Drawing.Size(188, 21);
             this.textBox_ChangePass_re.TabIndex = 7;
             this.textBox_ChangePass_re.TextChanged += new System.EventHandler(this.textBox_ChangePass_re_TextChanged);
             // 
@@ -384,9 +401,9 @@ namespace DBP_Project
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label20.Location = new System.Drawing.Point(21, 134);
+            this.label20.Location = new System.Drawing.Point(18, 107);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(51, 19);
+            this.label20.Size = new System.Drawing.Size(41, 16);
             this.label20.TabIndex = 28;
             this.label20.Text = "변경할";
             // 
@@ -394,9 +411,10 @@ namespace DBP_Project
             // 
             this.textBox_ChangePass.BackColor = System.Drawing.SystemColors.ControlLight;
             this.textBox_ChangePass.Enabled = false;
-            this.textBox_ChangePass.Location = new System.Drawing.Point(91, 134);
+            this.textBox_ChangePass.Location = new System.Drawing.Point(80, 107);
+            this.textBox_ChangePass.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_ChangePass.Name = "textBox_ChangePass";
-            this.textBox_ChangePass.Size = new System.Drawing.Size(216, 25);
+            this.textBox_ChangePass.Size = new System.Drawing.Size(190, 21);
             this.textBox_ChangePass.TabIndex = 6;
             // 
             // label21
@@ -404,9 +422,9 @@ namespace DBP_Project
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label21.Location = new System.Drawing.Point(9, 90);
+            this.label21.Location = new System.Drawing.Point(8, 72);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(65, 19);
+            this.label21.Size = new System.Drawing.Size(52, 16);
             this.label21.TabIndex = 27;
             this.label21.Text = "비밀번호";
             // 
@@ -418,17 +436,19 @@ namespace DBP_Project
             this.panel5.Controls.Add(this.textBox_address2);
             this.panel5.Controls.Add(this.button_addressButton);
             this.panel5.Controls.Add(this.textBox_address3);
-            this.panel5.Location = new System.Drawing.Point(3, 683);
+            this.panel5.Location = new System.Drawing.Point(3, 543);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(402, 203);
+            this.panel5.Size = new System.Drawing.Size(352, 162);
             this.panel5.TabIndex = 12;
             // 
             // textBox_address1
             // 
             this.textBox_address1.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_address1.Location = new System.Drawing.Point(115, 28);
+            this.textBox_address1.Location = new System.Drawing.Point(101, 22);
+            this.textBox_address1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_address1.Name = "textBox_address1";
-            this.textBox_address1.Size = new System.Drawing.Size(125, 25);
+            this.textBox_address1.Size = new System.Drawing.Size(110, 21);
             this.textBox_address1.TabIndex = 8;
             // 
             // label7
@@ -436,47 +456,52 @@ namespace DBP_Project
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.label7.Location = new System.Drawing.Point(59, 29);
+            this.label7.Location = new System.Drawing.Point(52, 23);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 19);
+            this.label7.Size = new System.Drawing.Size(30, 16);
             this.label7.TabIndex = 17;
             this.label7.Text = "주소";
             // 
             // textBox_address2
             // 
             this.textBox_address2.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.textBox_address2.Location = new System.Drawing.Point(115, 80);
+            this.textBox_address2.Location = new System.Drawing.Point(101, 64);
+            this.textBox_address2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_address2.Name = "textBox_address2";
-            this.textBox_address2.Size = new System.Drawing.Size(216, 25);
+            this.textBox_address2.Size = new System.Drawing.Size(190, 21);
             this.textBox_address2.TabIndex = 9;
             // 
             // button_addressButton
             // 
             this.button_addressButton.Font = new System.Drawing.Font("한컴산뜻돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.button_addressButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.button_addressButton.Location = new System.Drawing.Point(246, 19);
+            this.button_addressButton.Location = new System.Drawing.Point(215, 15);
+            this.button_addressButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_addressButton.Name = "button_addressButton";
-            this.button_addressButton.Size = new System.Drawing.Size(85, 38);
+            this.button_addressButton.Size = new System.Drawing.Size(74, 30);
             this.button_addressButton.TabIndex = 11;
             this.button_addressButton.Text = "우편번호";
             this.button_addressButton.UseVisualStyleBackColor = true;
+            this.button_addressButton.Click += new System.EventHandler(this.button_addressButton_Click);
             // 
             // textBox_address3
             // 
             this.textBox_address3.BackColor = System.Drawing.SystemColors.InactiveBorder;
             this.textBox_address3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox_address3.Location = new System.Drawing.Point(115, 132);
+            this.textBox_address3.Location = new System.Drawing.Point(101, 106);
+            this.textBox_address3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_address3.Name = "textBox_address3";
-            this.textBox_address3.Size = new System.Drawing.Size(216, 25);
+            this.textBox_address3.Size = new System.Drawing.Size(190, 21);
             this.textBox_address3.TabIndex = 10;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.panel6.Controls.Add(this.ChangeInfo_Btn);
-            this.panel6.Location = new System.Drawing.Point(3, 892);
+            this.panel6.Location = new System.Drawing.Point(3, 709);
+            this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(402, 140);
+            this.panel6.Size = new System.Drawing.Size(352, 112);
             this.panel6.TabIndex = 13;
             // 
             // ChangeInfo_Btn
@@ -484,9 +509,10 @@ namespace DBP_Project
             this.ChangeInfo_Btn.BackColor = System.Drawing.SystemColors.Window;
             this.ChangeInfo_Btn.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ChangeInfo_Btn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ChangeInfo_Btn.Location = new System.Drawing.Point(117, 42);
+            this.ChangeInfo_Btn.Location = new System.Drawing.Point(102, 34);
+            this.ChangeInfo_Btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChangeInfo_Btn.Name = "ChangeInfo_Btn";
-            this.ChangeInfo_Btn.Size = new System.Drawing.Size(214, 59);
+            this.ChangeInfo_Btn.Size = new System.Drawing.Size(187, 47);
             this.ChangeInfo_Btn.TabIndex = 24;
             this.ChangeInfo_Btn.Text = "완료";
             this.ChangeInfo_Btn.UseVisualStyleBackColor = false;
@@ -501,16 +527,29 @@ namespace DBP_Project
             this.panel7.Controls.Add(this.comboBox_myMultiProfileList);
             this.panel7.Controls.Add(this.button_multiProfile);
             this.panel7.Controls.Add(this.label2);
-            this.panel7.Location = new System.Drawing.Point(3, 1038);
+            this.panel7.Location = new System.Drawing.Point(3, 825);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(402, 503);
+            this.panel7.Size = new System.Drawing.Size(352, 402);
             this.panel7.TabIndex = 14;
+            // 
+            // buttonSynchroni
+            // 
+            this.buttonSynchroni.Location = new System.Drawing.Point(206, 13);
+            this.buttonSynchroni.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.buttonSynchroni.Name = "buttonSynchroni";
+            this.buttonSynchroni.Size = new System.Drawing.Size(126, 34);
+            this.buttonSynchroni.TabIndex = 24;
+            this.buttonSynchroni.Text = "동기화";
+            this.buttonSynchroni.UseVisualStyleBackColor = true;
+            this.buttonSynchroni.Click += new System.EventHandler(this.buttonSynchroni_Click);
             // 
             // ChangeMultiP_Btn
             // 
-            this.ChangeMultiP_Btn.Location = new System.Drawing.Point(246, 252);
+            this.ChangeMultiP_Btn.Location = new System.Drawing.Point(215, 202);
+            this.ChangeMultiP_Btn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ChangeMultiP_Btn.Name = "ChangeMultiP_Btn";
-            this.ChangeMultiP_Btn.Size = new System.Drawing.Size(134, 43);
+            this.ChangeMultiP_Btn.Size = new System.Drawing.Size(117, 34);
             this.ChangeMultiP_Btn.TabIndex = 23;
             this.ChangeMultiP_Btn.Text = "변경하기";
             this.ChangeMultiP_Btn.UseVisualStyleBackColor = true;
@@ -519,25 +558,27 @@ namespace DBP_Project
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 173);
+            this.label3.Location = new System.Drawing.Point(15, 138);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(167, 15);
+            this.label3.Size = new System.Drawing.Size(133, 12);
             this.label3.TabIndex = 22;
             this.label3.Text = "나의 멀티프로필 리스트";
             // 
             // comboBox_myMultiProfileList
             // 
             this.comboBox_myMultiProfileList.FormattingEnabled = true;
-            this.comboBox_myMultiProfileList.Location = new System.Drawing.Point(19, 201);
+            this.comboBox_myMultiProfileList.Location = new System.Drawing.Point(17, 161);
+            this.comboBox_myMultiProfileList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox_myMultiProfileList.Name = "comboBox_myMultiProfileList";
-            this.comboBox_myMultiProfileList.Size = new System.Drawing.Size(360, 23);
+            this.comboBox_myMultiProfileList.Size = new System.Drawing.Size(316, 20);
             this.comboBox_myMultiProfileList.TabIndex = 21;
             // 
             // button_multiProfile
             // 
-            this.button_multiProfile.Location = new System.Drawing.Point(19, 79);
+            this.button_multiProfile.Location = new System.Drawing.Point(17, 63);
+            this.button_multiProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_multiProfile.Name = "button_multiProfile";
-            this.button_multiProfile.Size = new System.Drawing.Size(361, 60);
+            this.button_multiProfile.Size = new System.Drawing.Size(316, 48);
             this.button_multiProfile.TabIndex = 20;
             this.button_multiProfile.Text = "멀티프로필 추가 ";
             this.button_multiProfile.UseVisualStyleBackColor = true;
@@ -547,29 +588,20 @@ namespace DBP_Project
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(16, 39);
+            this.label2.Location = new System.Drawing.Point(14, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 20);
+            this.label2.Size = new System.Drawing.Size(93, 16);
             this.label2.TabIndex = 19;
             this.label2.Text = "멀티 프로필";
             // 
-            // buttonSynchroni
-            // 
-            this.buttonSynchroni.Location = new System.Drawing.Point(235, 16);
-            this.buttonSynchroni.Name = "buttonSynchroni";
-            this.buttonSynchroni.Size = new System.Drawing.Size(144, 43);
-            this.buttonSynchroni.TabIndex = 24;
-            this.buttonSynchroni.Text = "동기화";
-            this.buttonSynchroni.UseVisualStyleBackColor = true;
-            this.buttonSynchroni.Click += new System.EventHandler(this.buttonSynchroni_Click);
-            // 
             // InfoChange
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 653);
+            this.ClientSize = new System.Drawing.Size(378, 522);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "InfoChange";
             this.Text = "InfoChange";
             this.panel1.ResumeLayout(false);

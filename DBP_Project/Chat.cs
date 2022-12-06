@@ -429,6 +429,9 @@ namespace DBP_Project
 
         private void button6_Click(object sender, EventArgs e)
         {
+            if (msgInput.Text == "")
+                return; 
+
             FindMsg(msgInput.Text);
         }
     }

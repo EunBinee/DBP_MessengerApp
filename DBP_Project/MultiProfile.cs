@@ -16,7 +16,7 @@ namespace DBP_Project
         int Selectnumber = 0; //체크박스 이름 뒤에 붙을 번호
         int multiProfileIndex = 0;
         string file = "default.jpg"; //파일명
-
+        InfoChange infoChange;
         public MultiProfile()
         {
             InitializeComponent();
@@ -24,6 +24,11 @@ namespace DBP_Project
             //시작할때 모든 정보 넣기
 
             GeMultiPrifilerInfo();
+        }
+
+        public void SetInfoChange(InfoChange info)
+        {
+            infoChange = info;
         }
 
         //시작할때 모든 정보를 넣는다.
@@ -341,6 +346,11 @@ namespace DBP_Project
                     this.Close();
                 }
             }
+
+            // 동기화
+            infoChange.SetMultiProfileComboBox();
+
+
         }
 
         //사진 등록

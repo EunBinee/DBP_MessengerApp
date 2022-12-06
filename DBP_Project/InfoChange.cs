@@ -63,6 +63,7 @@ namespace DBP_Project
         public void SetMultiProfileComboBox()
         {
             comboBox_myMultiProfileList.Items.Clear();
+            comboBox_myMultiProfileList.Text = "";
             for (int i = 0; i < User_info.GetInstance().myMultiProfileList.Count; i++)
             {
                 string text = "나의 " + (i + 1) + "번째 멀티프로필";
@@ -386,6 +387,7 @@ namespace DBP_Project
         {
             User_info.GetInstance().MultiProfileIndex = User_info.GetInstance().myMultiProfileList.Count;
             MultiProfile multiProfileForm = new MultiProfile();
+            multiProfileForm.SetInfoChange(this);
             multiProfileForm.ShowDialog();
         }
 
@@ -417,7 +419,6 @@ namespace DBP_Project
         private void ChangeMultiP_Btn_Click(object sender, EventArgs e)
         {
             //나의 멀티 프로필 변경
-
             if (comboBox_myMultiProfileList.SelectedIndex == -1)
                 return;
 
@@ -426,6 +427,7 @@ namespace DBP_Project
             User_info.GetInstance().MultiProfileIndex = myMultiProfileIndex;
 
             MultiProfile multiProfileForm = new MultiProfile();
+            multiProfileForm.SetInfoChange(this);
             multiProfileForm.ShowDialog();
 
 
@@ -435,6 +437,22 @@ namespace DBP_Project
         private void buttonSynchroni_Click(object sender, EventArgs e)
         {
             SetMultiProfileComboBox();
+        }
+
+        private void button_addressButton_Click(object sender, EventArgs e)
+        {
+            //우편번호 찾기
+            Address address = new Address();
+            address.ShowDialog();
+
+            // 창이 닫히면 반환값을 반환한다.
+            if (address.gstrZipCode != "")
+            {
+                textBox_address1.Text = address.gstrZipCode;
+                textBox_address2.Text = address.gstrAddress1;
+            }
+
+            address = null;
         }
     }
 }
