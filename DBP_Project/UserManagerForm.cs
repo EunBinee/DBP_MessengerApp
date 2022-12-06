@@ -218,10 +218,16 @@ namespace DBP_Project
                 {
                     string insertBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockChat, blockLook) Value('{currentUserId}', '{selectedUserId}', 1, 0)";
                     Query.GetInstance().RunQuery(insertBlockListQuery);
+
+                    insertBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockChat, blockLook) Value('{selectedUserId}', '{currentUserId}', 1, 0)";
+                    Query.GetInstance().RunQuery(insertBlockListQuery);
                 }
                 else
                 {
                     string updateBlockListQuery = $"update BlockInfo SET blockChat = 1 where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'";
+                    Query.GetInstance().RunQuery(updateBlockListQuery);
+
+                    updateBlockListQuery = $"update BlockInfo SET blockChat = 1 where userId = '{selectedUserId}' and blockUserId = '{currentUserId}'";
                     Query.GetInstance().RunQuery(updateBlockListQuery);
                 }
 
@@ -245,6 +251,11 @@ namespace DBP_Project
                 }
                 string deleteBlockChatQuery = $"update BlockInfo set blockChat = 0 where userId = '{currentUserId}' and blockUserId = '{selectedUserId}'";
                 Query.GetInstance().RunQuery(deleteBlockChatQuery);
+
+                deleteBlockChatQuery = $"update BlockInfo set blockChat = 0 where userId = '{selectedUserId}' and blockUserId = '{currentUserId}'";
+                Query.GetInstance().RunQuery(deleteBlockChatQuery);
+
+
                 getBlockChatListByUid(userBox.Text);
             }
         }

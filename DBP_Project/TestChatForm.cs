@@ -40,6 +40,7 @@ namespace DBP_Project
         public void ChatLoad()
         {
             loginUser = User_info.GetInstance().ID;
+            User_info.GetInstance().GetWorkerInfo();
             flowLayoutPanel1.Controls.Clear();
             
             string q = $"SELECT * FROM ChatRoom WHERE user1 = '{loginUser}' OR user2 = '{loginUser}'";
