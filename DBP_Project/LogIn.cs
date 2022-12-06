@@ -17,6 +17,11 @@ namespace DBP_Project
         public LogIn()
         {
             InitializeComponent();
+        }
+
+
+        private void LogIn_Load(object sender, EventArgs e)
+        {
             validateRecentLogin();
         }
 
@@ -24,7 +29,7 @@ namespace DBP_Project
         {
             string path = Directory.GetCurrentDirectory(); // 최근 로그인 정보가 존재하는 파일의 경로
             path += "\\recentLoginInfo.txt";
-
+            RecentLoginInfo.GetInstance().changeValue("false", "", "", "false");
             FileInfo fi = new FileInfo(path); //FileInfo.Exists로 파일 존재유무 확인
 
             if (fi.Exists) { // 만약 파일 존재하면 읽어오기
@@ -33,17 +38,33 @@ namespace DBP_Project
 
                 RecentLoginInfo des = (RecentLoginInfo)deserializer.Deserialize(rs); // 역 직렬화
 
-                if (des.isChecked == "true") // 사원번호, 비밀번호 기억하기 체크 되어 있으면 
+                RecentLoginInfo.GetInstance().changeValue(des.Check, des.RecentId, des.RecentPwd, des.AutoLogin);
+
+
+                if (des.Check == "true") // 사원번호, 비밀번호 기억하기 체크 되어 있으면 
                 {
                     checkBox1.Checked = true;
-                    textBox_Number.Text = des.recentId;
-                    textBox_Password.Text = des.recentPwd;
+                    textBox_Number.Text = des.RecentId;
+                    textBox_Password.Text = des.RecentPwd;
                 }
                 else
                 {
                     checkBox1.Checked = false;
                 }
+
+                if (des.AutoLogin== "true")
+                {
+                    textBox_Number.Text = des.RecentId;
+                    textBox_Password.Text = des.RecentPwd;
+                    autoLoginBox.Checked = true;
+                    rs.Close();
+
+                    button_LogIn.PerformClick();
+                }
+                else
+                    autoLoginBox.Checked = false;
                 rs.Close();
+
             }
         }
 
@@ -59,15 +80,13 @@ namespace DBP_Project
         }
 
 
-        private void serializeFomatter(RecentLoginInfo rli) // 파라미터에 맞게 직렬화 해주는 메소드
+        private void serializeFomatter() // 파라미터에 맞게 직렬화 해주는 메소드
         {
             // 현재 로그인하려는 사원번호와 pwd를 recentLofinInfo.txt에 저장
             Stream ws = new FileStream("recentLoginInfo.txt", FileMode.Create); 
             BinaryFormatter serializer = new BinaryFormatter();
 
-            RecentLoginInfo recentLoginInfo = rli; // RecentLoginInfo 클래스에 넣어 직렬화
-
-            serializer.Serialize(ws, recentLoginInfo); // 직렬화 수행
+            serializer.Serialize(ws, RecentLoginInfo.GetInstance()); // 직렬화 수행
             ws.Close();
         }
 
@@ -106,10 +125,23 @@ namespace DBP_Project
 
             if (successLogIn)
             {
-                if (checkBox1.Checked) // 로그인 성공하고 사원번호, 비밀번호 기억하기 체크해둔 경우 
-                    serializeFomatter(new RecentLoginInfo("true", curId, beforeEncryptionPwd));
-                else 
-                    serializeFomatter(new RecentLoginInfo()); // 체크 안된경우 기본생성자 객체 (false, "","") 넘겨줌
+                // 로그인 성공하고 사원번호, 비밀번호 기억하기 체크해둔 경우 
+                if (checkBox1.Checked)
+                {
+                    if(autoLoginBox.Checked)
+                        RecentLoginInfo.GetInstance().changeValue("true", curId, beforeEncryptionPwd, "true");
+                    else
+                        RecentLoginInfo.GetInstance().changeValue("true", curId, beforeEncryptionPwd, "false");
+                }
+                else
+                {
+                    if(autoLoginBox.Checked)
+                        RecentLoginInfo.GetInstance().changeValue("false", curId, beforeEncryptionPwd, "true");
+                    else
+                        RecentLoginInfo.GetInstance().changeValue("false", curId, beforeEncryptionPwd, "false");
+                }
+
+                serializeFomatter(); // 체크 안된경우 기본생성자 객체 (false, "","") 넘겨줌
 
                 //로그인 성공
                 //폼 띄우기
@@ -183,5 +215,14 @@ namespace DBP_Project
             for (int i = 0; i < User_info.GetInstance().employees.Count; i++)
                 MessageBox.Show("변경된 employee : " + User_info.GetInstance().employees[i].NickName);*/
         }
+
+        private void autoLoginBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (autoLoginBox.Checked)
+                RecentLoginInfo.GetInstance().AutoLogin = "true";
+            else
+                RecentLoginInfo.GetInstance().AutoLogin = "false";
+        }
+
     }
 }

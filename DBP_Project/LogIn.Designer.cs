@@ -36,6 +36,7 @@
             this.textBox_Number = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.autoLoginBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label_SignUp
@@ -66,7 +67,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.checkBox1.Location = new System.Drawing.Point(94, 388);
+            this.checkBox1.Location = new System.Drawing.Point(94, 362);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(264, 21);
@@ -115,12 +116,27 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "사원 번호";
             // 
+            // autoLoginBox
+            // 
+            this.autoLoginBox.AutoSize = true;
+            this.autoLoginBox.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.autoLoginBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.autoLoginBox.Location = new System.Drawing.Point(94, 391);
+            this.autoLoginBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.autoLoginBox.Name = "autoLoginBox";
+            this.autoLoginBox.Size = new System.Drawing.Size(126, 21);
+            this.autoLoginBox.TabIndex = 14;
+            this.autoLoginBox.Text = "자동 로그인";
+            this.autoLoginBox.UseVisualStyleBackColor = true;
+            this.autoLoginBox.CheckedChanged += new System.EventHandler(this.autoLoginBtn_CheckedChanged);
+            // 
             // LogIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(432, 653);
+            this.Controls.Add(this.autoLoginBox);
             this.Controls.Add(this.label_SignUp);
             this.Controls.Add(this.button_LogIn);
             this.Controls.Add(this.checkBox1);
@@ -130,6 +146,7 @@
             this.Controls.Add(this.label1);
             this.Name = "LogIn";
             this.Text = "LogIn";
+            this.Load += new System.EventHandler(this.LogIn_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +162,6 @@
         private System.Windows.Forms.TextBox textBox_Number;
         private System.Windows.Forms.Label label1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.CheckBox autoLoginBox;
     }
 }

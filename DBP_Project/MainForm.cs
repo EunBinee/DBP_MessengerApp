@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -170,12 +172,19 @@ namespace DBP_Project
             toManagerForm.Hide();
         }
 
-
-
         private void logOutBtn_Click(object sender, EventArgs e) // 로그아웃 버튼을 누른경우
         {
-            this.Hide();
 
+            RecentLoginInfo.GetInstance().AutoLogin = "false";
+
+            // 현재 로그인하려는 사원번호와 pwd를 recentLofinInfo.txt에 저장
+            Stream ws = new FileStream("recentLoginInfo.txt", FileMode.Create);
+            BinaryFormatter serializer = new BinaryFormatter();
+
+            serializer.Serialize(ws, RecentLoginInfo.GetInstance()); // 직렬화 수행
+            ws.Close();
+
+            this.Hide();
             string currentUserId = User_info.GetInstance().ID;
             string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string logOutTimeQuery = $"UPDATE LogInHistory SET LogOutTime = '{time}' where userId = '{currentUserId}'";
