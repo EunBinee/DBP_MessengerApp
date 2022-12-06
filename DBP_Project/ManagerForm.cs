@@ -20,6 +20,25 @@ namespace DBP_Project
             InitializeComponent();
         }
 
+        private void ManagerForm_Load(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                connection.Open();
+                String SelectQuery = "select * from UserListTable"; // 조회
+                MySqlCommand cmd = new MySqlCommand(SelectQuery, connection);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    if (Int32.Parse(rdr["role"].ToString()) == 2)
+                    {
+                        UserSelectBox.Items.Add(rdr["id"].ToString());
+                    }
+                }
+                connection.Close();
+            }
+        }
+
         private void Btn_Move_UserManager(object sender, EventArgs e)
         {
             this.Visible = false;
@@ -53,7 +72,7 @@ namespace DBP_Project
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query = String.Format("select data from ChatMsg where data like '%{0}%';",KeyWord_TextBox.Text);
+                String Query = String.Format("select * from ChatMsg where data like '%{0}%';",KeyWord_TextBox.Text);
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
 
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
@@ -72,7 +91,7 @@ namespace DBP_Project
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query = String.Format("select * from talk.ChatMsg where sender_ID like '%{0}%';", User_TextBox.Text);
+                String Query = String.Format("select * from talk.ChatMsg where sender_ID = '{0}' OR recv_ID = '{0}';",UserSelectBox.SelectedItem.ToString());
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
                 MySqlDataAdapter da = new MySqlDataAdapter(cmd);
 
@@ -108,8 +127,12 @@ namespace DBP_Project
 
         private void Btn_Panel_On(object sender, EventArgs e)
         {
-            addDepartmentPanel.BringToFront();
+            addDepartmentPanel.Location = new Point(20, 20);
             addDepartmentPanel.Visible = true;
+            Add_Team_Panel.Visible = false;
+            ChangeDepartmentPanel.Visible = false;
+            ChangeTeamPanel.Visible = false;
+            addDepartmentPanel.BringToFront();
         }
 
         private void Btn_Panel_Off(object sender, EventArgs e)
@@ -182,15 +205,23 @@ namespace DBP_Project
         private void button5_Click(object sender, EventArgs e)
         {
             ChangeTeamPanel.Visible = false;
-            TeamComboBox.SelectedIndex = -1;
-            textBox2.Text = "";
+            ChangeTeamPanel_Team_Info.SelectedIndex = -1;
+            ChangeTeamPanel_TextBox.Text = "";
         }
 
         private void Change_Team_Click(object sender, EventArgs e)
         {
+
+            ChangeTeamPanel.Location = new Point(20, 20);
+            addDepartmentPanel.Visible = false;
+            Add_Team_Panel.Visible = false;
+            ChangeDepartmentPanel.Visible = false;
             ChangeTeamPanel.Visible = true;
-            TeamComboBox.Items.Clear();
+            ChangeTeamPanel_Department_Info.Items.Clear();
+            ChangeTeamPanel_Team_Info.Items.Clear();
+
             List<String> list = new List<string>();
+            List<String> list2 = new List<string>();
 
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
@@ -200,18 +231,28 @@ namespace DBP_Project
                 MySqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
+                    list2.Add(rdr["departmentName"].ToString());
                     list.Add(rdr["teamName"].ToString());
                 }
                 list = list.Distinct().ToList();
-                TeamComboBox.Items.AddRange(list.ToArray());
+                list2 = list2.Distinct().ToList();
+
+                ChangeTeamPanel_Department_Info.Items.AddRange(list2.ToArray());
+                ChangeTeamPanel_Team_Info.Items.AddRange(list.ToArray());
                 connection.Close();
             }
         }
 
         private void Change_Department_Click(object sender, EventArgs e)
         {
-            DepartmentComboBox.Items.Clear();
+
+            ChangeDepartmentPanel.Location = new Point(20, 20);
+            addDepartmentPanel.Visible = false;
+            Add_Team_Panel.Visible = false;
             ChangeDepartmentPanel.Visible = true;
+            ChangeTeamPanel.Visible = false;
+
+            DepartmentComboBox.Items.Clear();
             List<String> list = new List<String>();
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
@@ -258,23 +299,112 @@ namespace DBP_Project
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
-                String Query = String.Format("update departmentList set teamName = '{0}' where teamName = '{1}';"
-                    , textBox2.Text, TeamComboBox.SelectedItem.ToString());
+                String Query = String.Format("update departmentList set teamName = '{0}' where teamName = '{1}' and departmentName = '{2}';"
+                    , ChangeTeamPanel_TextBox.Text, ChangeTeamPanel_Team_Info.SelectedItem.ToString(), ChangeTeamPanel_Department_Info.SelectedItem.ToString());
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
                 cmd.ExecuteNonQuery();
                 connection.Close();
 
                 connection.Open();
-                Query = String.Format("update UserDepartment set teamName = '{0}' where teamName = '{1}';"
-                    , textBox2.Text, TeamComboBox.SelectedItem.ToString());
+                Query = String.Format("update UserDepartment set teamName = '{0}' where teamName = '{1}' and departmentName = '{2}';"
+                    , ChangeTeamPanel_TextBox.Text, ChangeTeamPanel_Team_Info.SelectedItem.ToString(), ChangeTeamPanel_Department_Info.SelectedItem.ToString());
                 cmd = new MySqlCommand(Query, connection);
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }
             Btn_Lookup_Department(null, null);
             ChangeTeamPanel.Visible = false;
-            TeamComboBox.SelectedItem = -1;
-            textBox2.Text = "";
+            ChangeTeamPanel_Team_Info.SelectedItem = -1;
+            ChangeTeamPanel_TextBox.Text = "";
+        }
+
+        private void Add_Team_Click(object sender, EventArgs e)
+        {
+            Add_Team_Panel.Location = new Point(20, 20);
+            addDepartmentPanel.Visible = false;
+            Add_Team_Panel.Visible = true;
+            ChangeDepartmentPanel.Visible = false;
+            ChangeTeamPanel.Visible = false;
+
+            Add_Team_ComboBox.Items.Clear();
+            List<String> list = new List<string>();
+
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                connection.Open();
+                String SelectQuery = "select * from departmentList"; // 조회
+                MySqlCommand cmd = new MySqlCommand(SelectQuery, connection);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
+                {
+                    list.Add(rdr["DepartmentName"].ToString());
+                }
+                list = list.Distinct().ToList();
+                Add_Team_ComboBox.Items.AddRange(list.ToArray());
+                connection.Close();
+            }
+        }
+
+        private void Btn_Add_Team_Click(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                int count = 1;
+                int chk = 0;
+                int Row = 0;
+                connection.Open();
+                String SelectQuery = "select * from departmentList"; // 조회
+                String InsertQuery = "";
+                MySqlCommand cmd = new MySqlCommand(SelectQuery, connection);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                
+                while (rdr.Read())
+                {
+                    if (rdr["teamName"].ToString() == Add_Team_TextBox.Text) {
+                        if (rdr["departmentName"].ToString() == Add_Team_ComboBox.SelectedItem.ToString())
+                        {
+                            MessageBox.Show("이미 존재하는 팀명입니다!");
+                            chk = 1;
+                        }
+                    }
+                    count = Int32.Parse(rdr["departmentID"].ToString());
+                    Row = Int32.Parse(rdr["Row_num"].ToString());
+                }
+
+                connection.Close();
+
+                if (chk == 0)
+                {
+                    InsertQuery = String.Format("insert into departmentList values ({0}, {1},'{2}','{3}')",
+                                    Row + 1, count.ToString(),Add_Team_ComboBox.SelectedItem.ToString(),Add_Team_TextBox.Text); // 요기수정
+                    connection.Open();
+                    cmd = new MySqlCommand(InsertQuery, connection);
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                Add_Team_Panel.Visible = false;
+                connection.Open();
+                String Query = String.Format("SELECT * FROM talk.departmentList;");
+                MySqlCommand cmd = new MySqlCommand(Query, connection);
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                Manager_Screen.DataSource = dt;
+                connection.Close();
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Add_Team_Panel.Visible = false;
         }
     }
 }
