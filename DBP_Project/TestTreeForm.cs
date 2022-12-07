@@ -193,6 +193,11 @@ namespace DBP_Project
             switch (wizard)
             {
                 case "부서명":
+                    if(SearchWord.Text == "")
+                    {
+                        MessageBox.Show("검색어를 입력하시오");
+                        break;
+                    }
                     dt = Query.GetInstance().RunQuery("select * from UserDepartment where departmentName like '%" + word + "%'");
 
                     if (dt.Rows.Count > 0)
@@ -207,6 +212,11 @@ namespace DBP_Project
                     break;
 
                 case "ID":
+                    if (SearchWord.Text == "")
+                    {
+                        MessageBox.Show("검색어를 입력하시오");
+                        break;
+                    }
                     dt = Query.GetInstance().RunQuery("select * from UserDepartment where userid like '%" + word + "%'");
 
                     if (dt.Rows.Count > 0)
@@ -221,6 +231,11 @@ namespace DBP_Project
                     break;
 
                 case "사원이름":
+                    if (SearchWord.Text == "")
+                    {
+                        MessageBox.Show("검색어를 입력하시오");
+                        break;
+                    }
                     dt = Query.GetInstance().RunQuery("select * from UserDepartment, UserListTable where UserDepartment.userid = UserListTable.id and name like '%" + word + "%'");
 
                     if (dt.Rows.Count > 0)
