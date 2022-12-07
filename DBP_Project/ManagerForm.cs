@@ -152,6 +152,9 @@ namespace DBP_Project
                 int count = 1;
                 int chk = 0;
                 int Row = 0;
+                int max_count = 0;
+                int max_Row = 0;
+
                 connection.Open();
                 String SelectQuery = "select * from departmentList"; // 조회
                 String InsertQuery = "";
@@ -165,23 +168,25 @@ namespace DBP_Project
                     }
                     count = Int32.Parse(rdr["departmentID"].ToString());
                     Row = Int32.Parse(rdr["Row_num"].ToString());
+                    if (max_count < count) {
+                        max_count = count;
+                    }
+
+                    if (max_Row < Row) {
+                        max_Row = Row;
+                    } 
                 }
                 connection.Close();
 
                 if (chk == 1)
                 {
-                    InsertQuery = String.Format("insert into departmentList values ({0}, {1},'{2}','{3}')",
-                                Row + 1,count.ToString(), Add_Department_Text.Text, Add_Team_Text.Text);
-                    connection.Open();
-                    cmd = new MySqlCommand(InsertQuery, connection);
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
+                    MessageBox.Show("이미 존재하는 부서이름입니다!");
                     return;
                 }
 
-                count++;
+                max_count++;
                 InsertQuery = String.Format("insert into departmentList values ({0}, {1},'{2}','{3}')",
-                                Row + 1, count.ToString(), Add_Department_Text.Text, Add_Team_Text.Text);
+                                max_Row + 1, max_count.ToString(), Add_Department_Text.Text, Add_Team_Text.Text);
                 connection.Open();
                 cmd = new MySqlCommand(InsertQuery, connection);
                 cmd.ExecuteNonQuery();
