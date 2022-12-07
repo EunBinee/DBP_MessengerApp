@@ -98,9 +98,11 @@ namespace DBP_Project
 
             // TCP를 통해 수신자에게 알림
             SendToSignal();
-            SendJpg(chatId,text,time);
+            Message msg = SendJpg(chatId,text,time);
+            flowLayoutPanel1.ScrollControlIntoView(msg);
+            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
-        public void SendJpg(int chatId,string text, string time)
+        public Message SendJpg(int chatId,string text, string time)
         {
             Message msg = new Message(this, chatId, text);
             msg.SetData(time);
@@ -109,10 +111,12 @@ namespace DBP_Project
             messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
+
+            return msg;
             //flowLayoutPanel1.ScrollControlIntoView(msg);
             //flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
-        private void SendMsg(int chatId, string text, string time,bool isFile = false)
+        private Message SendMsg(int chatId, string text, string time,bool isFile = false)
         {
             Message msg = new Message(this, chatId, text,isFile);
             msg.SetMyMsg();
@@ -121,6 +125,8 @@ namespace DBP_Project
             messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
+
+            return msg;
             //flowLayoutPanel1.ScrollControlIntoView(msg);
             //flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
@@ -319,7 +325,10 @@ namespace DBP_Project
                     }
 
                     // 메세지를 폼에 등록 및 초기화
-                    SendJpg(chatId,newFileName, time);
+                    Message msg = SendJpg(chatId, newFileName, time);
+                    flowLayoutPanel1.ScrollControlIntoView(msg);
+                    flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+
                     Client.GetInstance().PhotoClose();
                 }
             }
@@ -367,7 +376,10 @@ namespace DBP_Project
                     }
 
                     // 메세지를 폼에 등록 및 초기화
-                    SendMsg(chatId,newFileName, time,true);
+                    Message msg = SendMsg(chatId, newFileName, time, true);
+                    flowLayoutPanel1.ScrollControlIntoView(msg);
+                    flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+
                     Client.GetInstance().PhotoClose();
                 }
             }

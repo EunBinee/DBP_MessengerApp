@@ -161,7 +161,7 @@ namespace DBP_Project
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(178)))));
             this.label2.Location = new System.Drawing.Point(72, 136);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 18);
+            this.label2.Size = new System.Drawing.Size(0, 15);
             this.label2.TabIndex = 3;
             // 
             // name_label
@@ -239,19 +239,19 @@ namespace DBP_Project
             this.showToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.Context_TrayIcon.Name = "contextMenuStrip1";
-            this.Context_TrayIcon.Size = new System.Drawing.Size(211, 80);
+            this.Context_TrayIcon.Size = new System.Drawing.Size(103, 48);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.showToolStripMenuItem.Text = "show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(102, 22);
             this.exitToolStripMenuItem.Text = "exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -271,7 +271,7 @@ namespace DBP_Project
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(950, 550);
@@ -286,6 +286,7 @@ namespace DBP_Project
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
