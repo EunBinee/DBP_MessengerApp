@@ -232,13 +232,10 @@ namespace DBP_Project
                 while (rdr.Read())
                 {
                     list2.Add(rdr["departmentName"].ToString());
-                    list.Add(rdr["teamName"].ToString());
                 }
-                list = list.Distinct().ToList();
                 list2 = list2.Distinct().ToList();
 
                 ChangeTeamPanel_Department_Info.Items.AddRange(list2.ToArray());
-                ChangeTeamPanel_Team_Info.Items.AddRange(list.ToArray());
                 connection.Close();
             }
         }
@@ -328,7 +325,6 @@ namespace DBP_Project
 
             Add_Team_ComboBox.Items.Clear();
             List<String> list = new List<string>();
-
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
                 connection.Open();
@@ -405,6 +401,22 @@ namespace DBP_Project
         private void button2_Click(object sender, EventArgs e)
         {
             Add_Team_Panel.Visible = false;
+        }
+
+        private void ChangeTeamPanel_Department_Info_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (MySqlConnection connection = new MySqlConnection(strConn))
+            {
+                string Query = String.Format("select * from departmentList where departmentName = '{0}'",ChangeTeamPanel_Department_Info.SelectedItem.ToString());
+                MySqlCommand cmd = new MySqlCommand(Query, connection);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                connection.Open();
+                while (rdr.Read())
+                {
+                    ChangeTeamPanel_Team_Info.Items.Add(rdr["teamName"].ToString());
+                }
+                connection.Close();
+            }
         }
     }
 }
