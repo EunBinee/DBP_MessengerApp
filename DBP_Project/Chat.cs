@@ -147,6 +147,9 @@ namespace DBP_Project
             if ((str.Equals(yourPeer.ToString())))
                 return;
 
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
+            SendToReadSignal();
+
             // 송신자로부터 알림 받음
             DataTable dt = Query.GetInstance().RunQuery("SELECT `id`,`data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "' AND `read_check` = '1';");
 
@@ -170,16 +173,11 @@ namespace DBP_Project
                 else
                     DrawMsg(chatId, text, id, time);
             }
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
-            SendToReadSignal();
 
             for (int i = 0; i < messages.Count; i++)
             {
                 messages[i].SetRead();
             }
-
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
-            SendToReadSignal();
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
@@ -198,6 +196,9 @@ namespace DBP_Project
         // 해당 방 메세지 전부 로드
         public void LoadChatByRoomId(string roomId)
         {
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
+            SendToReadSignal();
+
             // 송신자로부터 알림 받음
             DataTable dt = Query.GetInstance().RunQuery("SELECT `id`,`data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `room_ID` = '" + roomId + "';");
 
@@ -239,12 +240,6 @@ namespace DBP_Project
                         DrawMsg(chatId,text, id, time);
                 }
             }
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
-            SendToReadSignal();
-
-
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
-            SendToReadSignal();
 
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
