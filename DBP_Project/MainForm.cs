@@ -181,7 +181,7 @@ namespace DBP_Project
         {
 
             RecentLoginInfo.GetInstance().AutoLogin = "false";
-
+            Tray_Icon.Dispose();
             // 현재 로그인하려는 사원번호와 pwd를 recentLofinInfo.txt에 저장
             Stream ws = new FileStream("recentLoginInfo.txt", FileMode.Create);
             BinaryFormatter serializer = new BinaryFormatter();
@@ -200,6 +200,7 @@ namespace DBP_Project
             Client.GetInstance().chats.Clear();
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
             this.Close(); // 기존 메인폼 없애고 로그인 폼으로 전환
+            
         }
 
         private void userImgBox_Click(object sender, EventArgs e)
