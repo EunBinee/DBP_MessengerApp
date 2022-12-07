@@ -46,8 +46,15 @@ namespace DBP_Project
 
         public void AddNewChatRoom(string yourID,string roomID)
         {
+            for (int i = 0; i < chats.Count; i++)
+            {
+                if (chats[i].roomID == roomID)
+                {
+                    chats.RemoveAt(i);
+                    break;
+                }
+            }
             Chat chat = new Chat();
-            chats.Add(chat);
             chat.yourID = yourID;
             chat.roomID = roomID;
             DataTable dt = Query.GetInstance().RunQuery("SELECT notice FROM talk.ChatRoom WHERE room_ID = " + roomID + ";");
@@ -57,6 +64,7 @@ namespace DBP_Project
             {
                 chat.notice_view();
             }
+            chats.Add(chat);
         }
 
         public void PhotoConnect()

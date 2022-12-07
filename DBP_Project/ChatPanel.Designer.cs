@@ -35,6 +35,7 @@ namespace DBP_Project
             this.ReadCheck = new System.Windows.Forms.CheckBox();
             this.TimeLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +67,6 @@ namespace DBP_Project
             this.LastChat.Size = new System.Drawing.Size(192, 12);
             this.LastChat.TabIndex = 2;
             this.LastChat.Text = "last chat";
-
             // 
             // ReadCheck
             // 
@@ -98,11 +98,22 @@ namespace DBP_Project
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(533, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 76);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "열기";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ChatPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(100)))));
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.TimeLabel);
             this.Controls.Add(this.ReadCheck);
@@ -127,5 +138,6 @@ namespace DBP_Project
         private System.Windows.Forms.CheckBox ReadCheck;
         private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button button1;
     }
 }
