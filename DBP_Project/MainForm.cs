@@ -72,7 +72,8 @@ namespace DBP_Project
                 Move_Admin.Visible = true;
 
             tf.TopLevel = false;  // 메인폼 위에 띄워지는 폼들을 메인폼안에서 컨트롤되게 바인딩 해주는 작업
-            Client.GetInstance().StartListen();
+
+            Client.GetInstance().StartConnect();
             tf.TopLevel = false;
             tf.Show();
             this.Controls.Add(tf);
@@ -224,6 +225,7 @@ namespace DBP_Project
             string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string logOutTimeQuery = $"insert into LogInHistory Values('{currentUserId}', '{time}', 'LogOut')";
             Query.GetInstance().RunQuery(logOutTimeQuery);
+            Client.GetInstance().Socket_Exit();
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
         }
 

@@ -15,6 +15,7 @@ namespace DBP_Project
 {
     internal class Client
     {
+        Thread thread1;
         Socket conn_socket;
         Socket photo_socket;
         int myPeer = 0;
@@ -22,7 +23,7 @@ namespace DBP_Project
         private static Client instance = new Client();
         private Client()
         {
-            StartConnect();
+            //StartConnect();
         }
         public static Client GetInstance()
         {
@@ -30,12 +31,14 @@ namespace DBP_Project
         }
         public void Socket_Exit()
         {
+            thread1.Abort();
             conn_socket.Close();
         }
-        private void StartConnect()
+        public void StartConnect()
         { 
             conn_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             conn_socket.Connect(new IPEndPoint(IPAddress.Parse("15.164.218.208"), 9997));
+            StartListen();
 
             // myPeer 저장
             var data = new byte[1024];
@@ -145,7 +148,7 @@ namespace DBP_Project
 
         public void StartListen()
         {
-            Thread thread1 = new Thread(connect); // Thread 객채 생성, Form과는 별도 쓰레드에서 connect 함수가 실행됨.
+            thread1 = new Thread(connect); // Thread 객채 생성, Form과는 별도 쓰레드에서 connect 함수가 실행됨.
             thread1.IsBackground = true; // Form이 종료되면 thread1도 종료.
             thread1.Start(); // thread1 시작.
         }
