@@ -180,6 +180,9 @@ namespace DBP_Project
 
         private void logOutBtn_Click(object sender, EventArgs e) // 로그아웃 버튼을 누른경우
         {
+            Client.GetInstance().chats.Clear();
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
+            Client.GetInstance().Socket_Exit();
 
             RecentLoginInfo.GetInstance().AutoLogin = "false";
             Tray_Icon.Dispose();
@@ -198,8 +201,6 @@ namespace DBP_Project
 
             LogIn newLogin = new LogIn();
             newLogin.ShowDialog();
-            Client.GetInstance().chats.Clear();
-            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
             this.Close(); // 기존 메인폼 없애고 로그인 폼으로 전환
             
         }
@@ -220,7 +221,6 @@ namespace DBP_Project
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //Client.GetInstance().Socket_Exit();
             string currentUserId = User_info.GetInstance().ID;
             string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             string logOutTimeQuery = $"insert into LogInHistory Values('{currentUserId}', '{time}', 'LogOut')";
@@ -247,6 +247,16 @@ namespace DBP_Project
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string currentUserId = User_info.GetInstance().ID;
+            string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string logOutTimeQuery = $"insert into LogInHistory Values('{currentUserId}', '{time}', 'LogOut')";
+            Query.GetInstance().RunQuery(logOutTimeQuery);
+            Client.GetInstance().Socket_Exit();
+            Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
         }
         //---------------------------------------------------------------------------------------------
 
