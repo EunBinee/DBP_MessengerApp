@@ -49,7 +49,6 @@ namespace DBP_Project
                 this.pictureBox2.Visible = true;
             }
             this.chatType = Convert.ToInt32(dt.Rows[0][1]);
-
         }
         
         public void SetRead()
