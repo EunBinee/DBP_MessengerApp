@@ -32,9 +32,9 @@ namespace DBP_Project
             }
         }
 
-        private void getUserList() // 전체 유저 리스트 받아오기
+        private void getUserList(string curUserId) // 전체 유저 리스트 받아오기
         {
-            string getUserListQuery = "SELECT id from UserListTable order by id";
+            string getUserListQuery = $"SELECT id from UserListTable where id != '{curUserId}' order by id";
             DataTable userListTable = Query.GetInstance().RunQuery(getUserListQuery);
 
             blockChatBox.Items.Clear();
@@ -82,7 +82,7 @@ namespace DBP_Project
             getBlockDepartmentListByUid(userBox.Text);
             getBlockChatListByUid(userBox.Text);
             getBlockUserListByUid(userBox.Text);
-            getUserList();
+            getUserList(curUserId);
         }
 
         private void departmentComboBox_SelectedIndexChanged(object sender, EventArgs e) // 사용자 부서 콤보 박스 인덱스 변경시
