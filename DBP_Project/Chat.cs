@@ -68,6 +68,7 @@ namespace DBP_Project
             // 메세지를 폼에 등록 및 초기화
             SendMsg(chatId,msgInput.Text,time);
 
+            flowLayoutPanel1.ScrollControlIntoView(messages.Last<Message>());
             TestChatForm.getInstance().ChatLoad();
         }
 
@@ -102,8 +103,8 @@ namespace DBP_Project
             messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
-            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
         private void SendMsg(int chatId, string text, string time,bool isFile = false)
         {
@@ -114,8 +115,8 @@ namespace DBP_Project
             messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
-            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
 
         private void DrawMsg(int chatId, string text,string name, string time,bool isFile = false)
@@ -126,7 +127,7 @@ namespace DBP_Project
 
             messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
         }
 
         private void DrawJpg(int chatId, string text, string name, string time)
@@ -138,7 +139,7 @@ namespace DBP_Project
 
             messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
         }
 
         // TCP를 통해 메세지를 받았을 때 호출
@@ -167,9 +168,7 @@ namespace DBP_Project
                 if (isImg == "1")
                     DrawJpg(chatId, text, id, time);
                 else if(isImg == "2")
-                {
                     DrawMsg(chatId, text, id, time,true);
-                }
                 else
                     DrawMsg(chatId, text, id, time);
             }
@@ -179,6 +178,7 @@ namespace DBP_Project
                 messages[i].SetRead();
             }
 
+            flowLayoutPanel1.ScrollControlIntoView(messages.Last<Message>());
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
         // TCP를 통해 읽음확인
@@ -241,6 +241,7 @@ namespace DBP_Project
                 }
             }
 
+            flowLayoutPanel1.ScrollControlIntoView(messages.Last<Message>());
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
 
