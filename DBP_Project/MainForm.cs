@@ -187,7 +187,7 @@ namespace DBP_Project
             this.Hide();
             string currentUserId = User_info.GetInstance().ID;
             string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            string logOutTimeQuery = $"UPDATE LogInHistory SET LogOutTime = '{time}' where userId = '{currentUserId}'";
+            string logOutTimeQuery = $"insert into LogInHistory Values('{currentUserId}', '{time}', 0)";
             Query.GetInstance().RunQuery(logOutTimeQuery);
 
             LogIn newLogin = new LogIn();
@@ -213,6 +213,10 @@ namespace DBP_Project
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             //Client.GetInstance().Socket_Exit();
+            string currentUserId = User_info.GetInstance().ID;
+            string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            string logOutTimeQuery = $"insert into LogInHistory Values('{currentUserId}', '{time}', 0)";
+            Query.GetInstance().RunQuery(logOutTimeQuery);
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
         }
         //---------------------------------------------------------------------------------------------

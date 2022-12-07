@@ -50,7 +50,7 @@ namespace DBP_Project
         private void serachBtn_Click(object sender, EventArgs e) // 유저 검색 버튼을 눌렀을 경우
         {
             string searchName = searchBox.Text;
-            string searchByNameQuery = $"SELECT * FROM UserDepartment Left outer Join LogInHistory on UserDepartment.userId = LogInHistory.userId where UserDepartment.userId = '{searchName}'";
+            string searchByNameQuery = $"SELECT * FROM UserDepartment where UserDepartment.userId = '{searchName}'";
 
             if (searchName == "") // 아무런 id도 입력하지않고 검색을 누른경우
             {
@@ -68,11 +68,16 @@ namespace DBP_Project
 
             getDepartmentList();
 
+            string curUserId = userInfoDataTable.Rows[0]["userId"].ToString();
             userBox.Text = userInfoDataTable.Rows[0]["userId"].ToString();
             departmentComboBox.SelectedIndex = departmentComboBox.FindString(userInfoDataTable.Rows[0]["departmentName"].ToString());
             teamComboBox.SelectedIndex = teamComboBox.FindString(userInfoDataTable.Rows[0]["teamName"].ToString());
-            recentLogIn.Text = userInfoDataTable.Rows[0]["LoginTime"].ToString();
-            recentLogOut.Text = userInfoDataTable.Rows[0]["LogOutTime"].ToString();
+
+            DataTable LoginHistoryTable = Query.GetInstance().RunQuery($"SELECT max(logtime) as LoginTime FROM talk.LogInHistory where userId = '{curUserId}' and logType = 1 order by logTime");
+            recentLogIn.Text = LoginHistoryTable.Rows[0]["LoginTime"].ToString();
+
+            DataTable LogOutHistoryTable = Query.GetInstance().RunQuery($"SELECT max(logtime) as LogOutTime FROM talk.LogInHistory where userId = '{curUserId}' and logType = 0 order by logTime");
+            recentLogOut.Text = LogOutHistoryTable.Rows[0]["LogOutTime"].ToString();
 
             getBlockDepartmentListByUid(userBox.Text);
             getBlockChatListByUid(userBox.Text);
