@@ -32,7 +32,6 @@ namespace DBP_Project
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.NameLabel = new System.Windows.Forms.Label();
             this.LastChat = new System.Windows.Forms.Label();
-            this.ReadCheck = new System.Windows.Forms.CheckBox();
             this.TimeLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -67,15 +66,6 @@ namespace DBP_Project
             this.LastChat.Size = new System.Drawing.Size(192, 12);
             this.LastChat.TabIndex = 2;
             this.LastChat.Text = "last chat";
-            // 
-            // ReadCheck
-            // 
-            this.ReadCheck.Enabled = false;
-            this.ReadCheck.Location = new System.Drawing.Point(427, 49);
-            this.ReadCheck.Name = "ReadCheck";
-            this.ReadCheck.Size = new System.Drawing.Size(20, 20);
-            this.ReadCheck.TabIndex = 3;
-            this.ReadCheck.UseVisualStyleBackColor = true;
             // 
             // TimeLabel
             // 
@@ -116,7 +106,6 @@ namespace DBP_Project
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.TimeLabel);
-            this.Controls.Add(this.ReadCheck);
             this.Controls.Add(this.LastChat);
             this.Controls.Add(this.NameLabel);
             this.Controls.Add(this.pictureBox1);
@@ -135,7 +124,6 @@ namespace DBP_Project
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label LastChat;
-        private System.Windows.Forms.CheckBox ReadCheck;
         private System.Windows.Forms.Label TimeLabel;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button1;

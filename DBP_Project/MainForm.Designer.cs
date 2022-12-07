@@ -29,6 +29,7 @@ namespace DBP_Project
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,9 +45,15 @@ namespace DBP_Project
             this.button6 = new System.Windows.Forms.Button();
             this.toManagerForm = new System.Windows.Forms.Button();
             this.toUserMangerForm = new System.Windows.Forms.Button();
+            this.Tray_Icon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.Context_TrayIcon = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.Context_TrayIcon.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -218,12 +225,57 @@ namespace DBP_Project
             this.toUserMangerForm.Visible = false;
             this.toUserMangerForm.Click += new System.EventHandler(this.toUserMangerForm_Click);
             // 
+            // Tray_Icon
+            // 
+            this.Tray_Icon.Icon = ((System.Drawing.Icon)(resources.GetObject("Tray_Icon.Icon")));
+            this.Tray_Icon.Text = "notifyIcon1";
+            this.Tray_Icon.Visible = true;
+            this.Tray_Icon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Tray_Icon_MouseDoubleClick);
+            // 
+            // Context_TrayIcon
+            // 
+            this.Context_TrayIcon.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Context_TrayIcon.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showToolStripMenuItem,
+            this.exitToolStripMenuItem});
+            this.Context_TrayIcon.Name = "contextMenuStrip1";
+            this.Context_TrayIcon.Size = new System.Drawing.Size(211, 80);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.showToolStripMenuItem.Text = "show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.exitToolStripMenuItem.Text = "exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.button3.Location = new System.Drawing.Point(859, 12);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(30, 28);
+            this.button3.TabIndex = 42;
+            this.button3.Text = "-";
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(950, 550);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.toManagerForm);
             this.Controls.Add(this.toUserMangerForm);
             this.Controls.Add(this.button6);
@@ -243,6 +295,7 @@ namespace DBP_Project
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.Context_TrayIcon.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -266,5 +319,10 @@ namespace DBP_Project
         //private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button toUserMangerForm;
         private System.Windows.Forms.Button toManagerForm;
+        private System.Windows.Forms.NotifyIcon Tray_Icon;
+        private System.Windows.Forms.ContextMenuStrip Context_TrayIcon;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.Button button3;
     }
 }
