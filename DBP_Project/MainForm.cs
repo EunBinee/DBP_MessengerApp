@@ -60,7 +60,6 @@ namespace DBP_Project
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
             if (User_info.GetInstance().Role == 2)
                 Move_Admin.Visible = false;
             else
@@ -192,6 +191,7 @@ namespace DBP_Project
 
             LogIn newLogin = new LogIn();
             newLogin.ShowDialog();
+            Client.GetInstance().chats.Clear();
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
             this.Close(); // 기존 메인폼 없애고 로그인 폼으로 전환
         }

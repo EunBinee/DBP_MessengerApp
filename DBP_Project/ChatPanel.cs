@@ -95,7 +95,6 @@ namespace DBP_Project
             else
             {
                 MessageBox.Show("채팅방을 생성합니다.");
-                ReadCheck.CheckState = CheckState.Checked;
                 //클릭시 채팅방 오픈
                 Client.GetInstance().AddNewChatRoom(this.targetId, this.roomId);
             }
