@@ -313,6 +313,9 @@ namespace DBP_Project
                 {
                     string insertBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockChat, blockLook) Value('{currentUserId}', '{selectedUserId}', 0, 1)";
                     Query.GetInstance().RunQuery(insertBlockListQuery);
+
+                    insertBlockListQuery = $"insert into BlockInfo(userId, blockUserId, blockChat, blockLook) Value('{selectedUserId}', '{currentUserId}', 0, 0)";
+                    Query.GetInstance().RunQuery(insertBlockListQuery);
                 }
                 else
                 {
