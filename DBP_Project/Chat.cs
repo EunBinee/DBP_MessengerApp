@@ -189,12 +189,16 @@ namespace DBP_Project
         // TCP를 통해 읽음확인
         public void RecieveReadChk(string str)
         {
-            if ((str.Equals(yourPeer.ToString())))
+            int peer = Convert.ToInt32(str);
+            //    if ((str.Equals(yourPeer.ToString())))
+            if (peer != yourPeer)
                 return;
-
-            for (int i = 0; i < messages.Count; i++)
+            else
             {
-                messages[i].SetRead();
+                for (int i = 0; i < messages.Count; i++)
+                {
+                    messages[i].SetRead();
+                }
             }
         }
 

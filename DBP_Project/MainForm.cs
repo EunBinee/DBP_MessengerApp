@@ -23,6 +23,12 @@ namespace DBP_Project
         public MainForm()
         {
             InitializeComponent();
+
+            this.Load += TrayIcon_Load;
+        }
+
+        public void TrayIcon_Load(object sender, EventArgs e) {
+            Tray_Icon.ContextMenuStrip = Context_TrayIcon;
         }
 
         private bool dragging = false;
@@ -218,6 +224,26 @@ namespace DBP_Project
             string logOutTimeQuery = $"insert into LogInHistory Values('{currentUserId}', '{time}', 'LogOut')";
             Query.GetInstance().RunQuery(logOutTimeQuery);
             Query.GetInstance().RunQuery("UPDATE `talk`.`UserListTable` SET `peer` = '00000' WHERE (`id` = '" + User_info.GetInstance().ID + "');");
+        }
+
+        private void Tray_Icon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 0;
+        }
+
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Opacity = 100;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
         //---------------------------------------------------------------------------------------------
 
