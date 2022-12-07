@@ -37,12 +37,15 @@ namespace DBP_Project
         private void Chat_Load(object sender, EventArgs e)
         {
             myID = User_info.GetInstance().ID;
-            DataTable dt = Query.GetInstance().RunQuery("SELECT peer from talk.UserListTable WHERE id = '" + yourID + "';");
-            yourPeer = Int32.Parse(dt.Rows[0][0].ToString());
-
+            ResetPeer();
             LoadChatByRoomId(roomID);
             //Client.GetInstance().StartReadChk();
+        }
 
+        private void ResetPeer()
+        {
+            DataTable dt = Query.GetInstance().RunQuery("SELECT peer from talk.UserListTable WHERE id = '" + yourID + "';");
+            yourPeer = Int32.Parse(dt.Rows[0][0].ToString());
         }
 
         // 메세지 전송 버튼 클릭
@@ -148,6 +151,7 @@ namespace DBP_Project
         // TCP를 통해 메세지를 받았을 때 호출
         public void RecieveMsg(string str)
         {
+            ResetPeer();
             if ((str.Equals(yourPeer.ToString())))
                 return;
 
@@ -189,6 +193,7 @@ namespace DBP_Project
         // TCP를 통해 읽음확인
         public void RecieveReadChk(string str)
         {
+            ResetPeer();
             int peer = Convert.ToInt32(str);
             //    if ((str.Equals(yourPeer.ToString())))
             if (peer != yourPeer)
