@@ -32,19 +32,18 @@ namespace DBP_Project
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.MainFormPanel = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.name_label = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.toManagerForm = new System.Windows.Forms.Button();
-            this.toUserMangerForm = new System.Windows.Forms.Button();
             this.logOutBtn = new System.Windows.Forms.Button();
             this.Move_Admin = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.MainFormPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.name_label = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.toManagerForm = new System.Windows.Forms.Button();
+            this.toUserMangerForm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -64,96 +63,6 @@ namespace DBP_Project
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(230, 550);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.MainFormPanel);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.name_label);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(230, 173);
-            this.panel2.TabIndex = 0;
-            // 
-            // MainFormPanel
-            // 
-            this.MainFormPanel.Location = new System.Drawing.Point(230, 0);
-            this.MainFormPanel.Name = "MainFormPanel";
-            this.MainFormPanel.Size = new System.Drawing.Size(724, 538);
-            this.MainFormPanel.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label3.Location = new System.Drawing.Point(60, 136);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 15);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Some User Text Here";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(178)))));
-            this.label2.Location = new System.Drawing.Point(72, 136);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(0, 18);
-            this.label2.TabIndex = 3;
-            // 
-            // name_label
-            // 
-            this.name_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(149)))));
-            this.name_label.Location = new System.Drawing.Point(72, 118);
-            this.name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.name_label.Name = "name_label";
-            this.name_label.Size = new System.Drawing.Size(93, 18);
-            this.name_label.TabIndex = 2;
-            this.name_label.Text = "User Name";
-            this.name_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.button6.Location = new System.Drawing.Point(908, 12);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(30, 28);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "X";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // toManagerForm
-            // 
-            this.toManagerForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toManagerForm.Image = ((System.Drawing.Image)(resources.GetObject("toManagerForm.Image")));
-            this.toManagerForm.Location = new System.Drawing.Point(258, 464);
-            this.toManagerForm.Name = "toManagerForm";
-            this.toManagerForm.Size = new System.Drawing.Size(61, 44);
-            this.toManagerForm.TabIndex = 40;
-            this.toManagerForm.UseVisualStyleBackColor = true;
-            this.toManagerForm.Visible = false;
-            this.toManagerForm.Click += new System.EventHandler(this.toManagerForm_Click);
-            // 
-            // toUserMangerForm
-            // 
-            this.toUserMangerForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.toUserMangerForm.Image = ((System.Drawing.Image)(resources.GetObject("toUserMangerForm.Image")));
-            this.toUserMangerForm.Location = new System.Drawing.Point(258, 464);
-            this.toUserMangerForm.Name = "toUserMangerForm";
-            this.toUserMangerForm.Size = new System.Drawing.Size(61, 44);
-            this.toUserMangerForm.TabIndex = 39;
-            this.toUserMangerForm.UseVisualStyleBackColor = true;
-            this.toUserMangerForm.Visible = false;
-            this.toUserMangerForm.Click += new System.EventHandler(this.toUserMangerForm_Click);
             // 
             // logOutBtn
             // 
@@ -219,6 +128,46 @@ namespace DBP_Project
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.MainFormPanel);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.name_label);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(230, 173);
+            this.panel2.TabIndex = 0;
+            // 
+            // MainFormPanel
+            // 
+            this.MainFormPanel.Location = new System.Drawing.Point(230, 0);
+            this.MainFormPanel.Name = "MainFormPanel";
+            this.MainFormPanel.Size = new System.Drawing.Size(724, 538);
+            this.MainFormPanel.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(178)))));
+            this.label2.Location = new System.Drawing.Point(72, 136);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(0, 18);
+            this.label2.TabIndex = 3;
+            // 
+            // name_label
+            // 
+            this.name_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(149)))));
+            this.name_label.Location = new System.Drawing.Point(72, 118);
+            this.name_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.name_label.Name = "name_label";
+            this.name_label.Size = new System.Drawing.Size(93, 18);
+            this.name_label.TabIndex = 2;
+            this.name_label.Text = "User Name";
+            this.name_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::DBP_Project.Properties.Resources._default;
@@ -230,6 +179,44 @@ namespace DBP_Project
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.button6.Location = new System.Drawing.Point(908, 12);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(30, 28);
+            this.button6.TabIndex = 1;
+            this.button6.Text = "X";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // toManagerForm
+            // 
+            this.toManagerForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toManagerForm.Image = ((System.Drawing.Image)(resources.GetObject("toManagerForm.Image")));
+            this.toManagerForm.Location = new System.Drawing.Point(258, 464);
+            this.toManagerForm.Name = "toManagerForm";
+            this.toManagerForm.Size = new System.Drawing.Size(61, 44);
+            this.toManagerForm.TabIndex = 40;
+            this.toManagerForm.UseVisualStyleBackColor = true;
+            this.toManagerForm.Visible = false;
+            this.toManagerForm.Click += new System.EventHandler(this.toManagerForm_Click);
+            // 
+            // toUserMangerForm
+            // 
+            this.toUserMangerForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.toUserMangerForm.Image = ((System.Drawing.Image)(resources.GetObject("toUserMangerForm.Image")));
+            this.toUserMangerForm.Location = new System.Drawing.Point(258, 464);
+            this.toUserMangerForm.Name = "toUserMangerForm";
+            this.toUserMangerForm.Size = new System.Drawing.Size(61, 44);
+            this.toUserMangerForm.TabIndex = 39;
+            this.toUserMangerForm.UseVisualStyleBackColor = true;
+            this.toUserMangerForm.Visible = false;
+            this.toUserMangerForm.Click += new System.EventHandler(this.toUserMangerForm_Click);
             // 
             // MainForm
             // 
@@ -270,7 +257,6 @@ namespace DBP_Project
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button logOutBtn;
         private System.Windows.Forms.Button Move_Admin;
         // private System.Windows.Forms.Button adminBtn;

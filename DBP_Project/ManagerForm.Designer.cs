@@ -37,6 +37,20 @@ namespace DBP_Project
             this.Add_Department_Text = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.ChangeTeamPanel = new System.Windows.Forms.Panel();
+            this.Add_Team_Panel = new System.Windows.Forms.Panel();
+            this.Add_Team_ComboBox = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.Btn_Add_Team = new System.Windows.Forms.Button();
+            this.Add_Team_TextBox = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ChangeDepartmentPanel = new System.Windows.Forms.Panel();
+            this.DepartmentComboBox = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Change_Department_Info = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.ChangeTeamPanel_Department_Info = new System.Windows.Forms.ComboBox();
             this.ChangeTeamPanel_Team_Info = new System.Windows.Forms.ComboBox();
@@ -48,6 +62,7 @@ namespace DBP_Project
             this.Manager_Screen = new System.Windows.Forms.DataGridView();
             this.Change_Department = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.SearchLog_By_User = new System.Windows.Forms.Button();
             this.UserSelectBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,28 +77,13 @@ namespace DBP_Project
             this.Change_Team = new System.Windows.Forms.Button();
             this.Add_Department = new System.Windows.Forms.Button();
             this.Lookup_Department = new System.Windows.Forms.Button();
-            this.ChangeDepartmentPanel = new System.Windows.Forms.Panel();
-            this.DepartmentComboBox = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.Change_Department_Info = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.Add_Team_Panel = new System.Windows.Forms.Panel();
-            this.Add_Team_ComboBox = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.Btn_Add_Team = new System.Windows.Forms.Button();
-            this.Add_Team_TextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.SearchLog_By_User = new System.Windows.Forms.Button();
             this.addDepartmentPanel.SuspendLayout();
             this.ChangeTeamPanel.SuspendLayout();
+            this.Add_Team_Panel.SuspendLayout();
+            this.ChangeDepartmentPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Manager_Screen)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.ChangeDepartmentPanel.SuspendLayout();
-            this.Add_Team_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // addDepartmentPanel
@@ -96,7 +96,7 @@ namespace DBP_Project
             this.addDepartmentPanel.Controls.Add(this.Add_Department_Text);
             this.addDepartmentPanel.Controls.Add(this.label4);
             this.addDepartmentPanel.ForeColor = System.Drawing.Color.White;
-            this.addDepartmentPanel.Location = new System.Drawing.Point(24, 3);
+            this.addDepartmentPanel.Location = new System.Drawing.Point(336, 19);
             this.addDepartmentPanel.Name = "addDepartmentPanel";
             this.addDepartmentPanel.Size = new System.Drawing.Size(297, 237);
             this.addDepartmentPanel.TabIndex = 18;
@@ -160,12 +160,9 @@ namespace DBP_Project
             // ChangeTeamPanel
             // 
             this.ChangeTeamPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.ChangeTeamPanel.Controls.Add(this.Add_Team_Panel);
-            this.ChangeTeamPanel.Controls.Add(this.ChangeDepartmentPanel);
             this.ChangeTeamPanel.Controls.Add(this.label11);
             this.ChangeTeamPanel.Controls.Add(this.ChangeTeamPanel_Department_Info);
             this.ChangeTeamPanel.Controls.Add(this.ChangeTeamPanel_Team_Info);
-            this.ChangeTeamPanel.Controls.Add(this.addDepartmentPanel);
             this.ChangeTeamPanel.Controls.Add(this.button5);
             this.ChangeTeamPanel.Controls.Add(this.Change_Team_Info);
             this.ChangeTeamPanel.Controls.Add(this.ChangeTeamPanel_TextBox);
@@ -177,6 +174,148 @@ namespace DBP_Project
             this.ChangeTeamPanel.Size = new System.Drawing.Size(277, 334);
             this.ChangeTeamPanel.TabIndex = 21;
             this.ChangeTeamPanel.Visible = false;
+            // 
+            // Add_Team_Panel
+            // 
+            this.Add_Team_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.Add_Team_Panel.Controls.Add(this.Add_Team_ComboBox);
+            this.Add_Team_Panel.Controls.Add(this.button2);
+            this.Add_Team_Panel.Controls.Add(this.Btn_Add_Team);
+            this.Add_Team_Panel.Controls.Add(this.Add_Team_TextBox);
+            this.Add_Team_Panel.Controls.Add(this.label9);
+            this.Add_Team_Panel.Controls.Add(this.label10);
+            this.Add_Team_Panel.ForeColor = System.Drawing.Color.White;
+            this.Add_Team_Panel.Location = new System.Drawing.Point(310, 281);
+            this.Add_Team_Panel.Name = "Add_Team_Panel";
+            this.Add_Team_Panel.Size = new System.Drawing.Size(274, 250);
+            this.Add_Team_Panel.TabIndex = 22;
+            this.Add_Team_Panel.Visible = false;
+            // 
+            // Add_Team_ComboBox
+            // 
+            this.Add_Team_ComboBox.FormattingEnabled = true;
+            this.Add_Team_ComboBox.Location = new System.Drawing.Point(54, 70);
+            this.Add_Team_ComboBox.Name = "Add_Team_ComboBox";
+            this.Add_Team_ComboBox.Size = new System.Drawing.Size(151, 23);
+            this.Add_Team_ComboBox.TabIndex = 6;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(227, 18);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(30, 24);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "X";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // Btn_Add_Team
+            // 
+            this.Btn_Add_Team.ForeColor = System.Drawing.Color.Black;
+            this.Btn_Add_Team.Location = new System.Drawing.Point(83, 183);
+            this.Btn_Add_Team.Name = "Btn_Add_Team";
+            this.Btn_Add_Team.Size = new System.Drawing.Size(99, 42);
+            this.Btn_Add_Team.TabIndex = 4;
+            this.Btn_Add_Team.Text = "추가";
+            this.Btn_Add_Team.UseVisualStyleBackColor = true;
+            this.Btn_Add_Team.Click += new System.EventHandler(this.Btn_Add_Team_Click);
+            // 
+            // Add_Team_TextBox
+            // 
+            this.Add_Team_TextBox.ForeColor = System.Drawing.Color.Black;
+            this.Add_Team_TextBox.Location = new System.Drawing.Point(54, 137);
+            this.Add_Team_TextBox.Name = "Add_Team_TextBox";
+            this.Add_Team_TextBox.Size = new System.Drawing.Size(151, 25);
+            this.Add_Team_TextBox.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(51, 109);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 15);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "추가할 팀명";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(51, 40);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 15);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "부서선택";
+            // 
+            // ChangeDepartmentPanel
+            // 
+            this.ChangeDepartmentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.ChangeDepartmentPanel.Controls.Add(this.DepartmentComboBox);
+            this.ChangeDepartmentPanel.Controls.Add(this.button1);
+            this.ChangeDepartmentPanel.Controls.Add(this.Change_Department_Info);
+            this.ChangeDepartmentPanel.Controls.Add(this.textBox1);
+            this.ChangeDepartmentPanel.Controls.Add(this.label3);
+            this.ChangeDepartmentPanel.Controls.Add(this.label6);
+            this.ChangeDepartmentPanel.ForeColor = System.Drawing.Color.White;
+            this.ChangeDepartmentPanel.Location = new System.Drawing.Point(23, 399);
+            this.ChangeDepartmentPanel.Name = "ChangeDepartmentPanel";
+            this.ChangeDepartmentPanel.Size = new System.Drawing.Size(274, 250);
+            this.ChangeDepartmentPanel.TabIndex = 20;
+            this.ChangeDepartmentPanel.Visible = false;
+            // 
+            // DepartmentComboBox
+            // 
+            this.DepartmentComboBox.FormattingEnabled = true;
+            this.DepartmentComboBox.Location = new System.Drawing.Point(54, 62);
+            this.DepartmentComboBox.Name = "DepartmentComboBox";
+            this.DepartmentComboBox.Size = new System.Drawing.Size(151, 23);
+            this.DepartmentComboBox.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(227, 18);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(30, 24);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Change_Department_Info
+            // 
+            this.Change_Department_Info.ForeColor = System.Drawing.Color.Black;
+            this.Change_Department_Info.Location = new System.Drawing.Point(83, 183);
+            this.Change_Department_Info.Name = "Change_Department_Info";
+            this.Change_Department_Info.Size = new System.Drawing.Size(99, 42);
+            this.Change_Department_Info.TabIndex = 4;
+            this.Change_Department_Info.Text = "변경";
+            this.Change_Department_Info.UseVisualStyleBackColor = true;
+            this.Change_Department_Info.Click += new System.EventHandler(this.Change_Department_Info_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.ForeColor = System.Drawing.Color.Black;
+            this.textBox1.Location = new System.Drawing.Point(54, 137);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(151, 25);
+            this.textBox1.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(51, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 15);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "변경 부서명";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(51, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(87, 15);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "기존 부서명";
             // 
             // label11
             // 
@@ -295,6 +434,17 @@ namespace DBP_Project
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "검색";
             // 
+            // SearchLog_By_User
+            // 
+            this.SearchLog_By_User.ForeColor = System.Drawing.Color.Black;
+            this.SearchLog_By_User.Location = new System.Drawing.Point(68, 267);
+            this.SearchLog_By_User.Name = "SearchLog_By_User";
+            this.SearchLog_By_User.Size = new System.Drawing.Size(146, 25);
+            this.SearchLog_By_User.TabIndex = 25;
+            this.SearchLog_By_User.Text = "사용자별 로그검색";
+            this.SearchLog_By_User.UseVisualStyleBackColor = true;
+            this.SearchLog_By_User.Click += new System.EventHandler(this.SearchLog_By_User_Click);
+            // 
             // UserSelectBox
             // 
             this.UserSelectBox.FormattingEnabled = true;
@@ -387,7 +537,7 @@ namespace DBP_Project
             this.groupBox1.Controls.Add(this.Change_Department);
             this.groupBox1.Controls.Add(this.Add_Department);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(476, 358);
+            this.groupBox1.Location = new System.Drawing.Point(475, 328);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -440,165 +590,15 @@ namespace DBP_Project
             this.Lookup_Department.UseVisualStyleBackColor = true;
             this.Lookup_Department.Click += new System.EventHandler(this.Btn_Lookup_Department);
             // 
-            // ChangeDepartmentPanel
-            // 
-            this.ChangeDepartmentPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.ChangeDepartmentPanel.Controls.Add(this.DepartmentComboBox);
-            this.ChangeDepartmentPanel.Controls.Add(this.button1);
-            this.ChangeDepartmentPanel.Controls.Add(this.Change_Department_Info);
-            this.ChangeDepartmentPanel.Controls.Add(this.textBox1);
-            this.ChangeDepartmentPanel.Controls.Add(this.label3);
-            this.ChangeDepartmentPanel.Controls.Add(this.label6);
-            this.ChangeDepartmentPanel.ForeColor = System.Drawing.Color.White;
-            this.ChangeDepartmentPanel.Location = new System.Drawing.Point(24, 81);
-            this.ChangeDepartmentPanel.Name = "ChangeDepartmentPanel";
-            this.ChangeDepartmentPanel.Size = new System.Drawing.Size(274, 250);
-            this.ChangeDepartmentPanel.TabIndex = 20;
-            this.ChangeDepartmentPanel.Visible = false;
-            // 
-            // DepartmentComboBox
-            // 
-            this.DepartmentComboBox.FormattingEnabled = true;
-            this.DepartmentComboBox.Location = new System.Drawing.Point(54, 62);
-            this.DepartmentComboBox.Name = "DepartmentComboBox";
-            this.DepartmentComboBox.Size = new System.Drawing.Size(151, 23);
-            this.DepartmentComboBox.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(227, 18);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 24);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Change_Department_Info
-            // 
-            this.Change_Department_Info.ForeColor = System.Drawing.Color.Black;
-            this.Change_Department_Info.Location = new System.Drawing.Point(83, 183);
-            this.Change_Department_Info.Name = "Change_Department_Info";
-            this.Change_Department_Info.Size = new System.Drawing.Size(99, 42);
-            this.Change_Department_Info.TabIndex = 4;
-            this.Change_Department_Info.Text = "변경";
-            this.Change_Department_Info.UseVisualStyleBackColor = true;
-            this.Change_Department_Info.Click += new System.EventHandler(this.Change_Department_Info_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.ForeColor = System.Drawing.Color.Black;
-            this.textBox1.Location = new System.Drawing.Point(54, 137);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 25);
-            this.textBox1.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(51, 109);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "변경 부서명";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(51, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "기존 부서명";
-            // 
-            // Add_Team_Panel
-            // 
-            this.Add_Team_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
-            this.Add_Team_Panel.Controls.Add(this.Add_Team_ComboBox);
-            this.Add_Team_Panel.Controls.Add(this.button2);
-            this.Add_Team_Panel.Controls.Add(this.Btn_Add_Team);
-            this.Add_Team_Panel.Controls.Add(this.Add_Team_TextBox);
-            this.Add_Team_Panel.Controls.Add(this.label9);
-            this.Add_Team_Panel.Controls.Add(this.label10);
-            this.Add_Team_Panel.ForeColor = System.Drawing.Color.White;
-            this.Add_Team_Panel.Location = new System.Drawing.Point(21, 112);
-            this.Add_Team_Panel.Name = "Add_Team_Panel";
-            this.Add_Team_Panel.Size = new System.Drawing.Size(274, 250);
-            this.Add_Team_Panel.TabIndex = 22;
-            this.Add_Team_Panel.Visible = false;
-            // 
-            // Add_Team_ComboBox
-            // 
-            this.Add_Team_ComboBox.FormattingEnabled = true;
-            this.Add_Team_ComboBox.Location = new System.Drawing.Point(54, 70);
-            this.Add_Team_ComboBox.Name = "Add_Team_ComboBox";
-            this.Add_Team_ComboBox.Size = new System.Drawing.Size(151, 23);
-            this.Add_Team_ComboBox.TabIndex = 6;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(227, 18);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 24);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "X";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // Btn_Add_Team
-            // 
-            this.Btn_Add_Team.ForeColor = System.Drawing.Color.Black;
-            this.Btn_Add_Team.Location = new System.Drawing.Point(83, 183);
-            this.Btn_Add_Team.Name = "Btn_Add_Team";
-            this.Btn_Add_Team.Size = new System.Drawing.Size(99, 42);
-            this.Btn_Add_Team.TabIndex = 4;
-            this.Btn_Add_Team.Text = "추가";
-            this.Btn_Add_Team.UseVisualStyleBackColor = true;
-            this.Btn_Add_Team.Click += new System.EventHandler(this.Btn_Add_Team_Click);
-            // 
-            // Add_Team_TextBox
-            // 
-            this.Add_Team_TextBox.ForeColor = System.Drawing.Color.Black;
-            this.Add_Team_TextBox.Location = new System.Drawing.Point(54, 137);
-            this.Add_Team_TextBox.Name = "Add_Team_TextBox";
-            this.Add_Team_TextBox.Size = new System.Drawing.Size(151, 25);
-            this.Add_Team_TextBox.TabIndex = 3;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(51, 109);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 15);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "추가할 팀명";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(51, 40);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 15);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "부서선택";
-            // 
-            // SearchLog_By_User
-            // 
-            this.SearchLog_By_User.ForeColor = System.Drawing.Color.Black;
-            this.SearchLog_By_User.Location = new System.Drawing.Point(68, 267);
-            this.SearchLog_By_User.Name = "SearchLog_By_User";
-            this.SearchLog_By_User.Size = new System.Drawing.Size(146, 25);
-            this.SearchLog_By_User.TabIndex = 25;
-            this.SearchLog_By_User.Text = "사용자별 로그검색";
-            this.SearchLog_By_User.UseVisualStyleBackColor = true;
-            this.SearchLog_By_User.Click += new System.EventHandler(this.SearchLog_By_User_Click);
-            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(768, 564);
+            this.Controls.Add(this.ChangeDepartmentPanel);
+            this.Controls.Add(this.Add_Team_Panel);
+            this.Controls.Add(this.addDepartmentPanel);
             this.Controls.Add(this.ChangeTeamPanel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
@@ -613,14 +613,14 @@ namespace DBP_Project
             this.addDepartmentPanel.PerformLayout();
             this.ChangeTeamPanel.ResumeLayout(false);
             this.ChangeTeamPanel.PerformLayout();
+            this.Add_Team_Panel.ResumeLayout(false);
+            this.Add_Team_Panel.PerformLayout();
+            this.ChangeDepartmentPanel.ResumeLayout(false);
+            this.ChangeDepartmentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Manager_Screen)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.ChangeDepartmentPanel.ResumeLayout(false);
-            this.ChangeDepartmentPanel.PerformLayout();
-            this.Add_Team_Panel.ResumeLayout(false);
-            this.Add_Team_Panel.PerformLayout();
             this.ResumeLayout(false);
 
         }

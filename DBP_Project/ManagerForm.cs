@@ -127,6 +127,9 @@ namespace DBP_Project
 
         private void Btn_Panel_On(object sender, EventArgs e)
         {
+            Add_Department_Text.Text = "";
+            Add_Team_Text.Text = "";
+
             addDepartmentPanel.Location = new Point(20, 20);
             addDepartmentPanel.Visible = true;
             Add_Team_Panel.Visible = false;
@@ -211,6 +214,9 @@ namespace DBP_Project
 
         private void Change_Team_Click(object sender, EventArgs e)
         {
+            ChangeTeamPanel_Department_Info.Text = "";
+            ChangeTeamPanel_Team_Info.Text = "";
+            ChangeTeamPanel_TextBox.Text = "";
 
             ChangeTeamPanel.Location = new Point(20, 20);
             addDepartmentPanel.Visible = false;
@@ -219,10 +225,6 @@ namespace DBP_Project
             ChangeTeamPanel.Visible = true;
             ChangeTeamPanel_Department_Info.Items.Clear();
             ChangeTeamPanel_Team_Info.Items.Clear();
-
-            ChangeTeamPanel_Department_Info.SelectedIndex = -1;
-            ChangeTeamPanel_Team_Info.SelectedIndex = -1;
-            ChangeTeamPanel_TextBox.Text = "";
 
             List<String> list = new List<string>();
             List<String> list2 = new List<string>();
@@ -236,10 +238,11 @@ namespace DBP_Project
                 while (rdr.Read())
                 {
                     list2.Add(rdr["departmentName"].ToString());
+                    list.Add(rdr["teamName"].ToString());
                 }
                 list2 = list2.Distinct().ToList();
-
                 ChangeTeamPanel_Department_Info.Items.AddRange(list2.ToArray());
+                ChangeTeamPanel_Team_Info.Items.AddRange(list.ToArray());
                 connection.Close();
             }
         }
@@ -321,6 +324,9 @@ namespace DBP_Project
 
         private void Add_Team_Click(object sender, EventArgs e)
         {
+            Add_Team_ComboBox.SelectedIndex = -1;
+            Add_Team_TextBox.Text = "";
+
             Add_Team_Panel.Location = new Point(20, 20);
             addDepartmentPanel.Visible = false;
             Add_Team_Panel.Visible = true;
@@ -328,6 +334,7 @@ namespace DBP_Project
             ChangeTeamPanel.Visible = false;
 
             Add_Team_ComboBox.Items.Clear();
+
             List<String> list = new List<string>();
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
@@ -349,9 +356,9 @@ namespace DBP_Project
         {
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
-                int count = 1;
                 int chk = 0;
                 int Row = 0;
+                int count = 0;
                 connection.Open();
                 String SelectQuery = "select * from departmentList"; // 조회
                 String InsertQuery = "";
@@ -365,9 +372,13 @@ namespace DBP_Project
                         {
                             MessageBox.Show("이미 존재하는 팀명입니다!");
                             chk = 1;
+                            break;
                         }
                     }
-                    count = Int32.Parse(rdr["departmentID"].ToString());
+
+                    if (rdr["departmentName"].ToString() == Add_Team_ComboBox.SelectedItem.ToString()) {
+                        count = Int32.Parse(rdr["departmentId"].ToString());
+                    }
                     Row = Int32.Parse(rdr["Row_num"].ToString());
                 }
 
