@@ -220,6 +220,10 @@ namespace DBP_Project
             ChangeTeamPanel_Department_Info.Items.Clear();
             ChangeTeamPanel_Team_Info.Items.Clear();
 
+            ChangeTeamPanel_Department_Info.SelectedIndex = -1;
+            ChangeTeamPanel_Team_Info.SelectedIndex = -1;
+            ChangeTeamPanel_TextBox.Text = "";
+
             List<String> list = new List<string>();
             List<String> list2 = new List<string>();
 
@@ -405,18 +409,30 @@ namespace DBP_Project
 
         private void ChangeTeamPanel_Department_Info_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ChangeTeamPanel_Team_Info.Items.Clear();
             using (MySqlConnection connection = new MySqlConnection(strConn))
             {
+                connection.Open();
                 string Query = String.Format("select * from departmentList where departmentName = '{0}'",ChangeTeamPanel_Department_Info.SelectedItem.ToString());
                 MySqlCommand cmd = new MySqlCommand(Query, connection);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                connection.Open();
                 while (rdr.Read())
                 {
                     ChangeTeamPanel_Team_Info.Items.Add(rdr["teamName"].ToString());
                 }
                 connection.Close();
             }
+        }
+
+        private void SearchLog_By_User_Click(object sender, EventArgs e)
+        {
+            if(UserSelectBox.SelectedIndex == -1) {
+                MessageBox.Show("유저를 선택 해주세요.");
+                return;
+            }
+            string q = $"SELECT * FROM LogInHistory Where userId = '{UserSelectBox.SelectedItem.ToString()}'";
+            DataTable dt = Query.GetInstance().RunQuery(q);
+            Manager_Screen.DataSource = dt;
         }
     }
 }

@@ -76,6 +76,7 @@ namespace DBP_Project
             this.Add_Team_TextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.SearchLog_By_User = new System.Windows.Forms.Button();
             this.addDepartmentPanel.SuspendLayout();
             this.ChangeTeamPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Manager_Screen)).BeginInit();
@@ -95,7 +96,7 @@ namespace DBP_Project
             this.addDepartmentPanel.Controls.Add(this.Add_Department_Text);
             this.addDepartmentPanel.Controls.Add(this.label4);
             this.addDepartmentPanel.ForeColor = System.Drawing.Color.White;
-            this.addDepartmentPanel.Location = new System.Drawing.Point(310, 20);
+            this.addDepartmentPanel.Location = new System.Drawing.Point(24, 3);
             this.addDepartmentPanel.Name = "addDepartmentPanel";
             this.addDepartmentPanel.Size = new System.Drawing.Size(297, 237);
             this.addDepartmentPanel.TabIndex = 18;
@@ -159,9 +160,12 @@ namespace DBP_Project
             // ChangeTeamPanel
             // 
             this.ChangeTeamPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.ChangeTeamPanel.Controls.Add(this.Add_Team_Panel);
+            this.ChangeTeamPanel.Controls.Add(this.ChangeDepartmentPanel);
             this.ChangeTeamPanel.Controls.Add(this.label11);
             this.ChangeTeamPanel.Controls.Add(this.ChangeTeamPanel_Department_Info);
             this.ChangeTeamPanel.Controls.Add(this.ChangeTeamPanel_Team_Info);
+            this.ChangeTeamPanel.Controls.Add(this.addDepartmentPanel);
             this.ChangeTeamPanel.Controls.Add(this.button5);
             this.ChangeTeamPanel.Controls.Add(this.Change_Team_Info);
             this.ChangeTeamPanel.Controls.Add(this.ChangeTeamPanel_TextBox);
@@ -273,6 +277,7 @@ namespace DBP_Project
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
+            this.groupBox2.Controls.Add(this.SearchLog_By_User);
             this.groupBox2.Controls.Add(this.UserSelectBox);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
@@ -285,10 +290,10 @@ namespace DBP_Project
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(476, 11);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(232, 270);
+            this.groupBox2.Size = new System.Drawing.Size(232, 298);
             this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "대화 검색";
+            this.groupBox2.Text = "검색";
             // 
             // UserSelectBox
             // 
@@ -321,9 +326,9 @@ namespace DBP_Project
             this.Search_By_User.ForeColor = System.Drawing.Color.Black;
             this.Search_By_User.Location = new System.Drawing.Point(68, 238);
             this.Search_By_User.Name = "Search_By_User";
-            this.Search_By_User.Size = new System.Drawing.Size(114, 25);
+            this.Search_By_User.Size = new System.Drawing.Size(146, 25);
             this.Search_By_User.TabIndex = 21;
-            this.Search_By_User.Text = "사용자별 검색";
+            this.Search_By_User.Text = "사용자별 대화검색";
             this.Search_By_User.UseVisualStyleBackColor = true;
             this.Search_By_User.Click += new System.EventHandler(this.Btn_Search_User);
             // 
@@ -332,9 +337,9 @@ namespace DBP_Project
             this.Search_By_Keyword.ForeColor = System.Drawing.Color.Black;
             this.Search_By_Keyword.Location = new System.Drawing.Point(68, 166);
             this.Search_By_Keyword.Name = "Search_By_Keyword";
-            this.Search_By_Keyword.Size = new System.Drawing.Size(114, 25);
+            this.Search_By_Keyword.Size = new System.Drawing.Size(146, 25);
             this.Search_By_Keyword.TabIndex = 20;
-            this.Search_By_Keyword.Text = "키워드별 검색";
+            this.Search_By_Keyword.Text = "키워드별 대화검색";
             this.Search_By_Keyword.UseVisualStyleBackColor = true;
             this.Search_By_Keyword.Click += new System.EventHandler(this.Btn_Search_Keyword);
             // 
@@ -368,9 +373,9 @@ namespace DBP_Project
             this.Search_By_Date.ForeColor = System.Drawing.Color.Black;
             this.Search_By_Date.Location = new System.Drawing.Point(68, 100);
             this.Search_By_Date.Name = "Search_By_Date";
-            this.Search_By_Date.Size = new System.Drawing.Size(114, 25);
+            this.Search_By_Date.Size = new System.Drawing.Size(146, 25);
             this.Search_By_Date.TabIndex = 13;
-            this.Search_By_Date.Text = "시간별 검색";
+            this.Search_By_Date.Text = "시간별 대화검색";
             this.Search_By_Date.UseVisualStyleBackColor = true;
             this.Search_By_Date.Click += new System.EventHandler(this.Btn_Search_By_Time);
             // 
@@ -382,7 +387,7 @@ namespace DBP_Project
             this.groupBox1.Controls.Add(this.Change_Department);
             this.groupBox1.Controls.Add(this.Add_Department);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(475, 286);
+            this.groupBox1.Location = new System.Drawing.Point(476, 358);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -445,7 +450,7 @@ namespace DBP_Project
             this.ChangeDepartmentPanel.Controls.Add(this.label3);
             this.ChangeDepartmentPanel.Controls.Add(this.label6);
             this.ChangeDepartmentPanel.ForeColor = System.Drawing.Color.White;
-            this.ChangeDepartmentPanel.Location = new System.Drawing.Point(17, 311);
+            this.ChangeDepartmentPanel.Location = new System.Drawing.Point(24, 81);
             this.ChangeDepartmentPanel.Name = "ChangeDepartmentPanel";
             this.ChangeDepartmentPanel.Size = new System.Drawing.Size(274, 250);
             this.ChangeDepartmentPanel.TabIndex = 20;
@@ -516,7 +521,7 @@ namespace DBP_Project
             this.Add_Team_Panel.Controls.Add(this.label9);
             this.Add_Team_Panel.Controls.Add(this.label10);
             this.Add_Team_Panel.ForeColor = System.Drawing.Color.White;
-            this.Add_Team_Panel.Location = new System.Drawing.Point(384, 369);
+            this.Add_Team_Panel.Location = new System.Drawing.Point(21, 112);
             this.Add_Team_Panel.Name = "Add_Team_Panel";
             this.Add_Team_Panel.Size = new System.Drawing.Size(274, 250);
             this.Add_Team_Panel.TabIndex = 22;
@@ -577,16 +582,24 @@ namespace DBP_Project
             this.label10.TabIndex = 0;
             this.label10.Text = "부서선택";
             // 
+            // SearchLog_By_User
+            // 
+            this.SearchLog_By_User.ForeColor = System.Drawing.Color.Black;
+            this.SearchLog_By_User.Location = new System.Drawing.Point(68, 267);
+            this.SearchLog_By_User.Name = "SearchLog_By_User";
+            this.SearchLog_By_User.Size = new System.Drawing.Size(146, 25);
+            this.SearchLog_By_User.TabIndex = 25;
+            this.SearchLog_By_User.Text = "사용자별 로그검색";
+            this.SearchLog_By_User.UseVisualStyleBackColor = true;
+            this.SearchLog_By_User.Click += new System.EventHandler(this.SearchLog_By_User_Click);
+            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(768, 564);
-            this.Controls.Add(this.ChangeDepartmentPanel);
-            this.Controls.Add(this.Add_Team_Panel);
             this.Controls.Add(this.ChangeTeamPanel);
-            this.Controls.Add(this.addDepartmentPanel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.Lookup_Department);
@@ -660,5 +673,6 @@ namespace DBP_Project
         private System.Windows.Forms.ComboBox Add_Team_ComboBox;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox ChangeTeamPanel_Department_Info;
+        private System.Windows.Forms.Button SearchLog_By_User;
     }
 }
