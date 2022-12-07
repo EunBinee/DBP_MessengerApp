@@ -115,7 +115,6 @@ namespace DBP_Project
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Profil";
             this.Text = "Profil";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.Profil_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Profil_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Profil_MouseMove);

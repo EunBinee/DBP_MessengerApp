@@ -47,7 +47,7 @@ namespace DBP_Project
 
             int preId=0; //이전 부서 ID
 
-            string query = "SELECT * FROM talk.departmentList;";
+            string query = "SELECT * FROM talk.departmentList ORDER BY departmentId;";
             dt_Depart = new DataTable();
             dt_Depart = Query.GetInstance().RunQuery(query);
 

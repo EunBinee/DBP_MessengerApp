@@ -63,12 +63,16 @@ namespace DBP_Project
             // TCP를 통해 수신자에게 알림 + 상대방이 보기 차단되어 있으면 TCP전송만 안함
             DataTable dt = Query.GetInstance().RunQuery($"SELECT ifnull(b.blockLook, 0) blockLook FROM UserListTable u LEFT JOIN (SELECT * FROM BlockInfo WHERE userId = '{yourID}') as b ON u.id = b.blockUserId WHERE u.id = '{myID}'");
             if(dt.Rows[0]["blockLook"].ToString() != "1")
+            {
                 SendToSignal();
+            }
 
             // 메세지를 폼에 등록 및 초기화
             SendMsg(chatId,msgInput.Text,time);
 
+            flowLayoutPanel1.ScrollControlIntoView(messages.Last<Message>());
             TestChatForm.getInstance().ChatLoad();
+            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -102,8 +106,8 @@ namespace DBP_Project
             messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
-            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
         private void SendMsg(int chatId, string text, string time,bool isFile = false)
         {
@@ -114,8 +118,8 @@ namespace DBP_Project
             messages.Add(msg);
             msgInput.Text = "";
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
-            flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
 
         private void DrawMsg(int chatId, string text,string name, string time,bool isFile = false)
@@ -126,7 +130,7 @@ namespace DBP_Project
 
             messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
         }
 
         private void DrawJpg(int chatId, string text, string name, string time)
@@ -138,7 +142,7 @@ namespace DBP_Project
 
             messages.Add(msg);
             flowLayoutPanel1.Controls.Add(msg);
-            flowLayoutPanel1.ScrollControlIntoView(msg);
+            //flowLayoutPanel1.ScrollControlIntoView(msg);
         }
 
         // TCP를 통해 메세지를 받았을 때 호출
@@ -147,9 +151,12 @@ namespace DBP_Project
             if ((str.Equals(yourPeer.ToString())))
                 return;
 
+
             // 송신자로부터 알림 받음
             DataTable dt = Query.GetInstance().RunQuery("SELECT `id`,`data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "' AND `read_check` = '1';");
-
+           
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
+            SendToReadSignal();
             // 상대가 전송한 메세지 폼에 그리기
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -164,23 +171,19 @@ namespace DBP_Project
                 if (isImg == "1")
                     DrawJpg(chatId, text, id, time);
                 else if(isImg == "2")
-                {
                     DrawMsg(chatId, text, id, time,true);
-                }
                 else
                     DrawMsg(chatId, text, id, time);
             }
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
-            SendToReadSignal();
 
             for (int i = 0; i < messages.Count; i++)
             {
                 messages[i].SetRead();
             }
-
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';"); //' AND (`id` = '" + id +"'
-            SendToReadSignal();
-
+            if (messages.Count > 0)
+            {
+                flowLayoutPanel1.ScrollControlIntoView(messages.Last<Message>());
+            }
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
         // TCP를 통해 읽음확인
@@ -198,9 +201,12 @@ namespace DBP_Project
         // 해당 방 메세지 전부 로드
         public void LoadChatByRoomId(string roomId)
         {
+
             // 송신자로부터 알림 받음
             DataTable dt = Query.GetInstance().RunQuery("SELECT `id`,`data`,`sender_ID`,`send_time`,`isImg` FROM talk.ChatMsg WHERE `room_ID` = '" + roomId + "';");
 
+            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
+            SendToReadSignal();
             // 상대가 전송한 메세지 폼에 그리기
             for (int i = 0; i < dt.Rows.Count; i++)
             {
@@ -239,13 +245,10 @@ namespace DBP_Project
                         DrawMsg(chatId,text, id, time);
                 }
             }
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
-            SendToReadSignal();
-
-
-            Query.GetInstance().RunQuery("UPDATE `talk`.`ChatMsg` SET `read_check` = '0' WHERE `sender_ID` = '" + yourID + "' AND `recv_ID` = '" + myID + "';");
-            SendToReadSignal();
-
+            if (messages.Count > 0)
+            {
+                flowLayoutPanel1.ScrollControlIntoView(messages.Last<Message>());
+            }
             flowLayoutPanel1.Width = panel3.ClientSize.Width + SystemInformation.VerticalScrollBarWidth;
         }
 
