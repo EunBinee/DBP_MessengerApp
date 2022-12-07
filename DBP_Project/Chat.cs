@@ -60,8 +60,10 @@ namespace DBP_Project
             DataTable dt_last_id = Query.GetInstance().RunQuery("select last_insert_id();");
             int chatId = Convert.ToInt32(dt_last_id.Rows[0][0]);
 
-            // TCP를 통해 수신자에게 알림
-            SendToSignal();
+            // TCP를 통해 수신자에게 알림 + 상대방이 보기 차단되어 있으면 TCP전송만 안함
+            DataTable dt = Query.GetInstance().RunQuery($"SELECT ifnull(b.blockLook, 0) blockLook FROM UserListTable u LEFT JOIN (SELECT * FROM BlockInfo WHERE userId = '{yourID}') as b ON u.id = b.blockUserId WHERE u.id = '{myID}'");
+            if(dt.Rows[0]["blockLook"].ToString() != "1")
+                SendToSignal();
 
             // 메세지를 폼에 등록 및 초기화
             SendMsg(chatId,msgInput.Text,time);
