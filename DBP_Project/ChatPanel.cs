@@ -97,11 +97,12 @@ namespace DBP_Project
                 MessageBox.Show("채팅방을 생성합니다.");
                 //클릭시 채팅방 오픈
                 Client.GetInstance().AddNewChatRoom(this.targetId, this.roomId);
+                TestChatForm.getInstance().ChatLoad();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {   
             OpenRoom();
         }
     }
