@@ -73,10 +73,10 @@ namespace DBP_Project
             departmentComboBox.SelectedIndex = departmentComboBox.FindString(userInfoDataTable.Rows[0]["departmentName"].ToString());
             teamComboBox.SelectedIndex = teamComboBox.FindString(userInfoDataTable.Rows[0]["teamName"].ToString());
 
-            DataTable LoginHistoryTable = Query.GetInstance().RunQuery($"SELECT max(logtime) as LoginTime FROM talk.LogInHistory where userId = '{curUserId}' and logType = 1 order by logTime");
+            DataTable LoginHistoryTable = Query.GetInstance().RunQuery($"SELECT max(logtime) as LoginTime FROM talk.LogInHistory where userId = '{curUserId}' and logType = 'LogIn' order by logTime");
             recentLogIn.Text = LoginHistoryTable.Rows[0]["LoginTime"].ToString();
 
-            DataTable LogOutHistoryTable = Query.GetInstance().RunQuery($"SELECT max(logtime) as LogOutTime FROM talk.LogInHistory where userId = '{curUserId}' and logType = 0 order by logTime");
+            DataTable LogOutHistoryTable = Query.GetInstance().RunQuery($"SELECT max(logtime) as LogOutTime FROM talk.LogInHistory where userId = '{curUserId}' and logType = 'LogOut' order by logTime");
             recentLogOut.Text = LogOutHistoryTable.Rows[0]["LogOutTime"].ToString();
 
             getBlockDepartmentListByUid(userBox.Text);

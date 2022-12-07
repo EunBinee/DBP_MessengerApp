@@ -147,7 +147,7 @@ namespace DBP_Project
                 //폼 띄우기
 
                 string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-                string loginTimeQuery = $"INSERT INTO LogInHistory VALUES ('{curId}', '{time}', 1)";
+                string loginTimeQuery = $"INSERT INTO LogInHistory VALUES ('{curId}', '{time}', 'LogIn')";
                 Query.GetInstance().RunQuery(loginTimeQuery);
                 GoMainForm(curId);
             }
